@@ -1,0 +1,11 @@
+development in Python and C#
+
+Avatar is programmed in Python, explanation on how to integrate this in C# will follow
+
+we get to focus on the logic part rather than the graphics
+
+use RPC for connecting the langagues
+
+vizard for compiling the python 2.6 code.
+
+12th floor, room 2.70
