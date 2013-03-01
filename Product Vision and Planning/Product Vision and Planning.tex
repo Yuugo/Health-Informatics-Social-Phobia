@@ -3,14 +3,26 @@
 \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
 \usepackage[pdftex]{graphicx}
 \usepackage[backref,hidelinks = true]{hyperref}
+\usepackage[xindy,toc]{glossaries}
+\include{Glossary.tex}
+\makeglossaries
 \begin{document}
 \input{"title.tex"}
 \tableofcontents
 
-\chapter{}
-
-\input{"introduction.tex"}
+\input{"Introduction.tex"}
+\newpage
+\input{"Product.tex"}
+\newpage
+\input{"Product backlog.tex"}
+\newpage
+\input{"Definition of Done.tex"}
 \newpage
 
+\addcontentsline{toc}{chapter}{Glossary}
+\printglossaries
+
+%\input{"Glossary.tex"}
+%\newpage
 
 \end{document}

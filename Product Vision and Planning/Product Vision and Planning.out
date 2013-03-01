@@ -1,4 +1,13 @@
-\BOOKMARK [0][-]{chapter.1}{}{}% 1
-\BOOKMARK [1][-]{section.1.1}{}{chapter.1}% 2
-\BOOKMARK [2][-]{subsection.1.1.1}{}{section.1.1}% 3
-\BOOKMARK [2][-]{subsection.1.1.2}{}{section.1.1}% 4
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 1
+\BOOKMARK [0][-]{chapter.2}{Product}{}% 2
+\BOOKMARK [1][-]{section.2.1}{Product vision}{chapter.2}% 3
+\BOOKMARK [1][-]{section.2.2}{High-level product backlog}{chapter.2}% 4
+\BOOKMARK [1][-]{section.2.3}{Roadmap}{chapter.2}% 5
+\BOOKMARK [0][-]{chapter.3}{Product backlog}{}% 6
+\BOOKMARK [1][-]{section.3.1}{User stories of features}{chapter.3}% 7
+\BOOKMARK [1][-]{section.3.2}{User stories of defects}{chapter.3}% 8
+\BOOKMARK [1][-]{section.3.3}{User stories of technical improvements}{chapter.3}% 9
+\BOOKMARK [1][-]{section.3.4}{User stories of know-how acquisition}{chapter.3}% 10
+\BOOKMARK [1][-]{section.3.5}{Initial release plan}{chapter.3}% 11
+\BOOKMARK [0][-]{chapter.4}{Definition of Done}{}% 12
+\BOOKMARK [0][-]{chapter.4}{Glossary}{}% 13
