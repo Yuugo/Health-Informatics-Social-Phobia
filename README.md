@@ -11,10 +11,3 @@ Vizard 3.0: http://www.worldviz.com/support/download?action=1&fid=77 (personal i
 
 PyDev plugin for eclipse: Within Eclipse, go to plugins and search for PyDev.
 
-Group members
-------
-  * Willem Vaandrager		4175115		willemserf@hotmail.com </br>
-  * Johnny Verhoeff 		4137175		j.verhoeff@me.com
-  * Hugo Reinbergen 		4161173		hugoreinbergen@hotmail.com
-  * Koos van der Linden 	4133145		kjgm_vd_linden@hotmail.com
-  * Elgar de Groot			4091108		elgar.groot@gmail.com
