@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.12.7)  1 MAR 2013 16:13
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.12.7)  5 MAR 2013 23:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -464,6 +464,12 @@ Chapter 3.
 
 ] (./Definition of Done.tex
 Chapter 4.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 9.
+(/usr/local/texlive/2012/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 9.
 ) [5
 
 ]
@@ -476,14 +482,14 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 28.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 28.
 Package rerunfilecheck Info: File `"Product Vision and Planning".out' has not c
 hanged.
-(rerunfilecheck)             Checksum: 9B40F6B930A7B8BB4263E7D13EA2F01B;795.
+(rerunfilecheck)             Checksum: 85F13F9CDA5A6E5753F43B53A11EF7BE;988.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 28.
  ) 
 Here is how much of TeX's memory you used:
- 7765 strings out of 493488
- 115038 string characters out of 3141326
- 237363 words of memory out of 3000000
- 10952 multiletter control sequences out of 15000+200000
+ 7788 strings out of 493488
+ 115412 string characters out of 3141326
+ 240363 words of memory out of 3000000
+ 10969 multiletter control sequences out of 15000+200000
  8800 words of font info for 31 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
  37i,6n,41p,1471b,357s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -491,11 +497,12 @@ Here is how much of TeX's memory you used:
 ></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></
 usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></us
-r/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb>
-Output written on "Product Vision and Planning.pdf" (7 pages, 74461 bytes).
+r/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/
+local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on "Product Vision and Planning.pdf" (7 pages, 87462 bytes).
 PDF statistics:
- 129 PDF objects out of 1000 (max. 8388607)
- 113 compressed objects within 2 object streams
- 20 named destinations out of 1000 (max. 500000)
- 105 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 148 PDF objects out of 1000 (max. 8388607)
+ 131 compressed objects within 2 object streams
+ 23 named destinations out of 1000 (max. 500000)
+ 129 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -10,4 +10,7 @@
 \contentsline {section}{\numberline {3.4}User stories of know-how acquisition}{4}{section.3.4}
 \contentsline {section}{\numberline {3.5}Initial release plan}{4}{section.3.5}
 \contentsline {chapter}{\numberline {4}Definition of Done}{5}{chapter.4}
-\contentsline {chapter}{Glossary}{6}{chapter.4}
+\contentsline {section}{\numberline {4.1}DoD for a Feature}{5}{section.4.1}
+\contentsline {section}{\numberline {4.2}DoD for a Sprint}{5}{section.4.2}
+\contentsline {section}{\numberline {4.3}DoD for a Release}{5}{section.4.3}
+\contentsline {chapter}{Glossary}{6}{section.4.3}
