@@ -1,0 +1,51 @@
+Notulen vergadering 6 maart 2013 
+
+Aanwezigen:
+	Johnny Verhoeff [Voorzitter]
+	Hugo Reinbergen [Notulist]
+	Willen Vaandrager
+	Elgar de Groot
+	Koos van der Linden
+
+Opening 2:32
+
+Vrijdag moet het concept van Product Vision en Planning ingeleverd via mail bij Dwi en Willem-Paul.
+Tot nu toe af, introductie, product vision, high-level product backlog, roadmap (soort van, prima volgens vozi)
+
+[A] Taken verdelen voor nalezen van documenten. 							[[Iedereen]]
+
+Voor deze draft van de poduct backlog hoeft alleen knowhow-acquisition, user stories of features en initial release plan.
+Seminar report moet nog gemaakt worden, is ook deel van knowhow-acquisition.
+
+[A] Uitzoeken wat precies een epic en een user story is.					[[iedereen, tijdens de vergardering]]
+
+Epics hoeven niet per se in de 'As a user I want'-format. User stories wel.
+
+Initial release plan bestaat uit milestones en MRF(Minimal Release Features) 
+
+Glossary is werkend.
+
+Voor volgende week vrijdag: initial Product Vision and Plannen en First Version Emergent Architectual Design.
+
+===Actiepunten===
+
+[Voor vrijdag 8 maart]
+[A]	user stories of features												[[Willem, Johnny]]
+[A]	know-how acquisition													[[Willem, Johhny]]
+[A]	Initial release plan													[[Elgar]]
+[A]	short abstract															[[Koos]]
+[A] Glossary 																[[Elgar]]
+
+[Voor vrijdag 15 maart]
+[A]	Design Goals															[[Hugo]]
+[A]	Subsystem decomposition													[[Koos]]
+[A]	Persistent Data Mangament 												[[Johnny]]
+[A] Concurrency																[[Johnny]]
+[A] Glossary 																[[Elgar]]
+
+Volgende week scrum dingen verdelen.
+
+Voorzitter volgende week: Elgar
+Notulist volgende week: Johnny
+
+Eind vergadering: 3:09
