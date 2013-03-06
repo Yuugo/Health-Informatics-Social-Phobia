@@ -5,15 +5,22 @@
 \contentsline {chapter}{\numberline {2}Product}{3}{chapter.2}
 \contentsline {section}{\numberline {2.1}Product vision}{3}{section.2.1}
 \contentsline {section}{\numberline {2.2}High-level product backlog}{3}{section.2.2}
+\contentsline {paragraph}{}{3}{section*.5}
+\contentsline {paragraph}{}{3}{section*.6}
+\contentsline {paragraph}{}{3}{section*.7}
+\contentsline {paragraph}{}{3}{section*.8}
+\contentsline {paragraph}{}{3}{section*.9}
+\contentsline {paragraph}{}{3}{section*.10}
+\contentsline {paragraph}{}{3}{section*.11}
 \contentsline {section}{\numberline {2.3}Roadmap}{3}{section.2.3}
-\contentsline {chapter}{\numberline {3}Product backlog}{4}{chapter.3}
-\contentsline {section}{\numberline {3.1}User stories of features}{4}{section.3.1}
-\contentsline {section}{\numberline {3.2}User stories of defects}{4}{section.3.2}
-\contentsline {section}{\numberline {3.3}User stories of technical improvements}{4}{section.3.3}
-\contentsline {section}{\numberline {3.4}User stories of know-how acquisition}{4}{section.3.4}
-\contentsline {section}{\numberline {3.5}Initial release plan}{4}{section.3.5}
-\contentsline {chapter}{\numberline {4}Definition of Done}{5}{chapter.4}
-\contentsline {section}{\numberline {4.1}DoD for a Feature}{5}{section.4.1}
-\contentsline {section}{\numberline {4.2}DoD for a Sprint}{5}{section.4.2}
-\contentsline {section}{\numberline {4.3}DoD for a Release}{5}{section.4.3}
-\contentsline {chapter}{Glossary}{6}{section.4.3}
+\contentsline {chapter}{\numberline {3}Product backlog}{5}{chapter.3}
+\contentsline {section}{\numberline {3.1}User stories of features}{5}{section.3.1}
+\contentsline {section}{\numberline {3.2}User stories of defects}{5}{section.3.2}
+\contentsline {section}{\numberline {3.3}User stories of technical improvements}{5}{section.3.3}
+\contentsline {section}{\numberline {3.4}User stories of know-how acquisition}{5}{section.3.4}
+\contentsline {section}{\numberline {3.5}Initial release plan}{5}{section.3.5}
+\contentsline {chapter}{\numberline {4}Definition of Done}{6}{chapter.4}
+\contentsline {section}{\numberline {4.1}DoD for a Feature}{6}{section.4.1}
+\contentsline {section}{\numberline {4.2}DoD for a Sprint}{6}{section.4.2}
+\contentsline {section}{\numberline {4.3}DoD for a Release}{6}{section.4.3}
+\contentsline {chapter}{Glossary}{7}{section.4.3}

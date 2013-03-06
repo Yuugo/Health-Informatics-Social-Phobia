@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.12.7)  6 MAR 2013 15:14
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.12.7)  6 MAR 2013 15:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -468,56 +468,57 @@ Missing character: There is no ™ in font cmr10!
 
 ] (./Product.tex
 Chapter 2.
-) [3
-
-] (./Product backlog.tex
-Chapter 3.
-) [4
-
-] (./Definition of Done.tex
-Chapter 4.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 9.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 32.
 (/usr/local/texlive/2012/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 9.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 32.
+ [3
+
+]) [4]
+(./Product backlog.tex
+Chapter 3.
 ) [5
 
-]
-(./Product Vision and Planning.gls)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 39.
- [6
+] (./Definition of Done.tex
+Chapter 4.
+) [6
+
+] (./Product Vision and Planning.gls)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 38.
+ [7
 
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 39.
- (./Product Vision and Planning.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 39.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 39.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 38.
+
+(./Product Vision and Planning.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 38.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 38.
 Package rerunfilecheck Info: File `"Product Vision and Planning".out' has not c
 hanged.
 (rerunfilecheck)             Checksum: 85F13F9CDA5A6E5753F43B53A11EF7BE;988.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 39.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 38.
  ) 
 Here is how much of TeX's memory you used:
- 7770 strings out of 493488
- 114969 string characters out of 3141326
+ 7778 strings out of 493488
+ 115049 string characters out of 3141326
  224744 words of memory out of 3000000
  10941 multiletter control sequences out of 15000+200000
  8800 words of font info for 31 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
- 37i,6n,38p,1449b,357s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 37i,6n,38p,1449b,379s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
 </usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></
 usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></us
 r/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/
 local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on "Product Vision and Planning.pdf" (7 pages, 91996 bytes).
+Output written on "Product Vision and Planning.pdf" (8 pages, 95356 bytes).
 PDF statistics:
- 157 PDF objects out of 1000 (max. 8388607)
- 140 compressed objects within 2 object streams
- 29 named destinations out of 1000 (max. 500000)
+ 172 PDF objects out of 1000 (max. 8388607)
+ 154 compressed objects within 2 object streams
+ 37 named destinations out of 1000 (max. 500000)
  129 words of extra memory for PDF output out of 10000 (max. 10000000)
 
