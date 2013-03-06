@@ -1,0 +1,15 @@
+datum: Voorzitter, notulist
+6 maart: Johnny, Hugo
+13 maart: Elgar, Johnny
+20 maart: Willem, Elgar
+27 maart: Koos, Willem
+5 april: Hugo, Koos
+22 april: Johnny, Hugo
+2 mei: Elgar, Johnny
+6 mei: Willem, Elgar
+13 mei: Koos, Willem
+23 mei: Hugo, Koos
+27 mei: Johnny, Hugo
+3 juni: Elgar, Johnny
+10 juni: Willem, Elgar
+17 juni: Koos, Willem
