@@ -1,0 +1,6 @@
+\glossarysection[\glossarytoctitle]{\glossarytitle}\glossarypreamble
+\begin{theglossary}\glossaryheader
+\glsgroupheading{U}\relax \glsresetentrylist %
+\glossaryentryfield{UML}{\glsnamefont{UML}}{Unified Modelling Language: a standardized way of visualizing code and project architecture}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{5}}}%
+\end{theglossary}\glossarypostamble

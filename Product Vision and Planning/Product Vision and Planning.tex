@@ -4,20 +4,22 @@
 \usepackage[pdftex]{graphicx}
 \usepackage[backref,hidelinks = true]{hyperref}
 % Package for glossaries
-\newcommand*{\glossaryname}{Dictionary}
-\usepackage[nonumberlist]{glossaries}
-\newcommand{\dictentry}[2]{%
-  \newglossaryentry{#1}{name=#1,description={#2}}%
-  \glslink{#1}{}%
-}
-\include{Glossary.tex}
-\makeglossaries
+\newcommand*{\glossaryname}{Glossary}
+\usepackage{glossaries}
 
+\makeglossaries
+\loadglsentries{Glossary.tex}
 
 \begin{document}
+
+% Include the title page
 \input{"title.tex"}
+
+% Make the table of contents
 \tableofcontents
 
+%\input{Glossary.tex}
+% Include the different chapters
 \input{"Introduction.tex"}
 \newpage
 \input{"Product.tex"}
@@ -28,9 +30,10 @@
 \newpage
 
 
-\printglossary[style=list]%
 
-\input{"Glossary.tex"}
-%\newpage
+\addcontentsline{toc}{chapter}{Glossary}%
+
+\printglossaries
+
 
 \end{document}

@@ -1,4 +1,7 @@
 \contentsline {chapter}{\numberline {1}Introduction}{2}{chapter.1}
+\contentsline {paragraph}{}{2}{section*.2}
+\contentsline {paragraph}{}{2}{section*.3}
+\contentsline {paragraph}{}{2}{section*.4}
 \contentsline {chapter}{\numberline {2}Product}{3}{chapter.2}
 \contentsline {section}{\numberline {2.1}Product vision}{3}{section.2.1}
 \contentsline {section}{\numberline {2.2}High-level product backlog}{3}{section.2.2}
@@ -13,3 +16,4 @@
 \contentsline {section}{\numberline {4.1}DoD for a Feature}{5}{section.4.1}
 \contentsline {section}{\numberline {4.2}DoD for a Sprint}{5}{section.4.2}
 \contentsline {section}{\numberline {4.3}DoD for a Release}{5}{section.4.3}
+\contentsline {chapter}{Glossary}{6}{section.4.3}
