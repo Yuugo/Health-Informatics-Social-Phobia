@@ -15,7 +15,7 @@ Tot nu toe af, introductie, product vision, high-level product backlog, roadmap 
 [A] Taken verdelen voor nalezen van documenten. 							[[Iedereen]]
 
 Voor deze draft van de poduct backlog hoeft alleen knowhow-acquisition, user stories of features en initial release plan.
-Seminar report moet nog gemaakt worden, is ook deel van knowhow-acquisition.
+Seminar report moet nog gemaakt worden, is ook deel van know-how-acquisition.
 
 [A] Uitzoeken wat precies een epic en een user story is.					[[iedereen, tijdens de vergardering]]
 
@@ -31,7 +31,7 @@ Voor volgende week vrijdag: initial Product Vision and Plannen en First Version 
 
 [Voor vrijdag 8 maart]
 [A]	user stories of features												[[Willem, Johnny]]
-[A]	know-how acquisition													[[Willem, Johhny]]
+[A]	know-how acquisition													[[Willem, Johnny]]
 [A]	Initial release plan													[[Elgar]]
 [A]	short abstract															[[Koos]]
 [A] Glossary 																[[Elgar]]
