@@ -3,9 +3,17 @@
 \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
 \usepackage[pdftex]{graphicx}
 \usepackage[backref,hidelinks = true]{hyperref}
-\usepackage[xindy,toc]{glossaries}
+% Package for glossaries
+\newcommand*{\glossaryname}{Dictionary}
+\usepackage[nonumberlist]{glossaries}
+\newcommand{\dictentry}[2]{%
+  \newglossaryentry{#1}{name=#1,description={#2}}%
+  \glslink{#1}{}%
+}
 \include{Glossary.tex}
 \makeglossaries
+
+
 \begin{document}
 \input{"title.tex"}
 \tableofcontents
@@ -19,10 +27,10 @@
 \input{"Definition of Done.tex"}
 \newpage
 
-\addcontentsline{toc}{chapter}{Glossary}
-\printglossaries
 
-%\input{"Glossary.tex"}
+\printglossary[style=list]%
+
+\input{"Glossary.tex"}
 %\newpage
 
 \end{document}
