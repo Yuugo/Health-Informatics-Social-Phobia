@@ -1,2 +1,16 @@
-
+ 
 .DS_Store
+
+#Ignoring compilation files of Latex
+
+*.xdy
+*.toc
+*.synctex.gz
+*.out
+*.log
+*.ist
+*.gls
+*.glo
+*.glg
+*.aug
+*.tex.aux
