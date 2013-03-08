@@ -12,6 +12,7 @@
 		\setentrycounter[]{page}\glsnumberformat{5}\delimN 
 		\setentrycounter[]{page}\glsnumberformat{8}}}%
 \glossaryentryfield{sprint}{\glsnamefont{sprint}}{the time interval in which the \gls {scrum} team delivers a working piece of software. Usually a sprint is one or two weeks}{\relax }{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{1}\delimN 
 		\setentrycounter[]{page}\glsnumberformat{5}\delimN 
 		\setentrycounter[]{page}\glsnumberformat{8}}}\glsgroupskip
 \glsgroupheading{U}\relax \glsresetentrylist %
