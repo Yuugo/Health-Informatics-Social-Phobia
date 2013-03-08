@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.12.7)  8 MAR 2013 14:14
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.12.7)  8 MAR 2013 14:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -418,11 +418,11 @@ LaTeX Info: Redefining \nameref on input line 13.
 
 (./title.tex
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 10.
+(Font)              <12> on input line 11.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 10.
+(Font)              <8> on input line 11.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 10.
+(Font)              <6> on input line 11.
  [1
 
 \openout3 = `"Product Vision and Planning.ist"'.
@@ -484,15 +484,21 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 ]) [4]
 (./Product backlog.tex
 Chapter 3.
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ™ in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ™ in font cmr10!
 ) [5
 
-] (./Definition of Done.tex
+] [6] (./Definition of Done.tex
 Chapter 4.
-) [6
+) [7
 
 ] (./Product Vision and Planning.gls)
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 40.
- [7
+ [8
 
 
 ]
@@ -507,11 +513,11 @@ hanged.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 40.
  ) 
 Here is how much of TeX's memory you used:
- 7813 strings out of 493488
- 115616 string characters out of 3141326
+ 7816 strings out of 493488
+ 115639 string characters out of 3141326
  226055 words of memory out of 3000000
- 10970 multiletter control sequences out of 15000+200000
- 8800 words of font info for 31 fonts, out of 3000000 for 9000
+ 10971 multiletter control sequences out of 15000+200000
+ 9099 words of font info for 32 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
  37i,6n,38p,1449b,437s stack positions out of 5000i,500n,10000p,200000b,50000s
 </usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
@@ -519,11 +525,12 @@ Here is how much of TeX's memory you used:
 </usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></
 usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></us
 r/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/
-local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on "Product Vision and Planning.pdf" (9 pages, 99375 bytes).
+local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/loc
+al/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on "Product Vision and Planning.pdf" (10 pages, 110447 bytes).
 PDF statistics:
- 181 PDF objects out of 1000 (max. 8388607)
- 162 compressed objects within 2 object streams
- 41 named destinations out of 1000 (max. 500000)
+ 189 PDF objects out of 1000 (max. 8388607)
+ 168 compressed objects within 2 object streams
+ 42 named destinations out of 1000 (max. 500000)
  129 words of extra memory for PDF output out of 10000 (max. 10000000)
 

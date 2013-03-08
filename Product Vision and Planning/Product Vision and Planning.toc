@@ -21,9 +21,9 @@
 \contentsline {section}{\numberline {3.2}User stories of defects}{5}{section.3.2}
 \contentsline {section}{\numberline {3.3}User stories of technical improvements}{5}{section.3.3}
 \contentsline {section}{\numberline {3.4}User stories of know-how acquisition}{5}{section.3.4}
-\contentsline {section}{\numberline {3.5}Initial release plan}{5}{section.3.5}
-\contentsline {chapter}{\numberline {4}Definition of Done}{6}{chapter.4}
-\contentsline {section}{\numberline {4.1}DoD for a Feature}{6}{section.4.1}
-\contentsline {section}{\numberline {4.2}DoD for a Sprint}{6}{section.4.2}
-\contentsline {section}{\numberline {4.3}DoD for a Release}{6}{section.4.3}
-\contentsline {chapter}{Glossary}{7}{section.4.3}
+\contentsline {section}{\numberline {3.5}Initial release plan}{6}{section.3.5}
+\contentsline {chapter}{\numberline {4}Definition of Done}{7}{chapter.4}
+\contentsline {section}{\numberline {4.1}DoD for a Feature}{7}{section.4.1}
+\contentsline {section}{\numberline {4.2}DoD for a Sprint}{7}{section.4.2}
+\contentsline {section}{\numberline {4.3}DoD for a Release}{7}{section.4.3}
+\contentsline {chapter}{Glossary}{8}{section.4.3}
