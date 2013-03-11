@@ -1,0 +1,11 @@
+E:\Data\Courses\Context peoject (2013)\Demo\GUI\GUIController\GUIController\bin\Debug\GUIController.exe
+E:\Data\Courses\Context peoject (2013)\Demo\GUI\GUIController\GUIController\bin\Debug\GUIController.pdb
+E:\Data\Courses\Context peoject (2013)\Demo\GUI\GUIController\GUIController\obj\x86\Debug\ResolveAssemblyReference.cache
+E:\Data\Courses\Context peoject (2013)\Demo\GUI\GUIController\GUIController\obj\x86\Debug\GUIController.Form1.resources
+E:\Data\Courses\Context peoject (2013)\Demo\GUI\GUIController\GUIController\obj\x86\Debug\GUIController.Properties.Resources.resources
+E:\Data\Courses\Context peoject (2013)\Demo\GUI\GUIController\GUIController\obj\x86\Debug\GenerateResource.read.1.tlog
+E:\Data\Courses\Context peoject (2013)\Demo\GUI\GUIController\GUIController\obj\x86\Debug\GenerateResource.write.1.tlog
+E:\Data\Courses\Context peoject (2013)\Demo\GUI\GUIController\GUIController\obj\x86\Debug\GUIController.exe
+E:\Data\Courses\Context peoject (2013)\Demo\GUI\GUIController\GUIController\obj\x86\Debug\GUIController.pdb
+E:\Data\Courses\Context peoject (2013)\Demo\GUI\GUIController\GUIController\bin\Debug\GUIController.exe.config
+E:\Data\Courses\Context peoject (2013)\Demo\GUI\GUIController\GUIController\bin\Debug\CookComputing.XmlRpcV2.dll
