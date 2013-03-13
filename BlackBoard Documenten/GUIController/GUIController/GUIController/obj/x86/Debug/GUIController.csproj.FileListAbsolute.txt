@@ -9,3 +9,13 @@ E:\Data\Courses\Context peoject (2013)\Demo\GUI\GUIController\GUIController\obj\
 E:\Data\Courses\Context peoject (2013)\Demo\GUI\GUIController\GUIController\obj\x86\Debug\GUIController.pdb
 E:\Data\Courses\Context peoject (2013)\Demo\GUI\GUIController\GUIController\bin\Debug\GUIController.exe.config
 E:\Data\Courses\Context peoject (2013)\Demo\GUI\GUIController\GUIController\bin\Debug\CookComputing.XmlRpcV2.dll
+C:\Users\Yuugo\Documents\GitHub\Health-Informatics-Social-Phobia\BlackBoard Documenten\GUIController\GUIController\GUIController\bin\Debug\GUIController.exe.config
+C:\Users\Yuugo\Documents\GitHub\Health-Informatics-Social-Phobia\BlackBoard Documenten\GUIController\GUIController\GUIController\obj\x86\Debug\GUIController.exe
+C:\Users\Yuugo\Documents\GitHub\Health-Informatics-Social-Phobia\BlackBoard Documenten\GUIController\GUIController\GUIController\obj\x86\Debug\GUIController.pdb
+C:\Users\Yuugo\Documents\GitHub\Health-Informatics-Social-Phobia\BlackBoard Documenten\GUIController\GUIController\GUIController\bin\Debug\GUIController.exe
+C:\Users\Yuugo\Documents\GitHub\Health-Informatics-Social-Phobia\BlackBoard Documenten\GUIController\GUIController\GUIController\bin\Debug\GUIController.pdb
+C:\Users\Yuugo\Documents\GitHub\Health-Informatics-Social-Phobia\BlackBoard Documenten\GUIController\GUIController\GUIController\bin\Debug\CookComputing.XmlRpcV2.dll
+C:\Users\Yuugo\Documents\GitHub\Health-Informatics-Social-Phobia\BlackBoard Documenten\GUIController\GUIController\GUIController\obj\x86\Debug\GUIController.csprojResolveAssemblyReference.cache
+C:\Users\Yuugo\Documents\GitHub\Health-Informatics-Social-Phobia\BlackBoard Documenten\GUIController\GUIController\GUIController\obj\x86\Debug\GUIController.Form1.resources
+C:\Users\Yuugo\Documents\GitHub\Health-Informatics-Social-Phobia\BlackBoard Documenten\GUIController\GUIController\GUIController\obj\x86\Debug\GUIController.Properties.Resources.resources
+C:\Users\Yuugo\Documents\GitHub\Health-Informatics-Social-Phobia\BlackBoard Documenten\GUIController\GUIController\GUIController\obj\x86\Debug\GUIController.csproj.GenerateResource.Cache
