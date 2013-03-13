@@ -1,0 +1,35 @@
+\documentclass[english,a4paper,pdftex]{report}
+\usepackage[a4paper]{geometry}
+\geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+\usepackage[pdftex]{graphicx}
+\usepackage[backref,hidelinks = true]{hyperref}
+% Package for glossaries
+\newcommand*{\glossaryname}{Glossary}
+\usepackage{glossaries}
+
+\makeglossaries
+\loadglsentries{Glossary.tex}
+
+\begin{document}
+
+% Include the title page
+\input{"title.tex"}
+\newpage
+% Include the abstract
+\input{"abstract.tex"}
+% Make the table of contents
+\tableofcontents
+
+%\input{Glossary.tex}
+% Include the different chapters
+\input{"Introduction.tex"}
+\newpage
+\input{"Software architecture views.tex"}
+\newpage
+
+
+
+
+\addcontentsline{toc}{chapter}{Glossary}%
+\printglossaries
+\end{document}
