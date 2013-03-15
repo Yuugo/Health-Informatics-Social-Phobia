@@ -2,7 +2,7 @@
 \label{sec:subsystem}
 
 \paragraph{}
-In order to build the eCoach program, this tasks has to be divided in smaller sub problems. So the system is divided into subsystems. The choice has been made to design he system by use of a model-view-controller-model (MVC). One of the reasons for this approach is the need of two different representations of the data for the therapist and the patient: two different views on the same data.
+In order to build the eCoach program, this tasks has to be divided in smaller sub problems. So the system is divided into subsystems. The choice has been made to design he system by use of a \gls{model-view-controller}-model (MVC). One of the reasons for this approach is the need of two different representations of the data for the therapist and the patient: two different \textit{views} on the same data.
 \paragraph{}
 So for the view-layer at least two different views will be created, one for the therapist and one for the patient. The patient view-layer will  use the avatar and in this project the avatars display is realized by remote procedure calls to an engine called vizard. To ease the replacement of this engine, communication from the view subsystem with this system has to be done through an interface. This interface is a sub system of the view layer.
 \paragraph{}
