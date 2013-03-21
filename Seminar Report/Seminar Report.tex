@@ -1,0 +1,32 @@
+\documentclass[english,a4paper,pdftex]{report}
+\usepackage[a4paper]{geometry}
+\geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+\usepackage[pdftex]{graphicx}
+\usepackage[backref,hidelinks = true]{hyperref}
+\usepackage{natbib}
+
+\begin{document}
+%include the title
+\input{title.tex}
+\newpage
+%make the table of contents
+\tableofcontents
+
+\chapter{First chapter}
+\section{First section}
+
+This document illustrates the use of BibTeX\@.  You may want to refer to
+\cite{h11} or \citeyear{ab94} or \citet{m85}.  Or you may want to cite a
+specific page in a reference, like this: see \citet[p.~199]{m85}.  Or
+perhaps you want to cite more than one paper by Maskin: \cite{m85}.
+Or you want to make a parenthetical reference to one or more articles, in
+which case the \verb+\citealt+ in the \texttt{te.bst} bibliography style
+omits the parentheses around the year (\citealt{ahu61}).
+
+
+
+%include the references
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}
