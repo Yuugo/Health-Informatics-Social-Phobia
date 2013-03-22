@@ -1,20 +1,48 @@
 \begin{thebibliography}{1}
 
-\bibitem{ab94}
-Charalambos~D. Aliprantis and Kim~C. Border.
-\newblock {\em Infinite Dimensional Analysis}.
-\newblock Springer, Berlin, 1994.
+\bibitem{baylor2009promoting}
+Amy~L Baylor.
+\newblock Promoting motivation with virtual agents and avatars: role of visual
+  presence and appearance.
+\newblock {\em Philosophical Transactions of the Royal Society B: Biological
+  Sciences}, 364(1535):3559--3565, 2009.
 
-\bibitem{ahu61}
-Kenneth~J. Arrow, Leonid Hurwicz, and Hirofumi Uzawa.
-\newblock Constraint qualifications in maximization problems.
-\newblock {\em Naval Research Logistics Quarterly}, 8:175--191, 1961.
+\bibitem{blanson2009online}
+Olivier~A Blanson~Henkemans, Paul~JM van~der Boog, Jasper Lindenberg,
+  Charles~APG van~der Mast, Mark~A Neerincx, and Bertie~JHM Zwetsloot-Schonk.
+\newblock An online lifestyle diary with a persuasive computer assistant
+  providing feedback on self-management.
+\newblock {\em Technology and Health Care}, 17(3):253--267, 2009.
 
-\bibitem{m85}
-Eric~S. Maskin.
-\newblock The theory of implementation in {N}ash equilibrium: a survey.
-\newblock In Leonid Hurwicz, David Schmeidler, and Hugo Sonnenschein, editors,
-  {\em Social Goals and Social Organization}, pages 173--204. Cambridge
-  University Press, 1985.
+\bibitem{clutterbuck2009virtual}
+David Clutterbuck and Zulfi Hussain.
+\newblock {\em Virtual coach, virtual mentor}.
+\newblock Information Age Pub Incorporated, 2009.
+
+\bibitem{eyck2006effect}
+Anke Eyck, Kelvin Geerlings, Dina Karimova, Bernt Meerbeek, Lu~Wang, Wijnand
+  IJsselsteijn, Yvonne de~Kort, Michiel Roersma, and Joyce Westerink.
+\newblock Effect of a virtual coach on athletes’ motivation.
+\newblock {\em Persuasive Technology}, pages 158--161, 2006.
+
+\bibitem{alpay2007}
+R.I.~Overberg L.L.~Alpay and J.H.M. Zwetsloot-Schonk.
+\newblock Empowering citizens in assessing health related websites: A driving
+  force for healthcare overnance.
+\newblock {\em International Journal of Healthcare Technology and Management
+  (IJHTM), Special issue: “Governing ICT in healthcare and governing
+  healthcare with ICT”}, 8(1/2):141--160, 2007.
+
+\bibitem{rosenberg2007importance}
+Rinat Rosenberg-Kima, Amy Baylor, E~Plant, and Celeste Doerr.
+\newblock The importance of interface agent visual presence: Voice alone is
+  less effective in impacting young women’s attitudes toward engineering.
+\newblock {\em Persuasive Technology}, pages 214--222, 2007.
+
+\bibitem{ter2011design}
+Niels ter Heijden and Willem-Paul Brinkman.
+\newblock Design and evaluation of a virtual reality exposure therapy system
+  with automatic free speech interaction.
+\newblock {\em Journal of CyberTherapy and Rehabilitation}, 4(1):41--56, 2011.
 
 \end{thebibliography}
