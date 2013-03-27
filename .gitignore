@@ -17,6 +17,7 @@
 
 #Visual Studio project
 
+*.suo
 *.dll
 *.exe
 *.exp
