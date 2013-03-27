@@ -1,34 +1,61 @@
 <!-- edited by Elgar de Groot -->
-<questionnaire>
-	<entry>
-		<question>
-			How many social encounters did you have last week?
-		</question>
-		<option>
-			<tag>a</tag>
-			<emotion>sad</emotion>
-			1-3
-		</option>
-		<option>
-			<tag>b</tag>
-			<emotion>neutral</emotion>
-			4-6
-		</option>
-		<option>
-			<tag>c</tag>
-			<emotion>happy</emotion>
-			7 or more
-		</option>
-		<answer>
-			<!-- to be filled by the client-application -->
-		</answer>
-	</entry>
-	<entry>
-		<question>
-			What was the most difficult situation? Please tell me how it went.
-		</question>
-		<answer>
-			<!-- to be filled by the client-application -->
-		</answer>
-	</entry>
+<questionnaire version="0.1">
+	<header>
+		<questionnaireNumber>1</questionnaireNumber>
+		<created>
+			<therapist>E.M.J. de Groot</therapist>
+			<date>
+				<day>27</day>
+				<month>03</month>
+				<year>2013</year>
+			</date>
+		<created>
+		<filled>
+			<patient></patient>
+			<date>
+				<day></day>
+				<month></month>
+				<year></year>
+			</date>
+			<time></time>
+	</header>
+	<entries>
+		<entry type="radio">
+			<question>
+				How many social encounters did you have last week?
+				</options>
+					<option>
+						<tag>a</tag>
+						<emotion>sad</emotion>
+						1-3
+					</option>
+					<option>
+						<tag>b</tag>
+						<emotion>neutral</emotion>
+						4-6
+					</option>
+					<option>
+						<tag>c</tag>
+						<emotion>happy</emotion>
+						7 or more
+					</option>
+				</options>
+			</question>
+			<answer>
+				<!-- to be filled by the client-application -->
+			</answer>
+		</entry>
+		<entry type="open">
+			<question>
+				What was the most difficult situation? Please tell me how it went.
+			</question>
+			<answer>
+				<!-- to be filled by the client-application -->
+			</answer>
+		</entry>
+		<entry type="comment">
+			This comment has no question or answer tags, but can have emotion tags.
+			<emotion>scared</emotion>
+		</entry>
+	</entries>
 </questionnaire>
