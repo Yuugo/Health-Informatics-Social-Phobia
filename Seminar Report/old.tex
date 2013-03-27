@@ -1,100 +1,50 @@
-%----------------------------------------------------------------------------------------
-%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
-%----------------------------------------------------------------------------------------
-
-\documentclass[twoside]{article}
-
-\usepackage{lipsum} % Package to generate dummy text throughout this template
-\usepackage[sc]{mathpazo} % Use the Palatino font
-\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
-\linespread{1.05} % Line spacing - Palatino needs more space between lines
-\usepackage{microtype} % Slightly tweak font spacing for aesthetics
-\usepackage[hmarginratio=1:1,top=32mm,columnsep=20pt]{geometry} % Document margins
-\usepackage{multicol} % Used for the two-column layout of the document
-\usepackage[backref,hidelinks = true]{hyperref} % For hyperlinks in the PDF
-\usepackage[hang, small,labelfont=bf,up,textfont=it,up]{caption} % Custom captions under/above floats in tables or figures
-\usepackage{booktabs} % Horizontal rules in tables
-\usepackage{float} % Required for tables and figures in the multi-column environment - they need to be placed in specific locations with the [H] (e.g. \begin{table}[H])
-\usepackage{lettrine} % The lettrine is the first enlarged letter at the beginning of the text
-\usepackage{paralist} % Used for the compactitem environment which makes bullet points with less space between them
-\usepackage{abstract} % Allows abstract customization
-\renewcommand{\abstractnamefont}{\normalfont\bfseries} % Set the "Abstract" text to bold
-\renewcommand{\abstracttextfont}{\normalfont\small\itshape} % Set the abstract itself to small italic text
-\usepackage{titlesec} % Allows customization of titles
-\renewcommand\thesection{\Roman{section}}
-\titleformat{\section}[block]{\large\scshape\centering}{\thesection.}{1em}{} % Change the look of the section titles
-\usepackage{fancyhdr} % Headers and footers
-\pagestyle{fancy} % All pages have headers and footers
-\fancyhead{} % Blank out the default header
-\fancyfoot{} % Blank out the default footer
-\fancyhead[C]{Seminar report $\bullet$ March 2013 $\bullet$ Final version} % Custom header text
-\fancyfoot[RO,LE]{\thepage} % Custom footer text
+\documentclass[english,a4paper,pdftex]{report}
+\usepackage[a4paper]{geometry}
+\geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
 \usepackage[pdftex]{graphicx}
-
-%----------------------------------------------------------------------------------------
-%	TITLE SECTION
-%----------------------------------------------------------------------------------------
-
-\title{\vspace{-15mm}\fontsize{24pt}{10pt}\selectfont\textbf{Seminar Report}} % Article title
-
-\author{Willem Vaandrager, Elgar de Groot, Johnny Verhoeff, Hugo Reinbergen\\
- and Koos van der Linden 
-\textsc{}\\[2mm]
-\normalsize TU Delft \\ 
-\vspace{-5mm}
-}
-\date{}
-
-%----------------------------------------------------------------------------------------
+\usepackage[backref,hidelinks = true]{hyperref}
+\usepackage{natbib}
 
 \begin{document}
-
-\maketitle % Insert title
-
-\thispagestyle{fancy} % All pages have headers and footers
-
-%----------------------------------------------------------------------------------------
-%	ABSTRACT
-%----------------------------------------------------------------------------------------
+%include the title
+\input{title.tex}
+\newpage
 
 \begin{abstract}
-
 The problem of Social Phobia in has been prevalent for a considerable time. A way to try and solve this problem is integrating an eCoach. The effect is even stronger when using an visual eCoach. The treatment with computer assistant makes patients more willing to keep participating in the program and will perform the activities more actively and with bigger steps.
+\paragraph{}
  Treatment with an eCoach reduces travel time, it gives possibilities for a more comfortable environment, test results will be saved automatically and the workload of the therapists is reduced, which enables therapists to maintain more patients at the same time.
 On the other hand, people feel less connected to a virtual avatar than an actual therapist, they require some form of computer knowledge and the eCoaches currently do not have high enough intelligence to completely replace a therapist.
+\paragraph{}
 To ensure a good result, the eCoach must be seen and heard, The avatar should be picked by the therapist, not the patient and the facial expression should be as close as possible to those from humans.
 
 \end{abstract}
 
-%----------------------------------------------------------------------------------------
-%	ARTICLE CONTENTS
-%----------------------------------------------------------------------------------------
+%make the table of contents
+\tableofcontents
 
-\begin{multicols}{2} % Two-column layout throughout the main article text
-
-\section{Introduction}
-
-\lettrine[nindent=0em,lines=3]{T}he problem of Social Phobia in our society has been prevalent for a considerable time. A problem with curing this type of phobia is that in vivo treatment can be difficult: those exposure treatments most of the time require the presence of other people. A possible solution to this problem is virtual exposure, or maybe even better: virtual exposure at home.
-
+\chapter{Introduction}
+The problem of Social Phobia in our society has been prevalent for a considerable time. A problem with curing this type of phobia is that in vivo treatment can be difficult: those exposure treatments most of the time require the presence of other people. A possible solution to this problem is virtual exposure, or maybe even better: virtual exposure at home.
+\paragraph{}
 But how do you motivate the patient at home to continue to attend the treatment? A solution could be to use an eCoach. An eCoach is a device or program that can be used by the therapist as a tool to act in behalf of the therapist when the patient is at home. Using an eCoach could create an easier environment for the patient to be treated in and could make the decision to ask for treatment easier and could speed up the process.
-
+\paragraph{}
 The question that remains is: what is the effect of the eCoach on the treatment of a patient with social phobia? This report will try to give an answer to this question. The expectation is that there will be some positive effect on the motivation of the major part of the users. This will probably result in a decrease of the avoidance and drop out of the treatment. Not all users will have benefit of the eCoach because of personal reasons.
-
+\paragraph{}
 To answer the main question some other questions need answering. The report will start off with how big the effect of the eCoach is on the motivation of the user. Next will be a description of the advantages of an eCoach, and of course also the disadvantages and the differences with regular treatment. Last will be some requirements for an eCoach system to achieve the effect mentioned.
 
-%------------------------------------------------
 
-\section{Influence on motivation}
+
+
+\chapter{Influence on motivation}
 The obvious benefit of home coaching is of course that the patient doesn't have to leave his home. Virtual coaches exist in many different forms: as a mobile running application that tells you when it's time to go for another run, or as an annoying paper-clip that asks you what you want to do in a text editor.  The effectiveness of a virtual coach has been proven in different fields. One study found that beginning athletes did more exercising with a virtual coach than without \cite{eyck2006effect}. 
-
+\paragraph{}
 But how much influence has a visual representation of an eCoach on the behaviour of people (patients)? In a study \cite{rosenberg2007importance} where young women are motivated towards engineering, the study group found that a visual presence of an eCoach had significantly more influence on the women than with a voice-only coach. This is very interesting, because it not only proves that a visual coach helps, but is even better than a non-visual eCoach. When the coach can be seen and not only heard, people have more the perception they are really interacting with someone \cite{baylor2009promoting}. 
-
+\paragraph{}
 It seems that an eCoach can have a significant effect on a person that interacts with it, so if the effect is as strong with social phobic persons, an eCoach would be a promising tool to motivate them in continuing their treatment.
 
 
-%------------------------------------------------
 
-\section{Advantages of eCoaching}
+\chapter{Advantages of eCoaching}
 \begin{itemize}
 \item Patients don't have to travel to another city, possibly during rush hour, because they can just do the therapy at home.
 \item The environment, in which the patients are exposed, can be manipulated in every way, whereas real life with real human beings can't. 
@@ -111,109 +61,53 @@ Some manipulations:
 \end{itemize}
 
 
-%------------------------------------------------
 
-\section{Disadvantages of eCoaching}
+\chapter{Disadvantages of eCoaching}
 eCoaching contains a lot of advantages with helping patients, but there are also some disadvantages we should consider. 
-
+\paragraph{}
 People feel less connected to an avatar or robot than a human and will feel less emotional letting down an avatar \cite{clutterbuck2009virtual}. A disadvantage that follows from this is reduced commitment. It is easier to abandon a task an avatar assigned than one assigned by the therapist. They feel there will be less consequences and will sooner disengage from eCoaches.
-
+\paragraph{}
 A long with the commitment issue, eCoaches are also harder to use for some people. Not everyone is familiar with using computers and might not be able to use the eCoach fully as they were intended to use. It is possible they cannot get the program to work or do not know how to work with the program. Interacting with an avatar can feel unnatural to some people as well. These problems may ensure that the therapy is not working optimally or at all and will slow down the progress to get over their social phobia.
-
+\paragraph{}
 eCoaches are not as good as people, yet. The avatars might end up in a situation they cannot handle and can provide strange answers, which have nothing to do with the conversation and can confuse the patient by doing so. 
-
+\paragraph{}
 A simulated world with avatars will also be less realistic than the real world. Patients trained solely in the simulated world might be adapted to the avatars and are still not able to handle certain situations in the real world. They can also still get scared from actual person instead of avatars, because they feel it more real and are still not comfortable with handling with actual persons.  
 
-%------------------------------------------------
 
-\section{Difference with regular treatment}
+\chapter{Difference with regular treatment}
 A problem with traditional eHealthcare and self-management is that patients lose motivation over time. They begin with good will since they've just decided to start fighting their anxiety. The decision to start treatment is rather heavy, so once the choice is made to start treatment, the patients are motivated to do their absolute best to change their selves. But it is shown \cite{alpay2007} that this motivation slowly degenerates as the treatment progresses. Patients fill in the forms required for the treatment less often and stop the treatment altogether. The same study says that physical interventions during the treatment period refreshed the motivation.
-
+\paragraph{}
 Physical interventions bring their own trouble with them since they require people to actively involve themselves with others. But an eCoach can fill in the same role. With an eCoach, or Computer Assistant, the patients stay more motivated over the duration of the treatment. This is illustrated in the image below, which is taken from a study on the effects of a computer assistant on a plan for weight loss \cite{blanson2009online}.\\
-\includegraphics[scale=0.6]{Graph1.png}
-
+\includegraphics[scale=0.8]{Graph1.png}
+\paragraph{}
 Other than the patients being more active with filling in the results of their treatment, the same study shows that the patients also are more willing to actively achieve the goals set for them, when an eCoach is supporting and motivating them. This is illustrated below.\\
-\includegraphics[scale=0.7]{Graph2.png}
-
+\includegraphics[scale=1]{Graph2.png}
+\paragraph{}
 These results show that there is a significant difference in the motivation levels of patients during treatment with an eCoach and without. This is especially noticeable in the later stages of the program.
 
-%------------------------------------------------
 
-\section{Criteria for success}
+\chapter{Criteria for success}
 So far it has been pointed out that virtual exposure at home is at least as effective as in vivo treatment. But what is needed to achieve this result? Different properties will be discussed here. First the visibility of the avatar will be discussed. Secondly the appearance of the avatar will be discussed, and finally the contribution of the facial expressions of the avatar.
-
+\paragraph{}
 The avatar that interacts with the patient as an eCoach must not only be heard, but also seen \cite{baylor2009promoting}. It can enhance the idea that the eCoach is actually present in the same room. Whether the avatar was static or dynamic didn't really seem to matter, but being visible did.
-
+\paragraph{}
 The appearance of this visible avatar also matters. Different test have been done with groups that were allowed to choose their own coaching avatar, and others that were appointed an avatar based on professional analysis \cite{baylor2009promoting}. Most of the time patients didn't choose the avatar that suited them best, so it better not to let the patient choose the avatar for his/her coach. It would be good though to let the therapist choose an appropriate avatar.
-
+\paragraph{}
 Also the use of facial expressions contributes to the effect of the eCoach. The visible emotions (such as sad or neutral) enhance the idea of empathy of the avatar \cite{blanson2009online} and hence will increase the anthropomorphic experience of the avatar.
 
-%------------------------------------------------
 
-\section{Conclusion}
+\chapter{Conclusion}
 We saw that an eCoach can have a significant positive influence on the motivation of patients to continue with treatment. This effect is even greater with a visual eCoach. On top of that it has a number of advantages over regular coaching, such as workload reduction for the therapist and more exposure time for the patient.
-
+\paragraph{}
 There are some drawbacks to an eCoach. People still feel less connected to a virtual coach than to an actual coach, the eCoach might not be able to handle all situations and some people have difficulties using a computer.
-
+\paragraph{}
 However, when comparing regular treatment to treatment with an eCoach, the eCoach has the upper hand and results in more consistent motivation. In conclusion, our hypothesis seems to hold and there is a positive effect on the motivation of the major part of the users. There are some things that have influence on the success of the eCoach, such as the appearance of the avatar and the emotions it shows. These have to be considered when working with a visual eCoach.
 
-%----------------------------------------------------------------------------------------
-%	REFERENCE LIST
-%----------------------------------------------------------------------------------------
-
-\begin{thebibliography}{99}
-
-\bibitem{eyck2006effect}
-Eyck, Anke and Geerlings, Kelvin and Karimova, Dina and Meerbeek, Bernt and Wang, Lu and IJsselsteijn, Wijnand and de Kort, Yvonne and Roersma, Michiel and Westerink, Joyce (2006).
-\newblock Effect of a virtual coach on athletes’ motivation
-\newblock {\em Persuasive Technology }, 158--161.
 
 
-\bibitem{rosenberg2007importance}
-Rosenberg-Kima, Rinat and Baylor, Amy and Plant, E and Doerr, Celeste (2007).
-\newblock The importance of interface agent visual presence: Voice alone is less effective in impacting young women’s attitudes toward engineering
-\newblock {\em Persuasive Technology }, 214--222.
-
-
-\bibitem{baylor2009promoting}
-Baylor, Amy L (2009).
-\newblock Promoting motivation with virtual agents and avatars: role of visual presence and appearance
-\newblock {\em Philosophical Transactions of the Royal Society B: Biological Sciences }, 364 - 3559--3565.
-
-
-\bibitem{ter2011design}
-ter Heijden, Niels and Brinkman, Willem-Paul (2011).
-\newblock Design and evaluation of a virtual reality exposure therapy system with automatic free speech interaction
-\newblock {\em Journal of CyberTherapy and Rehabilitation }, 4 - 41--56.
-
-
-\bibitem{clutterbuck2009virtual}
-Clutterbuck, David and Hussain, Zulfi (2009).
-\newblock Virtual coach, virtual mentor
-\newblock {\em Information Age Pub Incorporated }, uitgavenummer.
-
-
-\bibitem{blanson2009online}
-Blanson Henkemans, Olivier A and van der Boog, Paul JM and Lindenberg, Jasper and van der Mast, Charles APG and Neerincx, Mark A and Zwetsloot-Schonk, Bertie JHM (2009).
-\newblock An online lifestyle diary with a persuasive computer assistant providing feedback on self-management
-\newblock {\em Technology and Health Care }, 17 - 253--267.
-
-
-\bibitem{alpay2007}
-L.L. Alpay, R.I. Overberg and J.H.M. Zwetsloot-Schonk (2007).
-\newblock Empowering Citizens in Assessing Health Related Websites: A Driving Force for Healthcare overnance
-\newblock {\em International Journal of Healthcare Technology and Management (IJHTM), Special issue: “Governing ICT in healthcare and governing healthcare with ICT” }, 8(1/2) - 141--160.
-
-
-%\bibitem{tag}
-%names (year).
-%\newblock title
-%\newblock {\em magazine/book }, uitgavenummer.
-
-\end{thebibliography}
-
-%----------------------------------------------------------------------------------------
-
-\end{multicols}
+%include the references
+\bibliographystyle{plain}
+\bibliography{references}
 
 \end{document}
+
