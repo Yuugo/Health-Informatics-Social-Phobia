@@ -21,7 +21,7 @@ woensdag iedereen taken zo ver mogelijk af
 
 woensdag online vergadering
 
-seminar report en architecture design verbeteren
+seminar report en architecture design verbeteren voor woensdag
 
 
 
@@ -42,7 +42,7 @@ Casus van patient meer origineel nu te veel hetzelfde
 
 seminar report mist wat punten van slides willem paul
 	- background bij introduction
-	- introductie deelonderwerpen naar hoofdvragen
+	- introductie deelonderwerpen naar hoofdvraag
 	- moet meer samenhang in verhaal moet meer vloeiend zijn
 
 volgende week vrijdag final seminar report inleveren
