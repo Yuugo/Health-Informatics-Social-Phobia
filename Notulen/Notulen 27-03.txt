@@ -1,0 +1,54 @@
+Notulen vergadering 27 maart 2013 
+
+Aanwezigen:
+	Johnny Verhoeff 
+	Hugo Reinbergen 
+	Willen Vaandrager [Notulist]
+	Elgar de Groot
+	Koos van der Linden [Voorzitter]
+
+Opening 14:06
+
+volgende week woensdag skype vergadering
+
+xml layout voorbeeld uitwerken
+
+test driven development
+
+Actiepunten:
+
+woensdag iedereen taken zo ver mogelijk af
+
+woensdag online vergadering
+
+seminar report en architecture design verbeteren
+
+
+
+Voorzitter volgende week: Hugo
+Notulist volgende week: Koos
+
+Eind vergadering 14:40
+
+
+
+Notes from Dwi:
+
+architecture design avatar in introductie verwerken
+
+Meer quetionnaire screen design  
+
+Casus van patient meer origineel nu te veel hetzelfde
+
+seminar report mist wat punten van slides willem paul
+	- background bij introduction
+	- introductie deelonderwerpen naar hoofdvragen
+	- moet meer samenhang in verhaal moet meer vloeiend zijn
+
+volgende week vrijdag final seminar report inleveren
+
+peer review niet echte harde deadline wordt waarschijnlijk verplaatst na de tentamenweek
+
+
+	
+
