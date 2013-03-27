@@ -1,0 +1,34 @@
+<!-- edited by Elgar de Groot -->
+<questionnaire>
+	<entry>
+		<question>
+			How many social encounters did you have last week?
+		</question>
+		<option>
+			<tag>a</tag>
+			<emotion>sad</emotion>
+			1-3
+		</option>
+		<option>
+			<tag>b</tag>
+			<emotion>neutral</emotion>
+			4-6
+		</option>
+		<option>
+			<tag>c</tag>
+			<emotion>happy</emotion>
+			7 or more
+		</option>
+		<answer>
+			<!-- to be filled by the client-application -->
+		</answer>
+	</entry>
+	<entry>
+		<question>
+			What was the most difficult situation? Please tell me how it went.
+		</question>
+		<answer>
+			<!-- to be filled by the client-application -->
+		</answer>
+	</entry>
+</questionnaire>
