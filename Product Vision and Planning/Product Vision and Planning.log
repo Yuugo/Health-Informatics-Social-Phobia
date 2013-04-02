@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.12.7)  8 MAR 2013 17:26
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012) (format=pdflatex 2012.12.7)  31 MAR 2013 16:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -93,6 +93,14 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 \Gin@req@height=\dimen111
 \Gin@req@width=\dimen112
 )
+(/usr/local/texlive/2012/texmf-dist/tex/latex/wrapfig/wrapfig.sty
+\wrapoverhang=\dimen113
+\WF@size=\dimen114
+\c@WF@wrappedlines=\count92
+\WF@box=\box26
+\WF@everypar=\toks16
+Package: wrapfig 2003/01/31  v 3.6
+)
 (/usr/local/texlive/2012/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2012/05/13 v6.82q Hypertext links for LaTeX
 
@@ -142,14 +150,14 @@ Package: hycolor 2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
 (/usr/local/texlive/2012/texmf-dist/tex/latex/oberdiek/kvoptions.sty
 Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
 )
-\@linkdim=\dimen113
-\Hy@linkcounter=\count92
-\Hy@pagecounter=\count93
+\@linkdim=\dimen115
+\Hy@linkcounter=\count93
+\Hy@pagecounter=\count94
 
 (/usr/local/texlive/2012/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2012/05/13 v6.82q Hyperref: PDFDocEncoding definition (HO)
 )
-\Hy@SavedSpaceFactor=\count94
+\Hy@SavedSpaceFactor=\count95
 
 (/usr/local/texlive/2012/texmf-dist/tex/latex/latexconfig/hyperref.cfg
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
@@ -173,16 +181,16 @@ Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
 ))
-\c@Hy@tempcnt=\count95
+\c@Hy@tempcnt=\count96
 
 (/usr/local/texlive/2012/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip10
 Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 4653.
-\Fld@menulength=\count96
-\Field@Width=\dimen114
-\Fld@charsize=\dimen115
+\Fld@menulength=\count97
+\Field@Width=\dimen116
+\Fld@charsize=\dimen117
 Package hyperref Info: Hyper figures OFF on input line 5773.
 Package hyperref Info: Link nesting OFF on input line 5778.
 Package hyperref Info: Hyper index ON on input line 5781.
@@ -192,17 +200,17 @@ Package hyperref Info: Link coloring with OCG OFF on input line 5798.
 Package hyperref Info: PDF/A mode OFF on input line 5803.
 LaTeX Info: Redefining \ref on input line 5843.
 LaTeX Info: Redefining \pageref on input line 5847.
-\Hy@abspage=\count97
-\c@Item=\count98
-\c@Hfootnote=\count99
+\Hy@abspage=\count98
+\c@Item=\count99
+\c@Hfootnote=\count100
 )
 
 Package hyperref Message: Driver: hpdftex.
 
 (/usr/local/texlive/2012/texmf-dist/tex/latex/hyperref/hpdftex.def
 File: hpdftex.def 2012/05/13 v6.82q Hyperref driver for pdfTeX
-\Fld@listcount=\count100
-\c@bookmark@seq@number=\count101
+\Fld@listcount=\count101
+\c@bookmark@seq@number=\count102
 \Hy@SectionHShift=\skip43
 )
 (/usr/local/texlive/2012/texmf-dist/tex/latex/glossaries/base/glossaries.sty
@@ -215,9 +223,9 @@ Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
 Package: xkeyval 2008/08/13 v2.6a package option processing (HA)
 
 (/usr/local/texlive/2012/texmf-dist/tex/generic/xkeyval/xkeyval.tex
-\XKV@toks=\toks16
-\XKV@tempa@toks=\toks17
-\XKV@depth=\count102
+\XKV@toks=\toks17
+\XKV@tempa@toks=\toks18
+\XKV@depth=\count103
 File: xkeyval.tex 2008/08/13 v2.6a key=value parser (HA)
 ))
 (/usr/local/texlive/2012/texmf-dist/tex/latex/glossaries/base/mfirstuc.sty
@@ -228,29 +236,29 @@ Package: etoolbox 2011/01/03 v2.1 e-TeX tools for LaTeX
 
 (/usr/local/texlive/2012/texmf-dist/tex/latex/etex-pkg/etex.sty
 Package: etex 1998/03/26 v2.0 eTeX basic definition package (PEB)
-\et@xins=\count103
+\et@xins=\count104
 )
-\etb@tempcnta=\count104
+\etb@tempcnta=\count105
 )
-\@glsmfirst=\toks18
-\@glsmrest=\toks19
+\@glsmfirst=\toks19
+\@glsmrest=\toks20
 )
 (/usr/local/texlive/2012/texmf-dist/tex/latex/xfor/xfor.sty
 Package: xfor 2009/02/05 v1.05 (NLCT)
 )
 (/usr/local/texlive/2012/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0
-\@emptytoks=\toks20
-\ex@=\dimen116
+\@emptytoks=\toks21
+\ex@=\dimen118
 )
-\gls@level=\count105
-\@gls@tmpb=\toks21
+\gls@level=\count106
+\@gls@tmpb=\toks22
 \gls@tmplen=\skip44
 \glswrite=\write3
-\glskeylisttok=\toks22
-\glslabeltok=\toks23
-\glsshorttok=\toks24
-\glslongtok=\toks25
+\glskeylisttok=\toks23
+\glslabeltok=\toks24
+\glsshorttok=\toks25
+\glslongtok=\toks26
 
 (/usr/local/texlive/2012/texmf-dist/tex/latex/glossaries/styles/glossary-hypern
 av.sty
@@ -270,17 +278,17 @@ Package: longtable 2004/02/01 v4.11 Multi-page Table package (DPC)
 \LTright=\skip47
 \LTpre=\skip48
 \LTpost=\skip49
-\LTchunksize=\count106
-\LTcapwidth=\dimen117
-\LT@head=\box26
-\LT@firsthead=\box27
-\LT@foot=\box28
-\LT@lastfoot=\box29
-\LT@cols=\count107
-\LT@rows=\count108
-\c@LT@tables=\count109
-\c@LT@chunks=\count110
-\LT@p@ftn=\toks26
+\LTchunksize=\count107
+\LTcapwidth=\dimen119
+\LT@head=\box27
+\LT@firsthead=\box28
+\LT@foot=\box29
+\LT@lastfoot=\box30
+\LT@cols=\count108
+\LT@rows=\count109
+\c@LT@tables=\count110
+\c@LT@chunks=\count111
+\LT@p@ftn=\toks27
 )
 \glsdescwidth=\skip50
 \glspagelistwidth=\skip51
@@ -290,22 +298,22 @@ sty
 Package: glossary-super 2011/03/28 v3.0 (NLCT)
  (/usr/local/texlive/2012/texmf-dist/tex/latex/supertabular/supertabular.sty
 Package: supertabular 2004/02/20 v4.1e the supertabular environment
-\c@tracingst=\count111
-\ST@wd=\dimen118
+\c@tracingst=\count112
+\ST@wd=\dimen120
 \ST@rightskip=\skip52
 \ST@leftskip=\skip53
 \ST@parfillskip=\skip54
-\ST@pageleft=\dimen119
-\ST@headht=\dimen120
-\ST@tailht=\dimen121
-\ST@pagesofar=\dimen122
-\ST@pboxht=\dimen123
-\ST@lineht=\dimen124
-\ST@stretchht=\dimen125
-\ST@prevht=\dimen126
-\ST@toadd=\dimen127
-\ST@dimen=\dimen128
-\ST@pbox=\box30
+\ST@pageleft=\dimen121
+\ST@headht=\dimen122
+\ST@tailht=\dimen123
+\ST@pagesofar=\dimen124
+\ST@pboxht=\dimen125
+\ST@lineht=\dimen126
+\ST@stretchht=\dimen127
+\ST@prevht=\dimen128
+\ST@toadd=\dimen129
+\ST@dimen=\dimen130
+\ST@pbox=\box31
 ))
 (/usr/local/texlive/2012/texmf-dist/tex/latex/glossaries/styles/glossary-tree.s
 ty
@@ -316,24 +324,24 @@ Package: glossary-tree 2011/03/28 v3.0 (NLCT)
 \openout4 = `"Product Vision and Planning.glo"'.
 
 Package glossaries Info: Writing glossary file "Product Vision and Planning".gl
-o on input line 10.
+o on input line 11.
  (./Glossary.tex) (./Product Vision and Planning.aux)
 \openout1 = `"Product Vision and Planning.aux"'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 13.
-LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
 
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -370,17 +378,17 @@ LaTeX Font Info:    ... okay on input line 13.
 
 (/usr/local/texlive/2012/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count112
-\scratchdimen=\dimen129
-\scratchbox=\box31
-\nofMPsegments=\count113
-\nofMParguments=\count114
-\everyMPshowfont=\toks27
-\MPscratchCnt=\count115
-\MPscratchDim=\dimen130
-\MPnumerator=\count116
-\makeMPintoPDFobject=\count117
-\everyMPtoPDFconversion=\toks28
+\scratchcounter=\count113
+\scratchdimen=\dimen131
+\scratchbox=\box32
+\nofMPsegments=\count114
+\nofMParguments=\count115
+\everyMPshowfont=\toks28
+\MPscratchCnt=\count116
+\MPscratchDim=\dimen132
+\MPnumerator=\count117
+\makeMPintoPDFobject=\count118
+\everyMPtoPDFconversion=\toks29
 ) (/usr/local/texlive/2012/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
 
@@ -396,8 +404,8 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-\AtBeginShipoutBox=\box32
-Package hyperref Info: Link coloring OFF on input line 13.
+\AtBeginShipoutBox=\box33
+Package hyperref Info: Link coloring OFF on input line 14.
 
 (/usr/local/texlive/2012/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2010/04/30 v2.40 Cross-referencing by name of section
@@ -405,11 +413,11 @@ Package: nameref 2010/04/30 v2.40 Cross-referencing by name of section
 (/usr/local/texlive/2012/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count118
+\c@section@level=\count119
 )
-LaTeX Info: Redefining \ref on input line 13.
-LaTeX Info: Redefining \pageref on input line 13.
-LaTeX Info: Redefining \nameref on input line 13.
+LaTeX Info: Redefining \ref on input line 14.
+LaTeX Info: Redefining \pageref on input line 14.
+LaTeX Info: Redefining \nameref on input line 14.
 
 (./Product Vision and Planning.out) (./Product Vision and Planning.out)
 \@outlinefile=\write5
@@ -472,27 +480,81 @@ Chapter 3.
 Chapter 4.
 ) [7
 
-] (./Product Vision and Planning.gls)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 40.
- [8
+] (./Product Vision and Planning.gls) (./A1 GUI.tex [8
 
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 40.
+Appendix A.
+<"GUI mockup/questionaire form".png, id=218, 980.91469pt x 465.99094pt>
+File: "GUI mockup/questionaire form".png Graphic file (type png)
 
-(./Product Vision and Planning.aux)
+<use "GUI mockup/questionaire form".png>
+Package pdftex.def Info: "GUI mockup/questionaire form".png used on input line 
+3.
+(pdftex.def)             Requested size: 452.9679pt x 215.18324pt.
+
+<"GUI mockup/overview".png, id=220, 1088.56688pt x 519.44063pt>
+File: "GUI mockup/overview".png Graphic file (type png)
+
+<use "GUI mockup/overview".png>
+Package pdftex.def Info: "GUI mockup/overview".png used on input line 5.
+(pdftex.def)             Requested size: 452.9679pt x 216.14244pt.
+) (./A2 persona.tex
+Underfull \hbox (badness 10000) in paragraph at lines 2--1
+
+ []
+
+[9
+
+ <./GUI mockup/questionaire form.png> <./GUI mockup/overview.png>]
+Appendix B.
+<"jan".jpg, id=227, 200.75pt x 284.06125pt>
+File: "jan".jpg Graphic file (type jpg)
+ <use "jan".jpg>
+Package pdftex.def Info: "jan".jpg used on input line 5.
+(pdftex.def)             Requested size: 135.89174pt x 192.30086pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 22--28
+
+ []
+
+[10
+
+ <./jan.jpg>]
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ™ in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no œ in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no  in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ™ in font cmr10!
+
+Underfull \hbox (badness 10000) in paragraph at lines 37--40
+
+ []
+
+)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 40.
+ [11]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 40.
+ (./Product Vision and Planning.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 40.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 40.
 Package rerunfilecheck Info: File `"Product Vision and Planning".out' has not c
 hanged.
-(rerunfilecheck)             Checksum: 85F13F9CDA5A6E5753F43B53A11EF7BE;988.
+(rerunfilecheck)             Checksum: 11DBDC3B2C8179FFF6054DA42D133E76;1093.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 40.
  ) 
 Here is how much of TeX's memory you used:
- 7904 strings out of 493488
- 117116 string characters out of 3141326
- 228083 words of memory out of 3000000
- 11057 multiletter control sequences out of 15000+200000
+ 8010 strings out of 493488
+ 118558 string characters out of 3141326
+ 232281 words of memory out of 3000000
+ 11132 multiletter control sequences out of 15000+200000
  8800 words of font info for 31 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
  37i,6n,38p,1449b,437s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -502,10 +564,10 @@ Here is how much of TeX's memory you used:
 usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></us
 r/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/
 local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on "Product Vision and Planning.pdf" (10 pages, 105434 bytes).
+Output written on "Product Vision and Planning.pdf" (13 pages, 455585 bytes).
 PDF statistics:
- 242 PDF objects out of 1000 (max. 8388607)
- 221 compressed objects within 3 object streams
- 45 named destinations out of 1000 (max. 500000)
- 129 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 284 PDF objects out of 1000 (max. 8388607)
+ 255 compressed objects within 3 object streams
+ 60 named destinations out of 1000 (max. 500000)
+ 160 words of extra memory for PDF output out of 10000 (max. 10000000)
 

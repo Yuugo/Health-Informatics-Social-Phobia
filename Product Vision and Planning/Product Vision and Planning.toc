@@ -27,3 +27,8 @@
 \contentsline {section}{\numberline {4.2}DoD for a Sprint}{7}{section.4.2}
 \contentsline {section}{\numberline {4.3}DoD for a Release}{7}{section.4.3}
 \contentsline {chapter}{Glossary}{8}{section.4.3}
+\contentsline {chapter}{\numberline {A}Grahpical User interface}{9}{appendix.A}
+\contentsline {chapter}{\numberline {B}Persona}{10}{appendix.B}
+\contentsline {paragraph}{Persona 4}{10}{figure.B.1}
+\contentsline {paragraph}{Progress Reflection and Briefing Exposure Module (Block 6b+7): }{10}{section*.18}
+\contentsline {paragraph}{Current Exposure Reflection Module (Block 9):}{11}{section*.19}
