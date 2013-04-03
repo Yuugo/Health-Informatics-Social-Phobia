@@ -6,12 +6,7 @@ using System.Xml.Serialization;
 
 namespace NijnCoach.XMLclasses
 {
-    class Comment
+    class Questionnaire
     {
-        [XmlAttribute("value")]
-        String value { get; set; }
-
-        [XmlAttribute("emotion")]
-        String emotion { get; set; }
     }
 }
