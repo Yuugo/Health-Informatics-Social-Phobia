@@ -9,7 +9,13 @@ For instance for hardware there will be at least three different computers/types
 \item Numerous computers of patients, used to work with the eCoach and to communicate with the therapist
 \item Some kind of server used to facilitate the communication
 \end{itemize}
-
+You can also see this in figure ~\ref{fig:deploymentdiagram}.
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{deployment-diagram.png}
+  \caption{Deployment diagram of the system} 
+  \label{fig:deploymentdiagram}
+\end{figure}
 On the computer of the therapist and on the computer of a patient a database system will run to store all the permanent user data (more about this in paragraph 2.3).  No decision has yet been made about what kind of database system is going to be used.
 
 On the patient system a vizard process will run to display the avatars. Most of the view-layer (without the avatar displaying) and the control-layer is run from the same main process. 
