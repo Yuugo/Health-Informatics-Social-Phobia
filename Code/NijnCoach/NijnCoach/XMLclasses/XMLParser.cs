@@ -13,25 +13,22 @@ namespace NijnCoach
     {
         String path { get; set; }
 
-        /*
-         * Constructor class, loads the Xml file from path given in parameter.
-         *
-        public XMLParser()
-        {
-            path = name;
-        }*/
-
-        public void startRead()
+        //Method used to deserialize(XML to object) XML
+        public Questionnaire readXML()
         {
             XmlSerializer serializer = new XmlSerializer(typeof(Questionnaire));
             StreamReader reader = new StreamReader("writeTest.xml");
             Questionnaire theForm = (Questionnaire)serializer.Deserialize(reader);
             reader.Close();
+            return theForm;
         }
 
-        public void startWrite()
+        //Method used to serialize(object to XML) XML
+        public void writeXML(Questionnaire q, String fileName)
         {
-            Questionnaire q = new Questionnaire()
+        #region ExampleObject
+            /*
+            q = new Questionnaire()
             {
                 version = 1.00,
                 head = new Questionnaire.Header
@@ -78,26 +75,17 @@ namespace NijnCoach
                         },
                         theAnswer = new Answer()
                     }
-                    
                 }
             };
-                
+             */
+            #endregion
             XmlSerializer ser = new XmlSerializer(typeof(Questionnaire));
             StringBuilder sb = new StringBuilder();
             StringWriter writer = new StringWriter(sb);
             ser.Serialize(writer, q);
             XmlDocument doc = new XmlDocument();
             doc.LoadXml(sb.ToString());
-            doc.Save("writeTest.xml");
+            doc.Save(fileName);
         }
-
-
-        public static void Main(String[] args)
-        {
-            XMLParser bla = new XMLParser();
-            bla.startRead();
-            //bla.startWrite();
-        }
-        
     }
 }
