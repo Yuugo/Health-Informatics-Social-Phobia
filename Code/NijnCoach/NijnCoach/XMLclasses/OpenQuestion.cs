@@ -6,12 +6,13 @@ using System.Xml.Serialization;
 
 namespace NijnCoach.XMLclasses
 {
-    class OpenQuestion
+    [XmlRoot("openQuestion")]
+    public class OpenQuestion : IEntry
     {
-        [XmlAttribute("value")]
-        String value { get; set; }
-
-        [XmlAttribute("answer")]
-        Answer theAnswer { get; set; }
+        [XmlElement("question")]
+        public String question { get; set; }
+        
+        //[XML] logic done inside the Answer class.
+        public Answer theAnswer { get; set; }
     }
 }

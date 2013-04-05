@@ -6,15 +6,13 @@ using System.Xml.Serialization;
 
 namespace NijnCoach.XMLclasses
 {
-    public class MCQuestion : Entry
+    public class MCQuestion : IEntry
     {
-        [XmlAttribute("value")]
-        String value { get; set; }
+        //[XML] logic done inside the Option class.
+        [XmlArray]
+        public List<Option> options { get; set; }
 
-        [XmlAttribute("options")]
-        List<Option> options { get; set; }
-
-        [XmlAttribute("answer")]
-        Answer theAnswer { get; set; }
+        //[XML] logic done inside the Answer class.
+        public Answer theAnswer { get; set; }
     }
 }

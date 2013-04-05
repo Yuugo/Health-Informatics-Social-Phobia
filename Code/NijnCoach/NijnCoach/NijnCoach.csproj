@@ -36,10 +36,12 @@
   <ItemGroup>
     <Compile Include="XMLclasses\Answer.cs" />
     <Compile Include="XMLclasses\Comment.cs" />
-    <Compile Include="XMLclasses\Entry.cs" />
+    <Compile Include="XMLclasses\IEntry.cs" />
+    <Compile Include="XMLclasses\ListOfIEntry.cs" />
     <Compile Include="XMLclasses\MCQuestion.cs" />
     <Compile Include="XMLclasses\OpenQuestion.cs" />
     <Compile Include="XMLclasses\Option.cs" />
+    <Compile Include="XMLclasses\Questionnaire.cs" />
     <Compile Include="XMLclasses\XMLParser.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -49,6 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="testXML.xml" />
+    <Content Include="writeTest.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

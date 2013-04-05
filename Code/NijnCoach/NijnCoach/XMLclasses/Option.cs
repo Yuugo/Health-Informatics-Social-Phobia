@@ -6,15 +6,16 @@ using System.Xml.Serialization;
 
 namespace NijnCoach.XMLclasses
 {
+    [XmlRoot("option")]
     public class Option
     {
-        [XmlAttribute("tag")]
-        String tag { get; set; }
+        [XmlElement("tag")]
+        public String tag { get; set; }
 
-        [XmlAttribute("emotion")]
-        String emotion { get; set; }
+        [XmlElement("emotion")]
+        public String emotion { get; set; }
 
-        [XmlAttribute("value")]
-        String value { get; set; }
+        [XmlElement("answer")]
+        public String answer { get; set; }
     }
 }

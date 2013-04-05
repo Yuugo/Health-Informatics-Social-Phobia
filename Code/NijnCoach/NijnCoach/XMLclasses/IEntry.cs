@@ -7,9 +7,7 @@ using NijnCoach.XMLclasses;
 
 namespace NijnCoach
 {
-    public interface Entry
+    public interface IEntry
     {
-        // Contains the text displayed to the user.
-        String value { get; set; }
     }
 }

@@ -6,12 +6,13 @@ using System.Xml.Serialization;
 
 namespace NijnCoach.XMLclasses
 {
-    class Comment
+    [XmlRoot("comment")]
+    public class Comment : IEntry
     {
-        [XmlAttribute("value")]
-        String value { get; set; }
+        [XmlElement("value")]
+        public String value { get; set; }
 
-        [XmlAttribute("emotion")]
-        String emotion { get; set; }
+        [XmlElement("emotion")]
+        public String emotion { get; set; }
     }
 }
