@@ -99,7 +99,6 @@
     <Compile Include="XMLclasses\Option.cs" />
     <Compile Include="XMLclasses\Questionnaire.cs" />
     <Compile Include="XMLclasses\XMLParser.cs" />
-    <Compile Include="XMLParserTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

@@ -16,10 +16,11 @@ namespace NijnCoach
         static void Main()
         {
             XMLParser parser = new XMLParser();
-            Questionnaire questionnaire = parser.readXML();
+            Questionnaire questionnaire = parser.readXML("writeTest.xml");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new QuestionnaireForm(questionnaire));
+            questionnaire = parser.readXML("answers.xml");
             Application.Run(new TherapistQuestionnaire(questionnaire));
             
         }
