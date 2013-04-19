@@ -14,10 +14,10 @@ namespace NijnCoach
         String path { get; set; }
 
         //Method used to deserialize(XML to object) XML
-        public Questionnaire readXML()
+        public Questionnaire readXML(String filename)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(Questionnaire));
-            StreamReader reader = new StreamReader("writeTest.xml");
+            StreamReader reader = new StreamReader(filename);
             Questionnaire theForm = (Questionnaire)serializer.Deserialize(reader);
             reader.Close();
             return theForm;
@@ -26,6 +26,7 @@ namespace NijnCoach
         //Method used to serialize(object to XML) XML
         public void writeXML(Questionnaire q, String fileName)
         {
+
         #region ExampleObject
             /*
             q = new Questionnaire()
@@ -77,8 +78,9 @@ namespace NijnCoach
                     }
                 }
             };
-             */
+            */ 
             #endregion
+
             XmlSerializer ser = new XmlSerializer(typeof(Questionnaire));
             StringBuilder sb = new StringBuilder();
             StringWriter writer = new StringWriter(sb);
