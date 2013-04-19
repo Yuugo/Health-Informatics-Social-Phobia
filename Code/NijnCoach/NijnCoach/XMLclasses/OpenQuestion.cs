@@ -13,6 +13,6 @@ namespace NijnCoach.XMLclasses
         public String question { get; set; }
         
         //[XML] logic done inside the Answer class.
-        public Answer theAnswer { get; set; }
+        public String theAnswer { get; set; }
     }
 }

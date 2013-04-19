@@ -8,11 +8,14 @@ namespace NijnCoach.XMLclasses
 {
     public class MCQuestion : IEntry
     {
+        [XmlElement("question")]
+        public String question { get; set; }
+
         //[XML] logic done inside the Option class.
         [XmlArray]
         public List<Option> options { get; set; }
 
-        //[XML] logic done inside the Answer class.
-        public Answer theAnswer { get; set; }
+        [XmlElement("theAnswer")]
+        public String theAnswer { get; set; }
     }
 }
