@@ -16,8 +16,7 @@ namespace NijnCoach
         //Method used to deserialize(XML to object) XML from a file
         public Questionnaire readXMLFromFile(String filename)
         {
-            StreamReader reader = new StreamReader(filename);
-            return readXML(reader);
+            return readXML(new StreamReader(filename));
         }
 
         //Method used to deserialize(XML to object) XML

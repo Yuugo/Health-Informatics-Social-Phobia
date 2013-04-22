@@ -5,6 +5,7 @@ using System.Text;
 using NUnit.Framework;
 using NijnCoach;
 using System.IO;
+using NijnCoach.XMLclasses;
 
 namespace NijnCoach_Test
 {
@@ -12,24 +13,34 @@ namespace NijnCoach_Test
     class XMLParserTest
     {
         XMLParser parser;
+        private const String begin = "<Questionnaire version=\"1\"><head><questionnaireNumber>0</questionnaireNumber><createdBy>Me</createdBy><createdDate>0001-01-01T00:00:00</createdDate><filledBy>Him</filledBy><filledDate>0001-01-01T00:00:00</filledDate></head>";
+        private const String end = "</Questionnaire>";
+
+
         [TestFixtureSetUp]
         public void setUp()
         {
             parser = new XMLParser();
         }
         
+
         [Test]
-        [ExpectedException(typeof(FileNotFoundException))]
-        public void invalidFile()
+        public void emptyQuestionnaireTest()
         {
-            parser.readXMLFromFile("asdf.xml");
+            StreamReader reader = stringToStreamReader(begin+end);
+            Questionnaire theForm = parser.readXML(reader);
+            Assert.NotNull(theForm.head);
+            Assert.AreEqual(0, theForm.head.number);
+            Assert.AreEqual("Me", theForm.head.createdBy);
+            Assert.AreEqual( "Him", theForm.head.filledBy);
+            Assert.AreEqual(new DateTime(1,1,1,0,0,0), theForm.head.dateCreated);
+            Assert.AreEqual(new DateTime(1, 1, 1, 0, 0, 0), theForm.head.dateFilled);
         }
 
         [Test]
-        [ExpectedException(typeof(InvalidOperationException))]
-        public void emptyXML()
+        public void questionnaireWithOneEntryTest()
         {
-            StreamReader reader = stringToStreamReader("");
+            StreamReader reader = stringToStreamReader(begin + "<entries></entries>" + end);
             parser.readXML(reader);
         }
 
