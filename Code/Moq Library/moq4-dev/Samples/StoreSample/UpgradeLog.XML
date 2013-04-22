@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="StoreSample">
+</Property><Property Name="Solution File" Value="\\vmware-host\Shared Folders\Documenten\Health-Informatics-Social-Phobia\Code\Moq Library\moq4-dev\Samples\StoreSample\StoreSample.sln">
+</Property><Property Name="Date" Value="Monday, April 22, 2013">
+</Property><Property Name="Time" Value="10:18 AM">
+</Property></Properties><Event ErrorLevel="0" Project="Store" Source="Source\Store.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="Store" Source="Source\Store.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Store.Tests" Source="UnitTests\Store.Tests.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="Store.Tests" Source="UnitTests\Store.Tests.csproj" Description="Converted">
+</Event><Event ErrorLevel="0" Project="" Source="StoreSample.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="StoreSample.sln" Description="Converted">
+</Event><Event ErrorLevel="0" Project="Store" Source="Source\Store.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event><Event ErrorLevel="0" Project="Store.Tests" Source="UnitTests\Store.Tests.csproj" Description="Scan complete: Upgrade not required for project files.">
+</Event></UpgradeLog>
