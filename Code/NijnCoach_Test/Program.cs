@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Reflection;
+using System.Threading;
 
 namespace NijnCoach_Test
 {
@@ -17,6 +18,7 @@ namespace NijnCoach_Test
 
             if (returnCode != 0)
                 Console.Beep();
+            Thread.Sleep(5000);
         }
     }
 }
