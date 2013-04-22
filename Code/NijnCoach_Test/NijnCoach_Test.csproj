@@ -52,7 +52,6 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestFixture.cs" />
     <Compile Include="XMLParserTest.cs" />
   </ItemGroup>
   <ItemGroup>

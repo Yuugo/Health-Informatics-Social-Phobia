@@ -68,7 +68,7 @@ namespace NijnCoach.View.Questionnaire
         private void saveEventHandler(object sender, EventArgs e)
         {
             XMLParser reader = new XMLParser();
-            reader.writeXML(questionnaire, "answers.xml"); //TODO: no static file name
+            reader.writeXMLToFile(questionnaire, "answers.xml"); //TODO: no static file name
         }
 
         public void updatePanelQuestion(IEntry entry)

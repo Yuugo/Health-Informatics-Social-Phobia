@@ -16,7 +16,7 @@ namespace NijnCoach_Test
         public void invalidFile()
         {
             XMLParser parser = new XMLParser();
-            parser.readXML("");
+            parser.readXMLFromFile("");
         }
     }
 }
