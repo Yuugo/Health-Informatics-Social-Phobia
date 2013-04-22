@@ -91,14 +91,14 @@
     <Compile Include="View\Questionnaire\TherapistQuestionnaire.Designer.cs">
       <DependentUpon>TherapistQuestionnaire.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Questionnaire\XMLclasses\Comment.cs" />
-    <Compile Include="View\Questionnaire\XMLclasses\IEntry.cs" />
-    <Compile Include="View\Questionnaire\XMLclasses\ListOfIEntry.cs" />
-    <Compile Include="View\Questionnaire\XMLclasses\MCQuestion.cs" />
-    <Compile Include="View\Questionnaire\XMLclasses\OpenQuestion.cs" />
-    <Compile Include="View\Questionnaire\XMLclasses\Option.cs" />
-    <Compile Include="View\Questionnaire\XMLclasses\Questionnaire.cs" />
-    <Compile Include="View\Questionnaire\XMLclasses\XMLParser.cs" />
+    <Compile Include="XMLclasses\Comment.cs" />
+    <Compile Include="XMLclasses\IEntry.cs" />
+    <Compile Include="XMLclasses\ListOfIEntry.cs" />
+    <Compile Include="XMLclasses\MCQuestion.cs" />
+    <Compile Include="XMLclasses\OpenQuestion.cs" />
+    <Compile Include="XMLclasses\Option.cs" />
+    <Compile Include="XMLclasses\Questionnaire.cs" />
+    <Compile Include="XMLclasses\XMLParser.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
