@@ -29,5 +29,10 @@ namespace NijnCoach.View.Questionnaire
                 labelComment.Text = _entry.value;
             }
         }
+
+        public override Boolean partlyDisabled {
+            get { return false; }
+            set { }
+        }
     }
 }
