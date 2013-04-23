@@ -14,6 +14,7 @@ namespace NijnCoach.View.Questionnaire
         }
 
         abstract public IEntry entry { get; set; }
+        abstract public Boolean partlyDisabled {get; set;}
 
     }
 }

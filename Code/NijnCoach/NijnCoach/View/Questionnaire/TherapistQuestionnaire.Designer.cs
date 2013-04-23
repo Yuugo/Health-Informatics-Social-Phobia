@@ -63,6 +63,7 @@ namespace NijnCoach.View.Questionnaire
                 Debug.Assert(panel != null);
                 panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
                 panel.entry = entry;
+                panel.partlyDisabled = true;
                 panelMainContent.Controls.Add(panel);
                 panelMainContent.SetFlowBreak(panel, true);
             }

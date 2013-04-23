@@ -14,6 +14,8 @@ namespace NijnCoach.View.Questionnaire
     public partial class MCQuestionPanel : IQuestionPanel
     {
         private MCQuestion _entry;
+        private Boolean _partlyDisabled = false;
+
         public MCQuestionPanel(int w, int h) : base(w, h)
         {
             InitializeComponent();
@@ -32,6 +34,7 @@ namespace NijnCoach.View.Questionnaire
                     radio.Text = option.answer;
                     radio.Tag = option.tag;
                     radio.CheckedChanged += new EventHandler(optionEventHandler);
+                    radio.Enabled = !_partlyDisabled;
                     if(option.tag == _entry.theAnswer)
                         radio.Checked = true;
                     options.Add(radio);
@@ -47,6 +50,19 @@ namespace NijnCoach.View.Questionnaire
             if (rb != null && rb.Checked)
             {
                 _entry.theAnswer = (String)rb.Tag;
+            }
+        }
+
+        public override Boolean partlyDisabled
+        {
+            get { return _partlyDisabled; }
+            set
+            {
+                _partlyDisabled = value;
+                foreach (RadioButton r in options)
+                {
+                    r.Enabled = !value;
+                }
             }
         }
     }

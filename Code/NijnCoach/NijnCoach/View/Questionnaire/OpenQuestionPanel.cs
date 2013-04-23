@@ -14,6 +14,8 @@ namespace NijnCoach.View.Questionnaire
     public partial class OpenQuestionPanel : IQuestionPanel
     {
         private OpenQuestion _entry;
+        private Boolean _partlyDisabled = false;
+
         public OpenQuestionPanel(int w,int h) : base(w, h)
         {
             InitializeComponent();
@@ -36,6 +38,15 @@ namespace NijnCoach.View.Questionnaire
         private void answerEventHandler(object sender, EventArgs e)
         {
             _entry.theAnswer = (String)textBoxAnswer.Text;
+        }
+
+        public override Boolean partlyDisabled
+        {
+            get { return _partlyDisabled; }
+            set { 
+                _partlyDisabled = value;
+                textBoxAnswer.Enabled = !value;
+            }
         }
     }
 }
