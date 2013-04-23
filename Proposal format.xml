@@ -22,22 +22,22 @@
 	<entries>
 		<entry type="radio">
 			<question>
-				How many social encounters did you have last week?
+				<value>How many social encounters did you have last week?</value>
 				</options>
 					<option>
 						<tag>a</tag>
 						<emotion>sad</emotion>
-						1-3
+						<value>1-3</value>
 					</option>
 					<option>
 						<tag>b</tag>
 						<emotion>neutral</emotion>
-						4-6
+						<value>4-6</value>
 					</option>
 					<option>
 						<tag>c</tag>
 						<emotion>happy</emotion>
-						7 or more
+						<value>7 or more</value>
 					</option>
 				</options>
 			</question>
@@ -54,7 +54,7 @@
 			</answer>
 		</entry>
 		<entry type="comment">
-			This comment has no question or answer tags, but can have emotion tags.
+			<value>This comment has no question or answer tags, but can have emotion tags.</value>
 			<emotion>scared</emotion>
 		</entry>
 	</entries>
