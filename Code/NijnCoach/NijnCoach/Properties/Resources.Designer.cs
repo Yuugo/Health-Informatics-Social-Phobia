@@ -105,10 +105,7 @@ namespace NijnCoach.Properties {
         ///    &lt;filledDate&gt;0001-01-01T00:00:00&lt;/filledDate&gt;
         ///  &lt;/head&gt;
         ///  &lt;entries&gt;
-        ///    &lt;IEntry Type=&quot;Comment&quot;&gt;
-        ///      &lt;comment&gt;
-        ///        &lt;value&gt;blabla&lt;/value&gt;
-        ///        &lt;emotion&gt;ha [rest of string was truncated]&quot;;.
+        ///    &lt;IEntry AssemblyQualifiedName=&quot;NijnCoach.XMLclasses.Comment, NijnCoach, Version=0.0.0.0, Cul [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string writeTest {
             get {
