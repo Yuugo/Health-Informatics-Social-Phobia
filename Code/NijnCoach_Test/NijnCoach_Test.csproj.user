@@ -14,6 +14,6 @@
     <StartProgram>C:\Program Files (x86)\NUnit 2.6.2\bin\nunit-x86.exe</StartProgram>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
-    <StartArguments>/run</StartArguments>
+    <StartArguments>"NijnCoach_Test.exe" /run /noload</StartArguments>
   </PropertyGroup>
 </Project>

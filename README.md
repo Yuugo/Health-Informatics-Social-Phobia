@@ -11,3 +11,4 @@ Vizard 3.0: http://www.worldviz.com/support/download?action=1&fid=77 (personal i
 
 PyDev plugin for eclipse: Within Eclipse, go to plugins and search for PyDev.
 
+NUnit GUI: http://launchpad.net/nunitv2/2.6.2/2.6.2/+download/NUnit-2.6.2.msi
