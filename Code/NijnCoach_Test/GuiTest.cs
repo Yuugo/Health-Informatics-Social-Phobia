@@ -20,6 +20,8 @@ namespace NijnCoach_Test
         Assembly testAssembly = null;
         Form _testForm = null;
         BindingFlags flags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.Instance | BindingFlags.FlattenHierarchy;
+        private delegate void OnEvent(EventArgs ea);
+
 
         public Form testForm
         {
@@ -95,6 +97,7 @@ namespace NijnCoach_Test
             return o;
         }
 
+        
         public void RaiseEvent(string longName, string eventName, EventArgs ea)
         {
             RaiseEvent(_testForm, longName, eventName, ea);
@@ -104,9 +107,10 @@ namespace NijnCoach_Test
         {
             object o = GetField(obj, longName);
             MethodInfo mi = o.GetType().GetMethod("On" + eventName, flags);
-            Delegate methodDelegate = Delegate.CreateDelegate(typeof(Action), o, mi, false);
-            ((Control)obj).BeginInvoke(methodDelegate, ea);
+            OnEvent methodDelegate = (OnEvent) Delegate.CreateDelegate(typeof(OnEvent), o, mi);
+            ((Control)o).BeginInvoke(methodDelegate, new object[] {ea});
         }
+         
 
         public abstract object[] getParameters();
         public abstract String getAssembly();

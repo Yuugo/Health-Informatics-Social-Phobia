@@ -56,7 +56,13 @@ namespace NijnCoach_Test
         [Test]
         public void openQuestion()
         {
+            Thread.Sleep(1000);
             RaiseEvent("buttonNext", "Click", new EventArgs());
+            Thread.Sleep(1000);
+            object openQuestionText = GetProperty("panelQuestionIntern.labelQuestion.Text");
+            object openQuestionAnswer = GetProperty("panelQuestionIntern.textBoxAnswer.Text");
+            Assert.AreEqual("What was the most difficult situation? Please tell me how it went.", openQuestionText);
+            Assert.AreEqual("", openQuestionAnswer);
         }
 
 
