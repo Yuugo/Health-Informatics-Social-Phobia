@@ -49,11 +49,14 @@ namespace NijnCoach_Test
         [Test]
         public void commentTest()
         {
-            object panelQuestion = GetField(testForm, "panelQuestionIntern");
-            object labelComment = GetField(panelQuestion, "labelComment");
-            object commentText = GetProperty(labelComment, "Text");
+            object commentText = GetProperty("panelQuestionIntern.labelComment.Text");
             Assert.AreEqual("blabla", commentText);
-            //InvokeMethod("nextEventHandler");
+        }
+
+        [Test]
+        public void openQuestion()
+        {
+            RaiseEvent("buttonNext", "Click", new EventArgs());
         }
 
 

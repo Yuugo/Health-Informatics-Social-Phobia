@@ -42,14 +42,14 @@ namespace NijnCoach_Test
             }
         } 
 
-        protected object GetField(object obj, string fieldName) 
+        private object _GetField(object obj, string fieldName) 
         { 
             Type t = obj.GetType(); 
             FieldInfo fi = t.GetField(fieldName, flags); 
             return fi.GetValue(obj); 
         } 
 
-        protected object GetProperty(object obj, string propertyName) 
+        private object _GetProperty(object obj, string propertyName) 
         { 
             Type t = obj.GetType(); 
             PropertyInfo pi = t.GetProperty(propertyName, flags); 
@@ -62,12 +62,51 @@ namespace NijnCoach_Test
             _InvokeMethod(_testForm, method, p); 
         }
 
-        public object GetPropertyFromFromField(string fieldName, string propertyName)
+        public object GetProperty(string longName)
         {
-            return GetProperty(GetField(_testForm, fieldName), propertyName);
+            return GetProperty(_testForm, longName);
         }
 
+        public object GetProperty(object obj, string longName)
+        {
+            object o = obj;
+            String[] parts = longName.Split( new char[] {'.'} );
+            for (int i = 0; i < parts.Length - 1; i++)
+            {
+                o = _GetField(o, parts[i]);
+            }
+            return _GetProperty(o, parts[parts.Length - 1]);
 
+        }
+
+        public object GetField(string longName)
+        {
+            return GetField(_testForm, longName);
+        }
+
+        public object GetField(object obj, string longName)
+        {
+            object o = obj;
+            String[] parts = longName.Split(new char[] { '.' });
+            for (int i = 0; i < parts.Length; i++)
+            {
+                o = _GetField(o, parts[i]);
+            }
+            return o;
+        }
+
+        public void RaiseEvent(string longName, string eventName, EventArgs ea)
+        {
+            RaiseEvent(_testForm, longName, eventName, ea);
+        }
+
+        public void RaiseEvent(object obj, string longName, string eventName, EventArgs ea)
+        {
+            object o = GetField(obj, longName);
+            MethodInfo mi = o.GetType().GetMethod("On" + eventName, flags);
+            Delegate methodDelegate = Delegate.CreateDelegate(typeof(Action), o, mi, false);
+            ((Control)obj).BeginInvoke(methodDelegate, ea);
+        }
 
         public abstract object[] getParameters();
         public abstract String getAssembly();
@@ -87,8 +126,10 @@ namespace NijnCoach_Test
         [TestFixtureTearDown]
         public virtual void tearDown()
         {
-            _testForm.Dispose();
-            _testForm.Close();
+            if (_testForm != null)
+            {
+                _testForm.Close();
+            }
         }
 
     }
