@@ -37,6 +37,7 @@ namespace NijnCoach.View.Questionnaire
             this.buttonNext = new System.Windows.Forms.Button();
             this.buttonHome = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
+            this.smile = new System.Windows.Forms.Button();
             this.panelAvatar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,6 +49,7 @@ namespace NijnCoach.View.Questionnaire
             this.panelAvatar.Name = "panelAvatar";
             this.panelAvatar.Size = new System.Drawing.Size(797, 365);
             this.panelAvatar.TabIndex = 0;
+            this.panelAvatar.Paint += new System.Windows.Forms.PaintEventHandler(this.panelAvatar_Paint);
             // 
             // progressBar
             // 
@@ -105,11 +107,22 @@ namespace NijnCoach.View.Questionnaire
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.saveEventHandler);
             // 
+            // smile
+            // 
+            this.smile.Location = new System.Drawing.Point(895, 90);
+            this.smile.Name = "smile";
+            this.smile.Size = new System.Drawing.Size(75, 23);
+            this.smile.TabIndex = 6;
+            this.smile.Text = "Smile";
+            this.smile.UseVisualStyleBackColor = true;
+            this.smile.Click += new System.EventHandler(this.button1_Click);
+            // 
             // QuestionnaireForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(982, 487);
+            this.Controls.Add(this.smile);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.buttonHome);
             this.Controls.Add(this.panelQuestion);
@@ -120,6 +133,7 @@ namespace NijnCoach.View.Questionnaire
             this.MaximizeBox = false;
             this.Name = "QuestionnaireForm";
             this.Text = "QuestionnaireForm";
+            this.Load += new System.EventHandler(this.QuestionnaireForm_Load);
             this.panelAvatar.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -135,6 +149,7 @@ namespace NijnCoach.View.Questionnaire
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.Button buttonHome;
         private System.Windows.Forms.Button buttonSave;
+        private System.Windows.Forms.Button smile;
     }
 }
 

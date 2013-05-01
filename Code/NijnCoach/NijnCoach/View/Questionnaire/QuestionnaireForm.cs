@@ -92,5 +92,20 @@ namespace NijnCoach.View.Questionnaire
             panelQuestion.Controls.Add(panelQuestionIntern);
             panelQuestion.ResumeLayout();
         }
+
+        private void QuestionnaireForm_Load(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Avatar.AvatarControl.happy();
+        }
+
+        private void panelAvatar_Paint(object sender, PaintEventArgs e)
+        {
+            
+        }
     }
 }
