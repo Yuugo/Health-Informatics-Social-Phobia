@@ -15,6 +15,7 @@ namespace NijnCoach.View.Questionnaire
     {
         private MCQuestion _entry;
         private Boolean _partlyDisabled = false;
+        private List<System.Windows.Forms.RadioButton> options = new List<System.Windows.Forms.RadioButton>();
 
         public MCQuestionPanel(int w, int h) : base(w, h)
         {
@@ -33,6 +34,7 @@ namespace NijnCoach.View.Questionnaire
                     RadioButton radio = new RadioButton();
                     radio.Text = option.answer;
                     radio.Tag = option.tag;
+                    radio.Name = "Radio" + option.tag;
                     radio.CheckedChanged += new EventHandler(optionEventHandler);
                     radio.Enabled = !_partlyDisabled;
                     if(option.tag == _entry.theAnswer)

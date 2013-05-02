@@ -12,20 +12,43 @@ namespace NijnCoach_Test
     [TestFixture]
     class XMLParserTest
     {
-        XMLParser parser;
-        private const String begin = "<Questionnaire version=\"1\"><head><questionnaireNumber>0</questionnaireNumber><createdBy>Me</createdBy><createdDate>0001-01-01T00:00:00</createdDate><filledBy>Him</filledBy><filledDate>0001-01-01T00:00:00</filledDate></head>";
-        private const String end = "</Questionnaire>";
-        private const String xmlComment = "<IEntry AssemblyQualifiedName=\"NijnCoach.XMLclasses.Comment, NijnCoach, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\"><comment><value>blabla</value><emotion>happy</emotion></comment></IEntry>";
-        private const String xmlOpenQuestion = "<IEntry AssemblyQualifiedName=\"NijnCoach.XMLclasses.OpenQuestion, NijnCoach, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\"><openQuestion><question>What was the most difficult situation? Please tell me how it went.</question><theAnswer /></openQuestion></IEntry>";
-        private const String xmlMcQuestion = "<IEntry AssemblyQualifiedName=\"NijnCoach.XMLclasses.MCQuestion, NijnCoach, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\"><MCQuestion><question>How many social encounters did you have last week?</question><options><Option><tag>a</tag><emotion>angry</emotion><answer>1-3</answer></Option><Option><tag>b</tag><emotion>happy</emotion><answer>4-6</answer></Option><Option><tag>c</tag><emotion>neutral</emotion><answer>7 or more</answer></Option></options><theAnswer /></MCQuestion></IEntry>";
+        protected XMLParser parser;
+        protected const String begin = "<Questionnaire version=\"1\"><head><questionnaireNumber>0</questionnaireNumber><createdBy>Me</createdBy><createdDate>0001-01-01T00:00:00</createdDate><filledBy>Him</filledBy><filledDate>0001-01-01T00:00:00</filledDate></head>";
+        protected const String end = "</Questionnaire>";
+        protected const String xmlComment = "<IEntry AssemblyQualifiedName=\"NijnCoach.XMLclasses.Comment, NijnCoach, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\"><comment><value>blabla</value><emotion>happy</emotion></comment></IEntry>";
+        protected const String xmlOpenQuestion = "<IEntry AssemblyQualifiedName=\"NijnCoach.XMLclasses.OpenQuestion, NijnCoach, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\"><openQuestion><question>What was the most difficult situation? Please tell me how it went.</question><theAnswer /></openQuestion></IEntry>";
+        protected const String xmlMcQuestion = "<IEntry AssemblyQualifiedName=\"NijnCoach.XMLclasses.MCQuestion, NijnCoach, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\"><MCQuestion><question>How many social encounters did you have last week?</question><options><Option><tag>a</tag><emotion>angry</emotion><answer>1-3</answer></Option><Option><tag>b</tag><emotion>happy</emotion><answer>4-6</answer></Option><Option><tag>c</tag><emotion>neutral</emotion><answer>7 or more</answer></Option></options><theAnswer /></MCQuestion></IEntry>";
 
         [TestFixtureSetUp]
-        public void setUp()
+        public virtual void setUp()
         {
             parser = new XMLParser();
         }
-        
 
+        /*
+         * Test the parser with an invalid file
+         */
+        [Test]
+        [ExpectedException(typeof(FileNotFoundException))]
+        public void invalidFileTest()
+        {
+            parser.readXMLFromFile("asdf.xml");
+        }
+
+        /*
+         * Test an invalid xml-string
+         */ 
+        [Test]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void invalidXMLTest()
+        {
+            StreamReader reader = stringToStreamReader(begin + "<entries>" + end);
+            parser.readXML(reader);
+        }
+
+        /*
+         * Test the parser with xml-string without entries
+         */ 
         [Test]
         public void emptyQuestionnaireTest()
         {
@@ -39,6 +62,9 @@ namespace NijnCoach_Test
             Assert.AreEqual(new DateTime(1, 1, 1, 0, 0, 0), theForm.head.dateFilled);
         }
 
+        /*
+         * Test the parser with one comment
+         */ 
         [Test]
         public void commentTest()
         {
@@ -52,6 +78,9 @@ namespace NijnCoach_Test
             Assert.AreEqual("happy", comment.emotion);
         }
 
+        /*
+         * Test the parser with one open question
+         */ 
         [Test]
         public void openQuestionTest()
         {
@@ -64,6 +93,9 @@ namespace NijnCoach_Test
             Assert.AreEqual("", openQuestion.theAnswer);
         }
 
+        /*
+         * Test the parser with one multiple choice question
+         */ 
         [Test]
         public void mcQuestionTest()
         {
@@ -76,6 +108,9 @@ namespace NijnCoach_Test
             Assert.AreEqual("", mcQuestion.theAnswer);
         }
 
+        /*
+         * Test the options of a multiple choice question
+         */ 
         [Test]
         public void mcQuestionOptionsTest()
         {
@@ -96,7 +131,10 @@ namespace NijnCoach_Test
         }
 
 
-        private StreamReader stringToStreamReader(String s)
+        /*
+         * Convert a string to a stream
+         */ 
+        protected StreamReader stringToStreamReader(String s)
         {
             byte[] byteArray = Encoding.ASCII.GetBytes(s);
             MemoryStream stream = new MemoryStream(byteArray);
