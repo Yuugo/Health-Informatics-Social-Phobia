@@ -44,7 +44,7 @@ namespace NijnCoach.View.Questionnaire
         #endregion
 
         private System.Windows.Forms.Label labelQuestion = new System.Windows.Forms.Label();
-        private List<System.Windows.Forms.RadioButton> options = new List<System.Windows.Forms.RadioButton>();
+       
 
     }
 }
