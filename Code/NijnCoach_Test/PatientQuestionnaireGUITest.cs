@@ -10,6 +10,7 @@ using NUnit.Framework;
 using NijnCoach.View.Questionnaire;
 using NijnCoach.XMLclasses;
 using NijnCoach;
+using System.Collections.Generic;
 
 namespace NijnCoach_Test
 {
@@ -37,7 +38,7 @@ namespace NijnCoach_Test
             return _form;
         }
 
-        [TestFixtureSetUp]
+        [SetUp]
         public override void setUp()
         {
             parser = new XMLParser();
@@ -54,17 +55,34 @@ namespace NijnCoach_Test
         }
 
         [Test]
-        public void openQuestion()
+        public void openQuestionTextTest()
         {
-            Thread.Sleep(1000);
             RaiseEvent("buttonNext", "Click", new EventArgs());
-            Thread.Sleep(1000);
             object openQuestionText = GetProperty("panelQuestionIntern.labelQuestion.Text");
             object openQuestionAnswer = GetProperty("panelQuestionIntern.textBoxAnswer.Text");
             Assert.AreEqual("What was the most difficult situation? Please tell me how it went.", openQuestionText);
             Assert.AreEqual("", openQuestionAnswer);
         }
 
+        [Test]
+        public void mcQuestionTextTest()
+        {
+            RaiseEvent("buttonNext", "Click", new EventArgs());
+            RaiseEvent("buttonNext", "Click", new EventArgs());
+            object mcQuestionText = GetProperty("panelQuestionIntern.labelQuestion.Text");
+            Assert.AreEqual("How many social encounters did you have last week?", mcQuestionText);
+        }
+
+        [Test]
+        public void mcQuestionOptionsTest()
+        {
+            RaiseEvent("buttonNext", "Click", new EventArgs());
+            RaiseEvent("buttonNext", "Click", new EventArgs());
+            System.Windows.Forms.Control.ControlCollection options = (System.Windows.Forms.Control.ControlCollection)GetProperty("panelQuestionIntern.Controls");
+            Control[] radios = (Control[]) options.Find("Radioa", false);
+            String text = radios[0].Text;
+            Assert.AreEqual("1-3", text);
+        }
 
     }
 }

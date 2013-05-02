@@ -108,7 +108,7 @@ namespace NijnCoach_Test
             object o = GetField(obj, longName);
             MethodInfo mi = o.GetType().GetMethod("On" + eventName, flags);
             OnEvent methodDelegate = (OnEvent) Delegate.CreateDelegate(typeof(OnEvent), o, mi);
-            ((Control)o).BeginInvoke(methodDelegate, new object[] {ea});
+            ((Control)o).Invoke(methodDelegate, new object[] {ea});
         }
          
 
@@ -116,7 +116,7 @@ namespace NijnCoach_Test
         public abstract String getAssembly();
         public abstract String getForm();
 
-        [TestFixtureSetUp]
+        [SetUp]
         public virtual void setUp()
         {
             testAssembly = Assembly.LoadFrom(getAssembly());
@@ -125,9 +125,11 @@ namespace NijnCoach_Test
             ConstructorInfo ctor = t.GetConstructor(pTypes);
             _testForm = ctor.Invoke(getParameters()) as Form;
             ThreadPool.QueueUserWorkItem(new WaitCallback(RunApp), _testForm);
+            while (!_testForm.IsHandleCreated)
+                ;
         }
 
-        [TestFixtureTearDown]
+        [TearDown]
         public virtual void tearDown()
         {
             if (_testForm != null)
