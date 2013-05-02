@@ -18,11 +18,17 @@ namespace WindowsFormsApplication1
 
     public partial class Form1 : Form
     {
-        //houdt het aantal vragen bij
+        /// <summary>
+        /// houdt het aantal vragen bij
+        /// </summary>
         int questions = 0;
-        //houdt het aantal opties dat de multiplechoice vraag nu bevat bij
+        /// <summary> 
+        /// houdt het aantal opties dat de multiplechoice vraag nu bevat bij
+        /// </summary>
         int opts = 2;
-        //houdt een lijst met alle vragen erin
+        /// <summary>
+        /// houdt een lijst met alle vragen erin
+        /// </summary>
         List<Question> list = new List<Question>();
       
         public Form1()
@@ -40,7 +46,11 @@ namespace WindowsFormsApplication1
 
         }
 
-        //slaat een vraag op en reset de velden als er op next question wordt geklikt
+        /// <summary>
+        /// slaat een vraag op en reset de velden als er op next question wordt geklikt
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
             if (textBox0.Text != "")
@@ -100,7 +110,11 @@ namespace WindowsFormsApplication1
             }
         }
 
-        //haalt alle opties voor multiple choice weg en reset de counter voor opties als er op open vraag wordt geklikt
+        /// <summary>
+        /// haalt alle opties voor multiple choice weg en reset de counter voor opties als er op open vraag wordt geklikt
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             #region buttons
@@ -141,7 +155,11 @@ namespace WindowsFormsApplication1
             opts = 2;
         }
 
-        //Laat de opties voor multiple choice als de radio voor multiple choice wordt aangklikt
+        /// <summary>
+        /// Laat de opties voor multiple choice als de radio voor multiple choice wordt aangklikt
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
             #region buttons
@@ -163,7 +181,11 @@ namespace WindowsFormsApplication1
             #endregion
         }
 
-        //haalt een multiplechoice optie weg als er op de knop "Remove" wordt geklikt
+        /// <summary>
+        /// haalt een multiplechoice optie weg als er op de knop "Remove" wordt geklikt
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button3_Click(object sender, EventArgs e)
         {
             switch (opts)
@@ -193,7 +215,11 @@ namespace WindowsFormsApplication1
             opts--;
         }
 
-        //voegt een multiplechoice optie toe als er op de knop "Add" wordt geklikt
+        /// <summary>
+        /// voegt een multiplechoice optie toe als er op de knop "Add" wordt geklikt
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
         {
             opts++;
@@ -312,7 +338,9 @@ namespace WindowsFormsApplication1
         }
         #endregion
         
-        //reset de velden bij een nieuwe vraag
+        /// <summary>
+        /// reset de velden bij een nieuwe vraag
+        /// </summary>
         private void reset()
         {
             #region textboxes
@@ -341,7 +369,9 @@ namespace WindowsFormsApplication1
 
     }
 
-    //klasse Question om de ingevulde vragen mee op te slaan
+    /// <summary>
+    /// klasse Question om de ingevulde vragen mee op te slaan
+    /// </summary>
     class Question
     {
         String type;
