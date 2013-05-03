@@ -1,0 +1,14 @@
+vergadering 2 mei 2013
+
+morgen demo
+
+code opsturen en emergent architecture design opsturen. < MOGEN DUS.
+
+DEMO :
+	XML aanmaken
+	uitlezen en invullen
+	verandering weergeven in therapeut GUI
+	
+	
+GUI's in 1 solution + code refactoring. Hugo + Willem
+Verder aan avatar: Koos, Elgar, Johnny
