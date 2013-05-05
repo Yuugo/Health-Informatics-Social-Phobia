@@ -18,10 +18,10 @@ namespace NijnCoach_Test
     [TestFixture]
     class TherapistGUITest : GuiTest
     {
-        private object[] _parameters = null;
-
+        private object[] _parameters = new Object[0];
         private String _assembly = "NijnCoach.exe";
         private String _form = "NijnCoach.TherapistGUI.Form1";
+        //private String _form = "NijnCoach.View.Questionnaire.QuestionnaireForm";
 
         public override object[] getParameters()
         {
@@ -41,16 +41,16 @@ namespace NijnCoach_Test
         [SetUp]
         public override void setUp()
         {
-           // Object theForm = new Form1();
-           // _parameters = new object[1] { new Form1() };
-           // base.setUp();
+            
+
+            base.setUp();
         }
 
         [Test]
         public void test1()
         {
-            object selectedRadioButton = GetProperty("radioButton1.Checked");
-            Assert.AreEqual(true, selectedRadioButton);
+            object commentText = GetProperty("labelH.Text");
+            Assert.AreEqual("home", commentText);
         }
 
 
