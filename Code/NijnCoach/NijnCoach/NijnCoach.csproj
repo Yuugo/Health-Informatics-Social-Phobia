@@ -53,10 +53,17 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Avatar\AvatarControl.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="TherapistGUI\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TherapistGUI\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Questionnaire\OpenQuestionPanel.cs">
       <SubType>Component</SubType>
@@ -102,16 +109,25 @@
     <Compile Include="XMLclasses\XMLParser.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="CookComputing.XmlRpcV2, Version=2.5.0.0, Culture=neutral, PublicKeyToken=a7d6e17aa302004d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\BlackBoard Documenten\GUIController\GUIController\CookComputing.XmlRpcV2.dll</HintPath>
+    </Reference>
     <Reference Include="MySql.Data, Version=6.6.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="MySql.Data.Entity, Version=6.6.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.XML" />
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CookComputing.XmlRpcV2.dll" />
     <Content Include="testXML.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -147,6 +163,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="TherapistGUI\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Questionnaire\OpenQuestionPanel.resx">
       <DependentUpon>OpenQuestionPanel.cs</DependentUpon>
     </EmbeddedResource>
@@ -165,6 +184,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="NijnCoach.Database.Database.NijnCoachEntities.datasource" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Database\" />
