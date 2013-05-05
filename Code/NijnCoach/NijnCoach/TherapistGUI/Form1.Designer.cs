@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApplication1
+﻿namespace NijnCoach
 {
     partial class Form1
     {

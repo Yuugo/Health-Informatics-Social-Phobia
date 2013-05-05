@@ -15,7 +15,7 @@ using NijnCoach;
 
 
 
-namespace WindowsFormsApplication1
+namespace NijnCoach
 {
     public partial class Form1 : Form
     {
@@ -205,12 +205,6 @@ namespace WindowsFormsApplication1
         {
             for (int i = 0; i < 9; i++) { texts[i].Text = ""; }
             for (int i = 0; i < 8; i++) { combos[i].Text = ""; }
-        }
-        private void eight(Boolean b)
-        {
-            label8.Visible = b;
-            textBox8.Visible = b;
-            comboBox8.Visible = b;
         }
     }
 
