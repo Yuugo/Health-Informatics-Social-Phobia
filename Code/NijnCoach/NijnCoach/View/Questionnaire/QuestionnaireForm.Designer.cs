@@ -38,6 +38,7 @@ namespace NijnCoach.View.Questionnaire
             this.buttonHome = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
             this.smile = new System.Windows.Forms.Button();
+            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.panelAvatar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -99,7 +100,7 @@ namespace NijnCoach.View.Questionnaire
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(6, 42);
+            this.buttonSave.Location = new System.Drawing.Point(6, 41);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(75, 23);
             this.buttonSave.TabIndex = 5;
@@ -115,7 +116,13 @@ namespace NijnCoach.View.Questionnaire
             this.smile.TabIndex = 6;
             this.smile.Text = "Smile";
             this.smile.UseVisualStyleBackColor = true;
+            this.smile.Visible = false;
             this.smile.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.FileName = "openFileDialog1";
+            this.openFileDialog.Filter = "XML Files(*.xml)|*.xml";
             // 
             // QuestionnaireForm
             // 
@@ -132,8 +139,8 @@ namespace NijnCoach.View.Questionnaire
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.Name = "QuestionnaireForm";
-            this.Text = "QuestionnaireForm";
-            this.Load += new System.EventHandler(this.QuestionnaireForm_Load);
+            this.Text = "Questionnaire";
+            this.TopMost = true;
             this.panelAvatar.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -150,6 +157,7 @@ namespace NijnCoach.View.Questionnaire
         private System.Windows.Forms.Button buttonHome;
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.Button smile;
+        private System.Windows.Forms.OpenFileDialog openFileDialog;
     }
 }
 
