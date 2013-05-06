@@ -40,17 +40,16 @@ namespace NijnCoach_Test
         [SetUp]
         public override void setUp()
         {
-            
-
             base.setUp();
         }
 
         [Test]
-        public void test1()
+        public void testForCorrectRadioButtonChecked()
         {
-            object commentText = GetProperty("radioButton1.Checked");
-            Assert.AreEqual(true, commentText);
+            Assert.AreEqual(true, GetProperty("radioButton1.Checked"));
         }
+
+
 
 
     }
