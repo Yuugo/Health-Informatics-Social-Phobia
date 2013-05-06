@@ -124,5 +124,7 @@ namespace NijnCoach.Avatar
             IStateName proxy = (IStateName)XmlRpcProxyGen.Create(typeof(IStateName));
             proxy.myanimation2();
         }
+
+
     }
 }

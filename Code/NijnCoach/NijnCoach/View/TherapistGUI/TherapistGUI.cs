@@ -15,32 +15,21 @@ using NijnCoach;
 
 
 
-namespace NijnCoach.View.TherapistGUI
+namespace WindowsFormsApplication1
 {
-    public partial class TherapistGUI : Form
+    public partial class Form1 : Form
     {
         //houdt het aantal opties dat de multiplechoice vraag nu bevat bij
+        int opts = 2;
         //houdt een lijst met alle vragen erin
         List<TextBox> texts = new List<TextBox>();
         List<Label> labels = new List<Label>();
         List<ComboBox> combos = new List<ComboBox>();
         List<Button> buttons = new List<Button>();
-        NijnCoach.XMLclasses.Questionnaire q = new NijnCoach.XMLclasses.Questionnaire();
+        Questionnaire q = new Questionnaire();
         
-        /// <summary>
-        /// houdt het aantal vragen bij
-        /// </summary>
-        int questions = 0;
-        /// <summary> 
-        /// houdt het aantal opties dat de multiplechoice vraag nu bevat bij
-        /// </summary>
-        int opts = 2;
-        /// <summary>
-        /// houdt een lijst met alle vragen erin
-        /// </summary>
-        List<Question> list = new List<Question>();
-      
-        public TherapistGUI()
+
+        public Form1()
         {
             InitializeComponent();
 
@@ -61,21 +50,13 @@ namespace NijnCoach.View.TherapistGUI
 
         }
 
-        /// <summary>
-        /// slaat een vraag op en reset de velden als er op next question wordt geklikt
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        //slaat een vraag op en reset de velden als er op next question wordt geklikt
         private void button1_Click(object sender, EventArgs e)
         {
             addQuestion();
         }
 
-        /// <summary>
-        /// haalt alle opties voor multiple choice weg en reset de counter voor opties als er op open vraag wordt geklikt
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        //haalt alle opties voor multiple choice weg en reset de counter voor opties als er op open vraag wordt geklikt
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             labelQ.Text = "Question";
@@ -88,11 +69,6 @@ namespace NijnCoach.View.TherapistGUI
 
 
         //Laat de opties voor multiple choice als de radio voor multiple choice wordt aangklikt
-        /// <summary>
-        /// Laat de opties voor multiple choice als de radio voor multiple choice wordt aangklikt
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
             labelQ.Text = "Question";
@@ -113,11 +89,7 @@ namespace NijnCoach.View.TherapistGUI
             opts = 2;
         }
 
-        /// <summary>
-        /// haalt een multiplechoice optie weg als er op de knop "Remove" wordt geklikt
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        //haalt een multiplechoice optie weg als er op de knop "Remove" wordt geklikt
         private void button3_Click(object sender, EventArgs e)
         {
 
@@ -132,11 +104,7 @@ namespace NijnCoach.View.TherapistGUI
 
         }
 
-        /// <summary>
-        /// voegt een multiplechoice optie toe als er op de knop "Add" wordt geklikt
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        //voegt een multiplechoice optie toe als er op de knop "Add" wordt geklikt
         private void button2_Click(object sender, EventArgs e)
         {
             if (opts < 8)
@@ -157,7 +125,7 @@ namespace NijnCoach.View.TherapistGUI
             saveFileDialog1.ShowDialog();
 
             q.version = 1.00;
-            q.head = new NijnCoach.XMLclasses.Questionnaire.Header
+            q.head = new Questionnaire.Header
             {
                 createdBy = "Me",
                 dateCreated = new DateTime(),
@@ -166,7 +134,7 @@ namespace NijnCoach.View.TherapistGUI
             };
             
             XMLParser xpars = new XMLParser();
-            xpars.writeXMLToFile(q, saveFileDialog1.FileName);
+            xpars.writeXML(q, saveFileDialog1.FileName);
 
         }
 
@@ -179,7 +147,7 @@ namespace NijnCoach.View.TherapistGUI
 
                 if (radioButton1.Checked == true)
                 {
-                    q.entries.Add(new OpenQuestion { question = textBox0.Text, theAnswer = "" });
+                    q.entries.Add(new OpenQuestion { question = textBox0.Text, audio = textBox9.Text, theAnswer = "" });
                 }
                 if (radioButton2.Checked == true)
                 {
@@ -189,12 +157,12 @@ namespace NijnCoach.View.TherapistGUI
                         opties.Add(new Option { tag = Convert.ToChar(65 + i).ToString(), answer = texts[i].Text, emotion = combos[i].Text });
                     }
 
-                    q.entries.Add(new MCQuestion { question = textBox0.Text, options = opties, theAnswer = "" });
+                    q.entries.Add(new MCQuestion { question = textBox0.Text, audio = textBox9.Text, options = opties, theAnswer = "" });
                 }
 
                 if (radioButton3.Checked == true)
                 {
-                    q.entries.Add(new Comment { value = textBox0.Text, emotion = comboBox1.Text });
+                    q.entries.Add(new Comment { value = textBox0.Text, audio = textBox9.Text, emotion = comboBox1.Text });
                 }
                 reset();
             }
@@ -206,41 +174,15 @@ namespace NijnCoach.View.TherapistGUI
             for (int i = 0; i < 9; i++) { texts[i].Text = ""; }
             for (int i = 0; i < 8; i++) { combos[i].Text = ""; }
         }
-    }
 
-    /// <summary>
-    /// klasse Question om de ingevulde vragen mee op te slaan
-    /// </summary>
-    class Question
-    {
-        String type;
-        String question;
-        int options;
-        List<String> answers;
-        List<String> emotions;
-
-        public Question()
+        private void button4_Click(object sender, EventArgs e)
         {
-            type = "";
-            question = "";
-            options = 0;
-            answers = new List<String>();
-            emotions = new List<String>();
-
-        }
-
-        public Question(String typ, String quest, int opt, List<String> ans, List<String> emo)
-        {
-            type = typ;
-            question = quest;
-            options = opt;
-            answers = ans;
-            emotions = emo;
-        }
-
-        public String getType()
-        {
-            return type;
+            openFileDialog1.ShowDialog();
+            string[] name = null;
+            //split de bestandnaam in stukken zodat alleen de naam van het bestand overblijft
+            name = openFileDialog1.ToString().Split('\\');
+            textBox9.Text = name.Last();
+            //upload openFileDialog1.Text to server
         }
 
         
