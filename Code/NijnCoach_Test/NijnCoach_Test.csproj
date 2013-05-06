@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TherapistGUITest.cs" />
     <Compile Include="GuiTest.cs" />
     <Compile Include="PatientQuestionnaireGUITest.cs" />
     <Compile Include="Program.cs" />
