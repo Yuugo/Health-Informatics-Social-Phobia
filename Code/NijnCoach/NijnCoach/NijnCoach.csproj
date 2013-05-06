@@ -59,11 +59,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="TherapistGUI\Form1.cs">
+    <Compile Include="View\TherapistGUI\TherapistGUI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TherapistGUI\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="View\TherapistGUI\TherapistGUI.Designer.cs">
+      <DependentUpon>TherapistGUI.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Questionnaire\OpenQuestionPanel.cs">
       <SubType>Component</SubType>
@@ -163,8 +163,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="TherapistGUI\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="View\TherapistGUI\TherapistGUI.resx">
+      <DependentUpon>TherapistGUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Questionnaire\OpenQuestionPanel.resx">
       <DependentUpon>OpenQuestionPanel.cs</DependentUpon>

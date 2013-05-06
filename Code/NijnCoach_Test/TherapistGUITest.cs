@@ -20,8 +20,7 @@ namespace NijnCoach_Test
     {
         private object[] _parameters = new Object[0];
         private String _assembly = "NijnCoach.exe";
-        private String _form = "NijnCoach.TherapistGUI.Form1";
-        //private String _form = "NijnCoach.View.Questionnaire.QuestionnaireForm";
+        private String _form = "NijnCoach.View.TherapistGUI.TherapistGUI";
 
         public override object[] getParameters()
         {
@@ -49,8 +48,8 @@ namespace NijnCoach_Test
         [Test]
         public void test1()
         {
-            object commentText = GetProperty("labelH.Text");
-            Assert.AreEqual("home", commentText);
+            object commentText = GetProperty("radioButton1.Checked");
+            Assert.AreEqual(true, commentText);
         }
 
 
