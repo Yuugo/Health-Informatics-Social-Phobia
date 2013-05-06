@@ -7,5 +7,6 @@ namespace NijnCoach.Database
 {
     class DBconnect
     {
+        
     }
 }

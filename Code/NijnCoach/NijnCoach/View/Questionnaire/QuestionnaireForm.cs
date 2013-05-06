@@ -16,11 +16,15 @@ namespace NijnCoach.View.Questionnaire
     {
         private XMLclasses.Questionnaire questionnaire;
         private int currentQuestion = 0;
-        public QuestionnaireForm(XMLclasses.Questionnaire questionnaire)
+        public QuestionnaireForm()
         {
-            Debug.Assert(questionnaire.entries.Count > 0, "The number of entries in the questionnaire should at least be 1");
-            this.questionnaire = questionnaire;
+            //Debug.Assert(questionnaire.entries.Count > 0, "The number of entries in the questionnaire should at least be 1");
+            XMLParser parser = new XMLParser();            
             InitializeComponent();
+            
+            openFileDialog.ShowDialog();
+            
+            this.questionnaire = parser.readXMLFromFile(openFileDialog.FileName);
             initControls();
         }
 
@@ -93,14 +97,9 @@ namespace NijnCoach.View.Questionnaire
             panelQuestion.ResumeLayout();
         }
 
-        private void QuestionnaireForm_Load(object sender, EventArgs e)
-        {
-            
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
-            Avatar.AvatarControl.happy();
+            //Avatar.AvatarControl.happy();
         }
 
         private void panelAvatar_Paint(object sender, PaintEventArgs e)

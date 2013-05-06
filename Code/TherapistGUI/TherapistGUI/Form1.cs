@@ -19,32 +19,16 @@ namespace WindowsFormsApplication1
 {
     public partial class Form1 : Form
     {
-<<<<<<< HEAD
-        //houdt het aantal opties dat de multiplechoice vraag nu bevat bij
+        /// <summary> 
+        /// houdt het aantal opties dat de multiplechoice vraag nu bevat bij
+        /// </summary>
         int opts = 2;
-        //houdt een lijst met alle vragen erin
         List<TextBox> texts = new List<TextBox>();
         List<Label> labels = new List<Label>();
         List<ComboBox> combos = new List<ComboBox>();
         List<Button> buttons = new List<Button>();
         Questionnaire q = new Questionnaire();
-        
-
-=======
-        /// <summary>
-        /// houdt het aantal vragen bij
-        /// </summary>
-        int questions = 0;
-        /// <summary> 
-        /// houdt het aantal opties dat de multiplechoice vraag nu bevat bij
-        /// </summary>
-        int opts = 2;
-        /// <summary>
-        /// houdt een lijst met alle vragen erin
-        /// </summary>
-        List<Question> list = new List<Question>();
       
->>>>>>> refs/heads/DBConnect
         public Form1()
         {
             InitializeComponent();
@@ -59,11 +43,6 @@ namespace WindowsFormsApplication1
             combos = new List<ComboBox>() { comboBox1, comboBox2, comboBox3, comboBox4, comboBox5, comboBox6, comboBox7, comboBox8 };
             buttons = new List<Button>() { button2, button3 };
             q.entries = new ListOfIEntry();
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
         }
 
         /// <summary>
@@ -91,16 +70,12 @@ namespace WindowsFormsApplication1
             opts = 2;
         }
 
-<<<<<<< HEAD
 
-        //Laat de opties voor multiple choice als de radio voor multiple choice wordt aangklikt
-=======
         /// <summary>
         /// Laat de opties voor multiple choice als de radio voor multiple choice wordt aangklikt
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
->>>>>>> refs/heads/DBConnect
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
             labelQ.Text = "Question";
@@ -110,7 +85,11 @@ namespace WindowsFormsApplication1
             for (int i = 0; i < 2; i++) { buttons[i].Visible = true; }
         }
 
-        //haalt alle opties voor multiple choice weg en reset de counter voor opties als er op comment wordt geklikt
+        /// <summary>
+        /// haalt alle opties voor multiple choice weg en reset de counter voor opties als er op comment wordt geklikt
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void radioButton3_CheckedChanged_1(object sender, EventArgs e)
         {
             labelQ.Text = "Comment";
@@ -128,7 +107,6 @@ namespace WindowsFormsApplication1
         /// <param name="e"></param>
         private void button3_Click(object sender, EventArgs e)
         {
-
             if (opts > 2)
             {
                 opts--;
@@ -136,8 +114,6 @@ namespace WindowsFormsApplication1
                 combos[opts].Visible = false;
                 labels[opts + 1].Visible = false;
             }
-
-
         }
 
         /// <summary>
@@ -154,8 +130,6 @@ namespace WindowsFormsApplication1
                 labels[opts + 1].Visible = true;
                 opts++;
             }
-
-
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -178,7 +152,9 @@ namespace WindowsFormsApplication1
 
         }
 
-        //voegt nieuwe vraag toe aan lijst als vrragentextbox niet leeg is
+        /// <summary>
+        /// Voegt nieuwe vraag toe aan lijst als vrragentextbox niet leeg is.
+        /// </summary>
         private void addQuestion()
         {
             //doe niets als vraag leeg is
@@ -208,89 +184,13 @@ namespace WindowsFormsApplication1
             }
         }
 
-<<<<<<< HEAD
-        //reset de velden bij een nieuwe vraag
-        private void reset()
-        {
-            for (int i = 0; i < 9; i++) { texts[i].Text = ""; }
-            for (int i = 0; i < 8; i++) { combos[i].Text = ""; }
-=======
-        private void eight(Boolean b)
-        {
-            label8.Visible = b;
-            textBox8.Visible = b;
-            comboBox8.Visible = b;
-        }
-        #endregion
-        
         /// <summary>
         /// reset de velden bij een nieuwe vraag
         /// </summary>
         private void reset()
         {
-            #region textboxes
-            textBox0.Text = "";
-            textBox1.Text = "";
-            textBox2.Text = "";
-            textBox3.Text = "";
-            textBox4.Text = "";
-            textBox5.Text = "";
-            textBox6.Text = "";
-            textBox7.Text = "";
-            textBox8.Text = "";
-            #endregion
-            #region comboboxes
-            comboBox1.Text = "";
-            comboBox2.Text = "";
-            comboBox3.Text = "";
-            comboBox4.Text = "";
-            comboBox5.Text = "";
-            comboBox6.Text = "";
-            comboBox7.Text = "";
-            comboBox8.Text = "";
-            #endregion
-
+            for (int i = 0; i < 9; i++) { texts[i].Text = ""; }
+            for (int i = 0; i < 8; i++) { combos[i].Text = ""; }
         }
-
-    }
-
-    /// <summary>
-    /// klasse Question om de ingevulde vragen mee op te slaan
-    /// </summary>
-    class Question
-    {
-        String type;
-        String question;
-        int options;
-        List<String> answers;
-        List<String> emotions;
-
-        public Question()
-        {
-            type = "";
-            question = "";
-            options = 0;
-            answers = new List<String>();
-            emotions = new List<String>();
-
-        }
-
-        public Question(String typ, String quest, int opt, List<String> ans, List<String> emo)
-        {
-            type = typ;
-            question = quest;
-            options = opt;
-            answers = ans;
-            emotions = emo;
-        }
-
-        public String getType()
-        {
-            return type;
->>>>>>> refs/heads/DBConnect
-        }
-
-        
-
     }
 }

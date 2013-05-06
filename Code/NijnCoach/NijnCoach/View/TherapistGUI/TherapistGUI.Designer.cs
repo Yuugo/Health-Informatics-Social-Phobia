@@ -1,6 +1,6 @@
-﻿namespace NijnCoach
+﻿namespace NijnCoach.View.TherapistGUI
 {
-    partial class Form1
+    partial class TherapistGUI
     {
         /// <summary>
         /// Required designer variable.

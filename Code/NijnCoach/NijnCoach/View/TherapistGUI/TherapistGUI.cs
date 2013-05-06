@@ -15,9 +15,9 @@ using NijnCoach;
 
 
 
-namespace NijnCoach
+namespace NijnCoach.View.TherapistGUI
 {
-    public partial class Form1 : Form
+    public partial class TherapistGUI : Form
     {
         //houdt het aantal opties dat de multiplechoice vraag nu bevat bij
         //houdt een lijst met alle vragen erin
@@ -25,7 +25,7 @@ namespace NijnCoach
         List<Label> labels = new List<Label>();
         List<ComboBox> combos = new List<ComboBox>();
         List<Button> buttons = new List<Button>();
-        Questionnaire q = new Questionnaire();
+        NijnCoach.XMLclasses.Questionnaire q = new NijnCoach.XMLclasses.Questionnaire();
         
         /// <summary>
         /// houdt het aantal vragen bij
@@ -40,7 +40,7 @@ namespace NijnCoach
         /// </summary>
         List<Question> list = new List<Question>();
       
-        public Form1()
+        public TherapistGUI()
         {
             InitializeComponent();
 
@@ -157,7 +157,7 @@ namespace NijnCoach
             saveFileDialog1.ShowDialog();
 
             q.version = 1.00;
-            q.head = new Questionnaire.Header
+            q.head = new NijnCoach.XMLclasses.Questionnaire.Header
             {
                 createdBy = "Me",
                 dateCreated = new DateTime(),
