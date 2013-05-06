@@ -1,24 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!--This file represents the results of running a test suite-->
-<test-results name="\\vmware-host\Shared Folders\Documenten\Health-Informatics-Social-Phobia\Code\NijnCoach_Test\NijnCoach_Test.csproj" total="1" errors="1" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2013-05-06" time="12:08:32">
+<test-results name="\\vmware-host\Shared Folders\Documenten\Health-Informatics-Social-Phobia\Code\NijnCoach_Test\NijnCoach_Test.csproj" total="7" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2013-05-06" time="12:20:12">
   <environment nunit-version="2.6.2.12296" clr-version="2.0.50727.5466" os-version="Microsoft Windows NT 6.1.7601 Service Pack 1" platform="Win32NT" cwd="\\vmware-host\Shared Folders\Documenten\Health-Informatics-Social-Phobia\Code\NijnCoach_Test\bin\Debug" machine-name="VIRTUALWINDOWS" user="Johnny Verhoeff" user-domain="VirtualWindows" />
   <culture-info current-culture="en-US" current-uiculture="en-US" />
-  <test-suite type="Project" name="\\vmware-host\Shared Folders\Documenten\Health-Informatics-Social-Phobia\Code\NijnCoach_Test\NijnCoach_Test.csproj" executed="True" result="Failure" success="False" time="0.031" asserts="0">
+  <test-suite type="Project" name="\\vmware-host\Shared Folders\Documenten\Health-Informatics-Social-Phobia\Code\NijnCoach_Test\NijnCoach_Test.csproj" executed="True" result="Success" success="True" time="0.796" asserts="0">
     <results>
-      <test-suite type="Assembly" name="\\vmware-host\Shared Folders\Documenten\Health-Informatics-Social-Phobia\Code\NijnCoach_Test\bin\Debug\NijnCoach_Test.exe" executed="True" result="Failure" success="False" time="0.016" asserts="0">
+      <test-suite type="Assembly" name="\\vmware-host\Shared Folders\Documenten\Health-Informatics-Social-Phobia\Code\NijnCoach_Test\bin\Debug\NijnCoach_Test.exe" executed="True" result="Success" success="True" time="0.780" asserts="0">
         <results>
-          <test-suite type="Namespace" name="NijnCoach_Test" executed="True" result="Failure" success="False" time="0.016" asserts="0">
+          <test-suite type="Namespace" name="NijnCoach_Test" executed="True" result="Success" success="True" time="0.780" asserts="0">
             <results>
-              <test-suite type="TestFixture" name="PatientQuestionnaireGUITest" executed="True" result="Failure" success="False" time="0.016" asserts="0">
+              <test-suite type="TestFixture" name="XMLParserTest" executed="True" result="Success" success="True" time="0.780" asserts="0">
                 <results>
-                  <test-case name="NijnCoach_Test.PatientQuestionnaireGUITest.commentTest" executed="True" result="Error" success="False" time="0.000" asserts="0">
-                    <failure>
-                      <message><![CDATA[SetUp : System.NullReferenceException : Object reference not set to an instance of an object.]]></message>
-                      <stack-trace><![CDATA[at NijnCoach_Test.GuiTest.setUp() in \\vmware-host\Shared Folders\Documenten\Health-Informatics-Social-Phobia\Code\NijnCoach_Test\GuiTest.cs:line 126
-at NijnCoach_Test.PatientQuestionnaireGUITest.setUp() in \\vmware-host\Shared Folders\Documenten\Health-Informatics-Social-Phobia\Code\NijnCoach_Test\PatientQuestionnaireGUITest.cs:line 47
-]]></stack-trace>
-                    </failure>
-                  </test-case>
+                  <test-case name="NijnCoach_Test.XMLParserTest.commentTest" executed="True" result="Success" success="True" time="0.515" asserts="5" />
+                  <test-case name="NijnCoach_Test.XMLParserTest.emptyQuestionnaireTest" executed="True" result="Success" success="True" time="0.000" asserts="6" />
+                  <test-case name="NijnCoach_Test.XMLParserTest.invalidFileTest" executed="True" result="Success" success="True" time="0.000" asserts="0" />
+                  <test-case name="NijnCoach_Test.XMLParserTest.invalidXMLTest" executed="True" result="Success" success="True" time="0.016" asserts="0" />
+                  <test-case name="NijnCoach_Test.XMLParserTest.mcQuestionOptionsTest" executed="True" result="Success" success="True" time="0.125" asserts="11" />
+                  <test-case name="NijnCoach_Test.XMLParserTest.mcQuestionTest" executed="True" result="Success" success="True" time="0.000" asserts="4" />
+                  <test-case name="NijnCoach_Test.XMLParserTest.openQuestionTest" executed="True" result="Success" success="True" time="0.094" asserts="4" />
                 </results>
               </test-suite>
             </results>

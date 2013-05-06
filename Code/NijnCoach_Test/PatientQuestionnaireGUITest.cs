@@ -43,7 +43,7 @@ namespace NijnCoach_Test
         {
             parser = new XMLParser();
             Questionnaire theForm = parser.readXMLFromFile(xmlFile);
-            _parameters = new object[1] {theForm};
+            _parameters = new object[1] { theForm };
             base.setUp();
         }
 
