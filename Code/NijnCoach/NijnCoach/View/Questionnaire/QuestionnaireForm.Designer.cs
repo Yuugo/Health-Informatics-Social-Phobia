@@ -115,6 +115,7 @@ namespace NijnCoach.View.Questionnaire
             this.smile.TabIndex = 6;
             this.smile.Text = "Smile";
             this.smile.UseVisualStyleBackColor = true;
+            this.smile.Visible = false;
             this.smile.Click += new System.EventHandler(this.button1_Click);
             // 
             // QuestionnaireForm

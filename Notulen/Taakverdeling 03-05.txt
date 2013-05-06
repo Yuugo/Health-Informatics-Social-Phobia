@@ -1,0 +1,10 @@
+Exposure data lezen/weergeven
+	-elgar
+Communication server
+	-hugo
+Avatar
+	-koos
+Audio
+	-willem
+GUI testing
+	-johnny
