@@ -25,7 +25,7 @@ namespace NijnCoach_Test
             clickOnOpenQuestion();
             clickOnMCradioButton();
             clickOnOpenQuestion();
-            base.clickOnOpenQuestion();
+            base.clickOnCommentradioButton();
         }
     }
 }

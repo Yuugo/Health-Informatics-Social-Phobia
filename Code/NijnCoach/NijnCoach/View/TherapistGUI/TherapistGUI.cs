@@ -15,9 +15,9 @@ using NijnCoach;
 
 
 
-namespace WindowsFormsApplication1
+namespace NijnCoach.View.TherapistGUI
 {
-    public partial class Form1 : Form
+    public partial class TherapistGUI : Form
     {
         //houdt het aantal opties dat de multiplechoice vraag nu bevat bij
         int opts = 2;
@@ -26,10 +26,10 @@ namespace WindowsFormsApplication1
         List<Label> labels = new List<Label>();
         List<ComboBox> combos = new List<ComboBox>();
         List<Button> buttons = new List<Button>();
-        Questionnaire q = new Questionnaire();
+        NijnCoach.XMLclasses.Questionnaire q = new NijnCoach.XMLclasses.Questionnaire();
         
 
-        public Form1()
+        public TherapistGUI()
         {
             InitializeComponent();
 
@@ -125,7 +125,7 @@ namespace WindowsFormsApplication1
             saveFileDialog1.ShowDialog();
 
             q.version = 1.00;
-            q.head = new Questionnaire.Header
+            q.head = new NijnCoach.XMLclasses.Questionnaire.Header
             {
                 createdBy = "Me",
                 dateCreated = new DateTime(),
@@ -134,7 +134,7 @@ namespace WindowsFormsApplication1
             };
             
             XMLParser xpars = new XMLParser();
-            xpars.writeXML(q, saveFileDialog1.FileName);
+            xpars.writeXMLToFile(q, saveFileDialog1.FileName);
 
         }
 
@@ -147,7 +147,7 @@ namespace WindowsFormsApplication1
 
                 if (radioButton1.Checked == true)
                 {
-                    q.entries.Add(new OpenQuestion { question = textBox0.Text, audio = textBox9.Text, theAnswer = "" });
+                    q.entries.Add(new OpenQuestion { question = textBox0.Text, /*audio = textBox9.Text, */theAnswer = "" });
                 }
                 if (radioButton2.Checked == true)
                 {
@@ -157,12 +157,12 @@ namespace WindowsFormsApplication1
                         opties.Add(new Option { tag = Convert.ToChar(65 + i).ToString(), answer = texts[i].Text, emotion = combos[i].Text });
                     }
 
-                    q.entries.Add(new MCQuestion { question = textBox0.Text, audio = textBox9.Text, options = opties, theAnswer = "" });
+                    q.entries.Add(new MCQuestion { question = textBox0.Text, /*audio = textBox9.Text,*/ options = opties, theAnswer = "" });
                 }
 
                 if (radioButton3.Checked == true)
                 {
-                    q.entries.Add(new Comment { value = textBox0.Text, audio = textBox9.Text, emotion = comboBox1.Text });
+                    q.entries.Add(new Comment { value = textBox0.Text, /*audio = textBox9.Text, */emotion = comboBox1.Text });
                 }
                 reset();
             }

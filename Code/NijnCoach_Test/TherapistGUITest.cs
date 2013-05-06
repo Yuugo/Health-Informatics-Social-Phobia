@@ -41,6 +41,7 @@ namespace NijnCoach_Test
         [SetUp]
         public override void setUp()
         {
+            //Application.Run(new TherapistGUI());
             base.setUp();
         }
 
@@ -153,8 +154,9 @@ namespace NijnCoach_Test
         [Test]
         public void testForInvisibleAnswerEmotionLabelinOpen()
         {
+            // there should be 2 seperate labels and answer label should be invisible, and emotion label should be visible
             clickOnOpenQuestion();
-            Assert.IsFalse((bool) GetProperty("label0.Visible"));
+            Assert.IsTrue((bool) GetProperty("label0.Visible"));
         }
 
         [Test]
@@ -186,10 +188,17 @@ namespace NijnCoach_Test
         }
 
         [Test]
+        public void testForVisibleEmotionComboBoxinOpen()
+        {
+            clickOnOpenQuestion();
+            checkForVisibleEmotionComboBoxToNumber(1);
+        }
+
+        [Test]
         public void testForInvisibleEmotionComboBoxinOpen()
         {
             clickOnOpenQuestion();
-            checkForInVisibleEmotionComboBoxFromNumber(1);
+            checkForInVisibleEmotionComboBoxFromNumber(2);
         }
 
         #endregion
@@ -344,8 +353,9 @@ namespace NijnCoach_Test
         [Test]
         public void testForInvisibleAnswerEmotionLabelinComment()
         {
+            // there should be 2 seperate labels and answer label should be invisible, and emotion label should be visible
             clickOnCommentradioButton();
-            Assert.IsFalse((bool)GetProperty("label0.Visible"));
+            Assert.IsTrue((bool)GetProperty("label0.Visible"));
         }
 
         [Test]
@@ -377,10 +387,17 @@ namespace NijnCoach_Test
         }
 
         [Test]
+        public void testForVisibleEmotionComboBoxInComment()
+        {
+            clickOnCommentradioButton();
+            checkForVisibleEmotionComboBoxToNumber(1);
+        }
+
+        [Test]
         public void testForInvisibleEmotionComboBoxinComment()
         {
             clickOnCommentradioButton();
-            checkForInVisibleEmotionComboBoxFromNumber(1);
+            checkForInVisibleEmotionComboBoxFromNumber(2);
         }
 
         #endregion
