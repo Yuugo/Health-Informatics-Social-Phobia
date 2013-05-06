@@ -16,12 +16,15 @@ using NijnCoach.View.TherapistGUI;
 namespace NijnCoach_Test
 {
     [TestFixture]
-    class Class1 : TherapistGUITest
+    class TherapistGUITestOpenViaCommentAndMC : TherapistGUITest
     {
 
         public override void clickOnOpenQuestion()
         {
             clickOnMCradioButton();
+            clickOnCommentradioButton();
+            clickOnMCradioButton();
+            clickOnCommentradioButton();
             base.clickOnOpenQuestion();
         }
     }

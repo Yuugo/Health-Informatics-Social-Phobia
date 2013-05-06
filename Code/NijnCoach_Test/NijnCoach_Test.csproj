@@ -55,7 +55,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="TherapistGUITestMCViaOpenAndComment.cs" />
+    <Compile Include="TherapistGUITestCommentViaOpenAndMC.cs" />
+    <Compile Include="TherapistGUITestOpenViaCommentAndMC.cs" />
     <Compile Include="TherapistGUITest.cs" />
     <Compile Include="GuiTest.cs" />
     <Compile Include="PatientQuestionnaireGUITest.cs" />

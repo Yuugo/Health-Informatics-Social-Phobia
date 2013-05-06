@@ -41,7 +41,6 @@ namespace NijnCoach_Test
         [SetUp]
         public override void setUp()
         {
-            Application.Run(new TherapistGUI());
             base.setUp();
         }
 
