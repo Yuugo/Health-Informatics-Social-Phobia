@@ -119,13 +119,13 @@ namespace NijnCoach_Test
         }
 
 
-        [Ignore]
+        /*[Ignore]
         [Test]
         public void testForFinishQuestionWithoutQuestions()
         {
             RaiseEvent("button5", "Click", new EventArgs());
             Assert.IsTrue(true);
-        }
+        }*/
 
         #region Tests For Open Question
 

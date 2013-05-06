@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <VisualState xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ShowCheckBoxes="false">
-  <TopNode>[0-1108]NijnCoach_Test.PatientQuestionnaireGUITest</TopNode>
-  <SelectedNode>[0-1028]NijnCoach_Test.TherapistGUITest.testForInvisibleAnswerEmotionLabelinComment</SelectedNode>
+  <TopNode>[0-1000]\\vmware-host\Shared Folders\Documenten\Health-Informatics-Social-Phobia\Code\NijnCoach_Test\NijnCoach_Test.csproj</TopNode>
+  <SelectedNode>[0-1112]NijnCoach_Test.PatientQuestionnaireGUITest.commentTest</SelectedNode>
   <ExcludeCategories>false</ExcludeCategories>
   <Nodes>
     <Node UniqueName="[0-1000]\\vmware-host\Shared Folders\Documenten\Health-Informatics-Social-Phobia\Code\NijnCoach_Test\NijnCoach_Test.csproj" Expanded="true" />
-    <Node UniqueName="[0-1146]\\vmware-host\Shared Folders\Documenten\Health-Informatics-Social-Phobia\Code\NijnCoach_Test\bin\Debug\NijnCoach_Test.exe" Expanded="true" />
-    <Node UniqueName="[0-1147]NijnCoach_Test" Expanded="true" />
+    <Node UniqueName="[0-1150]\\vmware-host\Shared Folders\Documenten\Health-Informatics-Social-Phobia\Code\NijnCoach_Test\bin\Debug\NijnCoach_Test.exe" Expanded="true" />
+    <Node UniqueName="[0-1151]NijnCoach_Test" Expanded="true" />
+    <Node UniqueName="[0-1111]NijnCoach_Test.PatientQuestionnaireGUITest" Expanded="true" />
     <Node UniqueName="[0-1001]NijnCoach_Test.TherapistGUITest" Expanded="true" />
   </Nodes>
 </VisualState>

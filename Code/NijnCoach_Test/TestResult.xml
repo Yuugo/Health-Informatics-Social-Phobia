@@ -1,54 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <!--This file represents the results of running a test suite-->
-<test-results name="\\vmware-host\Shared Folders\Documenten\Health-Informatics-Social-Phobia\Code\NijnCoach_Test\NijnCoach_Test.csproj" total="33" errors="0" failures="0" not-run="1" inconclusive="0" ignored="1" skipped="0" invalid="0" date="2013-05-06" time="11:58:41">
+<test-results name="\\vmware-host\Shared Folders\Documenten\Health-Informatics-Social-Phobia\Code\NijnCoach_Test\NijnCoach_Test.csproj" total="1" errors="1" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2013-05-06" time="12:08:32">
   <environment nunit-version="2.6.2.12296" clr-version="2.0.50727.5466" os-version="Microsoft Windows NT 6.1.7601 Service Pack 1" platform="Win32NT" cwd="\\vmware-host\Shared Folders\Documenten\Health-Informatics-Social-Phobia\Code\NijnCoach_Test\bin\Debug" machine-name="VIRTUALWINDOWS" user="Johnny Verhoeff" user-domain="VirtualWindows" />
   <culture-info current-culture="en-US" current-uiculture="en-US" />
-  <test-suite type="Project" name="\\vmware-host\Shared Folders\Documenten\Health-Informatics-Social-Phobia\Code\NijnCoach_Test\NijnCoach_Test.csproj" executed="True" result="Success" success="True" time="2.792" asserts="0">
+  <test-suite type="Project" name="\\vmware-host\Shared Folders\Documenten\Health-Informatics-Social-Phobia\Code\NijnCoach_Test\NijnCoach_Test.csproj" executed="True" result="Failure" success="False" time="0.031" asserts="0">
     <results>
-      <test-suite type="Assembly" name="\\vmware-host\Shared Folders\Documenten\Health-Informatics-Social-Phobia\Code\NijnCoach_Test\bin\Debug\NijnCoach_Test.exe" executed="True" result="Success" success="True" time="2.777" asserts="0">
+      <test-suite type="Assembly" name="\\vmware-host\Shared Folders\Documenten\Health-Informatics-Social-Phobia\Code\NijnCoach_Test\bin\Debug\NijnCoach_Test.exe" executed="True" result="Failure" success="False" time="0.016" asserts="0">
         <results>
-          <test-suite type="Namespace" name="NijnCoach_Test" executed="True" result="Success" success="True" time="2.777" asserts="0">
+          <test-suite type="Namespace" name="NijnCoach_Test" executed="True" result="Failure" success="False" time="0.016" asserts="0">
             <results>
-              <test-suite type="TestFixture" name="TherapistGUITest" executed="True" result="Success" success="True" time="2.761" asserts="0">
+              <test-suite type="TestFixture" name="PatientQuestionnaireGUITest" executed="True" result="Failure" success="False" time="0.016" asserts="0">
                 <results>
-                  <test-case name="NijnCoach_Test.TherapistGUITest.testForCheckedMCradioButtonInMC" executed="True" result="Success" success="True" time="0.078" asserts="1" />
-                  <test-case name="NijnCoach_Test.TherapistGUITest.testForCorrectRadioButtonCheckedinComment" executed="True" result="Success" success="True" time="0.062" asserts="1" />
-                  <test-case name="NijnCoach_Test.TherapistGUITest.testForCorrectRadioButtonCheckedinOpen" executed="True" result="Success" success="True" time="0.078" asserts="1" />
-                  <test-case name="NijnCoach_Test.TherapistGUITest.testForEmptyQuestionBoxinComment" executed="True" result="Success" success="True" time="0.078" asserts="1" />
-                  <test-case name="NijnCoach_Test.TherapistGUITest.testForEmptyQuestionBoxinOpen" executed="True" result="Success" success="True" time="0.062" asserts="1" />
-                  <test-case name="NijnCoach_Test.TherapistGUITest.testForFinishQuestionWithoutQuestions" executed="False" result="Ignored">
-                    <reason>
-                      <message><![CDATA[]]></message>
-                    </reason>
+                  <test-case name="NijnCoach_Test.PatientQuestionnaireGUITest.commentTest" executed="True" result="Error" success="False" time="0.000" asserts="0">
+                    <failure>
+                      <message><![CDATA[SetUp : System.NullReferenceException : Object reference not set to an instance of an object.]]></message>
+                      <stack-trace><![CDATA[at NijnCoach_Test.GuiTest.setUp() in \\vmware-host\Shared Folders\Documenten\Health-Informatics-Social-Phobia\Code\NijnCoach_Test\GuiTest.cs:line 126
+at NijnCoach_Test.PatientQuestionnaireGUITest.setUp() in \\vmware-host\Shared Folders\Documenten\Health-Informatics-Social-Phobia\Code\NijnCoach_Test\PatientQuestionnaireGUITest.cs:line 47
+]]></stack-trace>
+                    </failure>
                   </test-case>
-                  <test-case name="NijnCoach_Test.TherapistGUITest.testForInvisibleAddButtoninComment" executed="True" result="Success" success="True" time="0.078" asserts="1" />
-                  <test-case name="NijnCoach_Test.TherapistGUITest.testForInvisibleAddButtoninOpen" executed="True" result="Success" success="True" time="0.078" asserts="1" />
-                  <test-case name="NijnCoach_Test.TherapistGUITest.testForInvisibleAnswerEmotionLabelinComment" executed="True" result="Success" success="True" time="0.078" asserts="1" />
-                  <test-case name="NijnCoach_Test.TherapistGUITest.testForInvisibleAnswerEmotionLabelinOpen" executed="True" result="Success" success="True" time="0.062" asserts="1" />
-                  <test-case name="NijnCoach_Test.TherapistGUITest.testForInvisibleEmotionComboBoxinComment" executed="True" result="Success" success="True" time="0.062" asserts="7" />
-                  <test-case name="NijnCoach_Test.TherapistGUITest.testForInVisibleEmotionComboBoxInMC" executed="True" result="Success" success="True" time="0.109" asserts="6" />
-                  <test-case name="NijnCoach_Test.TherapistGUITest.testForInvisibleEmotionComboBoxinOpen" executed="True" result="Success" success="True" time="0.062" asserts="7" />
-                  <test-case name="NijnCoach_Test.TherapistGUITest.testForInvisibleQuestionLabelsinComment" executed="True" result="Success" success="True" time="0.078" asserts="8" />
-                  <test-case name="NijnCoach_Test.TherapistGUITest.testForInVisibleQuestionLabelsInMC" executed="True" result="Success" success="True" time="0.078" asserts="6" />
-                  <test-case name="NijnCoach_Test.TherapistGUITest.testForInvisibleQuestionLabelsinOpen" executed="True" result="Success" success="True" time="0.062" asserts="8" />
-                  <test-case name="NijnCoach_Test.TherapistGUITest.testForInvisibleQuestionTextBoxesinComment" executed="True" result="Success" success="True" time="0.062" asserts="8" />
-                  <test-case name="NijnCoach_Test.TherapistGUITest.testForInVisibleQuestionTextBoxesInMC" executed="True" result="Success" success="True" time="0.078" asserts="6" />
-                  <test-case name="NijnCoach_Test.TherapistGUITest.testForInvisibleQuestionTextBoxesinOpen" executed="True" result="Success" success="True" time="0.078" asserts="8" />
-                  <test-case name="NijnCoach_Test.TherapistGUITest.testForInvisibleRemoveButtoninComment" executed="True" result="Success" success="True" time="0.062" asserts="1" />
-                  <test-case name="NijnCoach_Test.TherapistGUITest.testForInvisibleRemoveButtoninOpen" executed="True" result="Success" success="True" time="0.078" asserts="1" />
-                  <test-case name="NijnCoach_Test.TherapistGUITest.testForLabelQisCommentinComment" executed="True" result="Success" success="True" time="0.078" asserts="1" />
-                  <test-case name="NijnCoach_Test.TherapistGUITest.testForLabelQisQuestionInMC" executed="True" result="Success" success="True" time="0.062" asserts="1" />
-                  <test-case name="NijnCoach_Test.TherapistGUITest.testForLabelQisQuestioninOpen" executed="True" result="Success" success="True" time="0.078" asserts="1" />
-                  <test-case name="NijnCoach_Test.TherapistGUITest.testForVerifyWhenAddClickedInMC" executed="True" result="Success" success="True" time="0.094" asserts="24" />
-                  <test-case name="NijnCoach_Test.TherapistGUITest.testForVerifyWhenRemoveClickedWithThreeOptionsInMC" executed="True" result="Success" success="True" time="0.094" asserts="24" />
-                  <test-case name="NijnCoach_Test.TherapistGUITest.testForVerifyWhenRemoveClickedWithTwoOptionsInMC" executed="True" result="Success" success="True" time="0.094" asserts="24" />
-                  <test-case name="NijnCoach_Test.TherapistGUITest.testForVisibleAddButtonInMC" executed="True" result="Success" success="True" time="0.078" asserts="1" />
-                  <test-case name="NijnCoach_Test.TherapistGUITest.testForVisibleEmotionComboBoxInComment" executed="True" result="Success" success="True" time="0.062" asserts="1" />
-                  <test-case name="NijnCoach_Test.TherapistGUITest.testForVisibleEmotionComboBoxInMC" executed="True" result="Success" success="True" time="0.078" asserts="2" />
-                  <test-case name="NijnCoach_Test.TherapistGUITest.testForVisibleEmotionComboBoxinOpen" executed="True" result="Success" success="True" time="0.062" asserts="1" />
-                  <test-case name="NijnCoach_Test.TherapistGUITest.testForVisibleQuestionLabelsInMC" executed="True" result="Success" success="True" time="0.094" asserts="2" />
-                  <test-case name="NijnCoach_Test.TherapistGUITest.testForVisibleQuestionTextBoxesInMC" executed="True" result="Success" success="True" time="0.078" asserts="2" />
-                  <test-case name="NijnCoach_Test.TherapistGUITest.testForVisibleRemoveButtonInMC" executed="True" result="Success" success="True" time="0.078" asserts="1" />
                 </results>
               </test-suite>
             </results>
