@@ -8,8 +8,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NijnCoach_Test", "..\NijnCo
 		{635EAAD5-9B7D-4142-A403-EE96F9D55072} = {635EAAD5-9B7D-4142-A403-EE96F9D55072}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TherapistGUI", "..\TherapistGUI\TherapistGUI\TherapistGUI.csproj", "{5B9F0A85-1A6E-4377-BD65-D2FD9D63C416}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -24,10 +22,6 @@ Global
 		{FAB38338-6DB0-471F-ABBF-7637E94754EA}.Debug|x86.Build.0 = Debug|x86
 		{FAB38338-6DB0-471F-ABBF-7637E94754EA}.Release|x86.ActiveCfg = Release|x86
 		{FAB38338-6DB0-471F-ABBF-7637E94754EA}.Release|x86.Build.0 = Release|x86
-		{5B9F0A85-1A6E-4377-BD65-D2FD9D63C416}.Debug|x86.ActiveCfg = Debug|x86
-		{5B9F0A85-1A6E-4377-BD65-D2FD9D63C416}.Debug|x86.Build.0 = Debug|x86
-		{5B9F0A85-1A6E-4377-BD65-D2FD9D63C416}.Release|x86.ActiveCfg = Release|x86
-		{5B9F0A85-1A6E-4377-BD65-D2FD9D63C416}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
