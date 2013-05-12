@@ -11,7 +11,10 @@ namespace NijnCoach.XMLclasses
     {
         [XmlElement("question")]
         public String question { get; set; }
-        
+
+        [XmlElement("audio")]
+        public String audio { get; set; }
+
         //[XML] logic done inside the Answer class.
         public String theAnswer { get; set; }
     }

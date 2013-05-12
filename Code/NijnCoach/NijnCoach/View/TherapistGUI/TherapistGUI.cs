@@ -19,20 +19,20 @@ namespace NijnCoach.View.TherapistGUI
 {
     public partial class TherapistGUI : Form
     {
-        //houdt het aantal opties dat de multiplechoice vraag nu bevat bij
+       //houdt het aantal opties dat de multiplechoice vraag nu bevat bij
         int opts = 2;
+        bool empty = true;
         //houdt een lijst met alle vragen erin
         List<TextBox> texts = new List<TextBox>();
         List<Label> labels = new List<Label>();
         List<ComboBox> combos = new List<ComboBox>();
         List<Button> buttons = new List<Button>();
-        NijnCoach.XMLclasses.Questionnaire q = new NijnCoach.XMLclasses.Questionnaire();
+        Questionnaire q = new Questionnaire();
         
 
-        public TherapistGUI()
+        public Form1()
         {
             InitializeComponent();
-
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -61,7 +61,7 @@ namespace NijnCoach.View.TherapistGUI
         {
             labelQ.Text = "Question";
             for (int i = 0; i < 8; i++) { texts[i].Visible = false; }
-            for (int i = 1; i < 9; i++) { labels[i].Visible = false; }
+            for (int i = 0; i < 9; i++) { labels[i].Visible = false; }
             for (int i = 1; i < 8; i++) { combos[i].Visible = false; }
             for (int i = 0; i < 2; i++) { buttons[i].Visible = false; }
             opts = 2;
@@ -83,7 +83,7 @@ namespace NijnCoach.View.TherapistGUI
         {
             labelQ.Text = "Comment";
             for (int i = 0; i < 8; i++) { texts[i].Visible = false; }
-            for (int i = 1; i < 9; i++) { labels[i].Visible = false; }
+            for (int i = 0; i < 9; i++) { labels[i].Visible = false; }
             for (int i = 1; i < 8; i++) { combos[i].Visible = false; }
             for (int i = 0; i < 2; i++) { buttons[i].Visible = false; }
             opts = 2;
@@ -122,20 +122,22 @@ namespace NijnCoach.View.TherapistGUI
         {
             //neemt vraag op als deze er nog staat
             addQuestion();
-            saveFileDialog1.ShowDialog();
-
-            q.version = 1.00;
-            q.head = new NijnCoach.XMLclasses.Questionnaire.Header
+            if (empty == false)
             {
-                createdBy = "Me",
-                dateCreated = new DateTime(),
-                filledBy = "Him",
-                dateFilled = new DateTime()
-            };
-            
-            XMLParser xpars = new XMLParser();
-            xpars.writeXMLToFile(q, saveFileDialog1.FileName);
+                saveFileDialog1.ShowDialog();
 
+                q.version = 1.00;
+                q.head = new Questionnaire.Header
+                {
+                    createdBy = "Me",
+                    dateCreated = new DateTime(),
+                    filledBy = "Him",
+                    dateFilled = new DateTime()
+                };
+
+                XMLParser xpars = new XMLParser();
+                xpars.writeXML(q, saveFileDialog1.FileName);
+            }
         }
 
         //voegt nieuwe vraag toe aan lijst als vrragentextbox niet leeg is
@@ -147,7 +149,7 @@ namespace NijnCoach.View.TherapistGUI
 
                 if (radioButton1.Checked == true)
                 {
-                    q.entries.Add(new OpenQuestion { question = textBox0.Text, /*audio = textBox9.Text, */theAnswer = "" });
+                    q.entries.Add(new OpenQuestion { question = textBox0.Text, audio = textBox9.Text, theAnswer = "" });
                 }
                 if (radioButton2.Checked == true)
                 {
@@ -157,13 +159,14 @@ namespace NijnCoach.View.TherapistGUI
                         opties.Add(new Option { tag = Convert.ToChar(65 + i).ToString(), answer = texts[i].Text, emotion = combos[i].Text });
                     }
 
-                    q.entries.Add(new MCQuestion { question = textBox0.Text, /*audio = textBox9.Text,*/ options = opties, theAnswer = "" });
+                    q.entries.Add(new MCQuestion { question = textBox0.Text, audio = textBox9.Text, options = opties, theAnswer = "" });
                 }
 
                 if (radioButton3.Checked == true)
                 {
-                    q.entries.Add(new Comment { value = textBox0.Text, /*audio = textBox9.Text, */emotion = comboBox1.Text });
+                    q.entries.Add(new Comment { value = textBox0.Text, audio = textBox9.Text, emotion = comboBox1.Text });
                 }
+                empty = false;
                 reset();
             }
         }
@@ -184,8 +187,6 @@ namespace NijnCoach.View.TherapistGUI
             textBox9.Text = name.Last();
             //upload openFileDialog1.Text to server
         }
-
-        
 
     }
 }
