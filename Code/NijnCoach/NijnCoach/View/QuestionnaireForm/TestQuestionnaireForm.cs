@@ -17,9 +17,9 @@ namespace NijnCoach
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new QuestionnaireForm());
+            Application.Run(new QuestionnaireForm());
 
-            Application.Run(new NijnCoach.View.TherapistGUI.TherapistGUI());
+            //Application.Run(new NijnCoach.View.TherapistGUI.TherapistGUI());
             
             //questionnaire = parser.readXMLFromFile("answers.xml");
             //Application.Run(new TherapistQuestionnaire(questionnaire));

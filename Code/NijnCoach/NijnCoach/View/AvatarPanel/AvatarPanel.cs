@@ -29,7 +29,12 @@ namespace NijnCoach.View.Avatar
         private int borderWidth;
         private int borderHeight;
 
-
+        /// <summary>
+        /// Make a new panel for an avatar. If the avatar has not been displayed before,
+        /// a new avatarprocess is started, otherwise, the already started process is used
+        /// </summary>
+        /// <param name="width">the width of the view rectangle</param>
+        /// <param name="height">the height of the view rectangle (may be useless with scaling)</param>
         public AvatarPanel(int width = 200, int height = 100)
         {
             if (Task == null)
@@ -50,6 +55,9 @@ namespace NijnCoach.View.Avatar
             
         }
 
+        /// <summary>
+        /// Start the eCoach-process and make it invissible
+        /// </summary>
         private void initECoachProcess()
         {
             killProcess();
@@ -69,12 +77,22 @@ namespace NijnCoach.View.Avatar
             Application.ApplicationExit += new EventHandler(closeECoachProcess);
         }
 
+        /// <summary>
+        /// Timer eventhandler, executed when the avatarprocess is fully loaded
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">event arguments</param>
         private void avatarReady(object sender, EventArgs e)
         {
             t.Enabled = false;
             captureAvatarInPanel();
         }
 
+        /// <summary>
+        /// Close the avatar process
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">event arguments</param>
         private void closeECoachProcess(object sender, EventArgs e)
         {
             SendMessage(AvatarHandle, 83, 0, 0);
@@ -84,7 +102,9 @@ namespace NijnCoach.View.Avatar
             killProcess();
         }
 
-
+        /// <summary>
+        /// Replace the avatar window in this panel
+        /// </summary>
         private void captureAvatarInPanel()
         {
             if (isFullScreen)
@@ -103,6 +123,12 @@ namespace NijnCoach.View.Avatar
             ShowWindowAsync(AvatarHandle, 1);
         }
 
+        /// <summary>
+        /// Eventhandler for when the panel is closed. Make the avatar invissible,
+        /// if this is the last panel
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">event arguments</param>
         private void closeAvatarPanel(object sender, EventArgs e)
         {
             avatarPanels.Remove(this);
