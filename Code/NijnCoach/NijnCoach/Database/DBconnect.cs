@@ -63,6 +63,30 @@ namespace NijnCoach.Database
             }
         }
 
+        #region PatientSelectors
+
+        public Patient getPatientByLastName(String name)
+        {
+            NijnCoachEntities2 theEntities = new NijnCoachEntities2();            
+            Patient result = theEntities.Patients.Where(x => x.Lname == name).First<Patient>();
+            return result;
+        }
+
+        public Patient getPatientByFirstName(String name)
+        {
+            NijnCoachEntities2 theEntities = new NijnCoachEntities2();
+            Patient result = theEntities.Patients.Where(x => x.Fname == name).First<Patient>();
+            return result;
+        }
+
+        public Patient getPatientByNumber(int number)
+        {
+            NijnCoachEntities2 theEntities = new NijnCoachEntities2();
+            Patient result = theEntities.Patients.Where(x => x.PatientNo == number).First<Patient>();
+            return result;
+        }
+        #endregion
+
         public void updateQuery()
         {
             NijnCoachEntities2 theEntities = new NijnCoachEntities2();
