@@ -183,8 +183,12 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
-    <None Include="NijnCoach.Database.Database.NijnCoachEntities.datasource" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="NijnCoach.Database.Database.NijnCoachEntities.datasource">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Database\" />
