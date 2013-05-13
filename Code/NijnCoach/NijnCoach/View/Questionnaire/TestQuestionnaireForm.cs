@@ -8,7 +8,7 @@ using NijnCoach.View.Questionnaire;
 namespace NijnCoach
 {
     static class TestQuestionnaireForm
-    {
+    {/*
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -22,6 +22,6 @@ namespace NijnCoach
             //questionnaire = parser.readXMLFromFile("answers.xml");
             //Application.Run(new TherapistQuestionnaire(questionnaire));
             
-        }
+        }*/
     }
 }

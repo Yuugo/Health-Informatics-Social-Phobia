@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="Avatar\AvatarControl.cs" />
     <Compile Include="Database\DBconnect.cs" />
+    <Compile Include="Database\main.cs" />
     <Compile Include="Database\Model2.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

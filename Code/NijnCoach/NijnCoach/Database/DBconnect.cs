@@ -5,11 +5,20 @@ using System.Text;
 using System.Windows.Forms;
 using NijnCoach.XMLclasses;
 using System.Xml;
+using System.IO;
 
 namespace NijnCoach.Database
 {
+   
+
     class DBConnect
     {
+
+        static void Main(String[] args)
+        {
+            byte[] audio = File.ReadAllBytes(@"C:\ecoach\audio\2.wav");
+            string hoi = System.Convert.ToBase64String(audio);
+        }
         public Boolean insertPatient(Patient patient)
         {
             NijnCoachEntities2 theEntities = new NijnCoachEntities2();
@@ -50,11 +59,24 @@ namespace NijnCoach.Database
             }
         }
 
-        public Boolean InsertSpeechFile(Object questionForm)
+        public Boolean InsertSpeechFile(string audioFile)
         {
             NijnCoachEntities2 theEntities = new NijnCoachEntities2();
+            byte[] audio = File.ReadAllBytes(@audioFile);
+            string audioAsString = System.Convert.ToBase64String(audio);
+            string[] name = null;
+            //split de bestandnaam in stukken zodat alleen de naam van het bestand overblijft
+            name = audioFile.Split('\\');
+            string naam = name.Last();
+            SpeechFile newSpeech = new SpeechFile();
+            newSpeech.Id = 0;
+            newSpeech.Name = naam;
+            newSpeech.Encoding = audioAsString; 
+
             try
             {
+                theEntities.SpeechFiles.AddObject(newSpeech);
+                theEntities.SaveChanges();
                 return true;
             }
             catch (Exception e)
