@@ -1,3 +1,4 @@
+
 ﻿using System;
 using System.IO;
 using System.Collections.Generic;
@@ -27,10 +28,10 @@ namespace NijnCoach.View.TherapistGUI
         List<Label> labels = new List<Label>();
         List<ComboBox> combos = new List<ComboBox>();
         List<Button> buttons = new List<Button>();
-        Questionnaire q = new Questionnaire();
+        NijnCoach.XMLclasses.Questionnaire q = new NijnCoach.XMLclasses.Questionnaire();
         
 
-        public Form1()
+        public TherapistGUI()
         {
             InitializeComponent();
         }
@@ -127,7 +128,7 @@ namespace NijnCoach.View.TherapistGUI
                 saveFileDialog1.ShowDialog();
 
                 q.version = 1.00;
-                q.head = new Questionnaire.Header
+                q.head = new NijnCoach.XMLclasses.Questionnaire.Header
                 {
                     createdBy = "Me",
                     dateCreated = new DateTime(),
@@ -136,7 +137,7 @@ namespace NijnCoach.View.TherapistGUI
                 };
 
                 XMLParser xpars = new XMLParser();
-                xpars.writeXML(q, saveFileDialog1.FileName);
+                xpars.writeXMLToFile(q, saveFileDialog1.FileName);
             }
         }
 

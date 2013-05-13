@@ -118,18 +118,9 @@ namespace NijnCoach_Test
             }
         }
 
-
-        /*[Ignore]
-        [Test]
-        public void testForFinishQuestionWithoutQuestions()
-        {
-            RaiseEvent("button5", "Click", new EventArgs());
-            Assert.IsTrue(true);
-        }*/
-
         #region Tests For Open Question
 
-
+        
         [Test]
         public void testForCorrectRadioButtonCheckedinOpen()
         {
@@ -154,9 +145,9 @@ namespace NijnCoach_Test
         [Test]
         public void testForInvisibleAnswerEmotionLabelinOpen()
         {
-            // there should be 2 seperate labels and answer label should be invisible, and emotion label should be visible
             clickOnOpenQuestion();
-            Assert.IsTrue((bool) GetProperty("label0.Visible"));
+            Assert.IsFalse((bool) GetProperty("label0.Visible"));
+            Assert.IsTrue((bool)GetProperty("label9.Visible"));
         }
 
         [Test]
@@ -323,6 +314,14 @@ namespace NijnCoach_Test
             checkForInVisibleEmotionComboBoxFromNumber(3);
         }
 
+        [Test]
+        public void testForVisibleEmotionAnswerLabelInMC()
+        {
+            clickOnMCradioButton();
+            Assert.IsTrue((bool)GetProperty("label0.Visible"));
+            Assert.IsTrue((bool)GetProperty("label9.Visible"));
+        }
+
 
 
         #endregion
@@ -353,9 +352,9 @@ namespace NijnCoach_Test
         [Test]
         public void testForInvisibleAnswerEmotionLabelinComment()
         {
-            // there should be 2 seperate labels and answer label should be invisible, and emotion label should be visible
             clickOnCommentradioButton();
-            Assert.IsTrue((bool)GetProperty("label0.Visible"));
+            Assert.IsFalse((bool)GetProperty("label0.Visible"));
+            Assert.IsTrue((bool)GetProperty("label9.Visible"));
         }
 
         [Test]
@@ -398,6 +397,28 @@ namespace NijnCoach_Test
         {
             clickOnCommentradioButton();
             checkForInVisibleEmotionComboBoxFromNumber(2);
+        }
+
+        #endregion
+
+        #region Finish and Next Tests
+
+        [Test]
+        public void testForFinishQuestionWithoutQuestions()
+        {
+            RaiseEvent("button5", "Click", new EventArgs());
+            Assert.IsTrue(true);
+        }
+
+        [Test]
+        public void testForNextButton()
+        {
+            clickOnOpenQuestion();
+            Object o = GetField("textBox0");
+            ((TextBox)o).Text = "Hallo";
+            RaiseEvent("button1", "Click", new EventArgs());
+
+            Assert.IsEmpty((String)GetProperty("textBox0.Text"));
         }
 
         #endregion

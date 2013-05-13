@@ -68,38 +68,38 @@
     <Compile Include="View\TherapistGUI\TherapistGUI.Designer.cs">
       <DependentUpon>TherapistGUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Questionnaire\OpenQuestionPanel.cs">
+    <Compile Include="View\QuestionnaireForm\OpenQuestionPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="View\Questionnaire\OpenQuestionPanel.Designer.cs">
+    <Compile Include="View\QuestionnaireForm\OpenQuestionPanel.Designer.cs">
       <DependentUpon>OpenQuestionPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Questionnaire\MCQuestionPanel.cs">
+    <Compile Include="View\QuestionnaireForm\MCQuestionPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="View\Questionnaire\MCQuestionPanel.Designer.cs">
+    <Compile Include="View\QuestionnaireForm\MCQuestionPanel.Designer.cs">
       <DependentUpon>MCQuestionPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Questionnaire\IQuestionPanel.cs">
+    <Compile Include="View\QuestionnaireForm\IQuestionPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="View\Questionnaire\QuestionnaireForm.cs">
+    <Compile Include="View\QuestionnaireForm\QuestionnaireForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Questionnaire\QuestionnaireForm.Designer.cs">
+    <Compile Include="View\QuestionnaireForm\QuestionnaireForm.Designer.cs">
       <DependentUpon>QuestionnaireForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Questionnaire\TestQuestionnaireForm.cs" />
-    <Compile Include="View\Questionnaire\CommentPanel.cs">
+    <Compile Include="View\QuestionnaireForm\TestQuestionnaireForm.cs" />
+    <Compile Include="View\QuestionnaireForm\CommentPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="View\Questionnaire\CommentPanel.Designer.cs">
+    <Compile Include="View\QuestionnaireForm\CommentPanel.Designer.cs">
       <DependentUpon>CommentPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Questionnaire\TherapistQuestionnaire.cs">
+    <Compile Include="View\QuestionnaireForm\TherapistQuestionnaire.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Questionnaire\TherapistQuestionnaire.Designer.cs">
+    <Compile Include="View\QuestionnaireForm\TherapistQuestionnaire.Designer.cs">
       <DependentUpon>TherapistQuestionnaire.cs</DependentUpon>
     </Compile>
     <Compile Include="XMLclasses\Comment.cs" />
@@ -170,25 +170,29 @@
     <EmbeddedResource Include="View\TherapistGUI\TherapistGUI.resx">
       <DependentUpon>TherapistGUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Questionnaire\OpenQuestionPanel.resx">
+    <EmbeddedResource Include="View\QuestionnaireForm\OpenQuestionPanel.resx">
       <DependentUpon>OpenQuestionPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Questionnaire\MCQuestionPanel.resx">
+    <EmbeddedResource Include="View\QuestionnaireForm\MCQuestionPanel.resx">
       <DependentUpon>MCQuestionPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Questionnaire\QuestionnaireForm.resx">
+    <EmbeddedResource Include="View\QuestionnaireForm\QuestionnaireForm.resx">
       <DependentUpon>QuestionnaireForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Questionnaire\CommentPanel.resx">
+    <EmbeddedResource Include="View\QuestionnaireForm\CommentPanel.resx">
       <DependentUpon>CommentPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Questionnaire\TherapistQuestionnaire.resx">
+    <EmbeddedResource Include="View\QuestionnaireForm\TherapistQuestionnaire.resx">
       <DependentUpon>TherapistQuestionnaire.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
-    <None Include="NijnCoach.Database.Database.NijnCoachEntities.datasource" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="NijnCoach.Database.Database.NijnCoachEntities.datasource">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Database\" />
