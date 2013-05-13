@@ -32,7 +32,6 @@ namespace NijnCoach
         public String writeXML(Questionnaire q)
         {
 
-
             #region ExampleObject
             /*
             q = new Questionnaire()
