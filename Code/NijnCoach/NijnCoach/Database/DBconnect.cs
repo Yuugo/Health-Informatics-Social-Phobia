@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using NijnCoach.XMLclasses;
+using System.Xml;
 
 namespace NijnCoach.Database
 {
@@ -25,12 +26,17 @@ namespace NijnCoach.Database
             }
         }
 
-        public Boolean InsertQuestionnairre(String name, String text)
+        public Boolean InsertQuestionnairre(String name, Questionnaire questionnaire)
         {
             NijnCoachEntities2 theEntities = new NijnCoachEntities2();
             Questionnairre questionForm = new Questionnairre();
+            XMLParser parser = new XMLParser();
+            string text = parser.writeXML(questionnaire);
+
             questionForm.Name = name;
             questionForm.Text = text;
+            
+
             try
             {
                 theEntities.Questionnairres.AddObject(questionForm);
