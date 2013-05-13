@@ -118,15 +118,6 @@ namespace NijnCoach_Test
             }
         }
 
-
-        /*[Ignore]
-        [Test]
-        public void testForFinishQuestionWithoutQuestions()
-        {
-            RaiseEvent("button5", "Click", new EventArgs());
-            Assert.IsTrue(true);
-        }*/
-
         #region Tests For Open Question
 
         
@@ -406,6 +397,28 @@ namespace NijnCoach_Test
         {
             clickOnCommentradioButton();
             checkForInVisibleEmotionComboBoxFromNumber(2);
+        }
+
+        #endregion
+
+        #region Finish and Next Tests
+
+        [Test]
+        public void testForFinishQuestionWithoutQuestions()
+        {
+            RaiseEvent("button5", "Click", new EventArgs());
+            Assert.IsTrue(true);
+        }
+
+        [Test]
+        public void testForNextButton()
+        {
+            clickOnOpenQuestion();
+            Object o = GetField("textBox0");
+            ((TextBox)o).Text = "Hallo";
+            RaiseEvent("button1", "Click", new EventArgs());
+
+            Assert.IsEmpty((String)GetProperty("textBox0.Text"));
         }
 
         #endregion
