@@ -129,7 +129,7 @@ namespace NijnCoach_Test
 
         #region Tests For Open Question
 
-
+        
         [Test]
         public void testForCorrectRadioButtonCheckedinOpen()
         {
@@ -154,9 +154,9 @@ namespace NijnCoach_Test
         [Test]
         public void testForInvisibleAnswerEmotionLabelinOpen()
         {
-            // there should be 2 seperate labels and answer label should be invisible, and emotion label should be visible
             clickOnOpenQuestion();
-            Assert.IsTrue((bool) GetProperty("label0.Visible"));
+            Assert.IsFalse((bool) GetProperty("label0.Visible"));
+            Assert.IsTrue((bool)GetProperty("label9.Visible"));
         }
 
         [Test]
@@ -323,6 +323,14 @@ namespace NijnCoach_Test
             checkForInVisibleEmotionComboBoxFromNumber(3);
         }
 
+        [Test]
+        public void testForVisibleEmotionAnswerLabelInMC()
+        {
+            clickOnMCradioButton();
+            Assert.IsTrue((bool)GetProperty("label0.Visible"));
+            Assert.IsTrue((bool)GetProperty("label9.Visible"));
+        }
+
 
 
         #endregion
@@ -353,9 +361,9 @@ namespace NijnCoach_Test
         [Test]
         public void testForInvisibleAnswerEmotionLabelinComment()
         {
-            // there should be 2 seperate labels and answer label should be invisible, and emotion label should be visible
             clickOnCommentradioButton();
-            Assert.IsTrue((bool)GetProperty("label0.Visible"));
+            Assert.IsFalse((bool)GetProperty("label0.Visible"));
+            Assert.IsTrue((bool)GetProperty("label9.Visible"));
         }
 
         [Test]
