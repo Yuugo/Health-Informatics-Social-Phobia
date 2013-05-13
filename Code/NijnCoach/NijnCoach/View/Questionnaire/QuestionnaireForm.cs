@@ -58,7 +58,7 @@ namespace NijnCoach.View.Questionnaire
         public void loadAvatar()
         {
             Debug.Assert(panelAvatarIntern == null);
-            panelAvatarIntern = new AvatarPanel();
+            panelAvatarIntern = new AvatarPanel(100, 100);
             panelAvatarIntern.Width = panelAvatar.Width;
             panelAvatarIntern.Height = panelAvatar.Height;
             panelAvatar.Controls.Add(panelAvatarIntern);

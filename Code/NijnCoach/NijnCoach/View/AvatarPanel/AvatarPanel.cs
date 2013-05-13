@@ -19,15 +19,38 @@ namespace NijnCoach.View.Avatar
          * http://stackoverflow.com/questions/12653418/why-cant-i-embed-these-applications-in-my-form
          */
 
+        private static List<AvatarPanel> avatarPanels = new List<AvatarPanel>();
+        private static Process Task = null;
+        private static IntPtr AvatarHandle = new IntPtr();
+        private static System.Windows.Forms.Timer t;
+        private static Boolean isFullScreen = true;
         private const String eCoachPath = "C:\\ecoach\\ecoach-bart.exe";
-        private Process Task = null;
-        private IntPtr AvatarHandle = new IntPtr();
-        private System.Windows.Forms.Timer t;
-        private int borderWidth = 120;
-        private int borderHeight = 80;
+
+        private int borderWidth;
+        private int borderHeight;
 
 
-        public AvatarPanel()
+        public AvatarPanel(int width = 200, int height = 100)
+        {
+            if (Task == null)
+            {
+                initECoachProcess();
+            }
+            else
+            {
+                captureAvatarInPanel();
+            }
+            avatarPanels.Add(this);
+            borderWidth = (int) (System.Windows.SystemParameters.PrimaryScreenWidth - width) / 2;
+            borderHeight = (int)(System.Windows.SystemParameters.PrimaryScreenHeight - height) / 2;
+            SetParent(AvatarHandle, this.Handle);
+            SetWindowLong(AvatarHandle, GWL_STYLE, (int)(~WS_VISIBLE & ((WS_MAXIMIZE | WS_BORDER) | WS_CHILD)));
+            MoveWindow(AvatarHandle, -borderWidth, -borderHeight, this.Width + 2 * borderWidth, this.Height + 2 * borderHeight, true);
+            this.Disposed += new EventHandler(closeAvatarPanel);
+            
+        }
+
+        private void initECoachProcess()
         {
             killProcess();
             Task = Process.Start(eCoachPath);
@@ -37,15 +60,13 @@ namespace NijnCoach.View.Avatar
             ShowWindowAsync(Handle, 0);
             AvatarHandle = FindCoachWindow();
             Thread.Sleep(500);
-            SetParent(AvatarHandle, this.Handle);
-            SetWindowLong(AvatarHandle, GWL_STYLE, (int)(~WS_VISIBLE & ((WS_MAXIMIZE | WS_BORDER) | WS_CHILD)));
-            MoveWindow(AvatarHandle, -borderWidth, -borderHeight, this.Width + 2 * borderWidth, this.Height + 2 * borderHeight, true);
-            this.Disposed += new EventHandler(closeAvatarPanel);
+
             t = new System.Windows.Forms.Timer();
             t.Interval = 6000;
             t.Tick += new EventHandler(avatarReady);
             t.Enabled = true;
-            //this.Paint += avatarPaint;
+
+            Application.ApplicationExit += new EventHandler(closeECoachProcess);
         }
 
         private void avatarReady(object sender, EventArgs e)
@@ -54,14 +75,26 @@ namespace NijnCoach.View.Avatar
             captureAvatarInPanel();
         }
 
-        
+        private void closeECoachProcess(object sender, EventArgs e)
+        {
+            SendMessage(AvatarHandle, 83, 0, 0);
+            Thread.Sleep(100);
+            AvatarHandle = IntPtr.Zero;
+            Task.Close();
+            killProcess();
+        }
+
 
         private void captureAvatarInPanel()
         {
-            const int VK_F2 = 0x71;
-            const int WM_KEYDOWN = 0x100;
-            SendMessage(AvatarHandle, WM_KEYDOWN, VK_F2, 0);
-            Thread.Sleep(500);
+            if (isFullScreen)
+            {
+                const int VK_F2 = 0x71;
+                const int WM_KEYDOWN = 0x100;
+                SendMessage(AvatarHandle, WM_KEYDOWN, VK_F2, 0);
+                Thread.Sleep(500);
+                isFullScreen = false;
+            }
             SetParent(AvatarHandle, this.Handle);
             SetWindowLong(AvatarHandle, GWL_STYLE, (int)(WS_VISIBLE | WS_CHILD));
             MoveWindow(AvatarHandle, -borderWidth, -borderHeight, this.Width + 2 * borderWidth, this.Height + 2 * borderHeight, true);
@@ -70,34 +103,14 @@ namespace NijnCoach.View.Avatar
             ShowWindowAsync(AvatarHandle, 1);
         }
 
-        private void avatarPaint(object sender, System.Windows.Forms.PaintEventArgs e)
-        {
-            System.Drawing.Drawing2D.GraphicsPath buttonPath =
-       new System.Drawing.Drawing2D.GraphicsPath();
-            // Set a new rectangle to the same size as the button's 
-            // ClientRectangle property.
-            System.Drawing.Rectangle newRectangle = this.ClientRectangle;
-
-            // Decrease the size of the rectangle.
-            //newRectangle.Inflate(-borderWidth, -borderHeight);
-
-
-            // Create a circle within the new rectangle.
-            buttonPath.AddRectangle(newRectangle);
-
-            // Set the button's Region property to the newly created 
-            // circle region.
-            this.Region = new System.Drawing.Region(buttonPath);
-            
-        }
-
         private void closeAvatarPanel(object sender, EventArgs e)
         {
-            SendMessage(AvatarHandle, 83, 0, 0);
-            Thread.Sleep(100);
-            AvatarHandle = IntPtr.Zero;
-            Task.Close();
-            killProcess();
+            avatarPanels.Remove(this);
+            if (avatarPanels.Count == 0)
+            {
+                ShowWindowAsync(AvatarHandle, 1);
+                SetWindowLong(AvatarHandle, GWL_STYLE, (int)(~WS_VISIBLE & ((WS_MAXIMIZE | WS_BORDER) | WS_CHILD)));
+            }
         }
 
         /// <summary>
