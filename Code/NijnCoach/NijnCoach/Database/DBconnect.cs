@@ -5,20 +5,11 @@ using System.Text;
 using System.Windows.Forms;
 using NijnCoach.XMLclasses;
 using System.Xml;
-using System.IO;
 
 namespace NijnCoach.Database
 {
-   
-
     class DBConnect
     {
-
-        static void Main(String[] args)
-        {
-            byte[] audio = File.ReadAllBytes(@"C:\ecoach\audio\2.wav");
-            string hoi = System.Convert.ToBase64String(audio);
-        }
         public Boolean insertPatient(Patient patient)
         {
             NijnCoachEntities2 theEntities = new NijnCoachEntities2();
@@ -59,24 +50,11 @@ namespace NijnCoach.Database
             }
         }
 
-        public Boolean InsertSpeechFile(string audioFile)
+        public Boolean InsertSpeechFile(Object questionForm)
         {
             NijnCoachEntities2 theEntities = new NijnCoachEntities2();
-            byte[] audio = File.ReadAllBytes(@audioFile);
-            string audioAsString = System.Convert.ToBase64String(audio);
-            string[] name = null;
-            //split de bestandnaam in stukken zodat alleen de naam van het bestand overblijft
-            name = audioFile.Split('\\');
-            string naam = name.Last();
-            SpeechFile newSpeech = new SpeechFile();
-            newSpeech.Id = 0;
-            newSpeech.Name = naam;
-            newSpeech.Encoding = audioAsString; 
-
             try
             {
-                theEntities.SpeechFiles.AddObject(newSpeech);
-                theEntities.SaveChanges();
                 return true;
             }
             catch (Exception e)
@@ -84,6 +62,30 @@ namespace NijnCoach.Database
                 return false;
             }
         }
+
+        #region PatientSelectors
+
+        public Patient getPatientByLastName(String name)
+        {
+            NijnCoachEntities2 theEntities = new NijnCoachEntities2();            
+            Patient result = theEntities.Patients.Where(x => x.Lname == name).First<Patient>();
+            return result;
+        }
+
+        public Patient getPatientByFirstName(String name)
+        {
+            NijnCoachEntities2 theEntities = new NijnCoachEntities2();
+            Patient result = theEntities.Patients.Where(x => x.Fname == name).First<Patient>();
+            return result;
+        }
+
+        public Patient getPatientByNumber(int number)
+        {
+            NijnCoachEntities2 theEntities = new NijnCoachEntities2();
+            Patient result = theEntities.Patients.Where(x => x.PatientNo == number).First<Patient>();
+            return result;
+        }
+        #endregion
 
         public void updateQuery()
         {
