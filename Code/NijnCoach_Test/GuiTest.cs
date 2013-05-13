@@ -49,7 +49,7 @@ namespace NijnCoach_Test
             Type t = obj.GetType(); 
             FieldInfo fi = t.GetField(fieldName, flags); 
             return fi.GetValue(obj); 
-        } 
+        }
 
         private object _GetProperty(object obj, string propertyName) 
         { 
@@ -58,10 +58,34 @@ namespace NijnCoach_Test
             return pi.GetValue(obj, new object[0]); 
         }
 
+        private void _SetProperty(object obj, string propertyName, object value)
+        {
+            Type t = obj.GetType();
+            PropertyInfo pi = t.GetProperty(propertyName, flags);
+            pi.SetValue(obj, value, new object[0]);
+        }
+
         protected void InvokeMethod(String method)
         {
             object[] p = {this, new EventArgs()}; 
             _InvokeMethod(_testForm, method, p); 
+        }
+
+        private object firstPart(object obj, string longName)
+        {
+            object o = obj;
+            String[] parts = longName.Split(new char[] { '.' });
+            for (int i = 0; i < parts.Length - 1; i++)
+            {
+                o = _GetField(o, parts[i]);
+            }
+            return o;
+        }
+
+        private string lastPart(string longName)
+        {
+            String[] parts = longName.Split(new char[] { '.' });
+            return parts[parts.Length - 1];
         }
 
         public object GetProperty(string longName)
@@ -71,14 +95,17 @@ namespace NijnCoach_Test
 
         public object GetProperty(object obj, string longName)
         {
-            object o = obj;
-            String[] parts = longName.Split( new char[] {'.'} );
-            for (int i = 0; i < parts.Length - 1; i++)
-            {
-                o = _GetField(o, parts[i]);
-            }
-            return _GetProperty(o, parts[parts.Length - 1]);
+            return _GetProperty(firstPart(obj, longName), lastPart(longName));
+        }
 
+        public void SetProperty(string longName, object value)
+        {
+            SetProperty(_testForm, longName, value);
+        }
+
+        public void SetProperty(object obj, string longName, object value)
+        {
+            _SetProperty(firstPart(obj, longName), lastPart(longName), value);
         }
 
         public object GetField(string longName)
@@ -88,13 +115,7 @@ namespace NijnCoach_Test
 
         public object GetField(object obj, string longName)
         {
-            object o = obj;
-            String[] parts = longName.Split(new char[] { '.' });
-            for (int i = 0; i < parts.Length; i++)
-            {
-                o = _GetField(o, parts[i]);
-            }
-            return o;
+            return _GetField(firstPart(obj, longName), lastPart(longName));
         }
 
         

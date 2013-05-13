@@ -8,6 +8,8 @@ using System.Text;
 using System.Windows.Forms;
 using NijnCoach.XMLclasses;
 using System.Diagnostics;
+using NijnCoach.View.Avatar;
+using NijnCoach.Avatar;
 
 
 namespace NijnCoach.View.Questionnaire
@@ -16,16 +18,30 @@ namespace NijnCoach.View.Questionnaire
     {
         private XMLclasses.Questionnaire questionnaire;
         private int currentQuestion = 0;
-        public QuestionnaireForm()
+        public QuestionnaireForm(Boolean _loadAvatar = true)
         {
-            //Debug.Assert(questionnaire.entries.Count > 0, "The number of entries in the questionnaire should at least be 1");
-            XMLParser parser = new XMLParser();            
+            XMLParser parser = new XMLParser();
             InitializeComponent();
-            
             openFileDialog.ShowDialog();
-            
-            this.questionnaire = parser.readXMLFromFile(openFileDialog.FileName);
+            XMLclasses.Questionnaire questionnaire = parser.readXMLFromFile(openFileDialog.FileName);
+            init(questionnaire,_loadAvatar);
+        }
+
+        public QuestionnaireForm(XMLclasses.Questionnaire questionnaire, Boolean _loadAvatar = true)
+        {
+            InitializeComponent();
+            init(questionnaire, _loadAvatar);
+        }
+
+        public void init(XMLclasses.Questionnaire questionnaire, Boolean _loadAvatar = true)
+        {
+            Debug.Assert(questionnaire.entries.Count > 0, "The number of entries in the questionnaire should at least be 1");
+            this.questionnaire = questionnaire;
             initControls();
+            if (_loadAvatar)
+            {
+                loadAvatar();
+            }
         }
 
         private void initControls()
@@ -39,6 +55,14 @@ namespace NijnCoach.View.Questionnaire
             }
         }
 
+        public void loadAvatar()
+        {
+            Debug.Assert(panelAvatarIntern == null);
+            panelAvatarIntern = new AvatarPanel(100, 100);
+            panelAvatarIntern.Width = panelAvatar.Width;
+            panelAvatarIntern.Height = panelAvatar.Height;
+            panelAvatar.Controls.Add(panelAvatarIntern);
+        }
 
         private void nextEventHandler(object sender,EventArgs e){
             Debug.Assert(currentQuestion + 1 < questionnaire.entries.Count, "Array out of bounds: IEntry does not exist");
@@ -99,7 +123,7 @@ namespace NijnCoach.View.Questionnaire
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //Avatar.AvatarControl.happy();
+            AvatarControl.happy();
         }
 
         private void panelAvatar_Paint(object sender, PaintEventArgs e)
