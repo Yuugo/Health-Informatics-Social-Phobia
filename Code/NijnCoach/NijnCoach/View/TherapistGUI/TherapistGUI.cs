@@ -15,6 +15,7 @@ using NijnCoach;
 
 
 
+
 namespace NijnCoach.View.TherapistGUI
 {
     public partial class TherapistGUI : Form
@@ -30,7 +31,7 @@ namespace NijnCoach.View.TherapistGUI
         Questionnaire q = new Questionnaire();
         
 
-        public Form1()
+        public TherapistGUI()
         {
             InitializeComponent();
         }
