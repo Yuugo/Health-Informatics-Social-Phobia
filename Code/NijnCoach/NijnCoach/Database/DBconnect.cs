@@ -9,9 +9,9 @@ using System.IO;
 
 namespace NijnCoach.Database
 {
-    class DBConnect
+    public static class DBConnect
     {
-        public Boolean insertPatient(Patient patient)
+        public static Boolean insertPatient(Patient patient)
         {
             NijnCoachEntities2 theEntities = new NijnCoachEntities2();
             try
@@ -27,7 +27,7 @@ namespace NijnCoach.Database
             }
         }
 
-        public Boolean InsertQuestionnairre(String name, Questionnaire questionnaire)
+        public static Boolean InsertQuestionnairre(String name, Questionnaire questionnaire)
         {
             NijnCoachEntities2 theEntities = new NijnCoachEntities2();
             Questionnairre questionForm = new Questionnairre();
@@ -49,7 +49,7 @@ namespace NijnCoach.Database
             }
         }
 
-        public Boolean InsertSpeechFile(Object questionForm)
+        public static Boolean InsertSpeechFile(Object questionForm)
         {
             NijnCoachEntities2 theEntities = new NijnCoachEntities2();
             try
@@ -65,21 +65,21 @@ namespace NijnCoach.Database
 
         #region PatientSelectors
 
-        public Patient getPatientByLastName(String name)
+        public static Patient getPatientByLastName(String name)
         {
             NijnCoachEntities2 theEntities = new NijnCoachEntities2();            
             Patient result = theEntities.Patients.Where(x => x.Lname == name).First<Patient>();
             return result;
         }
 
-        public Patient getPatientByFirstName(String name)
+        public static Patient getPatientByFirstName(String name)
         {
             NijnCoachEntities2 theEntities = new NijnCoachEntities2();
             Patient result = theEntities.Patients.Where(x => x.Fname == name).First<Patient>();
             return result;
         }
 
-        public Patient getPatientByNumber(int number)
+        public static Patient getPatientByNumber(int number)
         {
             NijnCoachEntities2 theEntities = new NijnCoachEntities2();
             Patient result = theEntities.Patients.Where(x => x.PatientNo == number).First<Patient>();
@@ -91,7 +91,7 @@ namespace NijnCoach.Database
         /// </summary>
         /// <param name="name">Name of the questionnaire</param>
         /// <returns>The Questionnaire</returns>
-        public Questionnaire getQuestionnaireByName(String name)
+        public static Questionnaire getQuestionnaireByName(String name)
         {
             try
             {

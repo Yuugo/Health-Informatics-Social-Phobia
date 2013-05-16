@@ -54,12 +54,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Avatar\AvatarControl.cs" />
-    <Compile Include="Database\DBconnect.cs" />
+    <Compile Include="Database\DBConnect.cs" />
     <Compile Include="Database\Model2.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model2.edmx</DependentUpon>
     </Compile>
+    <Compile Include="MainClass.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -71,38 +72,38 @@
     <Compile Include="View\TherapistGUI\TherapistGUI.Designer.cs">
       <DependentUpon>TherapistGUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Questionnaire\OpenQuestionPanel.cs">
+    <Compile Include="view\questionnaireForm\OpenQuestionPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="View\Questionnaire\OpenQuestionPanel.Designer.cs">
+    <Compile Include="view\questionnaireForm\OpenQuestionPanel.Designer.cs">
       <DependentUpon>OpenQuestionPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Questionnaire\MCQuestionPanel.cs">
+    <Compile Include="view\questionnaireForm\MCQuestionPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="View\Questionnaire\MCQuestionPanel.Designer.cs">
+    <Compile Include="view\questionnaireForm\MCQuestionPanel.Designer.cs">
       <DependentUpon>MCQuestionPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Questionnaire\IQuestionPanel.cs">
+    <Compile Include="view\questionnaireForm\IQuestionPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="View\Questionnaire\QuestionnaireForm.cs">
+    <Compile Include="view\questionnaireForm\QuestionnaireForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Questionnaire\QuestionnaireForm.Designer.cs">
+    <Compile Include="view\questionnaireForm\QuestionnaireForm.Designer.cs">
       <DependentUpon>QuestionnaireForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Questionnaire\TestQuestionnaireForm.cs" />
-    <Compile Include="View\Questionnaire\CommentPanel.cs">
+    <Compile Include="view\questionnaireForm\TestQuestionnaireForm.cs" />
+    <Compile Include="view\questionnaireForm\CommentPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="View\Questionnaire\CommentPanel.Designer.cs">
+    <Compile Include="view\questionnaireForm\CommentPanel.Designer.cs">
       <DependentUpon>CommentPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Questionnaire\TherapistQuestionnaire.cs">
+    <Compile Include="view\questionnaireForm\TherapistQuestionnaire.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Questionnaire\TherapistQuestionnaire.Designer.cs">
+    <Compile Include="view\questionnaireForm\TherapistQuestionnaire.Designer.cs">
       <DependentUpon>TherapistQuestionnaire.cs</DependentUpon>
     </Compile>
     <Compile Include="XMLclasses\Comment.cs" />
@@ -172,19 +173,19 @@
     <EmbeddedResource Include="View\TherapistGUI\TherapistGUI.resx">
       <DependentUpon>TherapistGUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Questionnaire\OpenQuestionPanel.resx">
+    <EmbeddedResource Include="view\questionnaireForm\OpenQuestionPanel.resx">
       <DependentUpon>OpenQuestionPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Questionnaire\MCQuestionPanel.resx">
+    <EmbeddedResource Include="view\questionnaireForm\MCQuestionPanel.resx">
       <DependentUpon>MCQuestionPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Questionnaire\QuestionnaireForm.resx">
+    <EmbeddedResource Include="view\questionnaireForm\QuestionnaireForm.resx">
       <DependentUpon>QuestionnaireForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Questionnaire\CommentPanel.resx">
+    <EmbeddedResource Include="view\questionnaireForm\CommentPanel.resx">
       <DependentUpon>CommentPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Questionnaire\TherapistQuestionnaire.resx">
+    <EmbeddedResource Include="view\questionnaireForm\TherapistQuestionnaire.resx">
       <DependentUpon>TherapistQuestionnaire.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
