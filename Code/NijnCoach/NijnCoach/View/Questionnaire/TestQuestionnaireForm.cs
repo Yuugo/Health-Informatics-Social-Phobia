@@ -17,11 +17,12 @@ namespace NijnCoach
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new QuestionnaireForm());
+            //Application.Run(new QuestionnaireForm());
             
             //questionnaire = parser.readXMLFromFile("answers.xml");
             //Application.Run(new TherapistQuestionnaire(questionnaire));
-            
+
+            Application.Run(new ExposureChartsForm());
         }
     }
 }
