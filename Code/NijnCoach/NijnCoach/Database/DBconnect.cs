@@ -108,7 +108,7 @@ namespace NijnCoach.Database
             }
         }
 
-        public void updateQuery()
+        public static void updateQuery()
         {
             NijnCoachEntities2 theEntities = new NijnCoachEntities2();
             try
