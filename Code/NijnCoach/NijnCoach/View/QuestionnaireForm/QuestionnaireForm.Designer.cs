@@ -1,6 +1,6 @@
 ﻿using NijnCoach.XMLclasses;
 using NijnCoach.View.Questionnaire;
-using NijnCoach.View.Avatar;
+using NijnCoach.View.AvatarPanel;
 
 namespace NijnCoach.View.Questionnaire
 {
@@ -152,7 +152,7 @@ namespace NijnCoach.View.Questionnaire
         private System.Windows.Forms.Panel panelAvatar;
         private System.Windows.Forms.Panel panelQuestion;
         private IQuestionPanel panelQuestionIntern;
-        private AvatarPanel panelAvatarIntern = null;
+        private NijnCoach.View.AvatarPanel.AvatarPanel panelAvatarIntern = null;
         private System.Windows.Forms.Button buttonPrevious;
         private System.Windows.Forms.Button buttonNext;
         private System.Windows.Forms.ProgressBar progressBar;

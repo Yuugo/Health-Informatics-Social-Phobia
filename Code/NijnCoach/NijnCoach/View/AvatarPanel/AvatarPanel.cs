@@ -10,9 +10,9 @@ using System.Threading;
 using System.ComponentModel;
 
 
-namespace NijnCoach.View.Avatar
+namespace NijnCoach.View.AvatarPanel
 {
-    class AvatarPanel: Panel
+    public class AvatarPanel: Panel
     {
         /*
          * With help of:
@@ -37,6 +37,8 @@ namespace NijnCoach.View.Avatar
         /// <param name="height">the height of the view rectangle (may be useless with scaling)</param>
         public AvatarPanel(int width = 200, int height = 100)
         {
+            borderWidth = (int)(System.Windows.SystemParameters.PrimaryScreenWidth - width) / 2;
+            borderHeight = (int)(System.Windows.SystemParameters.PrimaryScreenHeight - height) / 2;
             if (Task == null)
             {
                 initECoachProcess();
@@ -46,13 +48,7 @@ namespace NijnCoach.View.Avatar
                 captureAvatarInPanel();
             }
             avatarPanels.Add(this);
-            borderWidth = (int) (System.Windows.SystemParameters.PrimaryScreenWidth - width) / 2;
-            borderHeight = (int)(System.Windows.SystemParameters.PrimaryScreenHeight - height) / 2;
-            SetParent(AvatarHandle, this.Handle);
-            SetWindowLong(AvatarHandle, GWL_STYLE, (int)(~WS_VISIBLE & ((WS_MAXIMIZE | WS_BORDER) | WS_CHILD)));
-            MoveWindow(AvatarHandle, -borderWidth, -borderHeight, this.Width + 2 * borderWidth, this.Height + 2 * borderHeight, true);
-            this.Disposed += new EventHandler(closeAvatarPanel);
-            
+            //MoveWindow(AvatarHandle, -borderWidth, -borderHeight, this.Width + 2 * borderWidth, this.Height + 2 * borderHeight, true);
         }
 
         /// <summary>
@@ -65,12 +61,17 @@ namespace NijnCoach.View.Avatar
             Task.WaitForInputIdle();
             IntPtr Handle = IntPtr.Zero;
             for (int i = 0; Handle == IntPtr.Zero && i < 10; i++) { Handle = Task.MainWindowHandle; Thread.Sleep(100); }
-            ShowWindowAsync(Handle, 0);
+            SetParent(Handle, this.Handle);
+            ShowWindow(Handle, 11);
             AvatarHandle = FindCoachWindow();
+            ShowWindow(AvatarHandle, 11);
             Thread.Sleep(500);
 
+            SetParent(AvatarHandle, this.Handle);
+            SetWindowLong(AvatarHandle, GWL_STYLE, (int)(~WS_VISIBLE & ((WS_MAXIMIZE | WS_BORDER) | WS_CHILD)));
+
             t = new System.Windows.Forms.Timer();
-            t.Interval = 6000;
+            t.Interval = 9000;
             t.Tick += new EventHandler(avatarReady);
             t.Enabled = true;
 
@@ -120,23 +121,24 @@ namespace NijnCoach.View.Avatar
             MoveWindow(AvatarHandle, -borderWidth, -borderHeight, this.Width + 2 * borderWidth, this.Height + 2 * borderHeight, true);
 
             this.Resize += new EventHandler(delegate(object sender2, EventArgs e2) { MoveWindow(AvatarHandle, -borderWidth, -borderHeight, this.Width + 2 * borderWidth, this.Height + 2 * borderHeight, true); });
-            ShowWindowAsync(AvatarHandle, 1);
+            ShowWindow(AvatarHandle, 9);
         }
 
         /// <summary>
-        /// Eventhandler for when the panel is closed. Make the avatar invissible,
-        /// if this is the last panel
+        /// Make the avatar invissible, if this is the last panel
+        /// Detach the avatar from the panel
         /// </summary>
-        /// <param name="sender">sender</param>
-        /// <param name="e">event arguments</param>
-        private void closeAvatarPanel(object sender, EventArgs e)
+        /// <param name="disposing"></param>
+        protected override void Dispose(bool disposing)
         {
             avatarPanels.Remove(this);
             if (avatarPanels.Count == 0)
             {
-                ShowWindowAsync(AvatarHandle, 1);
+                ShowWindow(AvatarHandle, 11);
                 SetWindowLong(AvatarHandle, GWL_STYLE, (int)(~WS_VISIBLE & ((WS_MAXIMIZE | WS_BORDER) | WS_CHILD)));
             }
+            SetParent(AvatarHandle, new IntPtr(0));
+            base.Dispose(disposing);
         }
 
         /// <summary>
@@ -211,6 +213,9 @@ namespace NijnCoach.View.Avatar
 
         [DllImport("user32.dll")]
         private static extern bool ShowWindowAsync(IntPtr hWnd, int nCmdShow);
+
+        [DllImport("user32.dll")]
+        private static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
 
         const int GWL_STYLE = -16;
         const long WS_VISIBLE = 0x10000000,

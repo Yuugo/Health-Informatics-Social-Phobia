@@ -14,7 +14,7 @@ using System.Collections.Generic;
 using NijnCoach.View.TherapistGUI;
 
 
-namespace NijnCoach_Test
+namespace NijnCoach_Test.View.TherapistGUI
 {
     [TestFixture]
     class TherapistGUITest : GuiTest
