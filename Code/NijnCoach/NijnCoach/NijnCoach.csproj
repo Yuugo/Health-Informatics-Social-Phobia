@@ -54,13 +54,17 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Avatar\AvatarControl.cs" />
+    <Compile Include="Database\DBConnect.cs" />
+    <Compile Include="Database\Model2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model2.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="MainClass.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="View\AvatarPanel\AvatarPanel.cs">
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="View\TherapistGUI\TherapistGUI.cs">
       <SubType>Form</SubType>
@@ -68,38 +72,38 @@
     <Compile Include="View\TherapistGUI\TherapistGUI.Designer.cs">
       <DependentUpon>TherapistGUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\QuestionnaireForm\OpenQuestionPanel.cs">
+    <Compile Include="view\questionnaireForm\OpenQuestionPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="View\QuestionnaireForm\OpenQuestionPanel.Designer.cs">
+    <Compile Include="view\questionnaireForm\OpenQuestionPanel.Designer.cs">
       <DependentUpon>OpenQuestionPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\QuestionnaireForm\MCQuestionPanel.cs">
+    <Compile Include="view\questionnaireForm\MCQuestionPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="View\QuestionnaireForm\MCQuestionPanel.Designer.cs">
+    <Compile Include="view\questionnaireForm\MCQuestionPanel.Designer.cs">
       <DependentUpon>MCQuestionPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\QuestionnaireForm\IQuestionPanel.cs">
+    <Compile Include="view\questionnaireForm\IQuestionPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="View\QuestionnaireForm\QuestionnaireForm.cs">
+    <Compile Include="view\questionnaireForm\QuestionnaireForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\QuestionnaireForm\QuestionnaireForm.Designer.cs">
+    <Compile Include="view\questionnaireForm\QuestionnaireForm.Designer.cs">
       <DependentUpon>QuestionnaireForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\QuestionnaireForm\TestQuestionnaireForm.cs" />
-    <Compile Include="View\QuestionnaireForm\CommentPanel.cs">
+    <Compile Include="view\questionnaireForm\TestQuestionnaireForm.cs" />
+    <Compile Include="view\questionnaireForm\CommentPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="View\QuestionnaireForm\CommentPanel.Designer.cs">
+    <Compile Include="view\questionnaireForm\CommentPanel.Designer.cs">
       <DependentUpon>CommentPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\QuestionnaireForm\TherapistQuestionnaire.cs">
+    <Compile Include="view\questionnaireForm\TherapistQuestionnaire.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\QuestionnaireForm\TherapistQuestionnaire.Designer.cs">
+    <Compile Include="view\questionnaireForm\TherapistQuestionnaire.Designer.cs">
       <DependentUpon>TherapistQuestionnaire.cs</DependentUpon>
     </Compile>
     <Compile Include="XMLclasses\Comment.cs" />
@@ -118,7 +122,6 @@
     </Reference>
     <Reference Include="MySql.Data, Version=6.6.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="MySql.Data.Entity, Version=6.6.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
-    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -170,32 +173,32 @@
     <EmbeddedResource Include="View\TherapistGUI\TherapistGUI.resx">
       <DependentUpon>TherapistGUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\QuestionnaireForm\OpenQuestionPanel.resx">
+    <EmbeddedResource Include="view\questionnaireForm\OpenQuestionPanel.resx">
       <DependentUpon>OpenQuestionPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\QuestionnaireForm\MCQuestionPanel.resx">
+    <EmbeddedResource Include="view\questionnaireForm\MCQuestionPanel.resx">
       <DependentUpon>MCQuestionPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\QuestionnaireForm\QuestionnaireForm.resx">
+    <EmbeddedResource Include="view\questionnaireForm\QuestionnaireForm.resx">
       <DependentUpon>QuestionnaireForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\QuestionnaireForm\CommentPanel.resx">
+    <EmbeddedResource Include="view\questionnaireForm\CommentPanel.resx">
       <DependentUpon>CommentPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\QuestionnaireForm\TherapistQuestionnaire.resx">
+    <EmbeddedResource Include="view\questionnaireForm\TherapistQuestionnaire.resx">
       <DependentUpon>TherapistQuestionnaire.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="NijnCoach.Database.Database.NijnCoachEntities.datasource">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="app.config" />
+    <EntityDeploy Include="Database\Model2.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model2.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="NijnCoach.Database.Database.NijnCoachEntities.datasource" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Database\" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
