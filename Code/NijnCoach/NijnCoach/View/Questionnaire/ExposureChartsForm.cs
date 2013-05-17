@@ -9,6 +9,8 @@ using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using NijnCoach.Exposure_data;
 using System.Diagnostics;
+using System.Threading;
+using System.Globalization;
 
 
 namespace NijnCoach.View.Questionnaire
@@ -31,28 +33,46 @@ namespace NijnCoach.View.Questionnaire
 
         private void ExposureChartsForm_Load(object sender, EventArgs e)
         {
-            chart2.Series.Clear();
+            chart1.Series.Clear();
+
             var series2 = new System.Windows.Forms.DataVisualization.Charting.Series
             {
-                Name = "Series1",
+                Name = "Series2",
                 Color = System.Drawing.Color.Green,
                 IsVisibleInLegend = false,
                 IsXValueIndexed = true,
                 ChartType = SeriesChartType.Line
             };
+            series2.XValueType = ChartValueType.Auto;
 
             string file = "Z://git//Health-Informatics-Social-Phobia//Code//NijnCoach//NijnCoach//06-05-2013_1500.txt";
             ExposureSession session = ReadExposureData.ReadFile(file);
 
             Console.WriteLine(session);
 
-            this.chart2.Series.Add(series2);
 
-            for (int i = 0; i < 100; i++)
+            chart1.Series.Add(series2);
+
+            ExpTimestamp data = session.nextTimeStamp();
+            series2.Points.AddXY(data.getTime(), data.getScore());
+            while (data != null)
             {
-                series2.Points.AddXY(i, f(i));
+                data = session.nextTimeStamp();
+                series2.Points.AddXY(data.getTime(), data.getScore());
             }
-            chart2.Invalidate();
+
+
+            // set date format to dutch representation
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("nl-NL");
+            chart1.Legends.Add(new Legend(session.getDate().ToShortDateString()));
+
+            // show an X label every 3 Minute
+            chart1.ChartAreas[0].AxisX.Interval = 3.0;
+            chart1.ChartAreas[0].AxisX.IntervalType = DateTimeIntervalType.Minutes;
+            chart1.ChartAreas[0].AxisX.LabelStyle.Format = "mm:ss";
+            
+            
+            chart1.Invalidate();
         }
 
     }

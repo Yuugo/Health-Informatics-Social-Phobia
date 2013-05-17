@@ -23,39 +23,71 @@ namespace NijnCoach.Exposure_data
             this.sud = sud;
         }
 
+        public int getScore()
+        {
+            return hr;
+        }
+
+        public DateTime getTime()
+        {
+            return time;
+        }
+
+        public void setTime(DateTime newTime)
+        {
+            time = newTime;
+        }
+
+
+
+
+
+        public static ExpTimestamp ReadExpTimestamp(string stamp)
+        {
+            DateTime start = new DateTime();
+            return ReadExpTimestamp(stamp, start);
+        }
+
         public static ExpTimestamp ReadExpTimestamp(string stamp, DateTime dt)
         {
             string[] line = stamp.Split(null);
-            //debug
+            
+            /*debug
             for (int i = 0; i < line.Length; i++)
             {
                 Console.Write(line[i] + "_");
             }
             Console.WriteLine();
-            //debug
+            /*///debug
 
+            // Read the line with the time, and convert it to the time relative to the start time
             string[] ts = line[0].Split(':');
-            dt.AddHours(Convert.ToInt32(ts[0])); dt.AddMinutes(Convert.ToInt32(ts[1])); dt.AddSeconds(Convert.ToInt32(ts[2]));
-            Console.WriteLine(ts[0] + ts[1] + ts[2]); //debug
+            DateTime time = new DateTime();
+            int hour = Convert.ToInt32(ts[0]) - dt.Hour;
+            int min = Convert.ToInt32(ts[1]) - dt.Minute;
+            int sec = Convert.ToInt32(ts[2]) - dt.Second;
+            time.AddHours(hour); time.AddMinutes(min); time.AddSeconds(sec);
+            
+            //Console.WriteLine(ts[0] + ts[1] + ts[2]); //debug
 
             int hr = Convert.ToInt32(line[1]);
-            Console.WriteLine(hr);
+            //Console.WriteLine(hr); //debug
             int gsr = Convert.ToInt32(line[2]);
-            Console.WriteLine(gsr);
+            //Console.WriteLine(gsr);//debug
             int sud;
             if (line.Length > 3 )
             {
-                Console.WriteLine(line[3]);
+                //Console.WriteLine(line[3]);//debug
                 sud = Convert.ToInt32(line[3]);
             }
             else
             {
-                Console.WriteLine("no SUD");
+                //Console.WriteLine("no SUD");//debug
                 sud = -1;
             }
             
 
-            return new ExpTimestamp(dt, hr, gsr, sud);
+            return new ExpTimestamp(time, hr, gsr, sud);
         }
     }
 }
