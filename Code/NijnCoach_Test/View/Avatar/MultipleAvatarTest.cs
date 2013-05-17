@@ -6,7 +6,7 @@ using System.Windows.Forms;
 using NUnit.Framework;
 using System.Threading;
 using System.Drawing;
-
+using NijnCoach.View.AvatarDir;
 
 namespace NijnCoach_Test.View.Avatar
 {
@@ -15,13 +15,13 @@ namespace NijnCoach_Test.View.Avatar
     {
         private Form theForm = null;
         private System.Windows.Forms.Timer t = null;
-        private NijnCoach.View.AvatarPanel.AvatarPanel avatarPanel1;
+        private AvatarPanel avatarPanel1;
         [Test]
         public void Test()
         {
             theForm = new Form();
             theForm.Size = new Size(600, 400);
-            avatarPanel1 = new NijnCoach.View.AvatarPanel.AvatarPanel(600, 400);
+            avatarPanel1 = new NijnCoach.View.AvatarDir.AvatarPanel(600, 400);
             avatarPanel1.Size = new Size(600, 400);
             theForm.Controls.Add(avatarPanel1);
             theForm.Text = "avatarPanel 1";
@@ -41,7 +41,7 @@ namespace NijnCoach_Test.View.Avatar
                 avatarPanel1.Dispose();
                 theForm.Controls.Remove(avatarPanel1);
                 theForm.Text = "avatarPanel 2";
-                NijnCoach.View.AvatarPanel.AvatarPanel avatarPanel2 = new NijnCoach.View.AvatarPanel.AvatarPanel();
+                NijnCoach.View.AvatarDir.AvatarPanel avatarPanel2 = new NijnCoach.View.AvatarDir.AvatarPanel();
                 avatarPanel2.Size = new Size(600, 400);
                 theForm.Controls.Add(avatarPanel2);
             }

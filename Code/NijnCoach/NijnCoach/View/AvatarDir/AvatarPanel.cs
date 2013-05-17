@@ -10,7 +10,7 @@ using System.Threading;
 using System.ComponentModel;
 
 
-namespace NijnCoach.View.AvatarPanel
+namespace NijnCoach.View.AvatarDir
 {
     public class AvatarPanel: Panel
     {

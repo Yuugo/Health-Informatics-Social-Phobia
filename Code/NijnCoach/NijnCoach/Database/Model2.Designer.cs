@@ -215,7 +215,7 @@ namespace NijnCoach.Database
         /// <param name="postal">Initial value of the Postal property.</param>
         /// <param name="city">Initial value of the City property.</param>
         /// <param name="addressID">Initial value of the AddressID property.</param>
-        public static Address CreateAddress(global::System.String street, global::System.Int64 houseNo, global::System.String postal, global::System.String city, global::System.SByte addressID)
+        public static Address CreateAddress(global::System.String street, global::System.SByte houseNo, global::System.String postal, global::System.String city, global::System.SByte addressID)
         {
             Address address = new Address();
             address.Street = street;
@@ -259,7 +259,7 @@ namespace NijnCoach.Database
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int64 HouseNo
+        public global::System.SByte HouseNo
         {
             get
             {
@@ -274,8 +274,8 @@ namespace NijnCoach.Database
                 OnHouseNoChanged();
             }
         }
-        private global::System.Int64 _HouseNo;
-        partial void OnHouseNoChanging(global::System.Int64 value);
+        private global::System.SByte _HouseNo;
+        partial void OnHouseNoChanging(global::System.SByte value);
         partial void OnHouseNoChanged();
     
         /// <summary>

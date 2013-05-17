@@ -81,7 +81,7 @@
             <PropertyRef Name="AddressID" />
           </Key>
           <Property Name="Street" Type="String" Nullable="false" MaxLength="40" Unicode="false" FixedLength="false" />
-          <Property Name="HouseNo" Type="Int64" Nullable="false" />
+          <Property Name="HouseNo" Type="SByte" Nullable="false" />
           <Property Name="Postal" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
           <Property Name="City" Type="String" Nullable="false" MaxLength="40" Unicode="false" FixedLength="false" />
           <Property Name="AddressID" Type="SByte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />

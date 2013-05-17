@@ -13,7 +13,7 @@ namespace NijnCoach.Database
     {
         public static Boolean insertPatient(Patient patient)
         {
-            NijnCoachEntities2 theEntities = new NijnCoachEntities2();
+            NijnCoachEntities theEntities = new NijnCoachEntities();
             try
             {
                 theEntities.Patients.AddObject(patient);
@@ -29,7 +29,7 @@ namespace NijnCoach.Database
 
         public static Boolean InsertQuestionnairre(String name, Questionnaire questionnaire)
         {
-            NijnCoachEntities2 theEntities = new NijnCoachEntities2();
+            NijnCoachEntities theEntities = new NijnCoachEntities();
             Questionnairre questionForm = new Questionnairre();
             XMLParser parser = new XMLParser();
             string text = parser.writeXML(questionnaire);
@@ -51,7 +51,7 @@ namespace NijnCoach.Database
 
         public static Boolean InsertSpeechFile(Object questionForm)
         {
-            NijnCoachEntities2 theEntities = new NijnCoachEntities2();
+            NijnCoachEntities theEntities = new NijnCoachEntities();
             try
             {
                 
@@ -67,21 +67,21 @@ namespace NijnCoach.Database
 
         public static Patient getPatientByLastName(String name)
         {
-            NijnCoachEntities2 theEntities = new NijnCoachEntities2();            
+            NijnCoachEntities theEntities = new NijnCoachEntities();            
             Patient result = theEntities.Patients.Where(x => x.Lname == name).First<Patient>();
             return result;
         }
 
         public static Patient getPatientByFirstName(String name)
         {
-            NijnCoachEntities2 theEntities = new NijnCoachEntities2();
+            NijnCoachEntities theEntities = new NijnCoachEntities();
             Patient result = theEntities.Patients.Where(x => x.Fname == name).First<Patient>();
             return result;
         }
 
         public static Patient getPatientByNumber(int number)
         {
-            NijnCoachEntities2 theEntities = new NijnCoachEntities2();
+            NijnCoachEntities theEntities = new NijnCoachEntities();
             Patient result = theEntities.Patients.Where(x => x.PatientNo == number).First<Patient>();
             return result;
         }
@@ -95,7 +95,7 @@ namespace NijnCoach.Database
         {
             try
             {
-                NijnCoachEntities2 theEntities = new NijnCoachEntities2();
+                NijnCoachEntities theEntities = new NijnCoachEntities();
                 String result = theEntities.Questionnairres.Where(x => x.Name == name).First<Questionnairre>().Text;
                 XMLParser parser = new XMLParser();
                 StreamReader reader = new StreamReader(result);
@@ -110,7 +110,7 @@ namespace NijnCoach.Database
 
         public static void updateQuery()
         {
-            NijnCoachEntities2 theEntities = new NijnCoachEntities2();
+            NijnCoachEntities theEntities = new NijnCoachEntities();
             try
             {
                 Patient patient = theEntities.Patients.First<Patient>();
