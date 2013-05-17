@@ -1,4 +1,4 @@
-\documentclass[english,a4paper,pdftex]{report}
+\documentclass[english,a4paper,pdftex]{article}
 \usepackage[a4paper]{geometry}
 \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
 \usepackage[pdftex]{graphicx}
@@ -13,18 +13,20 @@
 \begin{document}
 
 % Include the title page
-\input{"title.tex"}
-%\newpage
+\input{"title.tex"} $ $ \\[100pt]
 % Include the abstract
 \input{"abstract.tex"}
+\newpage
 % Make the table of contents
 \tableofcontents
 
-% Include the different chapters
+% Include the different sections
+\section{Introduction}
 \input{"Introduction.tex"}
-%\newpage
+\newpage
+%\section{Software architecture views}
 \input{"Software architecture views.tex"}
-%\newpage
+\newpage
 
 
 
