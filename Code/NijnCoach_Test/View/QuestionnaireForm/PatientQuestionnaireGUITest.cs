@@ -12,7 +12,7 @@ using NijnCoach.XMLclasses;
 using NijnCoach;
 using System.Collections.Generic;
 
-namespace NijnCoach_Test
+namespace NijnCoach_Test.View.QuestionnaireForm
 {
     [TestFixture]
     class PatientQuestionnaireGUITest: GuiTest

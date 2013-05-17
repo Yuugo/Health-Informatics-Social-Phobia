@@ -8,7 +8,7 @@ using System.Reflection;
 using System.Threading;
 using NUnit.Framework;
 
-namespace NijnCoach_Test
+namespace NijnCoach_Test.View
 {
     abstract class GuiTest
     {

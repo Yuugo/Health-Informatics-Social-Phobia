@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using NijnCoach.XMLclasses;
 using System.Diagnostics;
-using NijnCoach.View.Avatar;
+using NijnCoach.View.AvatarPanel;
 using NijnCoach.Avatar;
 
 
@@ -58,7 +58,7 @@ namespace NijnCoach.View.Questionnaire
         public void loadAvatar()
         {
             Debug.Assert(panelAvatarIntern == null);
-            panelAvatarIntern = new AvatarPanel(100, 100);
+            panelAvatarIntern = new NijnCoach.View.AvatarPanel.AvatarPanel(100, 100);
             panelAvatarIntern.Width = panelAvatar.Width;
             panelAvatarIntern.Height = panelAvatar.Height;
             panelAvatar.Controls.Add(panelAvatarIntern);

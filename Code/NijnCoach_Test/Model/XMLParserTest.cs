@@ -7,7 +7,7 @@ using NijnCoach;
 using System.IO;
 using NijnCoach.XMLclasses;
 
-namespace NijnCoach_Test
+namespace NijnCoach_Test.Model
 {
     [TestFixture]
     class XMLParserTest

@@ -10,9 +10,9 @@ using System.Threading;
 using System.ComponentModel;
 
 
-namespace NijnCoach.View.Avatar
+namespace NijnCoach.View.AvatarPanel
 {
-    class AvatarPanel: Panel
+    public class AvatarPanel: Panel
     {
         /*
          * With help of:
@@ -29,9 +29,16 @@ namespace NijnCoach.View.Avatar
         private int borderWidth;
         private int borderHeight;
 
-
+        /// <summary>
+        /// Make a new panel for an avatar. If the avatar has not been displayed before,
+        /// a new avatarprocess is started, otherwise, the already started process is used
+        /// </summary>
+        /// <param name="width">the width of the view rectangle</param>
+        /// <param name="height">the height of the view rectangle (may be useless with scaling)</param>
         public AvatarPanel(int width = 200, int height = 100)
         {
+            borderWidth = (int)(System.Windows.SystemParameters.PrimaryScreenWidth - width) / 2;
+            borderHeight = (int)(System.Windows.SystemParameters.PrimaryScreenHeight - height) / 2;
             if (Task == null)
             {
                 initECoachProcess();
@@ -41,15 +48,12 @@ namespace NijnCoach.View.Avatar
                 captureAvatarInPanel();
             }
             avatarPanels.Add(this);
-            borderWidth = (int) (System.Windows.SystemParameters.PrimaryScreenWidth - width) / 2;
-            borderHeight = (int)(System.Windows.SystemParameters.PrimaryScreenHeight - height) / 2;
-            SetParent(AvatarHandle, this.Handle);
-            SetWindowLong(AvatarHandle, GWL_STYLE, (int)(~WS_VISIBLE & ((WS_MAXIMIZE | WS_BORDER) | WS_CHILD)));
-            MoveWindow(AvatarHandle, -borderWidth, -borderHeight, this.Width + 2 * borderWidth, this.Height + 2 * borderHeight, true);
-            this.Disposed += new EventHandler(closeAvatarPanel);
-            
+            //MoveWindow(AvatarHandle, -borderWidth, -borderHeight, this.Width + 2 * borderWidth, this.Height + 2 * borderHeight, true);
         }
 
+        /// <summary>
+        /// Start the eCoach-process and make it invissible
+        /// </summary>
         private void initECoachProcess()
         {
             killProcess();
@@ -57,24 +61,39 @@ namespace NijnCoach.View.Avatar
             Task.WaitForInputIdle();
             IntPtr Handle = IntPtr.Zero;
             for (int i = 0; Handle == IntPtr.Zero && i < 10; i++) { Handle = Task.MainWindowHandle; Thread.Sleep(100); }
-            ShowWindowAsync(Handle, 0);
+            SetParent(Handle, this.Handle);
+            ShowWindow(Handle, 11);
             AvatarHandle = FindCoachWindow();
+            ShowWindow(AvatarHandle, 11);
             Thread.Sleep(500);
 
+            SetParent(AvatarHandle, this.Handle);
+            SetWindowLong(AvatarHandle, GWL_STYLE, (int)(~WS_VISIBLE & ((WS_MAXIMIZE | WS_BORDER) | WS_CHILD)));
+
             t = new System.Windows.Forms.Timer();
-            t.Interval = 6000;
+            t.Interval = 9000;
             t.Tick += new EventHandler(avatarReady);
             t.Enabled = true;
 
             Application.ApplicationExit += new EventHandler(closeECoachProcess);
         }
 
+        /// <summary>
+        /// Timer eventhandler, executed when the avatarprocess is fully loaded
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">event arguments</param>
         private void avatarReady(object sender, EventArgs e)
         {
             t.Enabled = false;
             captureAvatarInPanel();
         }
 
+        /// <summary>
+        /// Close the avatar process
+        /// </summary>
+        /// <param name="sender">sender</param>
+        /// <param name="e">event arguments</param>
         private void closeECoachProcess(object sender, EventArgs e)
         {
             SendMessage(AvatarHandle, 83, 0, 0);
@@ -84,7 +103,9 @@ namespace NijnCoach.View.Avatar
             killProcess();
         }
 
-
+        /// <summary>
+        /// Replace the avatar window in this panel
+        /// </summary>
         private void captureAvatarInPanel()
         {
             if (isFullScreen)
@@ -100,17 +121,24 @@ namespace NijnCoach.View.Avatar
             MoveWindow(AvatarHandle, -borderWidth, -borderHeight, this.Width + 2 * borderWidth, this.Height + 2 * borderHeight, true);
 
             this.Resize += new EventHandler(delegate(object sender2, EventArgs e2) { MoveWindow(AvatarHandle, -borderWidth, -borderHeight, this.Width + 2 * borderWidth, this.Height + 2 * borderHeight, true); });
-            ShowWindowAsync(AvatarHandle, 1);
+            ShowWindow(AvatarHandle, 9);
         }
 
-        private void closeAvatarPanel(object sender, EventArgs e)
+        /// <summary>
+        /// Make the avatar invissible, if this is the last panel
+        /// Detach the avatar from the panel
+        /// </summary>
+        /// <param name="disposing"></param>
+        protected override void Dispose(bool disposing)
         {
             avatarPanels.Remove(this);
             if (avatarPanels.Count == 0)
             {
-                ShowWindowAsync(AvatarHandle, 1);
+                ShowWindow(AvatarHandle, 11);
                 SetWindowLong(AvatarHandle, GWL_STYLE, (int)(~WS_VISIBLE & ((WS_MAXIMIZE | WS_BORDER) | WS_CHILD)));
             }
+            SetParent(AvatarHandle, new IntPtr(0));
+            base.Dispose(disposing);
         }
 
         /// <summary>
@@ -185,6 +213,9 @@ namespace NijnCoach.View.Avatar
 
         [DllImport("user32.dll")]
         private static extern bool ShowWindowAsync(IntPtr hWnd, int nCmdShow);
+
+        [DllImport("user32.dll")]
+        private static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
 
         const int GWL_STYLE = -16;
         const long WS_VISIBLE = 0x10000000,
