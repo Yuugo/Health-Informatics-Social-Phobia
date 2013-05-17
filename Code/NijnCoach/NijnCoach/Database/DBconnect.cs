@@ -49,16 +49,42 @@ namespace NijnCoach.Database
             }
         }
 
-        public static Boolean InsertSpeechFile(Object questionForm)
+        /// <summary>
+        /// load audio bestand op de server
+        /// </summary>
+        /// <param name="audioFile"></param>
+        /// <returns></returns>
+        public static Boolean InsertSpeechFile(string audioFile)
         {
             NijnCoachEntities theEntities = new NijnCoachEntities();
+            //zet audio bestand om in string
+            byte[] audio = File.ReadAllBytes(@audioFile);
+            string audioAsString = System.Convert.ToBase64String(audio);
+            string[] name = null;
+            //split de bestandnaam in stukken zodat alleen de naam van het bestand overblijft             
+            name = audioFile.Split('\\');
+            string naam = name.Last();
+            SpeechFile newSpeech = new SpeechFile();
+            newSpeech.Id = 1;
+            newSpeech.Name = naam;
+            newSpeech.Encoding = audioAsString;
             try
             {
-                
+                theEntities.SpeechFiles.AddObject(newSpeech);
+                theEntities.SaveChanges();
                 return true;
             }
             catch (Exception e)
             {
+                //kijkt of de exception duplicate is en dus nog wel geaccepteerd kan worden
+                string exc = e.InnerException.ToString();
+                string[] except = null;
+                //split de exception in stukken             
+                except = exc.Split(' ');
+                if (except[2].Equals("Duplicate"))
+                {
+                    return true;
+                }
                 return false;
             }
         }
@@ -100,6 +126,22 @@ namespace NijnCoach.Database
                 XMLParser parser = new XMLParser();
                 StreamReader reader = new StreamReader(result);
                 return parser.readXML(reader);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.InnerException.ToString());
+                throw new FileNotFoundException();
+            }
+        }
+
+        public static SpeechFile getSpeechFile(string name)
+        {
+
+            try
+            {
+                NijnCoachEntities theEntities = new NijnCoachEntities();
+                SpeechFile result = theEntities.SpeechFiles.Where(x => x.Name == name).First<SpeechFile>();
+                return result;
             }
             catch (Exception e)
             {

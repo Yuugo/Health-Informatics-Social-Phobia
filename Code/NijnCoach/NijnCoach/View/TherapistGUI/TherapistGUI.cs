@@ -12,6 +12,7 @@ using System.Xml.Serialization;
 using System.Windows.Forms;
 using NijnCoach.XMLclasses;
 using NijnCoach;
+using NijnCoach.Database;
 
 
 
@@ -46,15 +47,11 @@ namespace NijnCoach.View.TherapistGUI
             q.entries = new ListOfIEntry();
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         //slaat een vraag op en reset de velden als er op next question wordt geklikt
         private void button1_Click(object sender, EventArgs e)
         {
             addQuestion();
+
         }
 
         //haalt alle opties voor multiple choice weg en reset de counter voor opties als er op open vraag wordt geklikt
@@ -126,7 +123,6 @@ namespace NijnCoach.View.TherapistGUI
             if (empty == false)
             {
                 saveFileDialog1.ShowDialog();
-
                 q.version = 1.00;
                 q.head = new NijnCoach.XMLclasses.Questionnaire.Header
                 {
@@ -138,6 +134,8 @@ namespace NijnCoach.View.TherapistGUI
 
                 XMLParser xpars = new XMLParser();
                 xpars.writeXMLToFile(q, saveFileDialog1.FileName);
+                q = new NijnCoach.XMLclasses.Questionnaire();
+                q.entries = new ListOfIEntry();
             }
         }
 
@@ -147,46 +145,85 @@ namespace NijnCoach.View.TherapistGUI
             //doe niets als vraag leeg is
             if (textBox0.Text != "")
             {
-
-                if (radioButton1.Checked == true)
+                //checkt of er geen probleem is met het audiofile
+                if (addAudio())
                 {
-                    q.entries.Add(new OpenQuestion { question = textBox0.Text, audio = textBox9.Text, theAnswer = "" });
-                }
-                if (radioButton2.Checked == true)
-                {
-                    List<Option> opties = new List<Option>();
-                    for (int i = 0; i < opts; i++)
+                    if (radioButton1.Checked == true)
                     {
-                        opties.Add(new Option { tag = Convert.ToChar(65 + i).ToString(), answer = texts[i].Text, emotion = combos[i].Text });
+                        q.entries.Add(new OpenQuestion { question = textBox0.Text, audio = textBox9.Text, theAnswer = "" });
+                    }
+                    if (radioButton2.Checked == true)
+                    {
+                        List<Option> opties = new List<Option>();
+                        for (int i = 0; i < opts; i++)
+                        {
+                            opties.Add(new Option { tag = Convert.ToChar(65 + i).ToString(), answer = texts[i].Text, emotion = combos[i].Text });
+                        }
+
+                        q.entries.Add(new MCQuestion { question = textBox0.Text, audio = textBox9.Text, options = opties, theAnswer = "" });
                     }
 
-                    q.entries.Add(new MCQuestion { question = textBox0.Text, audio = textBox9.Text, options = opties, theAnswer = "" });
+                    if (radioButton3.Checked == true)
+                    {
+                        q.entries.Add(new Comment { value = textBox0.Text, audio = textBox9.Text, emotion = comboBox1.Text });
+                    }
+                    empty = false;
+                    reset();
                 }
-
-                if (radioButton3.Checked == true)
-                {
-                    q.entries.Add(new Comment { value = textBox0.Text, audio = textBox9.Text, emotion = comboBox1.Text });
-                }
-                empty = false;
-                reset();
             }
         }
 
         //reset de velden bij een nieuwe vraag
         private void reset()
         {
-            for (int i = 0; i < 9; i++) { texts[i].Text = ""; }
+            for (int i = 0; i < 10; i++) { texts[i].Text = ""; }
             for (int i = 0; i < 8; i++) { combos[i].Text = ""; }
         }
 
+        //laadt audiobestand in
         private void button4_Click(object sender, EventArgs e)
         {
             openFileDialog1.ShowDialog();
+            string audioPath = openFileDialog1.FileName.ToString();
             string[] name = null;
             //split de bestandnaam in stukken zodat alleen de naam van het bestand overblijft
-            name = openFileDialog1.ToString().Split('\\');
+            name = audioPath.Split('\\');
             textBox9.Text = name.Last();
             //upload openFileDialog1.Text to server
+
+
+            /*
+            byte[] audio = File.ReadAllBytes(@audioFile);
+            string audioAsString = System.Convert.ToBase64String(audio);
+            byte[] binaryData = Convert.FromBase64String(audioAsString);
+            File.WriteAllBytes("C:/ecoach/audio/4.wav", binaryData);
+            */
+
+            //bassPlay(audioFile);
+
+
+        }
+
+        //uploadt audiobestand als er geen probleem mee is
+        public bool addAudio()
+        {
+            if (textBox9.Text != "")
+            {
+                string audioPath = openFileDialog1.FileName.ToString();
+                //uploadt het bestand of geeft een aan dat er een probleem is met het file als het bestand niet upgeloadt kon worden
+                if (!DBConnect.InsertSpeechFile(audioPath))
+                {
+                    MessageBox.Show("Problem with file");
+                    return false;
+                };
+            }
+            return true;
+        }
+
+        //maakt de textbox voor audio bestanden leeg
+        private void button6_Click(object sender, EventArgs e)
+        {
+            textBox9.Text = "";
         }
 
     }
