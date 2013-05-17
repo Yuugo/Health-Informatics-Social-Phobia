@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="NijnCoachModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="NijnCoachModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="NijnCoachModelStoreContainer">
           <EntitySet Name="Address" EntityType="NijnCoachModel.Store.Address" store:Type="Tables" Schema="NijnCoach" />
           <EntitySet Name="Patients" EntityType="NijnCoachModel.Store.Patients" store:Type="Tables" Schema="NijnCoach" />
@@ -14,13 +14,15 @@
       `PatientToAddress`.`AddressID`
       FROM `PatientToAddress` AS `PatientToAddress`</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="Questionnairre" EntityType="NijnCoachModel.Store.Questionnairre" store:Type="Tables" Schema="NijnCoach" />
+          <EntitySet Name="SpeechFiles" EntityType="NijnCoachModel.Store.SpeechFiles" store:Type="Tables" Schema="NijnCoach" />
         </EntityContainer>
         <EntityType Name="Address">
           <Key>
             <PropertyRef Name="AddressID" />
           </Key>
           <Property Name="Street" Type="varchar" Nullable="false" MaxLength="40" />
-          <Property Name="HouseNo" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="HouseNo" Type="tinyint" Nullable="false" />
           <Property Name="Postal" Type="varchar" Nullable="false" MaxLength="10" />
           <Property Name="City" Type="varchar" Nullable="false" MaxLength="40" />
           <Property Name="AddressID" Type="tinyint" Nullable="false" StoreGeneratedPattern="Identity" />
@@ -47,8 +49,23 @@
           <Property Name="PatientID" Type="varchar" Nullable="false" MaxLength="100" />
           <Property Name="AddressID" Type="varchar" Nullable="false" MaxLength="100" />
         </EntityType>
-      </Schema>
-    </edmx:StorageModels>
+        <EntityType Name="Questionnairre">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Id" Type="tinyint" Nullable="false" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="Text" Type="mediumtext" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SpeechFiles">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Id" Type="tinyint" Nullable="false" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="Encoding" Type="longtext" Nullable="false" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="NijnCoachModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
@@ -56,6 +73,8 @@
           <EntitySet Name="Addresses" EntityType="NijnCoachModel.Address" />
           <EntitySet Name="Patients" EntityType="NijnCoachModel.Patient" />
           <EntitySet Name="PatientToAddresses" EntityType="NijnCoachModel.PatientToAddress" />
+          <EntitySet Name="Questionnairres" EntityType="NijnCoachModel.Questionnairre" />
+          <EntitySet Name="SpeechFiles" EntityType="NijnCoachModel.SpeechFile" />
         </EntityContainer>
         <EntityType Name="Address">
           <Key>
@@ -85,6 +104,22 @@
           </Key>
           <Property Name="PatientID" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
           <Property Name="AddressID" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Questionnairre">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Type="SByte" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Text" Nullable="false" MaxLength="16777215" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SpeechFile">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Type="SByte" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Encoding" Nullable="false" MaxLength="1073741823" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -123,6 +158,24 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Questionnairres">
+            <EntityTypeMapping TypeName="NijnCoachModel.Questionnairre">
+              <MappingFragment StoreEntitySet="Questionnairre">
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SpeechFiles">
+            <EntityTypeMapping TypeName="NijnCoachModel.SpeechFile">
+              <MappingFragment StoreEntitySet="SpeechFiles">
+                <ScalarProperty Name="Encoding" ColumnName="Encoding" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -147,6 +200,8 @@
         <EntityTypeShape EntityType="NijnCoachModel.Address" Width="1.5" PointX="0.75" PointY="0.75" Height="1.9802864583333331" IsExpanded="true" />
         <EntityTypeShape EntityType="NijnCoachModel.Patient" Width="1.5" PointX="2.75" PointY="0.75" Height="2.1725878906249996" IsExpanded="true" />
         <EntityTypeShape EntityType="NijnCoachModel.PatientToAddress" Width="1.5" PointX="0.75" PointY="3.75" Height="1.4033821614583322" IsExpanded="true" />
+        <EntityTypeShape EntityType="NijnCoachModel.Questionnairre" Width="1.5" PointX="3.375" PointY="3.75" Height="1.4605517578124996" />
+        <EntityTypeShape EntityType="NijnCoachModel.SpeechFile" Width="1.5" PointX="5.375" PointY="0.75" Height="1.4605517578124996" />
       </Diagram>
     </Diagrams>
   </Designer>

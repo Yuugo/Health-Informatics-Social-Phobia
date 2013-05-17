@@ -112,6 +112,38 @@ namespace NijnCoach.Database
             }
         }
         private ObjectSet<PatientToAddress> _PatientToAddresses;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Questionnairre> Questionnairres
+        {
+            get
+            {
+                if ((_Questionnairres == null))
+                {
+                    _Questionnairres = base.CreateObjectSet<Questionnairre>("Questionnairres");
+                }
+                return _Questionnairres;
+            }
+        }
+        private ObjectSet<Questionnairre> _Questionnairres;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<SpeechFile> SpeechFiles
+        {
+            get
+            {
+                if ((_SpeechFiles == null))
+                {
+                    _SpeechFiles = base.CreateObjectSet<SpeechFile>("SpeechFiles");
+                }
+                return _SpeechFiles;
+            }
+        }
+        private ObjectSet<SpeechFile> _SpeechFiles;
 
         #endregion
 
@@ -139,6 +171,22 @@ namespace NijnCoach.Database
         public void AddToPatientToAddresses(PatientToAddress patientToAddress)
         {
             base.AddObject("PatientToAddresses", patientToAddress);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Questionnairres EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToQuestionnairres(Questionnairre questionnairre)
+        {
+            base.AddObject("Questionnairres", questionnairre);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the SpeechFiles EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToSpeechFiles(SpeechFile speechFile)
+        {
+            base.AddObject("SpeechFiles", speechFile);
         }
 
         #endregion
@@ -577,6 +625,224 @@ namespace NijnCoach.Database
         private global::System.String _AddressID;
         partial void OnAddressIDChanging(global::System.String value);
         partial void OnAddressIDChanged();
+
+        #endregion
+
+    
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="NijnCoachModel", Name="Questionnairre")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Questionnairre : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Questionnairre object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="name">Initial value of the Name property.</param>
+        /// <param name="text">Initial value of the Text property.</param>
+        public static Questionnairre CreateQuestionnairre(global::System.SByte id, global::System.String name, global::System.String text)
+        {
+            Questionnairre questionnairre = new Questionnairre();
+            questionnairre.Id = id;
+            questionnairre.Name = name;
+            questionnairre.Text = text;
+            return questionnairre;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.SByte Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                OnIdChanging(value);
+                ReportPropertyChanging("Id");
+                _Id = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Id");
+                OnIdChanged();
+            }
+        }
+        private global::System.SByte _Id;
+        partial void OnIdChanging(global::System.SByte value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                if (_Name != value)
+                {
+                    OnNameChanging(value);
+                    ReportPropertyChanging("Name");
+                    _Name = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("Name");
+                    OnNameChanged();
+                }
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Text
+        {
+            get
+            {
+                return _Text;
+            }
+            set
+            {
+                OnTextChanging(value);
+                ReportPropertyChanging("Text");
+                _Text = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Text");
+                OnTextChanged();
+            }
+        }
+        private global::System.String _Text;
+        partial void OnTextChanging(global::System.String value);
+        partial void OnTextChanged();
+
+        #endregion
+
+    
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="NijnCoachModel", Name="SpeechFile")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class SpeechFile : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new SpeechFile object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="name">Initial value of the Name property.</param>
+        /// <param name="encoding">Initial value of the Encoding property.</param>
+        public static SpeechFile CreateSpeechFile(global::System.SByte id, global::System.String name, global::System.String encoding)
+        {
+            SpeechFile speechFile = new SpeechFile();
+            speechFile.Id = id;
+            speechFile.Name = name;
+            speechFile.Encoding = encoding;
+            return speechFile;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.SByte Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                OnIdChanging(value);
+                ReportPropertyChanging("Id");
+                _Id = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Id");
+                OnIdChanged();
+            }
+        }
+        private global::System.SByte _Id;
+        partial void OnIdChanging(global::System.SByte value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                if (_Name != value)
+                {
+                    OnNameChanging(value);
+                    ReportPropertyChanging("Name");
+                    _Name = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("Name");
+                    OnNameChanged();
+                }
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Encoding
+        {
+            get
+            {
+                return _Encoding;
+            }
+            set
+            {
+                OnEncodingChanging(value);
+                ReportPropertyChanging("Encoding");
+                _Encoding = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Encoding");
+                OnEncodingChanged();
+            }
+        }
+        private global::System.String _Encoding;
+        partial void OnEncodingChanging(global::System.String value);
+        partial void OnEncodingChanged();
 
         #endregion
 

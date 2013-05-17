@@ -15,13 +15,7 @@
       FROM `PatientToAddress` AS `PatientToAddress`</DefiningQuery>
           </EntitySet>
           <EntitySet Name="Questionnairre" EntityType="NijnCoachModel.Store.Questionnairre" store:Type="Tables" Schema="NijnCoach" />
-          <EntitySet Name="SpeechFiles" EntityType="NijnCoachModel.Store.SpeechFiles" store:Type="Tables" store:Schema="NijnCoach" store:Name="SpeechFiles">
-            <DefiningQuery>SELECT
-      `SpeechFiles`.`Id`, 
-      `SpeechFiles`.`Name`, 
-      `SpeechFiles`.`Encoding`
-      FROM `SpeechFiles` AS `SpeechFiles`</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="SpeechFiles" EntityType="NijnCoachModel.Store.SpeechFiles" store:Type="Tables" Schema="NijnCoach" />
         </EntityContainer>
         <EntityType Name="Address">
           <Key>
@@ -63,23 +57,19 @@
           <Property Name="Name" Type="varchar" Nullable="false" MaxLength="20" />
           <Property Name="Text" Type="mediumtext" Nullable="false" />
         </EntityType>
-      warning 6002: The table/view 'NijnCoach.SpeechFiles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
-      -->
         <EntityType Name="SpeechFiles">
           <Key>
-            <PropertyRef Name="Id" />
             <PropertyRef Name="Name" />
-            <PropertyRef Name="Encoding" />
           </Key>
           <Property Name="Id" Type="tinyint" Nullable="false" />
           <Property Name="Name" Type="varchar" Nullable="false" MaxLength="100" />
-          <Property Name="Encoding" Type="mediumtext" Nullable="false" />
+          <Property Name="Encoding" Type="longtext" Nullable="false" />
         </EntityType>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="NijnCoachModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-        <EntityContainer Name="NijnCoachEntities2" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="NijnCoachEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Addresses" EntityType="NijnCoachModel.Address" />
           <EntitySet Name="Patients" EntityType="NijnCoachModel.Patient" />
           <EntitySet Name="PatientToAddresses" EntityType="NijnCoachModel.PatientToAddress" />
@@ -91,7 +81,7 @@
             <PropertyRef Name="AddressID" />
           </Key>
           <Property Name="Street" Type="String" Nullable="false" MaxLength="40" Unicode="false" FixedLength="false" />
-          <Property Name="HouseNo" Type="SByte" Nullable="false" />
+          <Property Name="HouseNo" Type="Int64" Nullable="false" />
           <Property Name="Postal" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
           <Property Name="City" Type="String" Nullable="false" MaxLength="40" Unicode="false" FixedLength="false" />
           <Property Name="AddressID" Type="SByte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
@@ -125,20 +115,18 @@
         </EntityType>
         <EntityType Name="SpeechFile">
           <Key>
-            <PropertyRef Name="Id" />
             <PropertyRef Name="Name" />
-            <PropertyRef Name="Encoding" />
           </Key>
           <Property Type="SByte" Name="Id" Nullable="false" />
           <Property Type="String" Name="Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="Encoding" Nullable="false" MaxLength="16777215" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Encoding" Nullable="false" MaxLength="1073741823" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="NijnCoachModelStoreContainer" CdmEntityContainer="NijnCoachEntities2">
+        <EntityContainerMapping StorageEntityContainer="NijnCoachModelStoreContainer" CdmEntityContainer="NijnCoachEntities">
           <EntitySetMapping Name="Addresses">
             <EntityTypeMapping TypeName="NijnCoachModel.Address">
               <MappingFragment StoreEntitySet="Address">
@@ -212,8 +200,8 @@
         <EntityTypeShape EntityType="NijnCoachModel.Address" Width="1.5" PointX="0.75" PointY="0.75" Height="1.9802864583333331" IsExpanded="true" />
         <EntityTypeShape EntityType="NijnCoachModel.Patient" Width="1.5" PointX="2.75" PointY="0.75" Height="2.1725878906249996" IsExpanded="true" />
         <EntityTypeShape EntityType="NijnCoachModel.PatientToAddress" Width="1.5" PointX="0.75" PointY="3.75" Height="1.4033821614583322" IsExpanded="true" />
-        <EntityTypeShape EntityType="NijnCoachModel.Questionnairre" Width="1.5" PointX="3.375" PointY="3.75" Height="1.5956835937499996" />
-        <EntityTypeShape EntityType="NijnCoachModel.SpeechFile" Width="1.5" PointX="5.375" PointY="0.75" Height="1.5956835937499996" />
+        <EntityTypeShape EntityType="NijnCoachModel.Questionnairre" Width="1.5" PointX="3.375" PointY="3.75" Height="1.4605517578124996" />
+        <EntityTypeShape EntityType="NijnCoachModel.SpeechFile" Width="1.5" PointX="5.375" PointY="0.75" Height="1.4605517578124996" />
       </Diagram>
     </Diagrams>
   </Designer>

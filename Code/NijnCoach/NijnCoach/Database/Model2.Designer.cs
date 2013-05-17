@@ -24,32 +24,32 @@ namespace NijnCoach.Database
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    public partial class NijnCoachEntities2 : ObjectContext
+    public partial class NijnCoachEntities : ObjectContext
     {
         #region Constructors
     
         /// <summary>
-        /// Initializes a new NijnCoachEntities2 object using the connection string found in the 'NijnCoachEntities2' section of the application configuration file.
+        /// Initializes a new NijnCoachEntities object using the connection string found in the 'NijnCoachEntities' section of the application configuration file.
         /// </summary>
-        public NijnCoachEntities2() : base("name=NijnCoachEntities2", "NijnCoachEntities2")
+        public NijnCoachEntities() : base("name=NijnCoachEntities", "NijnCoachEntities")
         {
             this.ContextOptions.LazyLoadingEnabled = true;
             OnContextCreated();
         }
     
         /// <summary>
-        /// Initialize a new NijnCoachEntities2 object.
+        /// Initialize a new NijnCoachEntities object.
         /// </summary>
-        public NijnCoachEntities2(string connectionString) : base(connectionString, "NijnCoachEntities2")
+        public NijnCoachEntities(string connectionString) : base(connectionString, "NijnCoachEntities")
         {
             this.ContextOptions.LazyLoadingEnabled = true;
             OnContextCreated();
         }
     
         /// <summary>
-        /// Initialize a new NijnCoachEntities2 object.
+        /// Initialize a new NijnCoachEntities object.
         /// </summary>
-        public NijnCoachEntities2(EntityConnection connection) : base(connection, "NijnCoachEntities2")
+        public NijnCoachEntities(EntityConnection connection) : base(connection, "NijnCoachEntities")
         {
             this.ContextOptions.LazyLoadingEnabled = true;
             OnContextCreated();
@@ -215,7 +215,7 @@ namespace NijnCoach.Database
         /// <param name="postal">Initial value of the Postal property.</param>
         /// <param name="city">Initial value of the City property.</param>
         /// <param name="addressID">Initial value of the AddressID property.</param>
-        public static Address CreateAddress(global::System.String street, global::System.SByte houseNo, global::System.String postal, global::System.String city, global::System.SByte addressID)
+        public static Address CreateAddress(global::System.String street, global::System.Int64 houseNo, global::System.String postal, global::System.String city, global::System.SByte addressID)
         {
             Address address = new Address();
             address.Street = street;
@@ -259,7 +259,7 @@ namespace NijnCoach.Database
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.SByte HouseNo
+        public global::System.Int64 HouseNo
         {
             get
             {
@@ -274,8 +274,8 @@ namespace NijnCoach.Database
                 OnHouseNoChanged();
             }
         }
-        private global::System.SByte _HouseNo;
-        partial void OnHouseNoChanging(global::System.SByte value);
+        private global::System.Int64 _HouseNo;
+        partial void OnHouseNoChanging(global::System.Int64 value);
         partial void OnHouseNoChanged();
     
         /// <summary>
@@ -772,7 +772,7 @@ namespace NijnCoach.Database
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.SByte Id
         {
@@ -782,14 +782,11 @@ namespace NijnCoach.Database
             }
             set
             {
-                if (_Id != value)
-                {
-                    OnIdChanging(value);
-                    ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("Id");
-                    OnIdChanged();
-                }
+                OnIdChanging(value);
+                ReportPropertyChanging("Id");
+                _Id = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Id");
+                OnIdChanged();
             }
         }
         private global::System.SByte _Id;
@@ -826,7 +823,7 @@ namespace NijnCoach.Database
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.String Encoding
         {
@@ -836,14 +833,11 @@ namespace NijnCoach.Database
             }
             set
             {
-                if (_Encoding != value)
-                {
-                    OnEncodingChanging(value);
-                    ReportPropertyChanging("Encoding");
-                    _Encoding = StructuralObject.SetValidValue(value, false);
-                    ReportPropertyChanged("Encoding");
-                    OnEncodingChanged();
-                }
+                OnEncodingChanging(value);
+                ReportPropertyChanging("Encoding");
+                _Encoding = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Encoding");
+                OnEncodingChanged();
             }
         }
         private global::System.String _Encoding;
