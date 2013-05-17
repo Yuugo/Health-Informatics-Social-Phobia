@@ -20,84 +20,40 @@ using System.Xml.Serialization;
 namespace NijnCoach.Database
 {
     #region Contexts
-<<<<<<< HEAD
-
-=======
     
->>>>>>> origin/DBconnect
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
     public partial class NijnCoachEntities2 : ObjectContext
     {
         #region Constructors
-<<<<<<< HEAD
-
-        /// <summary>
-        /// Initializes a new NijnCoachEntities2 object using the connection string found in the 'NijnCoachEntities2' section of the application configuration file.
-        /// </summary>
-        public NijnCoachEntities2()
-            : base("name=NijnCoachEntities2", "NijnCoachEntities2")
-=======
     
         /// <summary>
         /// Initializes a new NijnCoachEntities2 object using the connection string found in the 'NijnCoachEntities2' section of the application configuration file.
         /// </summary>
         public NijnCoachEntities2() : base("name=NijnCoachEntities2", "NijnCoachEntities2")
->>>>>>> origin/DBconnect
         {
             this.ContextOptions.LazyLoadingEnabled = true;
             OnContextCreated();
         }
-<<<<<<< HEAD
-
-        /// <summary>
-        /// Initialize a new NijnCoachEntities2 object.
-        /// </summary>
-        public NijnCoachEntities2(string connectionString)
-            : base(connectionString, "NijnCoachEntities2")
-=======
     
         /// <summary>
         /// Initialize a new NijnCoachEntities2 object.
         /// </summary>
         public NijnCoachEntities2(string connectionString) : base(connectionString, "NijnCoachEntities2")
->>>>>>> origin/DBconnect
         {
             this.ContextOptions.LazyLoadingEnabled = true;
             OnContextCreated();
         }
-<<<<<<< HEAD
-
-        /// <summary>
-        /// Initialize a new NijnCoachEntities2 object.
-        /// </summary>
-        public NijnCoachEntities2(EntityConnection connection)
-            : base(connection, "NijnCoachEntities2")
-=======
     
         /// <summary>
         /// Initialize a new NijnCoachEntities2 object.
         /// </summary>
         public NijnCoachEntities2(EntityConnection connection) : base(connection, "NijnCoachEntities2")
->>>>>>> origin/DBconnect
         {
             this.ContextOptions.LazyLoadingEnabled = true;
             OnContextCreated();
         }
-<<<<<<< HEAD
-
-        #endregion
-
-        #region Partial Methods
-
-        partial void OnContextCreated();
-
-        #endregion
-
-        #region ObjectSet Properties
-
-=======
     
         #endregion
     
@@ -109,7 +65,6 @@ namespace NijnCoach.Database
     
         #region ObjectSet Properties
     
->>>>>>> origin/DBconnect
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
@@ -125,11 +80,7 @@ namespace NijnCoach.Database
             }
         }
         private ObjectSet<Address> _Addresses;
-<<<<<<< HEAD
-
-=======
     
->>>>>>> origin/DBconnect
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
@@ -145,11 +96,7 @@ namespace NijnCoach.Database
             }
         }
         private ObjectSet<Patient> _Patients;
-<<<<<<< HEAD
-
-=======
     
->>>>>>> origin/DBconnect
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
@@ -165,11 +112,7 @@ namespace NijnCoach.Database
             }
         }
         private ObjectSet<PatientToAddress> _PatientToAddresses;
-<<<<<<< HEAD
-
-=======
     
->>>>>>> origin/DBconnect
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
@@ -185,11 +128,7 @@ namespace NijnCoach.Database
             }
         }
         private ObjectSet<Questionnairre> _Questionnairres;
-<<<<<<< HEAD
-
-=======
     
->>>>>>> origin/DBconnect
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
@@ -209,11 +148,7 @@ namespace NijnCoach.Database
         #endregion
 
         #region AddTo Methods
-<<<<<<< HEAD
-
-=======
     
->>>>>>> origin/DBconnect
         /// <summary>
         /// Deprecated Method for adding a new object to the Addresses EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
@@ -221,11 +156,7 @@ namespace NijnCoach.Database
         {
             base.AddObject("Addresses", address);
         }
-<<<<<<< HEAD
-
-=======
     
->>>>>>> origin/DBconnect
         /// <summary>
         /// Deprecated Method for adding a new object to the Patients EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
@@ -233,11 +164,7 @@ namespace NijnCoach.Database
         {
             base.AddObject("Patients", patient);
         }
-<<<<<<< HEAD
-
-=======
     
->>>>>>> origin/DBconnect
         /// <summary>
         /// Deprecated Method for adding a new object to the PatientToAddresses EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
@@ -245,11 +172,7 @@ namespace NijnCoach.Database
         {
             base.AddObject("PatientToAddresses", patientToAddress);
         }
-<<<<<<< HEAD
-
-=======
     
->>>>>>> origin/DBconnect
         /// <summary>
         /// Deprecated Method for adding a new object to the Questionnairres EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
@@ -257,11 +180,7 @@ namespace NijnCoach.Database
         {
             base.AddObject("Questionnairres", questionnairre);
         }
-<<<<<<< HEAD
-
-=======
     
->>>>>>> origin/DBconnect
         /// <summary>
         /// Deprecated Method for adding a new object to the SpeechFiles EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
@@ -277,19 +196,6 @@ namespace NijnCoach.Database
     #endregion
 
     #region Entities
-<<<<<<< HEAD
-
-    /// <summary>
-    /// No Metadata Documentation available.
-    /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName = "NijnCoachModel", Name = "Address")]
-    [Serializable()]
-    [DataContractAttribute(IsReference = true)]
-    public partial class Address : EntityObject
-    {
-        #region Factory Method
-
-=======
     
     /// <summary>
     /// No Metadata Documentation available.
@@ -301,7 +207,6 @@ namespace NijnCoach.Database
     {
         #region Factory Method
     
->>>>>>> origin/DBconnect
         /// <summary>
         /// Create a new Address object.
         /// </summary>
@@ -324,19 +229,11 @@ namespace NijnCoach.Database
         #endregion
 
         #region Primitive Properties
-<<<<<<< HEAD
-
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = false)]
-=======
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
->>>>>>> origin/DBconnect
         [DataMemberAttribute()]
         public global::System.String Street
         {
@@ -356,19 +253,11 @@ namespace NijnCoach.Database
         private global::System.String _Street;
         partial void OnStreetChanging(global::System.String value);
         partial void OnStreetChanged();
-<<<<<<< HEAD
-
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = false)]
-=======
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
->>>>>>> origin/DBconnect
         [DataMemberAttribute()]
         public global::System.SByte HouseNo
         {
@@ -388,19 +277,11 @@ namespace NijnCoach.Database
         private global::System.SByte _HouseNo;
         partial void OnHouseNoChanging(global::System.SByte value);
         partial void OnHouseNoChanged();
-<<<<<<< HEAD
-
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = false)]
-=======
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
->>>>>>> origin/DBconnect
         [DataMemberAttribute()]
         public global::System.String Postal
         {
@@ -420,19 +301,11 @@ namespace NijnCoach.Database
         private global::System.String _Postal;
         partial void OnPostalChanging(global::System.String value);
         partial void OnPostalChanged();
-<<<<<<< HEAD
-
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = false)]
-=======
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
->>>>>>> origin/DBconnect
         [DataMemberAttribute()]
         public global::System.String City
         {
@@ -452,19 +325,11 @@ namespace NijnCoach.Database
         private global::System.String _City;
         partial void OnCityChanging(global::System.String value);
         partial void OnCityChanged();
-<<<<<<< HEAD
-
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = true, IsNullable = false)]
-=======
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
->>>>>>> origin/DBconnect
         [DataMemberAttribute()]
         public global::System.SByte AddressID
         {
@@ -490,21 +355,6 @@ namespace NijnCoach.Database
 
         #endregion
 
-<<<<<<< HEAD
-
-    }
-
-    /// <summary>
-    /// No Metadata Documentation available.
-    /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName = "NijnCoachModel", Name = "Patient")]
-    [Serializable()]
-    [DataContractAttribute(IsReference = true)]
-    public partial class Patient : EntityObject
-    {
-        #region Factory Method
-
-=======
     
     }
     
@@ -518,7 +368,6 @@ namespace NijnCoach.Database
     {
         #region Factory Method
     
->>>>>>> origin/DBconnect
         /// <summary>
         /// Create a new Patient object.
         /// </summary>
@@ -543,19 +392,11 @@ namespace NijnCoach.Database
         #endregion
 
         #region Primitive Properties
-<<<<<<< HEAD
-
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = false)]
-=======
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
->>>>>>> origin/DBconnect
         [DataMemberAttribute()]
         public global::System.String Fname
         {
@@ -575,19 +416,11 @@ namespace NijnCoach.Database
         private global::System.String _Fname;
         partial void OnFnameChanging(global::System.String value);
         partial void OnFnameChanged();
-<<<<<<< HEAD
-
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = false)]
-=======
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
->>>>>>> origin/DBconnect
         [DataMemberAttribute()]
         public global::System.String Lname
         {
@@ -607,19 +440,11 @@ namespace NijnCoach.Database
         private global::System.String _Lname;
         partial void OnLnameChanging(global::System.String value);
         partial void OnLnameChanged();
-<<<<<<< HEAD
-
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = true, IsNullable = false)]
-=======
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
->>>>>>> origin/DBconnect
         [DataMemberAttribute()]
         public global::System.SByte PatientNo
         {
@@ -642,19 +467,11 @@ namespace NijnCoach.Database
         private global::System.SByte _PatientNo;
         partial void OnPatientNoChanging(global::System.SByte value);
         partial void OnPatientNoChanged();
-<<<<<<< HEAD
-
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = false)]
-=======
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
->>>>>>> origin/DBconnect
         [DataMemberAttribute()]
         public global::System.SByte Age
         {
@@ -674,19 +491,11 @@ namespace NijnCoach.Database
         private global::System.SByte _Age;
         partial void OnAgeChanging(global::System.SByte value);
         partial void OnAgeChanged();
-<<<<<<< HEAD
-
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = false)]
-=======
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
->>>>>>> origin/DBconnect
         [DataMemberAttribute()]
         public global::System.String Email
         {
@@ -706,19 +515,11 @@ namespace NijnCoach.Database
         private global::System.String _Email;
         partial void OnEmailChanging(global::System.String value);
         partial void OnEmailChanged();
-<<<<<<< HEAD
-
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = false)]
-=======
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
->>>>>>> origin/DBconnect
         [DataMemberAttribute()]
         public global::System.Int64 PhoneNo
         {
@@ -741,21 +542,6 @@ namespace NijnCoach.Database
 
         #endregion
 
-<<<<<<< HEAD
-
-    }
-
-    /// <summary>
-    /// No Metadata Documentation available.
-    /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName = "NijnCoachModel", Name = "PatientToAddress")]
-    [Serializable()]
-    [DataContractAttribute(IsReference = true)]
-    public partial class PatientToAddress : EntityObject
-    {
-        #region Factory Method
-
-=======
     
     }
     
@@ -769,7 +555,6 @@ namespace NijnCoach.Database
     {
         #region Factory Method
     
->>>>>>> origin/DBconnect
         /// <summary>
         /// Create a new PatientToAddress object.
         /// </summary>
@@ -786,19 +571,11 @@ namespace NijnCoach.Database
         #endregion
 
         #region Primitive Properties
-<<<<<<< HEAD
-
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = true, IsNullable = false)]
-=======
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
->>>>>>> origin/DBconnect
         [DataMemberAttribute()]
         public global::System.String PatientID
         {
@@ -821,19 +598,11 @@ namespace NijnCoach.Database
         private global::System.String _PatientID;
         partial void OnPatientIDChanging(global::System.String value);
         partial void OnPatientIDChanged();
-<<<<<<< HEAD
-
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = true, IsNullable = false)]
-=======
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
->>>>>>> origin/DBconnect
         [DataMemberAttribute()]
         public global::System.String AddressID
         {
@@ -859,21 +628,6 @@ namespace NijnCoach.Database
 
         #endregion
 
-<<<<<<< HEAD
-
-    }
-
-    /// <summary>
-    /// No Metadata Documentation available.
-    /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName = "NijnCoachModel", Name = "Questionnairre")]
-    [Serializable()]
-    [DataContractAttribute(IsReference = true)]
-    public partial class Questionnairre : EntityObject
-    {
-        #region Factory Method
-
-=======
     
     }
     
@@ -887,7 +641,6 @@ namespace NijnCoach.Database
     {
         #region Factory Method
     
->>>>>>> origin/DBconnect
         /// <summary>
         /// Create a new Questionnairre object.
         /// </summary>
@@ -906,19 +659,11 @@ namespace NijnCoach.Database
         #endregion
 
         #region Primitive Properties
-<<<<<<< HEAD
-
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = false)]
-=======
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
->>>>>>> origin/DBconnect
         [DataMemberAttribute()]
         public global::System.SByte Id
         {
@@ -938,19 +683,11 @@ namespace NijnCoach.Database
         private global::System.SByte _Id;
         partial void OnIdChanging(global::System.SByte value);
         partial void OnIdChanged();
-<<<<<<< HEAD
-
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = true, IsNullable = false)]
-=======
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
->>>>>>> origin/DBconnect
         [DataMemberAttribute()]
         public global::System.String Name
         {
@@ -973,19 +710,11 @@ namespace NijnCoach.Database
         private global::System.String _Name;
         partial void OnNameChanging(global::System.String value);
         partial void OnNameChanged();
-<<<<<<< HEAD
-
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = false, IsNullable = false)]
-=======
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
->>>>>>> origin/DBconnect
         [DataMemberAttribute()]
         public global::System.String Text
         {
@@ -1008,21 +737,6 @@ namespace NijnCoach.Database
 
         #endregion
 
-<<<<<<< HEAD
-
-    }
-
-    /// <summary>
-    /// No Metadata Documentation available.
-    /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName = "NijnCoachModel", Name = "SpeechFile")]
-    [Serializable()]
-    [DataContractAttribute(IsReference = true)]
-    public partial class SpeechFile : EntityObject
-    {
-        #region Factory Method
-
-=======
     
     }
     
@@ -1036,7 +750,6 @@ namespace NijnCoach.Database
     {
         #region Factory Method
     
->>>>>>> origin/DBconnect
         /// <summary>
         /// Create a new SpeechFile object.
         /// </summary>
@@ -1055,19 +768,11 @@ namespace NijnCoach.Database
         #endregion
 
         #region Primitive Properties
-<<<<<<< HEAD
-
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = true, IsNullable = false)]
-=======
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
->>>>>>> origin/DBconnect
         [DataMemberAttribute()]
         public global::System.SByte Id
         {
@@ -1090,19 +795,11 @@ namespace NijnCoach.Database
         private global::System.SByte _Id;
         partial void OnIdChanging(global::System.SByte value);
         partial void OnIdChanged();
-<<<<<<< HEAD
-
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = true, IsNullable = false)]
-=======
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
->>>>>>> origin/DBconnect
         [DataMemberAttribute()]
         public global::System.String Name
         {
@@ -1125,19 +822,11 @@ namespace NijnCoach.Database
         private global::System.String _Name;
         partial void OnNameChanging(global::System.String value);
         partial void OnNameChanged();
-<<<<<<< HEAD
-
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty = true, IsNullable = false)]
-=======
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
->>>>>>> origin/DBconnect
         [DataMemberAttribute()]
         public global::System.String Encoding
         {
@@ -1163,18 +852,10 @@ namespace NijnCoach.Database
 
         #endregion
 
-<<<<<<< HEAD
-
-=======
     
->>>>>>> origin/DBconnect
     }
 
     #endregion
 
-<<<<<<< HEAD
-
-=======
     
->>>>>>> origin/DBconnect
 }
