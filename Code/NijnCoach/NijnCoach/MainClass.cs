@@ -10,7 +10,7 @@ namespace NijnCoach
 {
     class MainClass
     {
-        public static void InactiveMain(String[] args)
+        public static void Main(String[] args)
         {
             XMLParser parser = new XMLParser();
             Questionnaire q = parser.readXMLFromFile("ziejewelwillem.xml");
@@ -21,7 +21,7 @@ namespace NijnCoach
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        static void InactiveMain()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
