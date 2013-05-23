@@ -69,6 +69,12 @@
     <Compile Include="View\AvatarDir\AvatarPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="View\PatientFiles\PatientFiles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\PatientFiles\PatientFiles.Designer.cs">
+      <DependentUpon>PatientFiles.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\TherapistGUI\TherapistGUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -173,6 +179,9 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\PatientFiles\PatientFiles.resx">
+      <DependentUpon>PatientFiles.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\TherapistGUI\TherapistGUI.resx">
       <DependentUpon>TherapistGUI.cs</DependentUpon>
