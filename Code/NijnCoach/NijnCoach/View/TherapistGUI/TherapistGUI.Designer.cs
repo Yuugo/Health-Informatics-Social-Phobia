@@ -420,11 +420,12 @@
             // labelH
             // 
             this.labelH.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelH.Location = new System.Drawing.Point(207, 23);
+            this.labelH.Location = new System.Drawing.Point(12, 23);
             this.labelH.Name = "labelH";
-            this.labelH.Size = new System.Drawing.Size(276, 44);
+            this.labelH.Size = new System.Drawing.Size(648, 44);
             this.labelH.TabIndex = 40;
             this.labelH.Text = "Questionnairemaker";
+            this.labelH.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // button5
             // 
@@ -432,7 +433,7 @@
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(149, 64);
             this.button5.TabIndex = 42;
-            this.button5.Text = "Finish questionnaire";
+            this.button5.Text = "Save question && finish questionnaire";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
@@ -494,7 +495,7 @@
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
-            // Form1
+            // TherapistGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -538,7 +539,7 @@
             this.Controls.Add(this.textBox0);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.labelQ);
-            this.Name = "Form1";
+            this.Name = "TherapistGUI";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
