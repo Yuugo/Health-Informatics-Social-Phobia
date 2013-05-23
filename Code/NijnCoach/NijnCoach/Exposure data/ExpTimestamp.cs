@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace NijnCoach.Exposure_data
 {
@@ -11,6 +12,10 @@ namespace NijnCoach.Exposure_data
         int hr;
         int gsr;
         int sud;
+
+        static Regex regexNoSUD = new Regex(@"^.*(?<hour>[0-9]{2}):(?<min>[0-9]{2}):(?<sec>[0-9]{2}).*(?<hr>[0-9]{2}).*(?<gsr>[0-9]{3}).*$");
+        static Regex regexSUD = new Regex(@"^.*[0-9]{2}:[0-9]{2}:[0-9]{2}.*[0-9]{2}.*[0-9]{3}.*(?<sud>[0-9]).*$");
+
 
         public ExpTimestamp(DateTime time, int hr, int gsr)
             : this(time, hr, gsr, -1) { }
@@ -23,9 +28,24 @@ namespace NijnCoach.Exposure_data
             this.sud = sud;
         }
 
-        public int getScore()
+        public int getHR()
         {
             return hr;
+        }
+
+        public int getGSR()
+        {
+            return gsr / 10;
+        }
+
+        public int getSUD()
+        {
+            return sud * 10;
+        }
+
+        public int getScore()
+        {
+            return hr + gsr / 10;
         }
 
         public DateTime getTime()
@@ -38,54 +58,35 @@ namespace NijnCoach.Exposure_data
             time = newTime;
         }
 
-
-
-
-
-        public static ExpTimestamp ReadExpTimestamp(string stamp)
-        {
-            DateTime start = new DateTime();
-            return ReadExpTimestamp(stamp, start);
-        }
-
+        
         public static ExpTimestamp ReadExpTimestamp(string stamp, DateTime dt)
         {
-            string[] line = stamp.Split(null);
-            
-            /*debug
-            for (int i = 0; i < line.Length; i++)
+            Match match = regexNoSUD.Match(stamp);
+
+            if (!match.Success)
             {
-                Console.Write(line[i] + "_");
+                Console.WriteLine("Unable to read file");//fail
+                return null;
             }
-            Console.WriteLine();
-            /*///debug
 
-            // Read the line with the time, and convert it to the time relative to the start time
-            string[] ts = line[0].Split(':');
-            DateTime time = new DateTime();
-            int hour = Convert.ToInt32(ts[0]) - dt.Hour;
-            int min = Convert.ToInt32(ts[1]) - dt.Minute;
-            int sec = Convert.ToInt32(ts[2]) - dt.Second;
-            time.AddHours(hour); time.AddMinutes(min); time.AddSeconds(sec);
-            
-            //Console.WriteLine(ts[0] + ts[1] + ts[2]); //debug
+            int hour = Convert.ToInt32(match.Groups["hour"].Value) - dt.Hour;
+            int min = Convert.ToInt32(match.Groups["min"].Value) - dt.Minute;
+            int sec = Convert.ToInt32(match.Groups["sec"].Value) - dt.Second;
+            DateTime time = new DateTime(dt.Year, dt.Month, dt.Day, hour, min, sec);
 
-            int hr = Convert.ToInt32(line[1]);
-            //Console.WriteLine(hr); //debug
-            int gsr = Convert.ToInt32(line[2]);
-            //Console.WriteLine(gsr);//debug
+            int hr = Convert.ToInt32(match.Groups["hr"].Value);
+            int gsr = Convert.ToInt32(match.Groups["gsr"].Value);
+
             int sud;
-            if (line.Length > 3 )
+            match = regexSUD.Match(stamp);
+            if (match.Success)
             {
-                //Console.WriteLine(line[3]);//debug
-                sud = Convert.ToInt32(line[3]);
+                sud = Convert.ToInt32(match.Groups["sud"].Value);
             }
             else
             {
-                //Console.WriteLine("no SUD");//debug
                 sud = -1;
             }
-            
 
             return new ExpTimestamp(time, hr, gsr, sud);
         }

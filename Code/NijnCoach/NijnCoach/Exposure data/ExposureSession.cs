@@ -8,26 +8,13 @@ namespace NijnCoach.Exposure_data
 {
     class ExposureSession
     {
-        DateTime startTime  { get; set; }
-        DateTime date       { get; set; }
+        DateTime date;
         List<ExpTimestamp> data;
         int index = 0;
-
-        public ExposureSession()
-        {
-            data = new List<ExpTimestamp>();
-        }
 
         public ExposureSession(DateTime date)
         {
             this.date = date;
-            data = new List<ExpTimestamp>();
-        }
-
-        public ExposureSession(DateTime date, DateTime st)
-        {
-            this.date = date;
-            this.startTime = st;
             data = new List<ExpTimestamp>();
         }
 
@@ -40,8 +27,7 @@ namespace NijnCoach.Exposure_data
         {
             if (data.Count > index && data[index] != null)
             {
-                index++;
-                return data[index];
+                return data[index++];
             }
             else
             {
@@ -51,31 +37,13 @@ namespace NijnCoach.Exposure_data
         }
 
 
-
-
         public static ExposureSession ReadExposureSession(StreamReader reader, DateTime dt)
         {
-            // Read the first data line to extract the begin time of the session
-            ExpTimestamp firstStamp = ExpTimestamp.ReadExpTimestamp(reader.ReadLine());
-            ExposureSession session = new ExposureSession(dt, firstStamp.getTime());
-            // Reset time of the first stamp to the time relative to starting time
-            DateTime tzero = new DateTime();
-            tzero.AddHours(00); tzero.AddMinutes(00); tzero.AddSeconds(00);
-            firstStamp.setTime(tzero);
-            // Add the first time stamp to the list
-            session.data.Add(firstStamp);
-            
+            ExposureSession session = new ExposureSession(dt);
 
             while (reader.Peek() != -1)
             {
-                
-                //Console.WriteLine("Reading line...");//debug
-                
-                string line = reader.ReadLine();
-                
-                //Console.WriteLine(line);//debug
-
-                ExpTimestamp stamp = ExpTimestamp.ReadExpTimestamp(line, session.startTime);
+                ExpTimestamp stamp = ExpTimestamp.ReadExpTimestamp(reader.ReadLine(), dt);
 
                 session.data.Add(stamp);
             }

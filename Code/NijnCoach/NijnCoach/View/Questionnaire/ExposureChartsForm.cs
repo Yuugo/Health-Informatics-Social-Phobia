@@ -21,58 +21,65 @@ namespace NijnCoach.View.Questionnaire
         public ExposureChartsForm()
         {
             InitializeComponent();
-            this.Load += new System.EventHandler(this.ExposureChartsForm_Load);
+            this.Load += new System.EventHandler(this.LastExposureSessionChart_Load);
         }
 
-        private double f(int i)
+        private void LastExposureSessionChart_Load(object sender, EventArgs e)
         {
-            var f1 = 59894 - (8128 * i) + (262 * i * i) - (1.6 * i * i * i);
-            return f1;
-        }
+            this.lastSessionChart.Series.Clear();
 
-
-        private void ExposureChartsForm_Load(object sender, EventArgs e)
-        {
-            chart1.Series.Clear();
-
-            var series2 = new System.Windows.Forms.DataVisualization.Charting.Series
-            {
-                Name = "Series2",
-                Color = System.Drawing.Color.Green,
-                IsVisibleInLegend = false,
-                IsXValueIndexed = true,
-                ChartType = SeriesChartType.Line
-            };
-            series2.XValueType = ChartValueType.Auto;
-
-            string file = "Z://git//Health-Informatics-Social-Phobia//Code//NijnCoach//NijnCoach//06-05-2013_1500.txt";
+            string file = "Z://git//Health-Informatics-Social-Phobia//Code//NijnCoach//NijnCoach//06-05-2013_1501.txt";
             ExposureSession session = ReadExposureData.ReadFile(file);
 
-            Console.WriteLine(session);
+            #region Initialize the series
 
+            var hrserie = new Series
+            {
+                Name = "Heartrate",
+                Color = System.Drawing.Color.Red,
+                IsVisibleInLegend = true,
+                IsXValueIndexed = true,
+                ChartType = SeriesChartType.Line,
+                XValueType = ChartValueType.Auto
+            };
+            var gsrserie = new Series
+            {
+                Name = "GSR",
+                Color = System.Drawing.Color.Green,
+                IsVisibleInLegend = true,
+                IsXValueIndexed = true,
+                ChartType = SeriesChartType.Line,
+                XValueType = ChartValueType.Auto
+            };
+            var sudserie = new Series
+            {
+                Name = "SUD",
+                Color = System.Drawing.Color.Blue,
+                IsVisibleInLegend = true,
+                IsXValueIndexed = true,
+                ChartType = SeriesChartType.Line,
+                XValueType = ChartValueType.Auto
+            };
 
-            chart1.Series.Add(series2);
+            this.lastSessionChart.Series.Add(hrserie);
+            this.lastSessionChart.Series.Add(gsrserie);
+            this.lastSessionChart.Series.Add(sudserie);
 
-            ExpTimestamp data = session.nextTimeStamp();
-            series2.Points.AddXY(data.getTime(), data.getScore());
-            while (data != null)
+            #endregion
+
+            ExpTimestamp data; int sud = 0;
+            do
             {
                 data = session.nextTimeStamp();
-                series2.Points.AddXY(data.getTime(), data.getScore());
-            }
+                gsrserie.Points.AddXY(data.getTime(), data.getGSR());
+                hrserie.Points.AddXY(data.getTime(), data.getHR());
+                if (data.getSUD() >= 0)
+                    sud = data.getSUD();
+                sudserie.Points.AddXY(data.getTime(), sud);
+            } while (data != null);
 
 
-            // set date format to dutch representation
-            Thread.CurrentThread.CurrentCulture = new CultureInfo("nl-NL");
-            chart1.Legends.Add(new Legend(session.getDate().ToShortDateString()));
-
-            // show an X label every 3 Minute
-            chart1.ChartAreas[0].AxisX.Interval = 3.0;
-            chart1.ChartAreas[0].AxisX.IntervalType = DateTimeIntervalType.Minutes;
-            chart1.ChartAreas[0].AxisX.LabelStyle.Format = "mm:ss";
-            
-            
-            chart1.Invalidate();
+            this.lastSessionChart.Invalidate();
         }
 
     }

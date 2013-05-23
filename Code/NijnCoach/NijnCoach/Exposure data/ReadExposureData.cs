@@ -4,12 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Diagnostics;
+using System.Text.RegularExpressions;
 
 namespace NijnCoach.Exposure_data
 {
     class ReadExposureData
     {
-        static string winDir = System.Environment.GetEnvironmentVariable("windir");
+        static Regex regex = new Regex(@"^.*(?<day>[0-9]{2})-(?<month>[0-9]{2})-(?<year>[0-9]{4})_(?<hour>[0-9]{2})(?<min>[0-9]{2})\.txt$");
 
         public static string[] GetFiles()
         {
@@ -18,25 +19,14 @@ namespace NijnCoach.Exposure_data
 
         public static ExposureSession ReadFile(string filename)
         {
-            //string date = "06-05-2013";
-            //string time = "1500";
-            DateTime dt = new DateTime(2013, 05, 06, 15, 00, 00);
-
-            //string file = winDir + "\\" + date + "_" + time + ".txt";
-            //string file = "Z://git//Health-Informatics-Social-Phobia//Code//NijnCoach//NijnCoach//06-05-2013_1500.txt";
             Console.WriteLine(filename);
 
-
-
+            DateTime dt = ExtractDateFromFilename(filename);
+            
             StreamReader reader = new StreamReader(filename);
             try
             {
-                //debug
-                Console.WriteLine("Reading file...");
-                Console.WriteLine(reader.ReadLine()); // Header line
-                //debug
-
-                //reader.ReadLine();
+                reader.ReadLine();
                 return ExposureSession.ReadExposureSession(reader, dt);
             }
             catch
@@ -48,7 +38,25 @@ namespace NijnCoach.Exposure_data
             {
                 reader.Close();
             }
+            
         }
 
+        public static DateTime ExtractDateFromFilename(string filename)
+        {
+            Match match = regex.Match(filename);
+            if (match.Success)
+            {
+                int year =  Convert.ToInt32( match.Groups["year"].Value );
+                int month = Convert.ToInt32(match.Groups["month"].Value);
+                int day = Convert.ToInt32(match.Groups["day"].Value);
+                int hour = Convert.ToInt32(match.Groups["hour"].Value);
+                int min = Convert.ToInt32(match.Groups["min"].Value);
+                return new DateTime(year, month, day, hour, min, 00);
+            }
+            else
+            {
+                return new DateTime();
+            }
+        }
     }
 }
