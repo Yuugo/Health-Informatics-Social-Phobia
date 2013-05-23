@@ -9,43 +9,22 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using NijnCoach.View.Main;
 using NijnCoach.View.Questionnaire;
+using NijnCoach.View.AvatarDir;
 
 namespace NijnCoach.View.Greet
 {
-    public partial class GreetPanel : Panel
+    public partial class GreetPanel : AvatarContainer
     {
         private System.Windows.Forms.Timer t;
 
-        public GreetPanel(Boolean _loadAvatar = true)
+        public GreetPanel(Boolean _loadAvatar = true) : base(_loadAvatar)
         {
-            InitializeComponent();
-            if (_loadAvatar)
-            {
-                loadAvatar();
-            }
-            t = new System.Windows.Forms.Timer();
-            t.Interval = 500;
-            t.Tick += new EventHandler(waitForAvatar);
-            t.Enabled = true;
         }
 
-        public void loadAvatar()
+        protected override void avatarLoaded()
         {
-            Debug.Assert(panelAvatarIntern == null);
-            panelAvatarIntern = new NijnCoach.View.AvatarDir.AvatarPanel(100, 100);
-            panelAvatarIntern.Width = panelAvatar.Width;
-            panelAvatarIntern.Height = panelAvatar.Height;
-            panelAvatar.Controls.Add(panelAvatarIntern);
-        }
-
-        private void waitForAvatar(object sender, EventArgs e)
-        {
-            if(panelAvatarIntern.fullyLoaded)
-            {
-                t.Enabled = false;
-                //TODO: play sound "Welcome!"
-                button1.Enabled = true;
-            }            
+            //TODO: play sound "Welcome!"
+            buttonContinue.Enabled = true;
         }
 
         private void continueEventHandler(object sender, EventArgs e)

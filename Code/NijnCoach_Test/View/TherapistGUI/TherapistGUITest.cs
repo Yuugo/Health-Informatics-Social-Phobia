@@ -416,7 +416,7 @@ namespace NijnCoach_Test.View.TherapistGUI
             clickOnOpenQuestion();
             Object o = GetField("textBox0");
             ((TextBox)o).Text = "Hallo";
-            RaiseEvent("button1", "Click", new EventArgs());
+            RaiseEvent("buttonContinue", "Click", new EventArgs());
 
             Assert.IsEmpty((String)GetProperty("textBox0.Text"));
         }

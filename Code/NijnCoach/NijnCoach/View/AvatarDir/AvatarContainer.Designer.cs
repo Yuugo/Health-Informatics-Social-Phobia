@@ -1,6 +1,6 @@
 ﻿namespace NijnCoach.View.AvatarDir
 {
-    partial class AvatarContainer
+    abstract partial class AvatarContainer
     {
         /// <summary> 
         /// Required designer variable.
@@ -26,7 +26,7 @@
         /// Required method for Designer support - do not modify 
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
+        protected virtual void InitializeComponent()
         {
             this.panelAvatar = new System.Windows.Forms.Panel();
             this.SuspendLayout();
@@ -43,7 +43,6 @@
             // 
             this.Controls.Add(this.panelAvatar);
             this.ResumeLayout(false);
-
         }
 
         #endregion

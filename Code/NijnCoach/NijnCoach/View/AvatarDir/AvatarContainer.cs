@@ -12,12 +12,13 @@ using NijnCoach.View.Questionnaire;
 
 namespace NijnCoach.View.AvatarDir
 {
-    public partial class AvatarContainer : Panel
+    public abstract partial class AvatarContainer : Panel
     {
         protected System.Windows.Forms.Timer t;
 
-        public virtual AvatarContainer(Boolean _loadAvatar = true)
+        public AvatarContainer(Boolean _loadAvatar = true)
         {
+            InitializeComponent();
             if (_loadAvatar)
             {
                 loadAvatar();
@@ -37,13 +38,15 @@ namespace NijnCoach.View.AvatarDir
             panelAvatar.Controls.Add(panelAvatarIntern);
         }
 
-        private virtual void waitForAvatar(object sender, EventArgs e)
+        private void waitForAvatar(object sender, EventArgs e)
         {
             if(panelAvatarIntern.fullyLoaded)
             {
                 t.Enabled = false;
+                avatarLoaded();
             }            
         }
 
+        protected abstract void avatarLoaded();
     }
 }
