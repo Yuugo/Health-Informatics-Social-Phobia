@@ -112,6 +112,22 @@ namespace NijnCoach.Database
             }
         }
         private ObjectSet<SpeechFile> _SpeechFiles;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<ProgressEval> ProgressEvals
+        {
+            get
+            {
+                if ((_ProgressEvals == null))
+                {
+                    _ProgressEvals = base.CreateObjectSet<ProgressEval>("ProgressEvals");
+                }
+                return _ProgressEvals;
+            }
+        }
+        private ObjectSet<ProgressEval> _ProgressEvals;
 
         #endregion
 
@@ -139,6 +155,14 @@ namespace NijnCoach.Database
         public void AddToSpeechFiles(SpeechFile speechFile)
         {
             base.AddObject("SpeechFiles", speechFile);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the ProgressEvals EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToProgressEvals(ProgressEval progressEval)
+        {
+            base.AddObject("ProgressEvals", progressEval);
         }
 
         #endregion
@@ -434,6 +458,115 @@ namespace NijnCoach.Database
         private global::System.String _City;
         partial void OnCityChanging(global::System.String value);
         partial void OnCityChanged();
+
+        #endregion
+
+    
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="NijnCoachModel1", Name="ProgressEval")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class ProgressEval : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new ProgressEval object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="name">Initial value of the Name property.</param>
+        /// <param name="content">Initial value of the Content property.</param>
+        public static ProgressEval CreateProgressEval(global::System.String id, global::System.String name, global::System.String content)
+        {
+            ProgressEval progressEval = new ProgressEval();
+            progressEval.Id = id;
+            progressEval.Name = name;
+            progressEval.Content = content;
+            return progressEval;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                OnIdChanging(value);
+                ReportPropertyChanging("Id");
+                _Id = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Id");
+                OnIdChanged();
+            }
+        }
+        private global::System.String _Id;
+        partial void OnIdChanging(global::System.String value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                if (_Name != value)
+                {
+                    OnNameChanging(value);
+                    ReportPropertyChanging("Name");
+                    _Name = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("Name");
+                    OnNameChanged();
+                }
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Content
+        {
+            get
+            {
+                return _Content;
+            }
+            set
+            {
+                OnContentChanging(value);
+                ReportPropertyChanging("Content");
+                _Content = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Content");
+                OnContentChanged();
+            }
+        }
+        private global::System.String _Content;
+        partial void OnContentChanging(global::System.String value);
+        partial void OnContentChanged();
 
         #endregion
 
