@@ -119,11 +119,10 @@ namespace NijnCoach.View.TherapistGUI
 
         private void button5_Click(object sender, EventArgs e)
         {
-            //neemt vraag op als deze er nog staat
-            addQuestion();
-            if (empty == false)
+            saveFileDialog dialog = new saveFileDialog();
+
+            if (dialog.ShowDialog() == DialogResult.OK)
             {
-                saveFileDialog1.ShowDialog();
                 q.version = 1.00;
                 q.head = new NijnCoach.XMLclasses.Questionnaire.Header
                 {
@@ -134,9 +133,11 @@ namespace NijnCoach.View.TherapistGUI
                 };
 
                 XMLParser xpars = new XMLParser();
-                xpars.writeXMLToFile(q, saveFileDialog1.FileName);
+                String theXML = xpars.writeXML(q);
+                DBConnect.InsertQuestionnairre(dialog.saveFileTextBox.Text, q);
+                MessageBox.Show("Questionnaire has been saved");
                 q = new NijnCoach.XMLclasses.Questionnaire();
-                q.entries = new ListOfIEntry();
+                q.entries = new ListOfIEntry();                
             }
         }
 
@@ -173,7 +174,7 @@ namespace NijnCoach.View.TherapistGUI
         //reset de velden bij een nieuwe vraag
         private void reset()
         {
-            for (int i = 0; i < 10; i++) { texts[i].Text = ""; }
+            for (int i = 0; i < 9; i++) { texts[i].Text = ""; }
             for (int i = 0; i < 8; i++) { combos[i].Text = ""; }
         }
 
