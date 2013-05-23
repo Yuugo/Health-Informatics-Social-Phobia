@@ -126,9 +126,7 @@ namespace NijnCoach.View.Questionnaire
             this.openFileDialog.Filter = "XML Files(*.xml)|*.xml";
             // 
             // QuestionnaireForm
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            
             this.ClientSize = new System.Drawing.Size(982, 487);
             this.Controls.Add(this.smile);
             this.Controls.Add(this.buttonSave);
@@ -137,11 +135,8 @@ namespace NijnCoach.View.Questionnaire
             this.Controls.Add(this.buttonNext);
             this.Controls.Add(this.buttonPrevious);
             this.Controls.Add(this.panelAvatar);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.MaximizeBox = false;
             this.Name = "QuestionnaireForm";
             this.Text = "Questionnaire";
-            this.TopMost = true;
             this.panelAvatar.ResumeLayout(false);
             this.ResumeLayout(false);
 

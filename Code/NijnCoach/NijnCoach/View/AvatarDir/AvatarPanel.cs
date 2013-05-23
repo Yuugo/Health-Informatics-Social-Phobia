@@ -28,6 +28,7 @@ namespace NijnCoach.View.AvatarDir
 
         private int borderWidth;
         private int borderHeight;
+        private Boolean _fullyLoaded = false;
 
         /// <summary>
         /// Make a new panel for an avatar. If the avatar has not been displayed before,
@@ -122,6 +123,7 @@ namespace NijnCoach.View.AvatarDir
 
             this.Resize += new EventHandler(delegate(object sender2, EventArgs e2) { MoveWindow(AvatarHandle, -borderWidth, -borderHeight, this.Width + 2 * borderWidth, this.Height + 2 * borderHeight, true); });
             ShowWindow(AvatarHandle, 9);
+            _fullyLoaded = true;
         }
 
         /// <summary>
@@ -136,8 +138,8 @@ namespace NijnCoach.View.AvatarDir
             {
                 ShowWindow(AvatarHandle, 11);
                 SetWindowLong(AvatarHandle, GWL_STYLE, (int)(~WS_VISIBLE & ((WS_MAXIMIZE | WS_BORDER) | WS_CHILD)));
+                SetParent(AvatarHandle, new IntPtr(0));
             }
-            SetParent(AvatarHandle, new IntPtr(0));
             base.Dispose(disposing);
         }
 
@@ -184,6 +186,11 @@ namespace NijnCoach.View.AvatarDir
                     catch (Exception e) { }
                 }
             }
+        }
+
+        public Boolean fullyLoaded
+        {
+            get { return _fullyLoaded; }
         }
 
         #region

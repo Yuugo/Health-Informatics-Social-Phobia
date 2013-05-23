@@ -14,7 +14,7 @@ using NijnCoach.Avatar;
 
 namespace NijnCoach.View.Questionnaire
 {
-    public partial class QuestionnaireForm : Form
+    public partial class QuestionnaireForm : Panel
     {
         private XMLclasses.Questionnaire questionnaire;
         private int currentQuestion = 0;
