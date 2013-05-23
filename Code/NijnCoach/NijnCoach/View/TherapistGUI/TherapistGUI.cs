@@ -176,7 +176,7 @@ namespace NijnCoach.View.TherapistGUI
         //reset de velden bij een nieuwe vraag
         private void reset()
         {
-            for (int i = 0; i < 10; i++) { texts[i].Text = ""; }
+            for (int i = 0; i < 9; i++) { texts[i].Text = ""; }
             for (int i = 0; i < 8; i++) { combos[i].Text = ""; }
         }
 
