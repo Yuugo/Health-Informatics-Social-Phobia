@@ -14,34 +14,28 @@ using NijnCoach.Avatar;
 
 namespace NijnCoach.View.Questionnaire
 {
-    public partial class QuestionnaireForm : Panel
+    public partial class QuestionnaireForm : AvatarContainer
     {
         private XMLclasses.Questionnaire questionnaire;
         private int currentQuestion = 0;
-        public QuestionnaireForm(Boolean _loadAvatar = true)
+        public QuestionnaireForm(Boolean _loadAvatar = true) : base(_loadAvatar)
         {
             XMLParser parser = new XMLParser();
-            InitializeComponent();
             openFileDialog.ShowDialog();
             XMLclasses.Questionnaire questionnaire = parser.readXMLFromFile(openFileDialog.FileName);
-            init(questionnaire,_loadAvatar);
+            init(questionnaire);
         }
 
-        public QuestionnaireForm(XMLclasses.Questionnaire questionnaire, Boolean _loadAvatar = true)
+        public QuestionnaireForm(XMLclasses.Questionnaire questionnaire, Boolean _loadAvatar = true) : base(_loadAvatar)
         {
-            InitializeComponent();
-            init(questionnaire, _loadAvatar);
+            init(questionnaire);
         }
 
-        public void init(XMLclasses.Questionnaire questionnaire, Boolean _loadAvatar = true)
+        private void init(XMLclasses.Questionnaire questionnaire)
         {
             Debug.Assert(questionnaire.entries.Count > 0, "The number of entries in the questionnaire should at least be 1");
             this.questionnaire = questionnaire;
             initControls();
-            if (_loadAvatar)
-            {
-                loadAvatar();
-            }
         }
 
         private void initControls()
@@ -53,15 +47,6 @@ namespace NijnCoach.View.Questionnaire
             {
                 buttonNext.Enabled = false;
             }
-        }
-
-        public void loadAvatar()
-        {
-            Debug.Assert(panelAvatarIntern == null);
-            panelAvatarIntern = new NijnCoach.View.AvatarDir.AvatarPanel(100, 100);
-            panelAvatarIntern.Width = panelAvatar.Width;
-            panelAvatarIntern.Height = panelAvatar.Height;
-            panelAvatar.Controls.Add(panelAvatarIntern);
         }
 
         private void nextEventHandler(object sender,EventArgs e){
@@ -126,9 +111,7 @@ namespace NijnCoach.View.Questionnaire
             AvatarControl.happy();
         }
 
-        private void panelAvatar_Paint(object sender, PaintEventArgs e)
-        {
-            
-        }
+
+        protected override void avatarLoaded() { }
     }
 }

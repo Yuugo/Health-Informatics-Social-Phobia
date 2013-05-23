@@ -15,8 +15,6 @@ namespace NijnCoach.View.Greet
 {
     public partial class GreetPanel : AvatarContainer
     {
-        private System.Windows.Forms.Timer t;
-
         public GreetPanel(Boolean _loadAvatar = true) : base(_loadAvatar)
         {
         }
@@ -30,7 +28,8 @@ namespace NijnCoach.View.Greet
         private void continueEventHandler(object sender, EventArgs e)
         {
             //TODO: Fetch questionnaire from database
-            MainForm.mainForm.replacePanel(new QuestionnaireForm());
+            XMLParser parser = new XMLParser();
+            MainForm.mainForm.replacePanel(new QuestionnaireForm(parser.readXMLFromFile("writeTest.xml")));
         }
     }
 }

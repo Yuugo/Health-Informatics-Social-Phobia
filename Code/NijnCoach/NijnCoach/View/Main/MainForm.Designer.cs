@@ -43,7 +43,7 @@
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "NijnCoach";
-            this.TopMost = true;
+            //this.TopMost = true;
             this.ResumeLayout(false);
             // 
             // outerPanel
