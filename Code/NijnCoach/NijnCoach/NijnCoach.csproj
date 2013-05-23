@@ -55,10 +55,10 @@
   <ItemGroup>
     <Compile Include="Avatar\AvatarControl.cs" />
     <Compile Include="Database\DBConnect.cs" />
-    <Compile Include="Database\Model2.Designer.cs">
+    <Compile Include="Database\NijnCoachModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model2.edmx</DependentUpon>
+      <DependentUpon>NijnCoachModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="MainClass.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -195,9 +195,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <EntityDeploy Include="Database\Model2.edmx">
+    <EntityDeploy Include="Database\NijnCoachModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model2.Designer.cs</LastGenOutput>
+      <LastGenOutput>NijnCoachModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <None Include="NijnCoach.Database.Database.NijnCoachEntities.datasource" />
   </ItemGroup>

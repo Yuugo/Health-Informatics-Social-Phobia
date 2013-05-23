@@ -68,22 +68,6 @@ namespace NijnCoach.Database
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<Address> Addresses
-        {
-            get
-            {
-                if ((_Addresses == null))
-                {
-                    _Addresses = base.CreateObjectSet<Address>("Addresses");
-                }
-                return _Addresses;
-            }
-        }
-        private ObjectSet<Address> _Addresses;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         public ObjectSet<Patient> Patients
         {
             get
@@ -96,22 +80,6 @@ namespace NijnCoach.Database
             }
         }
         private ObjectSet<Patient> _Patients;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<PatientToAddress> PatientToAddresses
-        {
-            get
-            {
-                if ((_PatientToAddresses == null))
-                {
-                    _PatientToAddresses = base.CreateObjectSet<PatientToAddress>("PatientToAddresses");
-                }
-                return _PatientToAddresses;
-            }
-        }
-        private ObjectSet<PatientToAddress> _PatientToAddresses;
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -150,27 +118,11 @@ namespace NijnCoach.Database
         #region AddTo Methods
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the Addresses EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToAddresses(Address address)
-        {
-            base.AddObject("Addresses", address);
-        }
-    
-        /// <summary>
         /// Deprecated Method for adding a new object to the Patients EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
         public void AddToPatients(Patient patient)
         {
             base.AddObject("Patients", patient);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the PatientToAddresses EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToPatientToAddresses(PatientToAddress patientToAddress)
-        {
-            base.AddObject("PatientToAddresses", patientToAddress);
         }
     
         /// <summary>
@@ -200,168 +152,7 @@ namespace NijnCoach.Database
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="NijnCoachModel", Name="Address")]
-    [Serializable()]
-    [DataContractAttribute(IsReference=true)]
-    public partial class Address : EntityObject
-    {
-        #region Factory Method
-    
-        /// <summary>
-        /// Create a new Address object.
-        /// </summary>
-        /// <param name="street">Initial value of the Street property.</param>
-        /// <param name="houseNo">Initial value of the HouseNo property.</param>
-        /// <param name="postal">Initial value of the Postal property.</param>
-        /// <param name="city">Initial value of the City property.</param>
-        /// <param name="addressID">Initial value of the AddressID property.</param>
-        public static Address CreateAddress(global::System.String street, global::System.SByte houseNo, global::System.String postal, global::System.String city, global::System.SByte addressID)
-        {
-            Address address = new Address();
-            address.Street = street;
-            address.HouseNo = houseNo;
-            address.Postal = postal;
-            address.City = city;
-            address.AddressID = addressID;
-            return address;
-        }
-
-        #endregion
-
-        #region Primitive Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String Street
-        {
-            get
-            {
-                return _Street;
-            }
-            set
-            {
-                OnStreetChanging(value);
-                ReportPropertyChanging("Street");
-                _Street = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("Street");
-                OnStreetChanged();
-            }
-        }
-        private global::System.String _Street;
-        partial void OnStreetChanging(global::System.String value);
-        partial void OnStreetChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.SByte HouseNo
-        {
-            get
-            {
-                return _HouseNo;
-            }
-            set
-            {
-                OnHouseNoChanging(value);
-                ReportPropertyChanging("HouseNo");
-                _HouseNo = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("HouseNo");
-                OnHouseNoChanged();
-            }
-        }
-        private global::System.SByte _HouseNo;
-        partial void OnHouseNoChanging(global::System.SByte value);
-        partial void OnHouseNoChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String Postal
-        {
-            get
-            {
-                return _Postal;
-            }
-            set
-            {
-                OnPostalChanging(value);
-                ReportPropertyChanging("Postal");
-                _Postal = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("Postal");
-                OnPostalChanged();
-            }
-        }
-        private global::System.String _Postal;
-        partial void OnPostalChanging(global::System.String value);
-        partial void OnPostalChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String City
-        {
-            get
-            {
-                return _City;
-            }
-            set
-            {
-                OnCityChanging(value);
-                ReportPropertyChanging("City");
-                _City = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("City");
-                OnCityChanged();
-            }
-        }
-        private global::System.String _City;
-        partial void OnCityChanging(global::System.String value);
-        partial void OnCityChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.SByte AddressID
-        {
-            get
-            {
-                return _AddressID;
-            }
-            set
-            {
-                if (_AddressID != value)
-                {
-                    OnAddressIDChanging(value);
-                    ReportPropertyChanging("AddressID");
-                    _AddressID = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("AddressID");
-                    OnAddressIDChanged();
-                }
-            }
-        }
-        private global::System.SByte _AddressID;
-        partial void OnAddressIDChanging(global::System.SByte value);
-        partial void OnAddressIDChanged();
-
-        #endregion
-
-    
-    }
-    
-    /// <summary>
-    /// No Metadata Documentation available.
-    /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="NijnCoachModel", Name="Patient")]
+    [EdmEntityTypeAttribute(NamespaceName="NijnCoachModel1", Name="Patient")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class Patient : EntityObject
@@ -377,7 +168,11 @@ namespace NijnCoach.Database
         /// <param name="age">Initial value of the Age property.</param>
         /// <param name="email">Initial value of the Email property.</param>
         /// <param name="phoneNo">Initial value of the PhoneNo property.</param>
-        public static Patient CreatePatient(global::System.String fname, global::System.String lname, global::System.SByte patientNo, global::System.SByte age, global::System.String email, global::System.Int64 phoneNo)
+        /// <param name="street">Initial value of the Street property.</param>
+        /// <param name="houseNo">Initial value of the HouseNo property.</param>
+        /// <param name="postal">Initial value of the Postal property.</param>
+        /// <param name="city">Initial value of the City property.</param>
+        public static Patient CreatePatient(global::System.String fname, global::System.String lname, global::System.SByte patientNo, global::System.SByte age, global::System.String email, global::System.Int64 phoneNo, global::System.String street, global::System.SByte houseNo, global::System.String postal, global::System.String city)
         {
             Patient patient = new Patient();
             patient.Fname = fname;
@@ -386,6 +181,10 @@ namespace NijnCoach.Database
             patient.Age = age;
             patient.Email = email;
             patient.PhoneNo = phoneNo;
+            patient.Street = street;
+            patient.HouseNo = houseNo;
+            patient.Postal = postal;
+            patient.City = city;
             return patient;
         }
 
@@ -539,6 +338,102 @@ namespace NijnCoach.Database
         private global::System.Int64 _PhoneNo;
         partial void OnPhoneNoChanging(global::System.Int64 value);
         partial void OnPhoneNoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Street
+        {
+            get
+            {
+                return _Street;
+            }
+            set
+            {
+                OnStreetChanging(value);
+                ReportPropertyChanging("Street");
+                _Street = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Street");
+                OnStreetChanged();
+            }
+        }
+        private global::System.String _Street;
+        partial void OnStreetChanging(global::System.String value);
+        partial void OnStreetChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.SByte HouseNo
+        {
+            get
+            {
+                return _HouseNo;
+            }
+            set
+            {
+                OnHouseNoChanging(value);
+                ReportPropertyChanging("HouseNo");
+                _HouseNo = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("HouseNo");
+                OnHouseNoChanged();
+            }
+        }
+        private global::System.SByte _HouseNo;
+        partial void OnHouseNoChanging(global::System.SByte value);
+        partial void OnHouseNoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Postal
+        {
+            get
+            {
+                return _Postal;
+            }
+            set
+            {
+                OnPostalChanging(value);
+                ReportPropertyChanging("Postal");
+                _Postal = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Postal");
+                OnPostalChanged();
+            }
+        }
+        private global::System.String _Postal;
+        partial void OnPostalChanging(global::System.String value);
+        partial void OnPostalChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String City
+        {
+            get
+            {
+                return _City;
+            }
+            set
+            {
+                OnCityChanging(value);
+                ReportPropertyChanging("City");
+                _City = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("City");
+                OnCityChanged();
+            }
+        }
+        private global::System.String _City;
+        partial void OnCityChanging(global::System.String value);
+        partial void OnCityChanged();
 
         #endregion
 
@@ -548,93 +443,7 @@ namespace NijnCoach.Database
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="NijnCoachModel", Name="PatientToAddress")]
-    [Serializable()]
-    [DataContractAttribute(IsReference=true)]
-    public partial class PatientToAddress : EntityObject
-    {
-        #region Factory Method
-    
-        /// <summary>
-        /// Create a new PatientToAddress object.
-        /// </summary>
-        /// <param name="patientID">Initial value of the PatientID property.</param>
-        /// <param name="addressID">Initial value of the AddressID property.</param>
-        public static PatientToAddress CreatePatientToAddress(global::System.String patientID, global::System.String addressID)
-        {
-            PatientToAddress patientToAddress = new PatientToAddress();
-            patientToAddress.PatientID = patientID;
-            patientToAddress.AddressID = addressID;
-            return patientToAddress;
-        }
-
-        #endregion
-
-        #region Primitive Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String PatientID
-        {
-            get
-            {
-                return _PatientID;
-            }
-            set
-            {
-                if (_PatientID != value)
-                {
-                    OnPatientIDChanging(value);
-                    ReportPropertyChanging("PatientID");
-                    _PatientID = StructuralObject.SetValidValue(value, false);
-                    ReportPropertyChanged("PatientID");
-                    OnPatientIDChanged();
-                }
-            }
-        }
-        private global::System.String _PatientID;
-        partial void OnPatientIDChanging(global::System.String value);
-        partial void OnPatientIDChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String AddressID
-        {
-            get
-            {
-                return _AddressID;
-            }
-            set
-            {
-                if (_AddressID != value)
-                {
-                    OnAddressIDChanging(value);
-                    ReportPropertyChanging("AddressID");
-                    _AddressID = StructuralObject.SetValidValue(value, false);
-                    ReportPropertyChanged("AddressID");
-                    OnAddressIDChanged();
-                }
-            }
-        }
-        private global::System.String _AddressID;
-        partial void OnAddressIDChanging(global::System.String value);
-        partial void OnAddressIDChanged();
-
-        #endregion
-
-    
-    }
-    
-    /// <summary>
-    /// No Metadata Documentation available.
-    /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="NijnCoachModel", Name="Questionnairre")]
+    [EdmEntityTypeAttribute(NamespaceName="NijnCoachModel1", Name="Questionnairre")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class Questionnairre : EntityObject
@@ -743,7 +552,7 @@ namespace NijnCoach.Database
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="NijnCoachModel", Name="SpeechFile")]
+    [EdmEntityTypeAttribute(NamespaceName="NijnCoachModel1", Name="SpeechFile")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class SpeechFile : EntityObject
