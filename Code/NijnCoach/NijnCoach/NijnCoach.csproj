@@ -74,6 +74,7 @@
     </Compile>
     <Compile Include="View\TherapistGUI\saveFileDialog.Designer.cs">
       <DependentUpon>saveFileDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\PatientFiles\PatientFiles.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -187,6 +188,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\TherapistGUI\saveFileDialog.resx">
       <DependentUpon>saveFileDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\PatientFiles\PatientFiles.resx">
       <DependentUpon>PatientFiles.cs</DependentUpon>
     </EmbeddedResource>
