@@ -36,6 +36,17 @@ namespace NijnCoach.Exposure_data
             }
         }
 
+        public ExpTimestamp meanScore()
+        {
+            int maxSUD = 0, maxGSR = 0, maxHR = 0;
+            foreach (ExpTimestamp e in data)
+            {
+                maxSUD = e.getSUD() >= maxSUD ? e.getSUD() : maxSUD;
+                maxGSR = e.getGSR() >= maxGSR ? e.getGSR() : maxGSR;
+                maxHR = e.getHR() >= maxHR ? e.getHR() : maxHR;
+            }
+            return new ExpTimestamp(new DateTime(), maxHR, maxGSR, maxSUD);
+        }
 
         public static ExposureSession ReadExposureSession(StreamReader reader, DateTime dt)
         {

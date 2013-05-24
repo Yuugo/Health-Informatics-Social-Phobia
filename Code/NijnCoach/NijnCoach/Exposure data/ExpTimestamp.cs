@@ -35,17 +35,12 @@ namespace NijnCoach.Exposure_data
 
         public int getGSR()
         {
-            return gsr / 10;
+            return gsr;
         }
 
         public int getSUD()
         {
-            return sud * 10;
-        }
-
-        public int getScore()
-        {
-            return hr + gsr / 10;
+            return sud;
         }
 
         public DateTime getTime()
@@ -79,14 +74,11 @@ namespace NijnCoach.Exposure_data
 
             int sud;
             match = regexSUD.Match(stamp);
+
             if (match.Success)
-            {
                 sud = Convert.ToInt32(match.Groups["sud"].Value);
-            }
             else
-            {
                 sud = -1;
-            }
 
             return new ExpTimestamp(time, hr, gsr, sud);
         }

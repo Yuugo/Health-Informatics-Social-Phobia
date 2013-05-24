@@ -31,16 +31,19 @@ namespace NijnCoach.View.Questionnaire
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Title title4 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.home = new System.Windows.Forms.Button();
             this.lastSessionChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chartTabs = new System.Windows.Forms.TabControl();
             this.lastSessionTab = new System.Windows.Forms.TabPage();
+            this.groupBoxRadiobuttonsLastSession = new System.Windows.Forms.GroupBox();
+            this.gsrRadiobuttonLastSession = new System.Windows.Forms.RadioButton();
+            this.hrRadiobuttonLastSession = new System.Windows.Forms.RadioButton();
+            this.sudRadiobuttonLastSession = new System.Windows.Forms.RadioButton();
             this.overviewTab = new System.Windows.Forms.TabPage();
             this.overviewChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.avatarPanel = new System.Windows.Forms.Panel();
@@ -48,6 +51,7 @@ namespace NijnCoach.View.Questionnaire
             ((System.ComponentModel.ISupportInitialize)(this.lastSessionChart)).BeginInit();
             this.chartTabs.SuspendLayout();
             this.lastSessionTab.SuspendLayout();
+            this.groupBoxRadiobuttonsLastSession.SuspendLayout();
             this.overviewTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.overviewChart)).BeginInit();
             this.SuspendLayout();
@@ -63,24 +67,21 @@ namespace NijnCoach.View.Questionnaire
             // 
             // lastSessionChart
             // 
-            chartArea3.AxisX.Interval = 3D;
-            chartArea3.AxisX.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Minutes;
-            chartArea3.AxisX.LabelStyle.Format = "mm:ss";
-            chartArea3.AxisX.MajorGrid.Enabled = false;
-            chartArea3.AxisY.LabelStyle.Enabled = false;
-            chartArea3.AxisY.MajorGrid.Enabled = false;
-            chartArea3.Name = "ChartArea1";
-            this.lastSessionChart.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.lastSessionChart.Legends.Add(legend3);
+            chartArea1.AxisX.Interval = 3D;
+            chartArea1.AxisX.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Minutes;
+            chartArea1.AxisX.LabelStyle.Format = "mm:ss";
+            chartArea1.AxisX.MajorGrid.Enabled = false;
+            chartArea1.AxisY.MajorGrid.Enabled = false;
+            chartArea1.Name = "ChartArea1";
+            this.lastSessionChart.ChartAreas.Add(chartArea1);
             this.lastSessionChart.Location = new System.Drawing.Point(0, 0);
             this.lastSessionChart.Name = "lastSessionChart";
             this.lastSessionChart.Size = new System.Drawing.Size(597, 361);
             this.lastSessionChart.TabIndex = 3;
             this.lastSessionChart.Text = "Last Session";
-            title3.Name = "title1";
-            title3.Text = "Last session";
-            this.lastSessionChart.Titles.Add(title3);
+            title1.Name = "title1";
+            title1.Text = "Last session";
+            this.lastSessionChart.Titles.Add(title1);
             // 
             // chartTabs
             // 
@@ -95,6 +96,7 @@ namespace NijnCoach.View.Questionnaire
             // lastSessionTab
             // 
             this.lastSessionTab.BackColor = System.Drawing.SystemColors.Control;
+            this.lastSessionTab.Controls.Add(this.groupBoxRadiobuttonsLastSession);
             this.lastSessionTab.Controls.Add(this.lastSessionChart);
             this.lastSessionTab.Location = new System.Drawing.Point(4, 22);
             this.lastSessionTab.Name = "lastSessionTab";
@@ -102,6 +104,53 @@ namespace NijnCoach.View.Questionnaire
             this.lastSessionTab.Size = new System.Drawing.Size(597, 361);
             this.lastSessionTab.TabIndex = 0;
             this.lastSessionTab.Text = "Last Session";
+            // 
+            // groupBoxRadiobuttonsLastSession
+            // 
+            this.groupBoxRadiobuttonsLastSession.Controls.Add(this.gsrRadiobuttonLastSession);
+            this.groupBoxRadiobuttonsLastSession.Controls.Add(this.hrRadiobuttonLastSession);
+            this.groupBoxRadiobuttonsLastSession.Controls.Add(this.sudRadiobuttonLastSession);
+            this.groupBoxRadiobuttonsLastSession.Location = new System.Drawing.Point(494, 6);
+            this.groupBoxRadiobuttonsLastSession.Name = "groupBoxRadiobuttonsLastSession";
+            this.groupBoxRadiobuttonsLastSession.Size = new System.Drawing.Size(97, 84);
+            this.groupBoxRadiobuttonsLastSession.TabIndex = 7;
+            this.groupBoxRadiobuttonsLastSession.TabStop = false;
+            this.groupBoxRadiobuttonsLastSession.Text = "Show";
+            // 
+            // gsrRadiobuttonLastSession
+            // 
+            this.gsrRadiobuttonLastSession.AutoSize = true;
+            this.gsrRadiobuttonLastSession.Location = new System.Drawing.Point(6, 41);
+            this.gsrRadiobuttonLastSession.Name = "gsrRadiobuttonLastSession";
+            this.gsrRadiobuttonLastSession.Size = new System.Drawing.Size(48, 17);
+            this.gsrRadiobuttonLastSession.TabIndex = 5;
+            this.gsrRadiobuttonLastSession.Text = "GSR";
+            this.gsrRadiobuttonLastSession.UseVisualStyleBackColor = true;
+            this.gsrRadiobuttonLastSession.CheckedChanged += new System.EventHandler(this.gsrRadiobuttonLastSession_CheckedChanged);
+            // 
+            // hrRadiobuttonLastSession
+            // 
+            this.hrRadiobuttonLastSession.AutoSize = true;
+            this.hrRadiobuttonLastSession.Location = new System.Drawing.Point(6, 64);
+            this.hrRadiobuttonLastSession.Name = "hrRadiobuttonLastSession";
+            this.hrRadiobuttonLastSession.Size = new System.Drawing.Size(69, 17);
+            this.hrRadiobuttonLastSession.TabIndex = 6;
+            this.hrRadiobuttonLastSession.Text = "Heartrate";
+            this.hrRadiobuttonLastSession.UseVisualStyleBackColor = true;
+            this.hrRadiobuttonLastSession.CheckedChanged += new System.EventHandler(this.hrRadiobuttonLastSession_CheckedChanged);
+            // 
+            // sudRadiobuttonLastSession
+            // 
+            this.sudRadiobuttonLastSession.AutoSize = true;
+            this.sudRadiobuttonLastSession.Checked = true;
+            this.sudRadiobuttonLastSession.Location = new System.Drawing.Point(6, 18);
+            this.sudRadiobuttonLastSession.Name = "sudRadiobuttonLastSession";
+            this.sudRadiobuttonLastSession.Size = new System.Drawing.Size(48, 17);
+            this.sudRadiobuttonLastSession.TabIndex = 4;
+            this.sudRadiobuttonLastSession.TabStop = true;
+            this.sudRadiobuttonLastSession.Text = "SUD";
+            this.sudRadiobuttonLastSession.UseVisualStyleBackColor = true;
+            this.sudRadiobuttonLastSession.CheckedChanged += new System.EventHandler(this.sudRadiobuttonLastSession_CheckedChanged);
             // 
             // overviewTab
             // 
@@ -116,18 +165,18 @@ namespace NijnCoach.View.Questionnaire
             // 
             // overviewChart
             // 
-            chartArea4.Name = "ChartArea2";
-            this.overviewChart.ChartAreas.Add(chartArea4);
-            legend4.Name = "Legend2";
-            this.overviewChart.Legends.Add(legend4);
+            chartArea2.Name = "ChartArea2";
+            this.overviewChart.ChartAreas.Add(chartArea2);
+            legend1.Name = "Legend2";
+            this.overviewChart.Legends.Add(legend1);
             this.overviewChart.Location = new System.Drawing.Point(-4, 0);
             this.overviewChart.Name = "overviewChart";
             this.overviewChart.Size = new System.Drawing.Size(601, 361);
             this.overviewChart.TabIndex = 0;
             this.overviewChart.Text = "Overview";
-            title4.Name = "title2";
-            title4.Text = "Overview Progress";
-            this.overviewChart.Titles.Add(title4);
+            title2.Name = "title2";
+            title2.Text = "Overview Progress";
+            this.overviewChart.Titles.Add(title2);
             // 
             // avatarPanel
             // 
@@ -159,6 +208,8 @@ namespace NijnCoach.View.Questionnaire
             ((System.ComponentModel.ISupportInitialize)(this.lastSessionChart)).EndInit();
             this.chartTabs.ResumeLayout(false);
             this.lastSessionTab.ResumeLayout(false);
+            this.groupBoxRadiobuttonsLastSession.ResumeLayout(false);
+            this.groupBoxRadiobuttonsLastSession.PerformLayout();
             this.overviewTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.overviewChart)).EndInit();
             this.ResumeLayout(false);
@@ -175,5 +226,9 @@ namespace NijnCoach.View.Questionnaire
         private Chart overviewChart;
         private System.Windows.Forms.Panel avatarPanel;
         private System.Windows.Forms.Panel commentPanel;
+        private System.Windows.Forms.GroupBox groupBoxRadiobuttonsLastSession;
+        private System.Windows.Forms.RadioButton gsrRadiobuttonLastSession;
+        private System.Windows.Forms.RadioButton hrRadiobuttonLastSession;
+        private System.Windows.Forms.RadioButton sudRadiobuttonLastSession;
     }
 }

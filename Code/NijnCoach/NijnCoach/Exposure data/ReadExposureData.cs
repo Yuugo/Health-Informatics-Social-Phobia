@@ -19,8 +19,6 @@ namespace NijnCoach.Exposure_data
 
         public static ExposureSession ReadFile(string filename)
         {
-            Console.WriteLine(filename);
-
             DateTime dt = ExtractDateFromFilename(filename);
             
             StreamReader reader = new StreamReader(filename);
