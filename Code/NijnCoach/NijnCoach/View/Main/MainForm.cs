@@ -38,6 +38,7 @@ namespace NijnCoach.View.Main
             if (innerPanel != null)
             {
                 outerPanel.Controls.Remove(innerPanel);
+                //NijnCoach.View.AvatarDir.AvatarPanel.unParentAvatar();
                 innerPanel.Dispose();
             }
             innerPanel = panel;

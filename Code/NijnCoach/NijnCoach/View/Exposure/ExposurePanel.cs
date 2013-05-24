@@ -13,6 +13,7 @@ namespace NijnCoach.View.Exposure
 {
     public partial class ExposurePanel : Panel
     {
+        System.Windows.Forms.Timer t;
         public ExposurePanel()
         {
             InitializeComponent();
@@ -20,11 +21,21 @@ namespace NijnCoach.View.Exposure
              * Do the complete exposure
              * Not included in this project
              */
-            System.Threading.Thread.Sleep(3000);
+            t = new System.Windows.Forms.Timer();
+            t.Interval = 3000;
+            t.Tick += new EventHandler(exposureFinishedEventHandler);
+            t.Enabled = true;
 
+            
+        }
+
+        private void exposureFinishedEventHandler(object sender, EventArgs e)
+        {
+            t.Enabled = false;
             //Load the overview of this exposure session
             //Load the correct data from the database
             MainForm.mainForm.replacePanel(new OverviewPanel());
         }
+
     }
 }

@@ -19,8 +19,9 @@ namespace NijnCoach.View.AvatarDir
          * http://stackoverflow.com/questions/12653418/why-cant-i-embed-these-applications-in-my-form
          */
 
-        private static List<AvatarPanel> avatarPanels = new List<AvatarPanel>();
+        private static int avatarCount = 0;
         private static Process Task = null;
+        private static IntPtr desktopHandle = new IntPtr();
         private static IntPtr AvatarHandle = new IntPtr();
         private static System.Windows.Forms.Timer t;
         private static Boolean isFullScreen = true;
@@ -48,7 +49,7 @@ namespace NijnCoach.View.AvatarDir
             {
                 captureAvatarInPanel();
             }
-            avatarPanels.Add(this);
+            avatarCount++;
             //MoveWindow(AvatarHandle, -borderWidth, -borderHeight, this.Width + 2 * borderWidth, this.Height + 2 * borderHeight, true);
         }
 
@@ -66,9 +67,9 @@ namespace NijnCoach.View.AvatarDir
             ShowWindow(Handle, 11);
             AvatarHandle = FindCoachWindow();
             ShowWindow(AvatarHandle, 11);
-            Thread.Sleep(500);
+            Thread.Sleep(600);
 
-            SetParent(AvatarHandle, this.Handle);
+            desktopHandle = SetParent(AvatarHandle, this.Handle);
             SetWindowLong(AvatarHandle, GWL_STYLE, (int)(~WS_VISIBLE & ((WS_MAXIMIZE | WS_BORDER) | WS_CHILD)));
 
             t = new System.Windows.Forms.Timer();
@@ -133,12 +134,15 @@ namespace NijnCoach.View.AvatarDir
         /// <param name="disposing"></param>
         protected override void Dispose(bool disposing)
         {
-            avatarPanels.Remove(this);
-            if (avatarPanels.Count == 0)
+            //Thread.Sleep(5000);
+            //MessageBox.Show("1");
+            //MessageBox.Show("2");
+            avatarCount--;
+            if (avatarCount == 0)
             {
-                ShowWindow(AvatarHandle, 11);
-                SetWindowLong(AvatarHandle, GWL_STYLE, (int)(~WS_VISIBLE & ((WS_MAXIMIZE | WS_BORDER) | WS_CHILD)));
-                SetParent(AvatarHandle, new IntPtr(0));
+                //ShowWindow(AvatarHandle, 11);
+               // SetWindowLong(AvatarHandle, GWL_STYLE, (int)(~WS_VISIBLE & ((WS_MAXIMIZE | WS_BORDER) & ~WS_CHILD)));
+                //SetParent(AvatarHandle, desktopHandle);
             }
             base.Dispose(disposing);
         }
@@ -192,6 +196,15 @@ namespace NijnCoach.View.AvatarDir
         {
             get { return _fullyLoaded; }
         }
+
+        public static void unParentAvatar()
+        {
+            ShowWindow(AvatarHandle, 11);
+            SetWindowLong(AvatarHandle, GWL_STYLE, (int)(~WS_VISIBLE & ((WS_MAXIMIZE | WS_BORDER) & ~WS_CHILD)));
+            SetParent(AvatarHandle, desktopHandle);
+        }
+
+
 
         #region
         private delegate bool EnumWindowsProc(IntPtr hWnd, IntPtr data);
