@@ -118,6 +118,26 @@ namespace NijnCoach_Test.View.TherapistGUI
             }
         }
 
+        #region overall tests
+        [Test]
+        public void testForVisibleAudioFrag()
+        {
+            Assert.IsTrue((bool)GetProperty("button4.Visible"));
+        }
+
+        [Test]
+        public void testForClearAudioButton()
+        {
+            Object o = GetField("textBox9");
+            ((TextBox)o).Text = "EEN RANDOM FILE";
+            RaiseEvent("button6", "Click", new EventArgs());
+            Assert.IsEmpty((String)GetProperty("textBox9.Text"));
+        }
+
+        #endregion
+
+
+
         #region Tests For Open Question
 
         
@@ -403,6 +423,7 @@ namespace NijnCoach_Test.View.TherapistGUI
 
         #region Finish and Next Tests
 
+        [Ignore] //ignored because this now opens a new dialog for saving, this isnt tested in a gui test
         [Test]
         public void testForFinishQuestionWithoutQuestions()
         {
