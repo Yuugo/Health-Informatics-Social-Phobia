@@ -55,10 +55,10 @@
   <ItemGroup>
     <Compile Include="Avatar\AvatarControl.cs" />
     <Compile Include="Database\DBConnect.cs" />
-    <Compile Include="Database\Model2.Designer.cs">
+    <Compile Include="Database\NijnCoachModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model2.edmx</DependentUpon>
+      <DependentUpon>NijnCoachModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="MainClass.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -68,6 +68,18 @@
     </Compile>
     <Compile Include="View\AvatarDir\AvatarPanel.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="View\TherapistGUI\saveFileDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\TherapistGUI\saveFileDialog.Designer.cs">
+      <DependentUpon>saveFileDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\PatientFiles\PatientFiles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\PatientFiles\PatientFiles.Designer.cs">
+      <DependentUpon>PatientFiles.cs</DependentUpon>
     </Compile>
     <Compile Include="View\AvatarDir\AvatarContainer.cs">
       <SubType>Component</SubType>
@@ -225,6 +237,12 @@
     <EmbeddedResource Include="View\Overview\OverviewPanel.resx">
       <DependentUpon>OverviewPanel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\TherapistGUI\saveFileDialog.resx">
+      <DependentUpon>saveFileDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\PatientFiles\PatientFiles.resx">
+      <DependentUpon>PatientFiles.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\TherapistGUI\TherapistGUI.resx">
       <DependentUpon>TherapistGUI.cs</DependentUpon>
     </EmbeddedResource>
@@ -246,9 +264,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <EntityDeploy Include="Database\Model2.edmx">
+    <EntityDeploy Include="Database\NijnCoachModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model2.Designer.cs</LastGenOutput>
+      <LastGenOutput>NijnCoachModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <None Include="NijnCoach.Database.Database.NijnCoachEntities.datasource" />
   </ItemGroup>

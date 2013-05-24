@@ -11,6 +11,11 @@ namespace NijnCoach.Database
 {
     public static class DBConnect
     {
+        /// <summary>
+        /// Insert a Patient object into the Database. The object should have all his attributes defined already.
+        /// </summary>
+        /// <param name="patient">A comepleted Patient object.</param>
+        /// <returns>Returns true if object was added, else false.</returns>
         public static Boolean insertPatient(Patient patient)
         {
             NijnCoachEntities theEntities = new NijnCoachEntities();
@@ -27,6 +32,12 @@ namespace NijnCoach.Database
             }
         }
 
+        /// <summary>
+        /// Insert a Questionnaire into the database under the given name.
+        /// </summary>
+        /// <param name="name">Name of the Questionnaire</param>
+        /// <param name="questionnaire">The already created Questionnaire</param>
+        /// <returns>Returns true if object was added, else false.</returns>
         public static Boolean InsertQuestionnairre(String name, Questionnaire questionnaire)
         {
             NijnCoachEntities theEntities = new NijnCoachEntities();
@@ -50,10 +61,39 @@ namespace NijnCoach.Database
         }
 
         /// <summary>
-        /// load audio bestand op de server
+        /// Inserts the progress evalution into the database.
         /// </summary>
-        /// <param name="audioFile"></param>
-        /// <returns></returns>
+        /// <param name="name">The desired name for the evaluation.</param>
+        /// <param name="filePath">The file that will be read and inserted into the database.</param>
+        /// <returns>Returns true if object was added, else false.</returns>
+        public static Boolean InsertProgressEvaluation(String name, String filePath)
+        {
+            NijnCoachEntities theEntities = new NijnCoachEntities();
+            StreamReader reader = new StreamReader(filePath);
+            String contents = reader.ReadToEnd();
+            
+            ProgressEval objectToAdd = new ProgressEval();
+            objectToAdd.Content = contents;
+            objectToAdd.Name = name;
+
+            try
+            {
+                theEntities.ProgressEvals.AddObject(objectToAdd);
+                theEntities.SaveChanges();
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.InnerException.ToString());
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Insert audio file into the database.
+        /// </summary>
+        /// <param name="audioFile">The desired audio file</param>
+        /// <returns>Returns true if object was added, else false.</returns>
         public static Boolean InsertSpeechFile(string audioFile)
         {
             NijnCoachEntities theEntities = new NijnCoachEntities();
@@ -115,8 +155,8 @@ namespace NijnCoach.Database
         /// <summary>
         /// Finds the questionnaire with the given name. Throws FileNotFoundException if it does not exist.
         /// </summary>
-        /// <param name="name">Name of the questionnaire</param>
-        /// <returns>The Questionnaire</returns>
+        /// <param name="name">Name of the questionnaire.</param>
+        /// <returns>The desired Questionnaire.</returns>
         public static Questionnaire getQuestionnaireByName(String name)
         {
             try
@@ -134,6 +174,11 @@ namespace NijnCoach.Database
             }
         }
 
+        /// <summary>
+        /// Get the speech audio to be used by the avatar.
+        /// </summary>
+        /// <param name="name">Name of the audio File.</param>
+        /// <returns>Returns the desired audio file as SpeechFile. Content is still encoded.</returns>
         public static SpeechFile getSpeechFile(string name)
         {
 
@@ -150,6 +195,31 @@ namespace NijnCoach.Database
             }
         }
 
+        /// <summary>
+        /// Get a progress evaluation as String.
+        /// </summary>
+        /// <param name="name">the name of the evaluation.</param>
+        /// <returns>Returns the desired evaluation as a string.</returns>
+        public static String getProgressEvaluationByName(String name)
+        {
+            try
+            {
+                NijnCoachEntities theEntities = new NijnCoachEntities();
+                ProgressEval result = theEntities.ProgressEvals.Where(x => x.Name == name).First<ProgressEval>();
+                String contents = result.Content;
+                return contents;
+            }
+            catch (MySql.Data.MySqlClient.MySqlException e)
+            {
+                MessageBox.Show(e.InnerException.ToString());
+                throw new FileNotFoundException();
+            }
+
+        }
+
+        /// <summary>
+        /// Stub method.
+        /// </summary>
         public static void updateQuery()
         {
             NijnCoachEntities theEntities = new NijnCoachEntities();

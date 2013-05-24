@@ -10,23 +10,24 @@ namespace NijnCoach
 {
     class MainClass
     {
-        public static void Main(String[] args)
+        public static void InactiveMain(String[] args)
         {
-            Questionnaire q = new Questionnaire();
-            DBConnect.InsertQuestionnairre("firstQuest", q);
+            XMLParser parser = new XMLParser();
+            Questionnaire q = parser.readXMLFromFile("ziejewelwillem.xml");
+            DBConnect.InsertQuestionnairre("codeQuest", q);
         }
 
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void InactiveMain()
+        static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new QuestionnaireForm());
 
-            Application.Run(new NijnCoach.View.TherapistGUI.TherapistGUI());
+            Application.Run(new NijnCoach.View.PatientFiles.PatientFiles());
             
             //questionnaire = parser.readXMLFromFile("answers.xml");
             //Application.Run(new TherapistQuestionnaire(questionnaire));

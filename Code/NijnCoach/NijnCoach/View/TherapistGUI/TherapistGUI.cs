@@ -50,11 +50,8 @@ namespace NijnCoach.View.TherapistGUI
         //slaat een vraag op en reset de velden als er op next question wordt geklikt
         private void button1_Click(object sender, EventArgs e)
         {
-            //doe niets als vraag leeg is
-            if (textBox0.Text != "")
-            {
-				addQuestion();
-			}
+            addQuestion();
+
         }
 
         //haalt alle opties voor multiple choice weg en reset de counter voor opties als er op open vraag wordt geklikt
@@ -115,15 +112,16 @@ namespace NijnCoach.View.TherapistGUI
                 labels[opts + 1].Visible = true;
                 opts++;
             }
+
+
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
-            //neemt vraag op als deze er nog staat
-            addQuestion();
-            if (empty == false)
+            saveFileDialog dialog = new saveFileDialog();
+
+            if (dialog.ShowDialog() == DialogResult.OK)
             {
-                saveFileDialog1.ShowDialog();
                 q.version = 1.00;
                 q.head = new NijnCoach.XMLclasses.Questionnaire.Header
                 {
@@ -134,15 +132,20 @@ namespace NijnCoach.View.TherapistGUI
                 };
 
                 XMLParser xpars = new XMLParser();
-                xpars.writeXMLToFile(q, saveFileDialog1.FileName);
+                String theXML = xpars.writeXML(q);
+                DBConnect.InsertQuestionnairre(dialog.saveFileTextBox.Text, q);
+                MessageBox.Show("Questionnaire has been saved");
                 q = new NijnCoach.XMLclasses.Questionnaire();
-                q.entries = new ListOfIEntry();
+                q.entries = new ListOfIEntry();                
             }
         }
 
         //voegt nieuwe vraag toe aan lijst als vrragentextbox niet leeg is
         private void addQuestion()
-        { 
+        {
+            //doe niets als vraag leeg is
+            if (textBox0.Text != "")
+            {
                 //checkt of er geen probleem is met het audiofile
                 if (addAudio())
                 {
@@ -168,12 +171,13 @@ namespace NijnCoach.View.TherapistGUI
                     empty = false;
                     reset();
                 }
+            }
         }
 
         //reset de velden bij een nieuwe vraag
         private void reset()
         {
-            for (int i = 0; i < 10; i++) { texts[i].Text = ""; }
+            for (int i = 0; i < 9; i++) { texts[i].Text = ""; }
             for (int i = 0; i < 8; i++) { combos[i].Text = ""; }
         }
 
