@@ -18,7 +18,6 @@ namespace NijnCoach.View.AvatarDir
          * With help of:
          * http://stackoverflow.com/questions/12653418/why-cant-i-embed-these-applications-in-my-form
          */
-
         private static int avatarCount = 0;
         private static Process Task = null;
         private static IntPtr desktopHandle = new IntPtr();
@@ -49,8 +48,6 @@ namespace NijnCoach.View.AvatarDir
             {
                 captureAvatarInPanel();
             }
-            avatarCount++;
-            //MoveWindow(AvatarHandle, -borderWidth, -borderHeight, this.Width + 2 * borderWidth, this.Height + 2 * borderHeight, true);
         }
 
         /// <summary>
@@ -125,26 +122,7 @@ namespace NijnCoach.View.AvatarDir
             this.Resize += new EventHandler(delegate(object sender2, EventArgs e2) { MoveWindow(AvatarHandle, -borderWidth, -borderHeight, this.Width + 2 * borderWidth, this.Height + 2 * borderHeight, true); });
             ShowWindow(AvatarHandle, 9);
             _fullyLoaded = true;
-        }
-
-        /// <summary>
-        /// Make the avatar invissible, if this is the last panel
-        /// Detach the avatar from the panel
-        /// </summary>
-        /// <param name="disposing"></param>
-        protected override void Dispose(bool disposing)
-        {
-            //Thread.Sleep(5000);
-            //MessageBox.Show("1");
-            //MessageBox.Show("2");
-            avatarCount--;
-            if (avatarCount == 0)
-            {
-                //ShowWindow(AvatarHandle, 11);
-               // SetWindowLong(AvatarHandle, GWL_STYLE, (int)(~WS_VISIBLE & ((WS_MAXIMIZE | WS_BORDER) & ~WS_CHILD)));
-                //SetParent(AvatarHandle, desktopHandle);
-            }
-            base.Dispose(disposing);
+            avatarCount++;
         }
 
         /// <summary>
@@ -199,9 +177,13 @@ namespace NijnCoach.View.AvatarDir
 
         public static void unParentAvatar()
         {
-            ShowWindow(AvatarHandle, 11);
-            SetWindowLong(AvatarHandle, GWL_STYLE, (int)(~WS_VISIBLE & ((WS_MAXIMIZE | WS_BORDER) & ~WS_CHILD)));
-            SetParent(AvatarHandle, desktopHandle);
+            avatarCount--;
+            if (avatarCount <= 0)
+            {
+                ShowWindow(AvatarHandle, 11);
+                SetWindowLong(AvatarHandle, GWL_STYLE, (int)(~WS_VISIBLE & ((WS_MAXIMIZE | WS_BORDER) & ~WS_CHILD)));
+                SetParent(AvatarHandle, desktopHandle);
+            }
         }
 
 
