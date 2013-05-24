@@ -27,6 +27,7 @@ namespace NijnCoach.Database
                  
             } catch (Exception e)
             {
+                //TODO: blabla
                 MessageBox.Show(e.InnerException.ToString());
                 return false;
             }
@@ -38,7 +39,7 @@ namespace NijnCoach.Database
         /// <param name="name">Name of the Questionnaire</param>
         /// <param name="questionnaire">The already created Questionnaire</param>
         /// <returns>Returns true if object was added, else false.</returns>
-        public static Boolean InsertQuestionnairre(String name, Questionnaire questionnaire)
+        public static Boolean InsertQuestionnairre(String name, Int32 patientNo, Questionnaire questionnaire)
         {
             NijnCoachEntities theEntities = new NijnCoachEntities();
             Questionnairre questionForm = new Questionnairre();
@@ -47,6 +48,9 @@ namespace NijnCoach.Database
 
             questionForm.Name = name;
             questionForm.Text = text;
+            questionForm.Type = "Questionnaire";
+            questionForm.FilledIn = false;
+            questionForm.forPatient = patientNo;
             try
             {
                 theEntities.Questionnairres.AddObject(questionForm);
@@ -66,7 +70,7 @@ namespace NijnCoach.Database
         /// <param name="name">The desired name for the evaluation.</param>
         /// <param name="filePath">The file that will be read and inserted into the database.</param>
         /// <returns>Returns true if object was added, else false.</returns>
-        public static Boolean InsertProgressEvaluation(String name, String filePath)
+        public static Boolean InsertProgressEvaluation(String name, Int32 patientNo, String filePath)
         {
             NijnCoachEntities theEntities = new NijnCoachEntities();
             StreamReader reader = new StreamReader(filePath);
@@ -75,6 +79,7 @@ namespace NijnCoach.Database
             ProgressEval objectToAdd = new ProgressEval();
             objectToAdd.Content = contents;
             objectToAdd.Name = name;
+            objectToAdd.PatientNo = patientNo;
 
             try
             {
@@ -175,6 +180,28 @@ namespace NijnCoach.Database
         }
 
         /// <summary>
+        /// Find the oldes, not filled in, questionnaire for the given patient.
+        /// </summary>
+        /// <param name="patientNo">The patientnumber for this patient.</param>
+        /// <returns></returns>
+        public static Questionnaire getQuestionnaireByPatient(Int32 patientNo)
+        {
+            try
+            {
+                NijnCoachEntities theEntities = new NijnCoachEntities();
+                String result = theEntities.Questionnairres.Where(x => x.forPatient == patientNo && x.FilledIn == false).First<Questionnairre>().Text;
+                XMLParser parser = new XMLParser();
+                StreamReader reader = new StreamReader(result);
+                return parser.readXML(reader);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.InnerException.ToString());
+                throw new FileNotFoundException();
+            }
+        }
+
+        /// <summary>
         /// Get the speech audio to be used by the avatar.
         /// </summary>
         /// <param name="name">Name of the audio File.</param>
@@ -200,12 +227,12 @@ namespace NijnCoach.Database
         /// </summary>
         /// <param name="name">the name of the evaluation.</param>
         /// <returns>Returns the desired evaluation as a string.</returns>
-        public static String getProgressEvaluationByName(String name)
+        public static String getProgressEvaluationByPatient(Int32 patientNo)
         {
             try
             {
                 NijnCoachEntities theEntities = new NijnCoachEntities();
-                ProgressEval result = theEntities.ProgressEvals.Where(x => x.Name == name).First<ProgressEval>();
+                ProgressEval result = theEntities.ProgressEvals.Where(x => x.PatientNo == patientNo).First<ProgressEval>();
                 String contents = result.Content;
                 return contents;
             }
@@ -220,13 +247,14 @@ namespace NijnCoach.Database
         /// <summary>
         /// Stub method.
         /// </summary>
-        public static void updateQuery()
+        public static void updateEval(Int32 patientNo, String newContent)
         {
             NijnCoachEntities theEntities = new NijnCoachEntities();
             try
             {
-                Patient patient = theEntities.Patients.First<Patient>();
-
+                ProgressEval eval = theEntities.ProgressEvals.Where(x => x.PatientNo == patientNo).First<ProgressEval>();
+                eval.Content = newContent;
+                theEntities.SaveChanges();
             }
             catch (Exception e)
             {

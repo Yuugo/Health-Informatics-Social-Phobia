@@ -480,12 +480,14 @@ namespace NijnCoach.Database
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="name">Initial value of the Name property.</param>
         /// <param name="content">Initial value of the Content property.</param>
-        public static ProgressEval CreateProgressEval(global::System.String id, global::System.String name, global::System.String content)
+        /// <param name="patientNo">Initial value of the PatientNo property.</param>
+        public static ProgressEval CreateProgressEval(global::System.String id, global::System.String name, global::System.String content, global::System.Int32 patientNo)
         {
             ProgressEval progressEval = new ProgressEval();
             progressEval.Id = id;
             progressEval.Name = name;
             progressEval.Content = content;
+            progressEval.PatientNo = patientNo;
             return progressEval;
         }
 
@@ -567,6 +569,30 @@ namespace NijnCoach.Database
         private global::System.String _Content;
         partial void OnContentChanging(global::System.String value);
         partial void OnContentChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 PatientNo
+        {
+            get
+            {
+                return _PatientNo;
+            }
+            set
+            {
+                OnPatientNoChanging(value);
+                ReportPropertyChanging("PatientNo");
+                _PatientNo = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("PatientNo");
+                OnPatientNoChanged();
+            }
+        }
+        private global::System.Int32 _PatientNo;
+        partial void OnPatientNoChanging(global::System.Int32 value);
+        partial void OnPatientNoChanged();
 
         #endregion
 
@@ -592,7 +618,7 @@ namespace NijnCoach.Database
         /// <param name="forPatient">Initial value of the forPatient property.</param>
         /// <param name="type">Initial value of the Type property.</param>
         /// <param name="filledIn">Initial value of the FilledIn property.</param>
-        public static Questionnairre CreateQuestionnairre(global::System.SByte id, global::System.String name, global::System.String text, global::System.String forPatient, global::System.String type, global::System.Boolean filledIn)
+        public static Questionnairre CreateQuestionnairre(global::System.SByte id, global::System.String name, global::System.String text, global::System.Int32 forPatient, global::System.String type, global::System.Boolean filledIn)
         {
             Questionnairre questionnairre = new Questionnairre();
             questionnairre.Id = id;
@@ -688,7 +714,7 @@ namespace NijnCoach.Database
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String forPatient
+        public global::System.Int32 forPatient
         {
             get
             {
@@ -698,13 +724,13 @@ namespace NijnCoach.Database
             {
                 OnforPatientChanging(value);
                 ReportPropertyChanging("forPatient");
-                _forPatient = StructuralObject.SetValidValue(value, false);
+                _forPatient = StructuralObject.SetValidValue(value);
                 ReportPropertyChanged("forPatient");
                 OnforPatientChanged();
             }
         }
-        private global::System.String _forPatient;
-        partial void OnforPatientChanging(global::System.String value);
+        private global::System.Int32 _forPatient;
+        partial void OnforPatientChanging(global::System.Int32 value);
         partial void OnforPatientChanged();
     
         /// <summary>
