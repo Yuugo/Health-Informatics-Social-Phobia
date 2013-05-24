@@ -10,6 +10,7 @@ using System.Diagnostics;
 using NijnCoach.View.Main;
 using NijnCoach.View.Questionnaire;
 using NijnCoach.View.AvatarDir;
+using NijnCoach.View.Home;
 
 namespace NijnCoach.View.Greet
 {
@@ -23,13 +24,20 @@ namespace NijnCoach.View.Greet
         {
             //TODO: play sound "Welcome!"
             buttonContinue.Enabled = true;
+            buttonHome.Enabled = true;
         }
 
         private void continueEventHandler(object sender, EventArgs e)
         {
             //TODO: Fetch questionnaire from database
-            XMLParser parser = new XMLParser();
-            MainForm.mainForm.replacePanel(new QuestionnaireForm(parser.readXMLFromFile("writeTest.xml")));
+            //XMLParser parser = new XMLParser();
+            //MainForm.mainForm.replacePanel(new QuestionnaireForm(parser.readXMLFromFile("writeTest.xml")));
+            MainForm.mainForm.replacePanel(new QuestionnaireForm());
+        }
+
+        private void homeEventHandler(object sender, EventArgs e)
+        {
+            MainForm.mainForm.replacePanel(new HomePanel());
         }
     }
 }

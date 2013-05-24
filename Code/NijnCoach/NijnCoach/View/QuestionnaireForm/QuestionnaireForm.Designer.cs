@@ -49,6 +49,7 @@ namespace NijnCoach.View.Questionnaire
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(100, 23);
             this.progressBar.TabIndex = 4;
+            this.progressBar.BringToFront();
             // 
             // panelQuestion
             // 

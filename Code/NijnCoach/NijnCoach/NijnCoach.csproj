@@ -75,17 +75,35 @@
     <Compile Include="View\AvatarDir\AvatarContainer.Designer.cs">
       <DependentUpon>AvatarContainer.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Exposure\ExposurePanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="View\Exposure\ExposurePanel.Designer.cs">
+      <DependentUpon>ExposurePanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Greet\GreetPanel.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="View\Greet\GreetPanel.Designer.cs">
       <DependentUpon>GreetPanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Home\HomePanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="View\Home\HomePanel.Designer.cs">
+      <DependentUpon>HomePanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Main\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\Main\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Overview\OverviewPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="View\Overview\OverviewPanel.Designer.cs">
+      <DependentUpon>OverviewPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="View\TherapistGUI\TherapistGUI.cs">
       <SubType>Form</SubType>
@@ -198,8 +216,14 @@
     <EmbeddedResource Include="View\Greet\GreetPanel.resx">
       <DependentUpon>GreetPanel.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Home\HomePanel.resx">
+      <DependentUpon>HomePanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Main\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Overview\OverviewPanel.resx">
+      <DependentUpon>OverviewPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\TherapistGUI\TherapistGUI.resx">
       <DependentUpon>TherapistGUI.cs</DependentUpon>
@@ -236,9 +260,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="View\AvatarDirfv\" />
-    <Folder Include="View\Briefing\" />
-    <Folder Include="View\Home\" />
-    <Folder Include="View\Overview\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

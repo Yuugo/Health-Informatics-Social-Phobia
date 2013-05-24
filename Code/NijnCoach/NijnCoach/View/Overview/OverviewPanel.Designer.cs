@@ -1,11 +1,12 @@
-﻿namespace NijnCoach.View.Greet
+﻿namespace NijnCoach.View.Overview
 {
-    partial class GreetPanel
+    partial class OverviewPanel
     {
         /// <summary> 
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
+        private System.Windows.Forms.Button buttonHome;
 
         /// <summary> 
         /// Clean up any resources being used.
@@ -30,20 +31,7 @@
         {
             base.InitializeComponent();
             this.buttonHome = new System.Windows.Forms.Button();
-            this.buttonContinue = new System.Windows.Forms.Button();
             this.SuspendLayout();
-
-            // 
-            // buttonContinue
-            // 
-            this.buttonContinue.Location = new System.Drawing.Point(370, 400);
-            this.buttonContinue.Name = "buttonContinue";
-            this.buttonContinue.Size = new System.Drawing.Size(185, 30);
-            this.buttonContinue.TabIndex = 0;
-            this.buttonContinue.Text = "Continue to questionnaire -->";
-            this.buttonContinue.UseVisualStyleBackColor = true;
-            this.buttonContinue.Enabled = false;
-            this.buttonContinue.Click += new System.EventHandler(continueEventHandler);
             // 
             // buttonHome
             // 
@@ -53,19 +41,15 @@
             this.buttonHome.TabIndex = 4;
             this.buttonHome.Text = "Home";
             this.buttonHome.UseVisualStyleBackColor = true;
-            this.buttonHome.Enabled = false;
             this.buttonHome.Click += new System.EventHandler(this.homeEventHandler);
             // 
             // AvatarContainer
             // 
-            this.Controls.Add(this.buttonContinue);
-            this.Controls.Add(this.buttonHome);
+            this.Controls.Add(buttonHome);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.Button buttonContinue;
-        private System.Windows.Forms.Button buttonHome;
     }
 }

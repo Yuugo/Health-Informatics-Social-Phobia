@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
 using NijnCoach.XMLclasses;
 using System.Diagnostics;
 using NijnCoach.View.AvatarDir;
 using NijnCoach.Avatar;
+using NijnCoach.View.Main;
+using NijnCoach.View.Home;
 
 
 namespace NijnCoach.View.Questionnaire
@@ -76,6 +71,7 @@ namespace NijnCoach.View.Questionnaire
 
         private void homeEventHandler(object sender, EventArgs e)
         {
+            MainForm.mainForm.replacePanel(new HomePanel());
         }
 
         private void saveEventHandler(object sender, EventArgs e)
