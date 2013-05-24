@@ -589,12 +589,18 @@ namespace NijnCoach.Database
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="name">Initial value of the Name property.</param>
         /// <param name="text">Initial value of the Text property.</param>
-        public static Questionnairre CreateQuestionnairre(global::System.SByte id, global::System.String name, global::System.String text)
+        /// <param name="forPatient">Initial value of the forPatient property.</param>
+        /// <param name="type">Initial value of the Type property.</param>
+        /// <param name="filledIn">Initial value of the FilledIn property.</param>
+        public static Questionnairre CreateQuestionnairre(global::System.SByte id, global::System.String name, global::System.String text, global::System.String forPatient, global::System.String type, global::System.Boolean filledIn)
         {
             Questionnairre questionnairre = new Questionnairre();
             questionnairre.Id = id;
             questionnairre.Name = name;
             questionnairre.Text = text;
+            questionnairre.forPatient = forPatient;
+            questionnairre.Type = type;
+            questionnairre.FilledIn = filledIn;
             return questionnairre;
         }
 
@@ -676,6 +682,78 @@ namespace NijnCoach.Database
         private global::System.String _Text;
         partial void OnTextChanging(global::System.String value);
         partial void OnTextChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String forPatient
+        {
+            get
+            {
+                return _forPatient;
+            }
+            set
+            {
+                OnforPatientChanging(value);
+                ReportPropertyChanging("forPatient");
+                _forPatient = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("forPatient");
+                OnforPatientChanged();
+            }
+        }
+        private global::System.String _forPatient;
+        partial void OnforPatientChanging(global::System.String value);
+        partial void OnforPatientChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Type
+        {
+            get
+            {
+                return _Type;
+            }
+            set
+            {
+                OnTypeChanging(value);
+                ReportPropertyChanging("Type");
+                _Type = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Type");
+                OnTypeChanged();
+            }
+        }
+        private global::System.String _Type;
+        partial void OnTypeChanging(global::System.String value);
+        partial void OnTypeChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean FilledIn
+        {
+            get
+            {
+                return _FilledIn;
+            }
+            set
+            {
+                OnFilledInChanging(value);
+                ReportPropertyChanging("FilledIn");
+                _FilledIn = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("FilledIn");
+                OnFilledInChanged();
+            }
+        }
+        private global::System.Boolean _FilledIn;
+        partial void OnFilledInChanging(global::System.Boolean value);
+        partial void OnFilledInChanged();
 
         #endregion
 

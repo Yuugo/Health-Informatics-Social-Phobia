@@ -41,6 +41,9 @@
           <Property Name="Id" Type="tinyint" Nullable="false" />
           <Property Name="Name" Type="varchar" Nullable="false" MaxLength="20" />
           <Property Name="Text" Type="mediumtext" Nullable="false" />
+          <Property Name="forPatient" Type="longtext" Nullable="false" />
+          <Property Name="Type" Type="longtext" Nullable="false" />
+          <Property Name="FilledIn" Type="bool" Nullable="false" />
         </EntityType>
         <EntityType Name="SpeechFiles">
           <Key>
@@ -82,6 +85,9 @@
           <Property Name="Id" Type="SByte" Nullable="false" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
           <Property Name="Text" Type="String" Nullable="false" MaxLength="16777215" Unicode="false" FixedLength="false" />
+          <Property Type="String" Name="forPatient" Nullable="false" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Type" Nullable="false" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="FilledIn" Nullable="false" />
         </EntityType>
         <EntityType Name="SpeechFile">
           <Key>
@@ -124,6 +130,9 @@
           <EntitySetMapping Name="Questionnairres">
             <EntityTypeMapping TypeName="NijnCoachModel1.Questionnairre">
               <MappingFragment StoreEntitySet="Questionnairre">
+                <ScalarProperty Name="FilledIn" ColumnName="FilledIn" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="forPatient" ColumnName="forPatient" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Text" ColumnName="Text" />
