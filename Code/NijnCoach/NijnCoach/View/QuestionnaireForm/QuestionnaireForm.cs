@@ -5,6 +5,7 @@ using NijnCoach.View.AvatarDir;
 using NijnCoach.Avatar;
 using NijnCoach.View.Main;
 using NijnCoach.View.Home;
+using NijnCoach.View.Overview;
 
 
 namespace NijnCoach.View.Questionnaire
@@ -45,15 +46,24 @@ namespace NijnCoach.View.Questionnaire
         }
 
         private void nextEventHandler(object sender,EventArgs e){
-            Debug.Assert(currentQuestion + 1 < questionnaire.entries.Count, "Array out of bounds: IEntry does not exist");
-            currentQuestion++;
-            updatePanelQuestion(questionnaire.entries[currentQuestion]);
-            if (currentQuestion == questionnaire.entries.Count - 1)
+            if (currentQuestion + 1 == questionnaire.entries.Count)
             {
-                buttonNext.Enabled = false;
+                saveEventHandler(sender, e);
+                //TODO: Mark questionnaire as finished
+                //TODO: fetch data for overview from database
+                MainForm.mainForm.replacePanel(new OverviewPanel());
             }
-            buttonPrevious.Enabled = true;
-            progressBar.Value = currentQuestion;
+            else
+            {
+                currentQuestion++;
+                updatePanelQuestion(questionnaire.entries[currentQuestion]);
+                if (currentQuestion == questionnaire.entries.Count - 1)
+                {
+                    buttonNext.Text = "Finish";
+                }
+                buttonPrevious.Enabled = true;
+                progressBar.Value = currentQuestion;
+            }
         }
 
         private void previousEventHandler(object sender, EventArgs e)
@@ -65,6 +75,7 @@ namespace NijnCoach.View.Questionnaire
             {
                 buttonPrevious.Enabled = false;
             }
+            buttonNext.Text = "Next";
             buttonNext.Enabled = true;
             progressBar.Value = currentQuestion;
         }
