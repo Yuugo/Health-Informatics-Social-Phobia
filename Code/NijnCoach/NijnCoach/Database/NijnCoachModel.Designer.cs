@@ -935,12 +935,14 @@ namespace NijnCoach.Database
         /// <param name="username">Initial value of the Username property.</param>
         /// <param name="password">Initial value of the Password property.</param>
         /// <param name="type">Initial value of the Type property.</param>
-        public static User CreateUser(global::System.String username, global::System.String password, global::System.String type)
+        /// <param name="patientNo">Initial value of the PatientNo property.</param>
+        public static User CreateUser(global::System.String username, global::System.String password, global::System.String type, global::System.SByte patientNo)
         {
             User user = new User();
             user.Username = username;
             user.Password = password;
             user.Type = type;
+            user.PatientNo = patientNo;
             return user;
         }
 
@@ -1022,6 +1024,30 @@ namespace NijnCoach.Database
         private global::System.String _Type;
         partial void OnTypeChanging(global::System.String value);
         partial void OnTypeChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.SByte PatientNo
+        {
+            get
+            {
+                return _PatientNo;
+            }
+            set
+            {
+                OnPatientNoChanging(value);
+                ReportPropertyChanging("PatientNo");
+                _PatientNo = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("PatientNo");
+                OnPatientNoChanged();
+            }
+        }
+        private global::System.SByte _PatientNo;
+        partial void OnPatientNoChanging(global::System.SByte value);
+        partial void OnPatientNoChanged();
 
         #endregion
 

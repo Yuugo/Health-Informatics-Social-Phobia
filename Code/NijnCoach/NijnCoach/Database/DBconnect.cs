@@ -19,13 +19,15 @@ namespace NijnCoach.Database
         public static Boolean insertPatient(Patient patient)
         {
             NijnCoachEntities theEntities = new NijnCoachEntities();
+
             try
             {
                 theEntities.Patients.AddObject(patient);
                 theEntities.SaveChanges();
                 return true;
-                 
-            } catch (Exception e)
+
+            }
+            catch (Exception e)
             {
                 //TODO: blabla
                 MessageBox.Show(e.InnerException.ToString());
@@ -39,7 +41,7 @@ namespace NijnCoach.Database
         /// <param name="name">Name of the Questionnaire</param>
         /// <param name="questionnaire">The already created Questionnaire</param>
         /// <returns>Returns true if object was added, else false.</returns>
-        public static Boolean InsertQuestionnairre(String name, int patientNo, Questionnaire questionnaire)
+        public static Boolean InsertQuestionnairre(String name, Int32 patientNo, Questionnaire questionnaire)
         {
             NijnCoachEntities theEntities = new NijnCoachEntities();
             Questionnairre questionForm = new Questionnairre();
@@ -75,7 +77,7 @@ namespace NijnCoach.Database
             NijnCoachEntities theEntities = new NijnCoachEntities();
             StreamReader reader = new StreamReader(filePath);
             String contents = reader.ReadToEnd();
-            
+
             ProgressEval objectToAdd = new ProgressEval();
             objectToAdd.Content = contents;
             objectToAdd.Name = name;
@@ -90,6 +92,27 @@ namespace NijnCoach.Database
             catch (Exception e)
             {
                 MessageBox.Show(e.InnerException.ToString());
+                return false;
+            }
+        }
+
+        public static Boolean InsertUser(String type, String username, String pass)
+        {
+            NijnCoachEntities theEntities = new NijnCoachEntities();
+            User user = new User();
+            user.Password = pass;
+            user.Type = type;
+            user.Username = username;
+
+            try
+            {
+                theEntities.Users.AddObject(user);
+                theEntities.SaveChanges();
+                return true;
+            }
+            catch (Exception e)
+            {
+                //MessageBox.Show(e.InnerException.ToString());
                 return false;
             }
         }
@@ -137,7 +160,7 @@ namespace NijnCoach.Database
 
         public static Patient getPatientByLastName(String name)
         {
-            NijnCoachEntities theEntities = new NijnCoachEntities();            
+            NijnCoachEntities theEntities = new NijnCoachEntities();
             Patient result = theEntities.Patients.Where(x => x.Lname == name).First<Patient>();
             return result;
         }
@@ -222,6 +245,28 @@ namespace NijnCoach.Database
         }
 
         /// <summary>
+        /// Get the speech audio to be used by the avatar.
+        /// </summary>
+        /// <param name="name">Name of the audio File.</param>
+        /// <returns>Returns the desired audio file as SpeechFile. Content is still encoded.</returns>
+        public static SByte getUserNo(string name)
+        {
+
+            try
+            {
+                NijnCoachEntities theEntities = new NijnCoachEntities();
+                SByte result = theEntities.Users.Where(x => x.Username == name).First<User>().PatientNo;
+                return result;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.InnerException.ToString());
+                throw new FileNotFoundException();
+            }
+        }
+
+
+        /// <summary>
         /// Get a progress evaluation as String.
         /// </summary>
         /// <param name="name">the name of the evaluation.</param>
@@ -235,7 +280,7 @@ namespace NijnCoach.Database
                 String contents = result.Content;
                 return contents;
             }
-            catch(Exception e)
+            catch (MySql.Data.MySqlClient.MySqlException e)
             {
                 MessageBox.Show(e.InnerException.ToString());
                 throw new FileNotFoundException();
@@ -260,19 +305,5 @@ namespace NijnCoach.Database
                 MessageBox.Show(e.InnerException.ToString());
             }
         }
-
-        public static void authenticateUser(String username, String password)
-        {
-            NijnCoachEntities theEntities = new NijnCoachEntities();
-            try
-            {
-
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.InnerException.ToString());
-            }
-        }
-
     }
 }
