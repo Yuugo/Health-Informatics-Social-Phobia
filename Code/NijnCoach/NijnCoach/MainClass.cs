@@ -28,10 +28,10 @@ namespace NijnCoach
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new QuestionnaireForm());
-            Application.Run(new CreateUser());
+
             //Application.Run(new NijnCoach.View.PatientFiles.PatientFiles());
             //Application.Run(new saveFileDialog());
-            //Application.Run(MainForm.mainForm);
+            Application.Run(new NijnCoach.View.Main.LoginMenu());
         }
     }
 }
