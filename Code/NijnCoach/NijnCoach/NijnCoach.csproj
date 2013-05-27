@@ -111,10 +111,10 @@
     <Compile Include="View\Main\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Overview\OverviewPanel.cs">
+    <Compile Include="View\Main\Overview\OverviewPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="View\Overview\OverviewPanel.Designer.cs">
+    <Compile Include="View\Main\Overview\OverviewPanel.Designer.cs">
       <DependentUpon>OverviewPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="View\TherapistGUI\TherapistGUI.cs">
@@ -166,6 +166,9 @@
     <Compile Include="XMLclasses\XMLParser.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Bass.Net">
+      <HintPath>..\..\..\..\Yuugosu\Yuugosu\bin\x86\Debug\Bass.Net.dll</HintPath>
+    </Reference>
     <Reference Include="CookComputing.XmlRpcV2, Version=2.5.0.0, Culture=neutral, PublicKeyToken=a7d6e17aa302004d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\BlackBoard Documenten\GUIController\GUIController\CookComputing.XmlRpcV2.dll</HintPath>
@@ -233,7 +236,7 @@
     <EmbeddedResource Include="View\Main\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Overview\OverviewPanel.resx">
+    <EmbeddedResource Include="View\Main\Overview\OverviewPanel.resx">
       <DependentUpon>OverviewPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\TherapistGUI\saveFileDialog.resx">

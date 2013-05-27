@@ -6,6 +6,7 @@ using NijnCoach.XMLclasses;
 using NijnCoach.Database;
 using System.Windows.Forms;
 using NijnCoach.View.Main;
+using NijnCoach.View.TherapistGUI;
 
 namespace NijnCoach
 {
@@ -15,7 +16,6 @@ namespace NijnCoach
         {
             XMLParser parser = new XMLParser();
             Questionnaire q = parser.readXMLFromFile("ziejewelwillem.xml");
-            DBConnect.InsertQuestionnairre("codeQuest", q);
         }
 
         /// <summary>
@@ -29,8 +29,8 @@ namespace NijnCoach
             //Application.Run(new QuestionnaireForm());
 
             //Application.Run(new NijnCoach.View.PatientFiles.PatientFiles());
-            
-            Application.Run(MainForm.mainForm);
+            Application.Run(new saveFileDialog());
+            //Application.Run(MainForm.mainForm);
         }
     }
 }
