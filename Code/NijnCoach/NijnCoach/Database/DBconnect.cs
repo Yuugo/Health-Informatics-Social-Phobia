@@ -235,7 +235,7 @@ namespace NijnCoach.Database
                 String contents = result.Content;
                 return contents;
             }
-            catch (MySql.Data.MySqlClient.MySqlException e)
+            catch(Exception e)
             {
                 MessageBox.Show(e.InnerException.ToString());
                 throw new FileNotFoundException();
