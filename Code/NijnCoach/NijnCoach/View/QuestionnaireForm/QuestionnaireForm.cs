@@ -16,7 +16,7 @@ namespace NijnCoach.View.Questionnaire
         private XMLclasses.Questionnaire questionnaire;
         private int currentQuestion = 0;
         private int stream = 0;
-        public QuestionnaireForm(Boolean _loadAvatar = true)
+        public QuestionnaireForm(Boolean _loadAvatar = true) : base(_loadAvatar)
         {
             XMLParser parser = new XMLParser();
             #region license
