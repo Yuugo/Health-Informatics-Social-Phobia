@@ -7,6 +7,7 @@ using NijnCoach.Database;
 using System.Windows.Forms;
 using NijnCoach.View.Main;
 using NijnCoach.View.TherapistGUI;
+using NijnCoach.View.PatientFiles;
 
 namespace NijnCoach
 {
@@ -27,7 +28,7 @@ namespace NijnCoach
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new QuestionnaireForm());
-            Application.Run(new TherapistGUI());
+            Application.Run(new CreateUser());
             //Application.Run(new NijnCoach.View.PatientFiles.PatientFiles());
             //Application.Run(new saveFileDialog());
             //Application.Run(MainForm.mainForm);

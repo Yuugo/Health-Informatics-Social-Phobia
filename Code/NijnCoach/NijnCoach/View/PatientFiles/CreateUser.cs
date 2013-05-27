@@ -27,17 +27,25 @@ namespace NijnCoach.View.PatientFiles
                 byte[] encode = Encoding.ASCII.GetBytes(textBox2.Text);
                 encode = md5.ComputeHash(encode);
                 String pass = Encoding.ASCII.GetString(encode);
-                if (radioButton2.Checked == true)
+                if (!textBox2.Text.Equals(confirmPassBox.Text))
                 {
-                    DBConnect.InsertUser("Therapist", textBox1.Text, pass);
-                    MessageBox.Show("User has been created");
-                    reset();
+                    MessageBox.Show("Passwords do not match");
+                    textBox2.Clear();
+                    confirmPassBox.Clear();
                 }
                 else
                 {
-
-                    PatientFiles dialog = new PatientFiles();
-                    insertPatientFiles(dialog, pass);
+                    if (radioButton2.Checked == true)
+                    {
+                        DBConnect.InsertUser("Therapist", textBox1.Text, pass);
+                        MessageBox.Show("User has been created");
+                        reset();
+                    }
+                    else
+                    {
+                        PatientFiles dialog = new PatientFiles();
+                        insertPatientFiles(dialog, pass);
+                    }
                 }
 
             }
@@ -92,13 +100,10 @@ namespace NijnCoach.View.PatientFiles
                     MessageBox.Show("Empty field(s)");
                     insertPatientFiles(dialog, pass);
                 }
-                else
+                else if (numbers == false)
                 {
-                    if (numbers == false)
-                    {
-                        MessageBox.Show("Not all number fields are filled in correctly");
-                        insertPatientFiles(dialog, pass);
-                    }
+                    MessageBox.Show("Not all number fields are filled in correctly");
+                    insertPatientFiles(dialog, pass);
                 }
             }
 
@@ -107,8 +112,9 @@ namespace NijnCoach.View.PatientFiles
         public void reset()
         {
             radioButton1.Checked = true;
-            textBox1.Text = "";
-            textBox2.Text = "";
+            textBox1.Clear();
+            textBox2.Clear();
+            confirmPassBox.Clear();
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
