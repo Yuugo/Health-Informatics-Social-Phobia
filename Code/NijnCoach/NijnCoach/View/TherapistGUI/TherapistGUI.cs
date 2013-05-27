@@ -133,7 +133,7 @@ namespace NijnCoach.View.TherapistGUI
 
                 XMLParser xpars = new XMLParser();
                 String theXML = xpars.writeXML(q);
-                DBConnect.InsertQuestionnairre(dialog.saveFileTextBox.Text,9, q);
+                DBConnect.InsertQuestionnairre(dialog.saveFileTextBox.Text, Int32.Parse(dialog.patientNoBox.Text), q);
                 MessageBox.Show("Questionnaire has been saved");
                 q = new NijnCoach.XMLclasses.Questionnaire();
                 q.entries = new ListOfIEntry();                
