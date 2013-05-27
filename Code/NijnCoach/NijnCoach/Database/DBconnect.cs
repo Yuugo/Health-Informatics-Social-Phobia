@@ -127,27 +127,28 @@ namespace NijnCoach.Database
         {
             NijnCoachEntities theEntities = new NijnCoachEntities();
 
-            SpeechFile newSpeech = new SpeechFile();
+
+           AudioFile newSpeech = new AudioFile();
             newSpeech.Name = naam;
             newSpeech.PartNo = part;
-            long songNumber;
+            int songNumber;
 
             //Oh god
             try
             {
-                var dat = theEntities.SpeechFiles.Where(x => x.Name.Equals(naam));
-                if (theEntities.SpeechFiles.Count() == 0)
+                var dat = theEntities.AudioFiles.Where(x => x.Name.Equals(naam));
+                if (theEntities.AudioFiles.Count() == 0)
                     songNumber = 1;
                 else if (dat.Count() != 0)
-                    songNumber = (int)dat.First<SpeechFile>().trackNo;
+                    songNumber = dat.First<AudioFile>().TrackNo;
                 else
                 {
-                    songNumber = theEntities.SpeechFiles.OrderByDescending(u => u.trackNo).First().trackNo + 1;
+                    songNumber = theEntities.AudioFiles.OrderByDescending(u => u.TrackNo).First().TrackNo + 1;
                 }
 
-                newSpeech.trackNo = songNumber;
+                newSpeech.TrackNo = songNumber;
                 newSpeech.Encoding = audioAsString;
-                theEntities.SpeechFiles.AddObject(newSpeech);
+                theEntities.AudioFiles.AddObject(newSpeech);
                 theEntities.SaveChanges();
                 return true;
             }
@@ -162,7 +163,7 @@ namespace NijnCoach.Database
                 {
                     return true;
                 }
-                MessageBox.Show(e.InnerException.ToString());
+                MessageBox.Show(e.Message.ToString());
                 return false;
             }
         }
