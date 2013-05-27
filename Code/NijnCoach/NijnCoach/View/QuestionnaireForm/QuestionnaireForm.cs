@@ -19,8 +19,10 @@ namespace NijnCoach.View.Questionnaire
         private XMLclasses.Questionnaire questionnaire;
         private int currentQuestion = 0;
         private int stream = 0;
+        private Boolean _loadAvatar = true;
         public QuestionnaireForm(Boolean _loadAvatar = true) : base(_loadAvatar)
         {
+            this._loadAvatar = _loadAvatar;
             //TODO: add global patientnumber.
             int patientNo = MainClass.userNo;
             XMLParser parser = new XMLParser();
@@ -62,7 +64,7 @@ namespace NijnCoach.View.Questionnaire
                 saveEventHandler(sender, e);
                 //TODO: Mark questionnaire as finished
                 //TODO: fetch data for overview from database
-                MainForm.mainForm.replacePanel(new OverviewPanel());
+                MainForm.mainForm.replacePanel(new OverviewPanel(_loadAvatar));
             }
             else
             {
@@ -93,7 +95,7 @@ namespace NijnCoach.View.Questionnaire
 
         private void homeEventHandler(object sender, EventArgs e)
         {
-            MainForm.mainForm.replacePanel(new HomePanel());
+            MainForm.mainForm.replacePanel(new HomePanel(_loadAvatar));
         }
 
         private void saveEventHandler(object sender, EventArgs e)
