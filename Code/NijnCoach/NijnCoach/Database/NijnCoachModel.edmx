@@ -10,6 +10,7 @@
           <EntitySet Name="ProgressEval" EntityType="NijnCoachModel1.Store.ProgressEval" store:Type="Tables" Schema="NijnCoach" />
           <EntitySet Name="Questionnairre" EntityType="NijnCoachModel1.Store.Questionnairre" store:Type="Tables" Schema="NijnCoach" />
           <EntitySet Name="SpeechFiles" EntityType="NijnCoachModel1.Store.SpeechFiles" store:Type="Tables" Schema="NijnCoach" />
+          <EntitySet Name="Users" EntityType="NijnCoachModel1.Store.Users" store:Type="Tables" Schema="NijnCoach" />
         </EntityContainer>
         <EntityType Name="Patients">
           <Key>
@@ -42,7 +43,7 @@
           <Property Name="Id" Type="tinyint" Nullable="false" />
           <Property Name="Name" Type="varchar" Nullable="false" MaxLength="20" />
           <Property Name="Text" Type="mediumtext" Nullable="false" />
-          <Property Name="forPatient" Type="int" Nullable="false" />
+          <Property Name="forPatient" Type="tinyint" Nullable="false" />
           <Property Name="Type" Type="longtext" Nullable="false" />
           <Property Name="FilledIn" Type="bool" Nullable="false" />
         </EntityType>
@@ -54,6 +55,14 @@
           <Property Name="Name" Type="varchar" Nullable="false" MaxLength="100" />
           <Property Name="Encoding" Type="longtext" Nullable="false" />
         </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Username" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Password" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Type" Type="varchar" Nullable="false" MaxLength="10" />
+        </EntityType>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -63,6 +72,7 @@
           <EntitySet Name="Questionnairres" EntityType="NijnCoachModel1.Questionnairre" />
           <EntitySet Name="SpeechFiles" EntityType="NijnCoachModel1.SpeechFile" />
           <EntitySet Name="ProgressEvals" EntityType="NijnCoachModel1.ProgressEval" />
+          <EntitySet Name="Users" EntityType="NijnCoachModel1.User" />
         </EntityContainer>
         <EntityType Name="Patient">
           <Key>
@@ -86,7 +96,7 @@
           <Property Name="Id" Type="SByte" Nullable="false" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
           <Property Name="Text" Type="String" Nullable="false" MaxLength="16777215" Unicode="false" FixedLength="false" />
-          <Property Type="Int32" Name="forPatient" Nullable="false" />
+          <Property Type="SByte" Name="forPatient" Nullable="false" />
           <Property Type="String" Name="Type" Nullable="false" MaxLength="1073741823" FixedLength="false" Unicode="false" />
           <Property Type="Boolean" Name="FilledIn" Nullable="false" />
         </EntityType>
@@ -106,6 +116,14 @@
           <Property Type="String" Name="Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="Content" Nullable="false" MaxLength="1073741823" FixedLength="false" Unicode="false" />
           <Property Type="Int32" Name="PatientNo" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Type="String" Name="Username" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Type" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -160,6 +178,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="NijnCoachModel1.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -185,6 +212,7 @@
         <EntityTypeShape EntityType="NijnCoachModel1.Questionnairre" Width="1.5" PointX="2.75" PointY="0.75" Height="1.4605517578124996" IsExpanded="true" />
         <EntityTypeShape EntityType="NijnCoachModel1.SpeechFile" Width="1.5" PointX="2.75" PointY="3.75" Height="1.4605517578124996" IsExpanded="true" />
         <EntityTypeShape EntityType="NijnCoachModel1.ProgressEval" Width="1.5" PointX="5.375" PointY="0.75" Height="1.4605517578124996" />
+        <EntityTypeShape EntityType="NijnCoachModel1.User" Width="1.5" PointX="5.375" PointY="3.75" Height="1.4605517578124996" />
       </Diagram>
     </Diagrams>
   </Designer>

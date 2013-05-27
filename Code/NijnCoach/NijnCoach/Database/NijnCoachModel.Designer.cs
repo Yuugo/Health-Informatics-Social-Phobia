@@ -128,6 +128,22 @@ namespace NijnCoach.Database
             }
         }
         private ObjectSet<ProgressEval> _ProgressEvals;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<User> Users
+        {
+            get
+            {
+                if ((_Users == null))
+                {
+                    _Users = base.CreateObjectSet<User>("Users");
+                }
+                return _Users;
+            }
+        }
+        private ObjectSet<User> _Users;
 
         #endregion
 
@@ -163,6 +179,14 @@ namespace NijnCoach.Database
         public void AddToProgressEvals(ProgressEval progressEval)
         {
             base.AddObject("ProgressEvals", progressEval);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Users EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToUsers(User user)
+        {
+            base.AddObject("Users", user);
         }
 
         #endregion
@@ -618,7 +642,7 @@ namespace NijnCoach.Database
         /// <param name="forPatient">Initial value of the forPatient property.</param>
         /// <param name="type">Initial value of the Type property.</param>
         /// <param name="filledIn">Initial value of the FilledIn property.</param>
-        public static Questionnairre CreateQuestionnairre(global::System.SByte id, global::System.String name, global::System.String text, global::System.Int32 forPatient, global::System.String type, global::System.Boolean filledIn)
+        public static Questionnairre CreateQuestionnairre(global::System.SByte id, global::System.String name, global::System.String text, global::System.SByte forPatient, global::System.String type, global::System.Boolean filledIn)
         {
             Questionnairre questionnairre = new Questionnairre();
             questionnairre.Id = id;
@@ -714,7 +738,7 @@ namespace NijnCoach.Database
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 forPatient
+        public global::System.SByte forPatient
         {
             get
             {
@@ -729,8 +753,8 @@ namespace NijnCoach.Database
                 OnforPatientChanged();
             }
         }
-        private global::System.Int32 _forPatient;
-        partial void OnforPatientChanging(global::System.Int32 value);
+        private global::System.SByte _forPatient;
+        partial void OnforPatientChanging(global::System.SByte value);
         partial void OnforPatientChanged();
     
         /// <summary>
@@ -889,6 +913,115 @@ namespace NijnCoach.Database
         private global::System.String _Encoding;
         partial void OnEncodingChanging(global::System.String value);
         partial void OnEncodingChanged();
+
+        #endregion
+
+    
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="NijnCoachModel1", Name="User")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class User : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new User object.
+        /// </summary>
+        /// <param name="username">Initial value of the Username property.</param>
+        /// <param name="password">Initial value of the Password property.</param>
+        /// <param name="type">Initial value of the Type property.</param>
+        public static User CreateUser(global::System.String username, global::System.String password, global::System.String type)
+        {
+            User user = new User();
+            user.Username = username;
+            user.Password = password;
+            user.Type = type;
+            return user;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Username
+        {
+            get
+            {
+                return _Username;
+            }
+            set
+            {
+                if (_Username != value)
+                {
+                    OnUsernameChanging(value);
+                    ReportPropertyChanging("Username");
+                    _Username = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("Username");
+                    OnUsernameChanged();
+                }
+            }
+        }
+        private global::System.String _Username;
+        partial void OnUsernameChanging(global::System.String value);
+        partial void OnUsernameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Password
+        {
+            get
+            {
+                return _Password;
+            }
+            set
+            {
+                OnPasswordChanging(value);
+                ReportPropertyChanging("Password");
+                _Password = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Password");
+                OnPasswordChanged();
+            }
+        }
+        private global::System.String _Password;
+        partial void OnPasswordChanging(global::System.String value);
+        partial void OnPasswordChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Type
+        {
+            get
+            {
+                return _Type;
+            }
+            set
+            {
+                OnTypeChanging(value);
+                ReportPropertyChanging("Type");
+                _Type = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Type");
+                OnTypeChanged();
+            }
+        }
+        private global::System.String _Type;
+        partial void OnTypeChanging(global::System.String value);
+        partial void OnTypeChanged();
 
         #endregion
 

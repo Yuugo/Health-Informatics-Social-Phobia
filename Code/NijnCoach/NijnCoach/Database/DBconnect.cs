@@ -39,7 +39,7 @@ namespace NijnCoach.Database
         /// <param name="name">Name of the Questionnaire</param>
         /// <param name="questionnaire">The already created Questionnaire</param>
         /// <returns>Returns true if object was added, else false.</returns>
-        public static Boolean InsertQuestionnairre(String name, Int32 patientNo, Questionnaire questionnaire)
+        public static Boolean InsertQuestionnairre(String name, int patientNo, Questionnaire questionnaire)
         {
             NijnCoachEntities theEntities = new NijnCoachEntities();
             Questionnairre questionForm = new Questionnairre();
@@ -50,7 +50,7 @@ namespace NijnCoach.Database
             questionForm.Text = text;
             questionForm.Type = "Questionnaire";
             questionForm.FilledIn = false;
-            questionForm.forPatient = patientNo;
+            questionForm.forPatient = (SByte)patientNo;
             try
             {
                 theEntities.Questionnairres.AddObject(questionForm);
@@ -110,7 +110,6 @@ namespace NijnCoach.Database
             name = audioFile.Split('\\');
             string naam = name.Last();
             SpeechFile newSpeech = new SpeechFile();
-            newSpeech.Id = 1;
             newSpeech.Name = naam;
             newSpeech.Encoding = audioAsString;
             try
@@ -261,5 +260,19 @@ namespace NijnCoach.Database
                 MessageBox.Show(e.InnerException.ToString());
             }
         }
+
+        public static void authenticateUser(String username, String password)
+        {
+            NijnCoachEntities theEntities = new NijnCoachEntities();
+            try
+            {
+
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.InnerException.ToString());
+            }
+        }
+
     }
 }

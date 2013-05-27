@@ -50,7 +50,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject />
+    <StartupObject>NijnCoach.TestQuestionnaireForm</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Avatar\AvatarControl.cs" />
@@ -81,6 +81,42 @@
     <Compile Include="View\PatientFiles\PatientFiles.Designer.cs">
       <DependentUpon>PatientFiles.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\AvatarDir\AvatarContainer.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="View\AvatarDir\AvatarContainer.Designer.cs">
+      <DependentUpon>AvatarContainer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Exposure\ExposurePanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="View\Exposure\ExposurePanel.Designer.cs">
+      <DependentUpon>ExposurePanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Greet\GreetPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="View\Greet\GreetPanel.Designer.cs">
+      <DependentUpon>GreetPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Home\HomePanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="View\Home\HomePanel.Designer.cs">
+      <DependentUpon>HomePanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Main\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Main\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Overview\OverviewPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="View\Overview\OverviewPanel.Designer.cs">
+      <DependentUpon>OverviewPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\TherapistGUI\TherapistGUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,7 +139,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="view\questionnaireForm\QuestionnaireForm.cs">
-      <SubType>Form</SubType>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="view\questionnaireForm\QuestionnaireForm.Designer.cs">
       <DependentUpon>QuestionnaireForm.cs</DependentUpon>
@@ -131,10 +167,6 @@
     <Compile Include="XMLclasses\XMLParser.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Bass.Net, Version=2.4.10.1, Culture=neutral, PublicKeyToken=b7566c273e6ef480, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\Debug\Bass.Net.dll</HintPath>
-    </Reference>
     <Reference Include="CookComputing.XmlRpcV2, Version=2.5.0.0, Culture=neutral, PublicKeyToken=a7d6e17aa302004d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\BlackBoard Documenten\GUIController\GUIController\CookComputing.XmlRpcV2.dll</HintPath>
@@ -190,6 +222,21 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\AvatarDir\AvatarContainer.resx">
+      <DependentUpon>AvatarContainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Greet\GreetPanel.resx">
+      <DependentUpon>GreetPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Home\HomePanel.resx">
+      <DependentUpon>HomePanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Main\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Overview\OverviewPanel.resx">
+      <DependentUpon>OverviewPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\TherapistGUI\saveFileDialog.resx">
       <DependentUpon>saveFileDialog.cs</DependentUpon>
     </EmbeddedResource>
@@ -229,8 +276,6 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="View\AvatarDirfv\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
