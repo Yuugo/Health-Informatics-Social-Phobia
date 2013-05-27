@@ -23,7 +23,7 @@
         #region Windows Form Designer generated code
 
         /// <summary>
-        /// Required method for Designer support - do not modify
+        /// Required method for Designer support   do not modify
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
@@ -326,11 +326,11 @@
             // 
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
-            "",
-            "Happy",
-            "Sad",
-            "Angry",
-            "Disappointed"});
+             "",
+             "Happy",
+             "Sad",
+             "Angry",
+             "Disappointed"});
             this.comboBox1.Location = new System.Drawing.Point(299, 248);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboBox1.Name = "comboBox1";
@@ -341,11 +341,11 @@
             // 
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Items.AddRange(new object[] {
-            "",
-            "Happy",
-            "Sad",
-            "Angry",
-            "Disappointed"});
+             "",
+             "Happy",
+             "Sad",
+             "Angry",
+             "Disappointed"});
             this.comboBox2.Location = new System.Drawing.Point(299, 272);
             this.comboBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboBox2.Name = "comboBox2";
@@ -357,11 +357,11 @@
             // 
             this.comboBox3.FormattingEnabled = true;
             this.comboBox3.Items.AddRange(new object[] {
-            "",
-            "Happy",
-            "Sad",
-            "Angry",
-            "Disappointed"});
+             "",
+             "Happy",
+             "Sad",
+             "Angry",
+             "Disappointed"});
             this.comboBox3.Location = new System.Drawing.Point(299, 297);
             this.comboBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboBox3.Name = "comboBox3";
@@ -373,11 +373,11 @@
             // 
             this.comboBox4.FormattingEnabled = true;
             this.comboBox4.Items.AddRange(new object[] {
-            "",
-            "Happy",
-            "Sad",
-            "Angry",
-            "Disappointed"});
+             "",
+             "Happy",
+             "Sad",
+             "Angry",
+             "Disappointed"});
             this.comboBox4.Location = new System.Drawing.Point(299, 320);
             this.comboBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboBox4.Name = "comboBox4";
@@ -389,11 +389,11 @@
             // 
             this.comboBox5.FormattingEnabled = true;
             this.comboBox5.Items.AddRange(new object[] {
-            "",
-            "Happy",
-            "Sad",
-            "Angry",
-            "Disappointed"});
+             "",
+             "Happy",
+             "Sad",
+             "Angry",
+             "Disappointed"});
             this.comboBox5.Location = new System.Drawing.Point(299, 343);
             this.comboBox5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboBox5.Name = "comboBox5";
@@ -405,11 +405,11 @@
             // 
             this.comboBox6.FormattingEnabled = true;
             this.comboBox6.Items.AddRange(new object[] {
-            "",
-            "Happy",
-            "Sad",
-            "Angry",
-            "Disappointed"});
+             "",
+             "Happy",
+             "Sad",
+             "Angry",
+             "Disappointed"});
             this.comboBox6.Location = new System.Drawing.Point(299, 366);
             this.comboBox6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboBox6.Name = "comboBox6";
@@ -421,11 +421,11 @@
             // 
             this.comboBox7.FormattingEnabled = true;
             this.comboBox7.Items.AddRange(new object[] {
-            "",
-            "Happy",
-            "Sad",
-            "Angry",
-            "Disappointed"});
+             "",
+             "Happy",
+             "Sad",
+             "Angry",
+             "Disappointed"});
             this.comboBox7.Location = new System.Drawing.Point(299, 387);
             this.comboBox7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboBox7.Name = "comboBox7";
@@ -437,11 +437,11 @@
             // 
             this.comboBox8.FormattingEnabled = true;
             this.comboBox8.Items.AddRange(new object[] {
-            "",
-            "Happy",
-            "Sad",
-            "Angry",
-            "Disappointed"});
+             "",
+             "Happy",
+             "Sad",
+             "Angry",
+             "Disappointed"});
             this.comboBox8.Location = new System.Drawing.Point(299, 411);
             this.comboBox8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.comboBox8.Name = "comboBox8";
@@ -588,7 +588,6 @@
         }
 
         #endregion
-
         private System.Windows.Forms.Label labelQ;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox0;
@@ -632,4 +631,3 @@
         private System.Windows.Forms.Button button6;
     }
 }
-

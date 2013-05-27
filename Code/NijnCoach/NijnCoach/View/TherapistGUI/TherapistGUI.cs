@@ -40,7 +40,7 @@ namespace NijnCoach.View.TherapistGUI
         private void Form1_Load(object sender, EventArgs e)
         {
             //Lijsten met de benodigde form items daarin opgeslagen
-            texts = new List<TextBox>() { textBox1, textBox2, textBox3, textBox4, textBox5, textBox6, textBox7, textBox8, textBox0 };
+            texts = new List<TextBox>() { textBox1, textBox2, textBox3, textBox4, textBox5, textBox6, textBox7, textBox8, textBox0,textBox9 };
             labels = new List<Label>() { label0, label1, label2, label3, label4, label5, label6, label7, label8 };
             combos = new List<ComboBox>() { comboBox1, comboBox2, comboBox3, comboBox4, comboBox5, comboBox6, comboBox7, comboBox8 };
             buttons = new List<Button>() { button2, button3 };
@@ -119,8 +119,8 @@ namespace NijnCoach.View.TherapistGUI
         private void button5_Click(object sender, EventArgs e)
         {
             saveFileDialog dialog = new saveFileDialog();
-
-            if (dialog.ShowDialog() == DialogResult.OK)
+            addQuestion();
+            if (dialog.ShowDialog() == DialogResult.OK && empty == false)
             {
                 q.version = 1.00;
                 q.head = new NijnCoach.XMLclasses.Questionnaire.Header
@@ -133,7 +133,7 @@ namespace NijnCoach.View.TherapistGUI
 
                 XMLParser xpars = new XMLParser();
                 String theXML = xpars.writeXML(q);
-                DBConnect.InsertQuestionnairre(dialog.saveFileTextBox.Text, q);
+                DBConnect.InsertQuestionnairre(dialog.saveFileTextBox.Text,9, q);
                 MessageBox.Show("Questionnaire has been saved");
                 q = new NijnCoach.XMLclasses.Questionnaire();
                 q.entries = new ListOfIEntry();                
@@ -177,7 +177,7 @@ namespace NijnCoach.View.TherapistGUI
         //reset de velden bij een nieuwe vraag
         private void reset()
         {
-            for (int i = 0; i < 9; i++) { texts[i].Text = ""; }
+            for (int i = 0; i < 10; i++) { texts[i].Text = ""; }
             for (int i = 0; i < 8; i++) { combos[i].Text = ""; }
         }
 

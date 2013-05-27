@@ -33,6 +33,7 @@
           <Property Name="Id" Type="varchar" Nullable="false" MaxLength="255" />
           <Property Name="Name" Type="varchar" Nullable="false" MaxLength="100" />
           <Property Name="Content" Type="longtext" Nullable="false" />
+          <Property Name="PatientNo" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Questionnairre">
           <Key>
@@ -41,7 +42,7 @@
           <Property Name="Id" Type="tinyint" Nullable="false" />
           <Property Name="Name" Type="varchar" Nullable="false" MaxLength="20" />
           <Property Name="Text" Type="mediumtext" Nullable="false" />
-          <Property Name="forPatient" Type="longtext" Nullable="false" />
+          <Property Name="forPatient" Type="int" Nullable="false" />
           <Property Name="Type" Type="longtext" Nullable="false" />
           <Property Name="FilledIn" Type="bool" Nullable="false" />
         </EntityType>
@@ -85,7 +86,7 @@
           <Property Name="Id" Type="SByte" Nullable="false" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
           <Property Name="Text" Type="String" Nullable="false" MaxLength="16777215" Unicode="false" FixedLength="false" />
-          <Property Type="String" Name="forPatient" Nullable="false" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="forPatient" Nullable="false" />
           <Property Type="String" Name="Type" Nullable="false" MaxLength="1073741823" FixedLength="false" Unicode="false" />
           <Property Type="Boolean" Name="FilledIn" Nullable="false" />
         </EntityType>
@@ -104,6 +105,7 @@
           <Property Type="String" Name="Id" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="Content" Nullable="false" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="PatientNo" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -151,6 +153,7 @@
           <EntitySetMapping Name="ProgressEvals">
             <EntityTypeMapping TypeName="NijnCoachModel1.ProgressEval">
               <MappingFragment StoreEntitySet="ProgressEval">
+                <ScalarProperty Name="PatientNo" ColumnName="PatientNo" />
                 <ScalarProperty Name="Content" ColumnName="Content" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
