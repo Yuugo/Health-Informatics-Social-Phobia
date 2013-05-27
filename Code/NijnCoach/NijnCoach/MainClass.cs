@@ -15,7 +15,7 @@ namespace NijnCoach
         {
             XMLParser parser = new XMLParser();
             Questionnaire q = parser.readXMLFromFile("ziejewelwillem.xml");
-            DBConnect.InsertQuestionnairre("codeQuest", q);
+            //DBConnect.InsertQuestionnairre("codeQuest", q);
         }
 
         /// <summary>
