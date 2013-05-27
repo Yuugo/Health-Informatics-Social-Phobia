@@ -48,12 +48,17 @@ namespace NijnCoach.View.Questionnaire
             this.overviewChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.avatarPanel = new System.Windows.Forms.Panel();
             this.commentPanel = new System.Windows.Forms.Panel();
+            this.groupBoxRadiobuttonsOverview = new System.Windows.Forms.GroupBox();
+            this.gsrRadiobuttonOverview = new System.Windows.Forms.RadioButton();
+            this.hrRadiobuttonOverview = new System.Windows.Forms.RadioButton();
+            this.sudRadiobuttonOverview = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.lastSessionChart)).BeginInit();
             this.chartTabs.SuspendLayout();
             this.lastSessionTab.SuspendLayout();
             this.groupBoxRadiobuttonsLastSession.SuspendLayout();
             this.overviewTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.overviewChart)).BeginInit();
+            this.groupBoxRadiobuttonsOverview.SuspendLayout();
             this.SuspendLayout();
             // 
             // home
@@ -155,6 +160,7 @@ namespace NijnCoach.View.Questionnaire
             // overviewTab
             // 
             this.overviewTab.BackColor = System.Drawing.SystemColors.Control;
+            this.overviewTab.Controls.Add(this.groupBoxRadiobuttonsOverview);
             this.overviewTab.Controls.Add(this.overviewChart);
             this.overviewTab.Location = new System.Drawing.Point(4, 22);
             this.overviewTab.Name = "overviewTab";
@@ -166,9 +172,11 @@ namespace NijnCoach.View.Questionnaire
             // overviewChart
             // 
             chartArea2.Name = "ChartArea2";
+            chartArea2.AxisX.MajorGrid.Enabled = false;
+            chartArea2.AxisY.MajorGrid.Enabled = false;
             this.overviewChart.ChartAreas.Add(chartArea2);
             legend1.Name = "Legend2";
-            this.overviewChart.Legends.Add(legend1);
+            //this.overviewChart.Legends.Add(legend1);
             this.overviewChart.Location = new System.Drawing.Point(-4, 0);
             this.overviewChart.Name = "overviewChart";
             this.overviewChart.Size = new System.Drawing.Size(601, 361);
@@ -194,6 +202,53 @@ namespace NijnCoach.View.Questionnaire
             this.commentPanel.Size = new System.Drawing.Size(600, 200);
             this.commentPanel.TabIndex = 6;
             // 
+            // groupBoxRadiobuttonsOverview
+            // 
+            this.groupBoxRadiobuttonsOverview.Controls.Add(this.gsrRadiobuttonOverview);
+            this.groupBoxRadiobuttonsOverview.Controls.Add(this.hrRadiobuttonOverview);
+            this.groupBoxRadiobuttonsOverview.Controls.Add(this.sudRadiobuttonOverview);
+            this.groupBoxRadiobuttonsOverview.Location = new System.Drawing.Point(494, 6);
+            this.groupBoxRadiobuttonsOverview.Name = "groupBoxRadiobuttonsOverview";
+            this.groupBoxRadiobuttonsOverview.Size = new System.Drawing.Size(97, 84);
+            this.groupBoxRadiobuttonsOverview.TabIndex = 8;
+            this.groupBoxRadiobuttonsOverview.TabStop = false;
+            this.groupBoxRadiobuttonsOverview.Text = "Show";
+            // 
+            // gsrRadiobuttonOverview
+            // 
+            this.gsrRadiobuttonOverview.AutoSize = true;
+            this.gsrRadiobuttonOverview.Location = new System.Drawing.Point(6, 41);
+            this.gsrRadiobuttonOverview.Name = "gsrRadiobuttonOverview";
+            this.gsrRadiobuttonOverview.Size = new System.Drawing.Size(48, 17);
+            this.gsrRadiobuttonOverview.TabIndex = 5;
+            this.gsrRadiobuttonOverview.Text = "GSR";
+            this.gsrRadiobuttonOverview.UseVisualStyleBackColor = true;
+            this.gsrRadiobuttonOverview.CheckedChanged += new System.EventHandler(this.gsrRadiobuttonOverview_CheckedChanged);
+            // 
+            // hrRadiobuttonOverview
+            // 
+            this.hrRadiobuttonOverview.AutoSize = true;
+            this.hrRadiobuttonOverview.Location = new System.Drawing.Point(6, 64);
+            this.hrRadiobuttonOverview.Name = "hrRadiobuttonOverview";
+            this.hrRadiobuttonOverview.Size = new System.Drawing.Size(69, 17);
+            this.hrRadiobuttonOverview.TabIndex = 6;
+            this.hrRadiobuttonOverview.Text = "Heartrate";
+            this.hrRadiobuttonOverview.UseVisualStyleBackColor = true;
+            this.hrRadiobuttonOverview.CheckedChanged += new System.EventHandler(this.hrRadiobuttonOverview_CheckedChanged);
+            // 
+            // sudRadiobuttonOverview
+            // 
+            this.sudRadiobuttonOverview.AutoSize = true;
+            this.sudRadiobuttonOverview.Checked = true;
+            this.sudRadiobuttonOverview.Location = new System.Drawing.Point(6, 18);
+            this.sudRadiobuttonOverview.Name = "sudRadiobuttonOverview";
+            this.sudRadiobuttonOverview.Size = new System.Drawing.Size(48, 17);
+            this.sudRadiobuttonOverview.TabIndex = 4;
+            this.sudRadiobuttonOverview.TabStop = true;
+            this.sudRadiobuttonOverview.Text = "SUD";
+            this.sudRadiobuttonOverview.UseVisualStyleBackColor = true;
+            this.sudRadiobuttonOverview.CheckedChanged += new System.EventHandler(this.sudRadiobuttonOverview_CheckedChanged);
+            // 
             // ExposureChartsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -212,6 +267,8 @@ namespace NijnCoach.View.Questionnaire
             this.groupBoxRadiobuttonsLastSession.PerformLayout();
             this.overviewTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.overviewChart)).EndInit();
+            this.groupBoxRadiobuttonsOverview.ResumeLayout(false);
+            this.groupBoxRadiobuttonsOverview.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -230,5 +287,9 @@ namespace NijnCoach.View.Questionnaire
         private System.Windows.Forms.RadioButton gsrRadiobuttonLastSession;
         private System.Windows.Forms.RadioButton hrRadiobuttonLastSession;
         private System.Windows.Forms.RadioButton sudRadiobuttonLastSession;
+        private System.Windows.Forms.GroupBox groupBoxRadiobuttonsOverview;
+        private System.Windows.Forms.RadioButton gsrRadiobuttonOverview;
+        private System.Windows.Forms.RadioButton hrRadiobuttonOverview;
+        private System.Windows.Forms.RadioButton sudRadiobuttonOverview;
     }
 }

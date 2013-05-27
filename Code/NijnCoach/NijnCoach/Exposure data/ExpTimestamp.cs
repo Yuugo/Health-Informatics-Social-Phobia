@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Diagnostics;
 
 namespace NijnCoach.Exposure_data
 {
@@ -50,6 +51,7 @@ namespace NijnCoach.Exposure_data
 
         public void setTime(DateTime newTime)
         {
+            Debug.Assert(newTime != null);
             time = newTime;
         }
 

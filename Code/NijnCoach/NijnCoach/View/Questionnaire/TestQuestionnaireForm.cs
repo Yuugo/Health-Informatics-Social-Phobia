@@ -21,7 +21,6 @@ namespace NijnCoach
             
             //questionnaire = parser.readXMLFromFile("answers.xml");
             //Application.Run(new TherapistQuestionnaire(questionnaire));
-
             Application.Run(new ExposureChartsForm());
         }
     }
