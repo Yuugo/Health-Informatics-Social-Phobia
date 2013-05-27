@@ -50,7 +50,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>NijnCoach.TestQuestionnaireForm</StartupObject>
+    <StartupObject>NijnCoach.MainClass</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Avatar\AvatarControl.cs" />
@@ -144,7 +144,6 @@
     <Compile Include="view\questionnaireForm\QuestionnaireForm.Designer.cs">
       <DependentUpon>QuestionnaireForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="view\questionnaireForm\TestQuestionnaireForm.cs" />
     <Compile Include="view\questionnaireForm\CommentPanel.cs">
       <SubType>Component</SubType>
     </Compile>
