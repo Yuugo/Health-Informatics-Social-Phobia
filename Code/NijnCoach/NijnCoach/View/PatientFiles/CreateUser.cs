@@ -69,8 +69,8 @@ namespace NijnCoach.View.PatientFiles
 
                 try
                 {
-                    Convert.ToSByte(texts[2].Text);
-                    Convert.ToSByte(texts[4].Text);
+                    Convert.ToInt32(texts[2].Text);
+                    Convert.ToInt32(texts[4].Text);
                     Convert.ToInt64(texts[7].Text);
                 }
                 catch (Exception)
@@ -83,9 +83,9 @@ namespace NijnCoach.View.PatientFiles
                     DBConnect.InsertUser("Patient", textBox1.Text, pass);
                     pat.Fname = texts[0].Text;
                     pat.Lname = texts[1].Text;
-                    pat.Age = Convert.ToSByte(texts[2].Text);
+                    pat.Age = Convert.ToInt32(texts[2].Text);
                     pat.Street = texts[3].Text;
-                    pat.HouseNo = Convert.ToSByte(texts[4].Text);
+                    pat.HouseNo = Convert.ToInt32(texts[4].Text);
                     pat.Postal = texts[5].Text;
                     pat.City = texts[6].Text;
                     pat.PhoneNo = Convert.ToInt32(texts[7].Text);

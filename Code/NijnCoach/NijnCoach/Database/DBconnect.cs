@@ -254,9 +254,9 @@ namespace NijnCoach.Database
             try
             {
                 NijnCoachEntities theEntities = new NijnCoachEntities();
-                List<SpeechFile> partList = theEntities.SpeechFiles.Where(x => x.Name == name).ToList<SpeechFile>();
+                List<AudioFile> partList = theEntities.AudioFiles.Where(x => x.Name == name).ToList<AudioFile>();
                 String result = "";
-                foreach (SpeechFile trackPart in partList)
+                foreach (AudioFile trackPart in partList)
                 {
                     result += trackPart.Encoding;
                 }

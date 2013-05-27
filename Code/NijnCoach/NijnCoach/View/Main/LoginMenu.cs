@@ -30,10 +30,12 @@ namespace NijnCoach.View.Main
                     if (DBConnect.getType(userNo))
                     {
                         MessageBox.Show("trapist");
+                        MainClass.userNo = userNo;
                     }
                     else
                     {
                         MessageBox.Show("patient");
+                        MainClass.userNo = userNo;
                     }
 
                 }
@@ -42,6 +44,8 @@ namespace NijnCoach.View.Main
                     MessageBox.Show("Wrong username or password");
                 }
             }
+
+            
         }
     }
 }

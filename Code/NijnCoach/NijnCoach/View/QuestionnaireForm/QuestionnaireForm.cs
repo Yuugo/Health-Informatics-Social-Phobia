@@ -9,6 +9,8 @@ using Un4seen.Bass;
 using Un4seen.Bass.AddOn.Fx;
 using NijnCoach.View.Overview;
 using NijnCoach.Database;
+using System.IO;
+using System.Text;
 
 namespace NijnCoach.View.Questionnaire
 {
@@ -20,7 +22,7 @@ namespace NijnCoach.View.Questionnaire
         public QuestionnaireForm(Boolean _loadAvatar = true) : base(_loadAvatar)
         {
             //TODO: add global patientnumber.
-            int patientNo = 12; //TEMPORARY
+            int patientNo = MainClass.userNo;
             XMLParser parser = new XMLParser();
             #region license
             BassNet.Registration("w.kowaluk@gmail.com", "2X32382019152222");
@@ -116,7 +118,7 @@ namespace NijnCoach.View.Questionnaire
             else if (entry is OpenQuestion)
             {
                 panelQuestionIntern = new OpenQuestionPanel(panelQuestion.Width, panelQuestion.Height);
-            }
+            }            
             panelQuestionIntern.entry = entry;
             panelQuestion.Controls.Add(panelQuestionIntern);
             panelQuestion.ResumeLayout();
@@ -127,8 +129,15 @@ namespace NijnCoach.View.Questionnaire
             AvatarControl.happy();
         }
 
-        //
-        public void play(string mp3name)
+        void playFromDB(String name)
+        {
+            var entry = questionnaire.entries[currentQuestion];
+            String content = DBConnect.getSpeechFile(entry.audio);
+            String path = createTempAudioFile(content);
+            bassPlay(path);
+        }
+
+        public void bassPlay(string mp3name)
         {
             if (stream != 0)
             {
@@ -145,6 +154,24 @@ namespace NijnCoach.View.Questionnaire
             }
         }
 
+        public String createTempAudioFile(String content)
+        {
+            String path = GetTempFilePathWithExtension("mp3");
+            using (FileStream fs = File.Create(path, 1024))
+            {
+                Byte[] text = new UTF8Encoding(true).GetBytes(content);
+                // Add some information to the file.
+                fs.Write(text, 0, text.Length);
+            }
+            return path;
+        }
+
+        public string GetTempFilePathWithExtension(string extension)
+        {
+            var path = Path.GetTempPath();
+            var fileName = Path.ChangeExtension(path, extension);
+            return Path.Combine(path, fileName);
+        }
 
         protected override void avatarLoaded() { }
     }
