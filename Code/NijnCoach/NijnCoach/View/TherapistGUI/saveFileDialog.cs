@@ -16,10 +16,8 @@ namespace NijnCoach.View.TherapistGUI
             InitializeComponent();
         }
 
-        private void validateTextInteger(object sender, EventArgs e)
+        public void validateTextInteger(object sender, EventArgs e)
         {
-            Exception X = new Exception();
-
             TextBox T = (TextBox)sender;
 
             try

@@ -78,7 +78,7 @@
             this.patientNoBox.Name = "patientNoBox";
             this.patientNoBox.Size = new System.Drawing.Size(265, 20);
             this.patientNoBox.TabIndex = 8;
-            this.patientNoBox.TextChanged += new System.EventHandler(this.validateTextInteger);
+            this.patientNoBox.TextChanged += new System.EventHandler(this.va);
             // 
             // patientNoLabel
             // 

@@ -8,6 +8,7 @@ using NijnCoach.View.Home;
 using Un4seen.Bass;
 using Un4seen.Bass.AddOn.Fx;
 using NijnCoach.View.Overview;
+using NijnCoach.Database;
 
 namespace NijnCoach.View.Questionnaire
 {
@@ -18,13 +19,15 @@ namespace NijnCoach.View.Questionnaire
         private int stream = 0;
         public QuestionnaireForm(Boolean _loadAvatar = true) : base(_loadAvatar)
         {
+            //TODO: add global patientnumber.
+            int patientNo = 0; //TEMPORARY
             XMLParser parser = new XMLParser();
             #region license
             BassNet.Registration("w.kowaluk@gmail.com", "2X32382019152222");
             #endregion
             Bass.BASS_Init(-1, 44100, BASSInit.BASS_DEVICE_DEFAULT, IntPtr.Zero);
             openFileDialog.ShowDialog();
-            XMLclasses.Questionnaire questionnaire = parser.readXMLFromFile(openFileDialog.FileName);
+            XMLclasses.Questionnaire questionnaire = DBConnect.getQuestionnaireByPatient(patientNo);
             init(questionnaire);
         }
 
