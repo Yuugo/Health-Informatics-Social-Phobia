@@ -63,8 +63,9 @@ namespace NijnCoach.View.AvatarDir
             SetParent(Handle, this.Handle);
             ShowWindow(Handle, 11);
             AvatarHandle = FindCoachWindow();
+            Thread.Sleep(500);
             ShowWindow(AvatarHandle, 11);
-            Thread.Sleep(600);
+            Thread.Sleep(500);
 
             desktopHandle = SetParent(AvatarHandle, this.Handle);
             SetWindowLong(AvatarHandle, GWL_STYLE, (int)(~WS_VISIBLE & ((WS_MAXIMIZE | WS_BORDER) | WS_CHILD)));
@@ -73,8 +74,7 @@ namespace NijnCoach.View.AvatarDir
             t.Interval = 9000;
             t.Tick += new EventHandler(avatarReady);
             t.Enabled = true;
-
-            Application.ApplicationExit += new EventHandler(closeECoachProcess);
+            AppDomain.CurrentDomain.ProcessExit += new EventHandler(closeECoachProcess);
         }
 
         /// <summary>
@@ -161,7 +161,7 @@ namespace NijnCoach.View.AvatarDir
             string winviz = "winviz";
             foreach (Process Task in Process.GetProcesses())
             {
-                String task = Path.GetFileName(Path.GetDirectoryName((Task.ProcessName)));
+                String task = Task.ProcessName;
                 if (task.Contains(NameECoach) || task.Contains(winviz))
                 {
                     try { Task.Kill(); }

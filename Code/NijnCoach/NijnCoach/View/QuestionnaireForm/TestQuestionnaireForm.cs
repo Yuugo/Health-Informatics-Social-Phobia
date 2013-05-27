@@ -20,7 +20,6 @@ namespace NijnCoach
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(MainForm.mainForm);
-
             //Application.Run(new NijnCoach.View.TherapistGUI.TherapistGUI());
             
             //questionnaire = parser.readXMLFromFile("answers.xml");
