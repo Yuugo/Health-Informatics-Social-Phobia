@@ -125,6 +125,10 @@ namespace NijnCoach.Avatar
             proxy.myanimation2();
         }
 
-
+        public static void speak(string mp3name, int duration)
+        {
+            IStateName proxy = (IStateName)XmlRpcProxyGen.Create(typeof(IStateName));
+            proxy.myspeakx(mp3name, duration);
+        }
     }
 }

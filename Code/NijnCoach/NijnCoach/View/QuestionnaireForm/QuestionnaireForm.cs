@@ -10,7 +10,8 @@ using NijnCoach.XMLclasses;
 using System.Diagnostics;
 using NijnCoach.View.AvatarDir;
 using NijnCoach.Avatar;
-
+using Un4seen.Bass;
+using Un4seen.Bass.AddOn.Fx;
 
 namespace NijnCoach.View.Questionnaire
 {
@@ -18,9 +19,14 @@ namespace NijnCoach.View.Questionnaire
     {
         private XMLclasses.Questionnaire questionnaire;
         private int currentQuestion = 0;
+        private int stream = 0;
         public QuestionnaireForm(Boolean _loadAvatar = true)
         {
             XMLParser parser = new XMLParser();
+            #region license
+            BassNet.Registration("w.kowaluk@gmail.com", "2X32382019152222");
+            #endregion
+            Bass.BASS_Init(-1, 44100, BASSInit.BASS_DEVICE_DEFAULT, IntPtr.Zero);
             InitializeComponent();
             openFileDialog.ShowDialog();
             XMLclasses.Questionnaire questionnaire = parser.readXMLFromFile(openFileDialog.FileName);
@@ -124,6 +130,24 @@ namespace NijnCoach.View.Questionnaire
         private void button1_Click(object sender, EventArgs e)
         {
             AvatarControl.happy();
+        }
+
+        //
+        public void play(string mp3name)
+        {
+            if (stream != 0)
+            {
+                Bass.BASS_StreamFree(stream);
+            }
+            stream = Bass.BASS_StreamCreateFile("C:/ecoach/audio/" + mp3name, 0, 0, BASSFlag.BASS_DEFAULT);
+            long len = Bass.BASS_ChannelGetLength(stream, BASSMode.BASS_POS_BYTES);
+            // the length of the audiofile
+            int time = (int)Bass.BASS_ChannelBytes2Seconds(stream, len);
+            AvatarControl.speak(mp3name, time);
+            if (stream != 0)
+            {
+                Bass.BASS_ChannelPlay(stream, false);
+            }
         }
 
         private void panelAvatar_Paint(object sender, PaintEventArgs e)
