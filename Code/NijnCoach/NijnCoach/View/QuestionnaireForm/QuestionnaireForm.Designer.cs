@@ -30,9 +30,9 @@ namespace NijnCoach.View.Questionnaire
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
+        protected override void InitializeComponent()
         {
-            this.panelAvatar = new System.Windows.Forms.Panel();
+            base.InitializeComponent();
             this.progressBar = new System.Windows.Forms.ProgressBar();
             this.panelQuestion = new System.Windows.Forms.Panel();
             this.buttonPrevious = new System.Windows.Forms.Button();
@@ -41,18 +41,7 @@ namespace NijnCoach.View.Questionnaire
             this.buttonSave = new System.Windows.Forms.Button();
             this.smile = new System.Windows.Forms.Button();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.panelAvatar.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // panelAvatar
-            // 
-            this.panelAvatar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelAvatar.Controls.Add(this.progressBar);
-            this.panelAvatar.Location = new System.Drawing.Point(87, 12);
-            this.panelAvatar.Name = "panelAvatar";
-            this.panelAvatar.Size = new System.Drawing.Size(797, 365);
-            this.panelAvatar.TabIndex = 0;
-            this.panelAvatar.Paint += new System.Windows.Forms.PaintEventHandler(this.panelAvatar_Paint);
             // 
             // progressBar
             // 
@@ -60,6 +49,7 @@ namespace NijnCoach.View.Questionnaire
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(100, 23);
             this.progressBar.TabIndex = 4;
+            this.progressBar.BringToFront();
             // 
             // panelQuestion
             // 
@@ -122,13 +112,11 @@ namespace NijnCoach.View.Questionnaire
             // 
             // openFileDialog
             // 
-            this.openFileDialog.FileName = "openFileDialog1";
+            this.openFileDialog.FileName = "";
             this.openFileDialog.Filter = "XML Files(*.xml)|*.xml";
             // 
             // QuestionnaireForm
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            
             this.ClientSize = new System.Drawing.Size(982, 487);
             this.Controls.Add(this.smile);
             this.Controls.Add(this.buttonSave);
@@ -136,23 +124,16 @@ namespace NijnCoach.View.Questionnaire
             this.Controls.Add(this.panelQuestion);
             this.Controls.Add(this.buttonNext);
             this.Controls.Add(this.buttonPrevious);
-            this.Controls.Add(this.panelAvatar);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.MaximizeBox = false;
             this.Name = "QuestionnaireForm";
             this.Text = "Questionnaire";
-            this.TopMost = true;
-            this.panelAvatar.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panelAvatar;
         private System.Windows.Forms.Panel panelQuestion;
         private IQuestionPanel panelQuestionIntern;
-        private NijnCoach.View.AvatarDir.AvatarPanel panelAvatarIntern = null;
         private System.Windows.Forms.Button buttonPrevious;
         private System.Windows.Forms.Button buttonNext;
         private System.Windows.Forms.ProgressBar progressBar;

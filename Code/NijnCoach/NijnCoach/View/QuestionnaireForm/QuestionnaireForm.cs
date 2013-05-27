@@ -1,21 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
 using NijnCoach.XMLclasses;
 using System.Diagnostics;
 using NijnCoach.View.AvatarDir;
 using NijnCoach.Avatar;
+using NijnCoach.View.Main;
+using NijnCoach.View.Home;
 using Un4seen.Bass;
 using Un4seen.Bass.AddOn.Fx;
+using NijnCoach.View.Overview;
 
 namespace NijnCoach.View.Questionnaire
 {
-    public partial class QuestionnaireForm : Form
+    public partial class QuestionnaireForm : AvatarContainer
     {
         private XMLclasses.Questionnaire questionnaire;
         private int currentQuestion = 0;
@@ -27,27 +23,21 @@ namespace NijnCoach.View.Questionnaire
             BassNet.Registration("w.kowaluk@gmail.com", "2X32382019152222");
             #endregion
             Bass.BASS_Init(-1, 44100, BASSInit.BASS_DEVICE_DEFAULT, IntPtr.Zero);
-            InitializeComponent();
             openFileDialog.ShowDialog();
             XMLclasses.Questionnaire questionnaire = parser.readXMLFromFile(openFileDialog.FileName);
-            init(questionnaire,_loadAvatar);
+            init(questionnaire);
         }
 
-        public QuestionnaireForm(XMLclasses.Questionnaire questionnaire, Boolean _loadAvatar = true)
+        public QuestionnaireForm(XMLclasses.Questionnaire questionnaire, Boolean _loadAvatar = true) : base(_loadAvatar)
         {
-            InitializeComponent();
-            init(questionnaire, _loadAvatar);
+            init(questionnaire);
         }
 
-        public void init(XMLclasses.Questionnaire questionnaire, Boolean _loadAvatar = true)
+        private void init(XMLclasses.Questionnaire questionnaire)
         {
             Debug.Assert(questionnaire.entries.Count > 0, "The number of entries in the questionnaire should at least be 1");
             this.questionnaire = questionnaire;
             initControls();
-            if (_loadAvatar)
-            {
-                loadAvatar();
-            }
         }
 
         private void initControls()
@@ -61,25 +51,25 @@ namespace NijnCoach.View.Questionnaire
             }
         }
 
-        public void loadAvatar()
-        {
-            Debug.Assert(panelAvatarIntern == null);
-            panelAvatarIntern = new NijnCoach.View.AvatarDir.AvatarPanel(100, 100);
-            panelAvatarIntern.Width = panelAvatar.Width;
-            panelAvatarIntern.Height = panelAvatar.Height;
-            panelAvatar.Controls.Add(panelAvatarIntern);
-        }
-
         private void nextEventHandler(object sender,EventArgs e){
-            Debug.Assert(currentQuestion + 1 < questionnaire.entries.Count, "Array out of bounds: IEntry does not exist");
-            currentQuestion++;
-            updatePanelQuestion(questionnaire.entries[currentQuestion]);
-            if (currentQuestion == questionnaire.entries.Count - 1)
+            if (currentQuestion + 1 == questionnaire.entries.Count)
             {
-                buttonNext.Enabled = false;
+                saveEventHandler(sender, e);
+                //TODO: Mark questionnaire as finished
+                //TODO: fetch data for overview from database
+                MainForm.mainForm.replacePanel(new OverviewPanel());
             }
-            buttonPrevious.Enabled = true;
-            progressBar.Value = currentQuestion;
+            else
+            {
+                currentQuestion++;
+                updatePanelQuestion(questionnaire.entries[currentQuestion]);
+                if (currentQuestion == questionnaire.entries.Count - 1)
+                {
+                    buttonNext.Text = "Finish";
+                }
+                buttonPrevious.Enabled = true;
+                progressBar.Value = currentQuestion;
+            }
         }
 
         private void previousEventHandler(object sender, EventArgs e)
@@ -91,12 +81,14 @@ namespace NijnCoach.View.Questionnaire
             {
                 buttonPrevious.Enabled = false;
             }
+            buttonNext.Text = "Next";
             buttonNext.Enabled = true;
             progressBar.Value = currentQuestion;
         }
 
         private void homeEventHandler(object sender, EventArgs e)
         {
+            MainForm.mainForm.replacePanel(new HomePanel());
         }
 
         private void saveEventHandler(object sender, EventArgs e)
@@ -150,9 +142,7 @@ namespace NijnCoach.View.Questionnaire
             }
         }
 
-        private void panelAvatar_Paint(object sender, PaintEventArgs e)
-        {
-            
-        }
+
+        protected override void avatarLoaded() { }
     }
 }

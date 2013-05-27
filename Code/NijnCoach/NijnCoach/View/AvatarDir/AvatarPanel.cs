@@ -18,9 +18,9 @@ namespace NijnCoach.View.AvatarDir
          * With help of:
          * http://stackoverflow.com/questions/12653418/why-cant-i-embed-these-applications-in-my-form
          */
-
-        private static List<AvatarPanel> avatarPanels = new List<AvatarPanel>();
+        private static int avatarCount = 0;
         private static Process Task = null;
+        private static IntPtr desktopHandle = new IntPtr();
         private static IntPtr AvatarHandle = new IntPtr();
         private static System.Windows.Forms.Timer t;
         private static Boolean isFullScreen = true;
@@ -28,6 +28,7 @@ namespace NijnCoach.View.AvatarDir
 
         private int borderWidth;
         private int borderHeight;
+        private Boolean _fullyLoaded = false;
 
         /// <summary>
         /// Make a new panel for an avatar. If the avatar has not been displayed before,
@@ -47,8 +48,6 @@ namespace NijnCoach.View.AvatarDir
             {
                 captureAvatarInPanel();
             }
-            avatarPanels.Add(this);
-            //MoveWindow(AvatarHandle, -borderWidth, -borderHeight, this.Width + 2 * borderWidth, this.Height + 2 * borderHeight, true);
         }
 
         /// <summary>
@@ -64,18 +63,18 @@ namespace NijnCoach.View.AvatarDir
             SetParent(Handle, this.Handle);
             ShowWindow(Handle, 11);
             AvatarHandle = FindCoachWindow();
+            Thread.Sleep(500);
             ShowWindow(AvatarHandle, 11);
             Thread.Sleep(500);
 
-            SetParent(AvatarHandle, this.Handle);
+            desktopHandle = SetParent(AvatarHandle, this.Handle);
             SetWindowLong(AvatarHandle, GWL_STYLE, (int)(~WS_VISIBLE & ((WS_MAXIMIZE | WS_BORDER) | WS_CHILD)));
 
             t = new System.Windows.Forms.Timer();
             t.Interval = 9000;
             t.Tick += new EventHandler(avatarReady);
             t.Enabled = true;
-
-            Application.ApplicationExit += new EventHandler(closeECoachProcess);
+            AppDomain.CurrentDomain.ProcessExit += new EventHandler(closeECoachProcess);
         }
 
         /// <summary>
@@ -122,23 +121,8 @@ namespace NijnCoach.View.AvatarDir
 
             this.Resize += new EventHandler(delegate(object sender2, EventArgs e2) { MoveWindow(AvatarHandle, -borderWidth, -borderHeight, this.Width + 2 * borderWidth, this.Height + 2 * borderHeight, true); });
             ShowWindow(AvatarHandle, 9);
-        }
-
-        /// <summary>
-        /// Make the avatar invissible, if this is the last panel
-        /// Detach the avatar from the panel
-        /// </summary>
-        /// <param name="disposing"></param>
-        protected override void Dispose(bool disposing)
-        {
-            avatarPanels.Remove(this);
-            if (avatarPanels.Count == 0)
-            {
-                ShowWindow(AvatarHandle, 11);
-                SetWindowLong(AvatarHandle, GWL_STYLE, (int)(~WS_VISIBLE & ((WS_MAXIMIZE | WS_BORDER) | WS_CHILD)));
-            }
-            SetParent(AvatarHandle, new IntPtr(0));
-            base.Dispose(disposing);
+            _fullyLoaded = true;
+            avatarCount++;
         }
 
         /// <summary>
@@ -177,7 +161,7 @@ namespace NijnCoach.View.AvatarDir
             string winviz = "winviz";
             foreach (Process Task in Process.GetProcesses())
             {
-                String task = Path.GetFileName(Path.GetDirectoryName((Task.ProcessName)));
+                String task = Task.ProcessName;
                 if (task.Contains(NameECoach) || task.Contains(winviz))
                 {
                     try { Task.Kill(); }
@@ -185,6 +169,24 @@ namespace NijnCoach.View.AvatarDir
                 }
             }
         }
+
+        public Boolean fullyLoaded
+        {
+            get { return _fullyLoaded; }
+        }
+
+        public static void unParentAvatar()
+        {
+            avatarCount--;
+            if (avatarCount <= 0)
+            {
+                ShowWindow(AvatarHandle, 11);
+                SetWindowLong(AvatarHandle, GWL_STYLE, (int)(~WS_VISIBLE & ((WS_MAXIMIZE | WS_BORDER) & ~WS_CHILD)));
+                SetParent(AvatarHandle, desktopHandle);
+            }
+        }
+
+
 
         #region
         private delegate bool EnumWindowsProc(IntPtr hWnd, IntPtr data);

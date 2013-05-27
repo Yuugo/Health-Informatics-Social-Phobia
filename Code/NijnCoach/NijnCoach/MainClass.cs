@@ -5,6 +5,7 @@ using System.Text;
 using NijnCoach.XMLclasses;
 using NijnCoach.Database;
 using System.Windows.Forms;
+using NijnCoach.View.Main;
 
 namespace NijnCoach
 {
@@ -27,11 +28,9 @@ namespace NijnCoach
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new QuestionnaireForm());
 
-            Application.Run(new NijnCoach.View.PatientFiles.PatientFiles());
+            //Application.Run(new NijnCoach.View.PatientFiles.PatientFiles());
             
-            //questionnaire = parser.readXMLFromFile("answers.xml");
-            //Application.Run(new TherapistQuestionnaire(questionnaire));
-            
+            Application.Run(MainForm.mainForm);
         }
     }
 }
