@@ -74,6 +74,7 @@ namespace NijnCoach.View.Questionnaire
                 {
                     buttonNext.Text = "Finish";
                 }
+                playFromDB();
                 buttonPrevious.Enabled = true;
                 progressBar.Value = currentQuestion;
             }
@@ -90,6 +91,7 @@ namespace NijnCoach.View.Questionnaire
             }
             buttonNext.Text = "Next";
             buttonNext.Enabled = true;
+            playFromDB();
             progressBar.Value = currentQuestion;
         }
 
@@ -131,25 +133,30 @@ namespace NijnCoach.View.Questionnaire
             AvatarControl.happy();
         }
 
-        void playFromDB(String name)
+        void playFromDB()
         {
+            
             var entry = questionnaire.entries[currentQuestion];
-            String content = DBConnect.getSpeechFile(entry.audio);
-            String path = createTempAudioFile(content);
-            bassPlay(path);
+            String audioName = entry.audio;
+            if (audioName != String.Empty)
+            {
+                String content = DBConnect.getSpeechFile(entry.audio);
+                String path = createTempAudioFile(content);
+                bassPlay(path);
+            }
         }
 
-        public void bassPlay(string mp3name)
+        public void bassPlay(string mp3path)
         {
             if (stream != 0)
             {
                 Bass.BASS_StreamFree(stream);
             }
-            stream = Bass.BASS_StreamCreateFile("C:/ecoach/audio/" + mp3name, 0, 0, BASSFlag.BASS_DEFAULT);
+            stream = Bass.BASS_StreamCreateFile(mp3path, 0, 0, BASSFlag.BASS_DEFAULT);
             long len = Bass.BASS_ChannelGetLength(stream, BASSMode.BASS_POS_BYTES);
             // the length of the audiofile
             int time = (int)Bass.BASS_ChannelBytes2Seconds(stream, len);
-            AvatarControl.speak(mp3name, time);
+            AvatarControl.speak(mp3path, time);
             if (stream != 0)
             {
                 Bass.BASS_ChannelPlay(stream, false);
