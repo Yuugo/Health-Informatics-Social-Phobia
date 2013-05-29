@@ -17,5 +17,10 @@ namespace NijnCoach.XMLclasses
 
         //[XML] logic done inside the Answer class.
         public String theAnswer { get; set; }
+
+        public String Audio()
+        {
+            return audio;
+        }
     }
 }

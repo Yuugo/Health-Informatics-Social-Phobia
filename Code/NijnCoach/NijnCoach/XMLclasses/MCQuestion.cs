@@ -20,5 +20,10 @@ namespace NijnCoach.XMLclasses
 
         [XmlElement("theAnswer")]
         public String theAnswer { get; set; }
+
+        public String Audio()
+        {
+            return audio;
+        }
     }
 }
