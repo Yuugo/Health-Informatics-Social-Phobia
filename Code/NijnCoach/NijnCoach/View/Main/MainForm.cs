@@ -15,7 +15,7 @@ namespace NijnCoach.View.Main
 
        private static MainForm _mainForm;
        //For Testing and debug purposes
-       public static Boolean _loadAvatar = false;
+       public static Boolean _loadAvatar = true;
 
        private MainForm(Boolean _loadAvatar = true)
        {

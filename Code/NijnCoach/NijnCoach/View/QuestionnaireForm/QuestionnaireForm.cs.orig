@@ -24,14 +24,16 @@ namespace NijnCoach.View.Questionnaire
         public QuestionnaireForm(Boolean _loadAvatar = true) : base(_loadAvatar)
         {
             this._loadAvatar = _loadAvatar;
+            //TODO: add global patientnumber.
+            int patientNo = MainClass.userNo;
             XMLParser parser = new XMLParser();
             #region license
             BassNet.Registration("w.kowaluk@gmail.com", "2X32382019152222");
             #endregion
             Bass.BASS_Init(-1, 44100, BASSInit.BASS_DEVICE_DEFAULT, IntPtr.Zero);
-            XMLclasses.Questionnaire questionnaire = DBConnect.getQuestionnaireByPatient(MainClass.userNo);
+            //openFileDialog.ShowDialog(); 
+            XMLclasses.Questionnaire questionnaire = DBConnect.getQuestionnaireByPatient(patientNo);
             init(questionnaire);
-            
         }
 
         public QuestionnaireForm(XMLclasses.Questionnaire questionnaire, Boolean _loadAvatar = true) : base(_loadAvatar)
@@ -133,16 +135,24 @@ namespace NijnCoach.View.Questionnaire
             AvatarControl.happy();
         }
 
-        /// <summary>
-        /// Wrapper method used to obtain and play audio for the current question
-        /// </summary>
         void playFromDB()
-        {            
+        {
+            
             var entry = questionnaire.entries[currentQuestion];
+<<<<<<< HEAD
+            String audioName = entry.audio;
+            if (audioName != String.Empty)
+            {
+                String content = DBConnect.getSpeechFile(entry.audio);
+                String path = createTempAudioFile(content);
+                bassPlay(path);
+            }
+=======
             String content = DBConnect.getSpeechFile(entry.Audio());
             deleteTempFile();
             tempPath = createTempAudioFile(content);
-            bassPlay(tempPath);            
+            bassPlay(tempPath);
+>>>>>>> 9c18640c837c890f64e9bdeb612c504e29d453f8
         }
 
         public void bassPlay(string mp3path)
@@ -151,7 +161,11 @@ namespace NijnCoach.View.Questionnaire
             {
                 Bass.BASS_StreamFree(stream);
             }
+<<<<<<< HEAD
             stream = Bass.BASS_StreamCreateFile(mp3path, 0, 0, BASSFlag.BASS_DEFAULT);
+=======
+            stream = Bass.BASS_StreamCreateFile(mp3name, 0, 0, BASSFlag.BASS_DEFAULT);
+>>>>>>> 9c18640c837c890f64e9bdeb612c504e29d453f8
             long len = Bass.BASS_ChannelGetLength(stream, BASSMode.BASS_POS_BYTES);
             // the length of the audiofile
             int time = (int)Bass.BASS_ChannelBytes2Seconds(stream, len);
@@ -162,11 +176,6 @@ namespace NijnCoach.View.Questionnaire
             }
         }
 
-        /// <summary>
-        /// Create a temporary file for Bass to play from and reduce loading time.
-        /// </summary>
-        /// <param name="content"></param>
-        /// <returns></returns>
         public String createTempAudioFile(String content)
         {
             String path = GetTempFilePathWithExtension("mp3");
@@ -179,29 +188,17 @@ namespace NijnCoach.View.Questionnaire
             return path;
         }
 
-        /// <summary>
-        /// Delete the latest temporary audio file.
-        /// </summary>
         public void deleteTempFile()
         {
-            if (tempPath != null)
-            {
-                FileInfo fileDel = new FileInfo(tempPath);
-                if (fileDel.Exists)
-                    fileDel.Delete();
-            }
+            FileInfo fileDel = new FileInfo(tempPath);
+            if(fileDel.Exists)
+                fileDel.Delete();
         }
 
-        /// <summary>
-        /// Creates a random filepath with a given extension. Format: '.ext' or 'ext' are both allowed.
-        /// </summary>
-        /// <param name="extension"></param>
-        /// <returns></returns>
         public string GetTempFilePathWithExtension(string extension)
         {
             var path = Path.GetTempPath();
-            var name = System.IO.Path.GetTempFileName();
-            var fileName = Path.ChangeExtension(path + name, extension);
+            var fileName = Path.ChangeExtension(path, extension);
             return Path.Combine(path, fileName);
         }
 
