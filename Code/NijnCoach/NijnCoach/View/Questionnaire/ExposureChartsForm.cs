@@ -18,7 +18,7 @@ namespace NijnCoach.View.Questionnaire
 {
     public partial class ExposureChartsForm : Form
     {
-        private ExposureSession[] exposureSessions;
+        private List<ExposureSession> exposureSessions;
 
         public ExposureChartsForm()
         {
@@ -31,31 +31,36 @@ namespace NijnCoach.View.Questionnaire
             this.exposureSessions = getAllSessionsFromDatabase();
             this.PreviousSessionSelectBox.DataSource = this.exposureSessions;
             this.PreviousSessionSelectBox.DisplayMember = "Date";
-            this.PreviousSessionSelectBox.SelectedIndex = this.exposureSessions.Length-1;
+            this.PreviousSessionSelectBox.SelectedIndex = this.exposureSessions.Count() - 1;
             this.PreviousSessionChart_Load();
             this.ProgressOverviewChart_Load();
         }
 
         //dummy function, has to call a database function to retrieve the sessions, 
         //maybe sort them and save them in an object.
-        private ExposureSession[] getAllSessionsFromDatabase()
+        private List<ExposureSession> getAllSessionsFromDatabase()
         {
-            ExposureSession[] sessions = new ExposureSession[3];
-            string file = "Z://git//Health-Informatics-Social-Phobia//Code//NijnCoach//NijnCoach//04-05-2013_1500.txt";
+            string[] files = System.IO.Directory.GetFiles("Z://git//Health-Informatics-Social-Phobia//Code//NijnCoach//NijnCoach//Sessions//", "*.txt");
+            
+            List<ExposureSession> sessions = new List<ExposureSession>(files.Length);
+
+            foreach (string file in files)
+            {
+                ExposureSession session = ReadExposureData.ReadFile(file);
+                sessions.Add(session);
+            }
+
+            sessions.Sort((a, b) => a.CompareTo(b));
+
             Comment comment = new Comment { value = "Good job this session! Keep up the awesome work.", emotion = "happy" };
-            ExposureSession session = ReadExposureData.ReadFile(file);
-            session.comment = comment;
-            sessions[0] = session;
-            file = "Z://git//Health-Informatics-Social-Phobia//Code//NijnCoach//NijnCoach//05-05-2013_1500.txt";
+            sessions[sessions.Count - 1].comment = comment;
+
             comment = new Comment { value = "Little better, but try to sweat less next time.", emotion = "" };
-            session = ReadExposureData.ReadFile(file);
-            session.comment = comment;
-            sessions[1] = session;
-            file = "Z://git//Health-Informatics-Social-Phobia//Code//NijnCoach//NijnCoach//06-05-2013_1501.txt";
+            sessions[sessions.Count - 2].comment = comment;
+
             comment = new Comment { value = "Now you're just being a little pussy. I don't feel it's of any use to continue your therapy.", emotion = "angry" };
-            session = ReadExposureData.ReadFile(file);
-            session.comment = comment;
-            sessions[2] = session;
+            sessions[sessions.Count - 3].comment = comment;
+
             return sessions;
         }
 
@@ -267,6 +272,11 @@ namespace NijnCoach.View.Questionnaire
             if (comment != null)
             {
                 commentPanelIntern.entry = comment;
+            }
+            else
+            {
+                Comment empty = new Comment { value = "", emotion = "" };
+                commentPanelIntern.entry = empty;
             }
             commentPanel.ResumeLayout();
         }

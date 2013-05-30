@@ -53,6 +53,11 @@ namespace NijnCoach.Exposure_data
             }
         }
 
+        internal int CompareTo(ExposureSession e)
+        {
+            return DateTime.Compare(this.date, e.date);
+        }
+
         public ExpTimestamp meanScore()
         {
             int maxSUD = 0, maxGSR = 0, maxHR = 0;
@@ -77,6 +82,7 @@ namespace NijnCoach.Exposure_data
             }
             return session;
         }
+
 
     }
 }
