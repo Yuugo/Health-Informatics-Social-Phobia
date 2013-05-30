@@ -175,9 +175,12 @@ namespace NijnCoach.View.Questionnaire
         {            
             var entry = questionnaire.entries[currentQuestion];
             String content = DBConnect.getSpeechFile(entry.Audio());
-            deleteTempFile();
-            tempPath = createTempAudioFile(content);
-            bassPlay(tempPath);            
+            if (content != "")
+            {
+                deleteTempFile();
+                tempPath = createTempAudioFile(content);
+                bassPlay(tempPath);
+            }
         }
 
         public void bassPlay(string mp3path)

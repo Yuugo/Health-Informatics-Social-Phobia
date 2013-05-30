@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using NijnCoach.Database;
 using System.Security.Cryptography;
 using NijnCoach.View.TherapistGUI;
+using NijnCoach.View.Home;
 
 namespace NijnCoach.View.PatientFiles
 {
