@@ -56,7 +56,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel outerPanel;
-        private System.Windows.Forms.Panel innerPanel;
+        private System.Windows.Forms.Panel outerPanel, innerPanel;
     }
 }
