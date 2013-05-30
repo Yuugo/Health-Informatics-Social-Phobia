@@ -91,7 +91,7 @@
             this.button1.TabIndex = 3;
             this.button1.Text = "Next question";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(button1_Click);
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // textBox0
             // 
@@ -124,7 +124,7 @@
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "Open";
             this.radioButton1.UseVisualStyleBackColor = true;
-            this.radioButton1.CheckedChanged += new System.EventHandler(radioButton1_CheckedChanged);
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // radioButton2
             // 
@@ -136,7 +136,7 @@
             this.radioButton2.TabIndex = 10;
             this.radioButton2.Text = "Multiplechoice";
             this.radioButton2.UseVisualStyleBackColor = true;
-            this.radioButton2.CheckedChanged += new System.EventHandler(radioButton2_CheckedChanged);
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
             // button2
             // 
@@ -148,7 +148,7 @@
             this.button2.Text = "Add";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Visible = false;
-            this.button2.Click += new System.EventHandler(button2_Click);
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -160,7 +160,7 @@
             this.button3.Text = "Remove";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Visible = false;
-            this.button3.Click += new System.EventHandler(button3_Click);
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // button7
             // 
@@ -171,7 +171,7 @@
             this.button7.TabIndex = 16;
             this.button7.Text = "Home";
             this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(button7_Click);
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // label1
             // 
@@ -345,7 +345,7 @@
             this.comboBox1.Location = new System.Drawing.Point(350, 319);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(127, 24);
+            this.comboBox1.Size = new System.Drawing.Size(127, 25);
             this.comboBox1.TabIndex = 32;
             // 
             // comboBox2
@@ -360,7 +360,7 @@
             this.comboBox2.Location = new System.Drawing.Point(350, 343);
             this.comboBox2.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(127, 24);
+            this.comboBox2.Size = new System.Drawing.Size(127, 25);
             this.comboBox2.TabIndex = 33;
             this.comboBox2.Visible = false;
             // 
@@ -376,7 +376,7 @@
             this.comboBox3.Location = new System.Drawing.Point(350, 368);
             this.comboBox3.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(127, 24);
+            this.comboBox3.Size = new System.Drawing.Size(127, 25);
             this.comboBox3.TabIndex = 34;
             this.comboBox3.Visible = false;
             // 
@@ -392,7 +392,7 @@
             this.comboBox4.Location = new System.Drawing.Point(350, 391);
             this.comboBox4.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(127, 24);
+            this.comboBox4.Size = new System.Drawing.Size(127, 25);
             this.comboBox4.TabIndex = 35;
             this.comboBox4.Visible = false;
             // 
@@ -408,7 +408,7 @@
             this.comboBox5.Location = new System.Drawing.Point(350, 414);
             this.comboBox5.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(127, 24);
+            this.comboBox5.Size = new System.Drawing.Size(127, 25);
             this.comboBox5.TabIndex = 36;
             this.comboBox5.Visible = false;
             // 
@@ -424,7 +424,7 @@
             this.comboBox6.Location = new System.Drawing.Point(350, 437);
             this.comboBox6.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(127, 24);
+            this.comboBox6.Size = new System.Drawing.Size(127, 25);
             this.comboBox6.TabIndex = 37;
             this.comboBox6.Visible = false;
             // 
@@ -440,7 +440,7 @@
             this.comboBox7.Location = new System.Drawing.Point(350, 458);
             this.comboBox7.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox7.Name = "comboBox7";
-            this.comboBox7.Size = new System.Drawing.Size(127, 24);
+            this.comboBox7.Size = new System.Drawing.Size(127, 25);
             this.comboBox7.TabIndex = 38;
             this.comboBox7.Visible = false;
             // 
@@ -456,7 +456,7 @@
             this.comboBox8.Location = new System.Drawing.Point(350, 482);
             this.comboBox8.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox8.Name = "comboBox8";
-            this.comboBox8.Size = new System.Drawing.Size(127, 24);
+            this.comboBox8.Size = new System.Drawing.Size(127, 25);
             this.comboBox8.TabIndex = 39;
             this.comboBox8.Visible = false;
             // 
@@ -481,7 +481,7 @@
             this.button5.TabIndex = 42;
             this.button5.Text = "Save question && finish questionnaire";
             this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(button5_Click);
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // saveFileDialog1
             // 
@@ -502,7 +502,7 @@
             // 
             // openFileDialog1
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.Filter = "Audio Files(*.wav;*.mp3)|*.wav; *.mp3";
             // 
             // textBox9
             // 
@@ -521,7 +521,7 @@
             this.button4.TabIndex = 45;
             this.button4.Text = "Add audiofragment";
             this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(button4_Click);
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // label0
             // 
@@ -541,9 +541,9 @@
             this.button6.TabIndex = 47;
             this.button6.Text = "Clear";
             this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(button6_Click);
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
-            // UserControl1
+            // Qmaker
             // 
             this.Controls.Add(this.button6);
             this.Controls.Add(this.label0);
@@ -586,6 +586,7 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.labelQ);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
