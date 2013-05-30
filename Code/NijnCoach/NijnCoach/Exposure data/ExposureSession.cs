@@ -23,6 +23,14 @@ namespace NijnCoach.Exposure_data
             return date;
         }
 
+        public string Date
+        {
+            get
+            {
+                return date.ToShortDateString();
+            }
+        }
+
         public ExpTimestamp nextTimeStamp()
         {
             if (data.Count > index && data[index] != null)

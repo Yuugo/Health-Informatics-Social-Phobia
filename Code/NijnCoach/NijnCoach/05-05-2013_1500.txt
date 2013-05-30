@@ -1,0 +1,3 @@
+TimeStamp	HeartRate		GSR		SUD
+15:00:00	85	850	5
+15:00:01	90	900

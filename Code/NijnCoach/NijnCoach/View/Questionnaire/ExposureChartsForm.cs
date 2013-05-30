@@ -17,35 +17,50 @@ namespace NijnCoach.View.Questionnaire
 {
     public partial class ExposureChartsForm : Form
     {
-        
+        private ExposureSession[] exposureSessions;
+        private ExposureSession previousSession;
+
         public ExposureChartsForm()
         {
             InitializeComponent();
-            this.Load += new System.EventHandler(this.LastExposureSessionChart_Load);
-            this.Load += new System.EventHandler(this.ProgressOverviewChart_Load);
+            this.Load += new System.EventHandler(this.ExposureSessions_Load);
+        }
+
+        private void ExposureSessions_Load(object sender, EventArgs e)
+        {
+            this.exposureSessions = getAllSessionsFromDatabase();
+            this.previousSession = latestSession();
+            this.PreviousSessionSelectBox.DataSource = this.exposureSessions;
+            this.PreviousSessionSelectBox.DisplayMember = "Date";
+            this.PreviousSessionSelectBox.SelectedIndex = this.exposureSessions.Length-1;
+            this.PreviousSessionChart_Load();
+            this.ProgressOverviewChart_Load();
         }
 
         //dummy function, has to be replaced by database function
         private ExposureSession[] getAllSessionsFromDatabase()
         {
             ExposureSession[] sessions = new ExposureSession[3];
-            string file = "Z://git//Health-Informatics-Social-Phobia//Code//NijnCoach//NijnCoach//06-05-2013_1501.txt";
+            string file = "Z://git//Health-Informatics-Social-Phobia//Code//NijnCoach//NijnCoach//04-05-2013_1500.txt";
             ExposureSession session = ReadExposureData.ReadFile(file);
             sessions[0] = session;
-            file = "Z://git//Health-Informatics-Social-Phobia//Code//NijnCoach//NijnCoach//07-05-2013_1500.txt";
+            file = "Z://git//Health-Informatics-Social-Phobia//Code//NijnCoach//NijnCoach//05-05-2013_1500.txt";
             session = ReadExposureData.ReadFile(file);
             sessions[1] = session;
-            file = "Z://git//Health-Informatics-Social-Phobia//Code//NijnCoach//NijnCoach//08-05-2013_1500.txt";
+            file = "Z://git//Health-Informatics-Social-Phobia//Code//NijnCoach//NijnCoach//06-05-2013_1501.txt";
             session = ReadExposureData.ReadFile(file);
             sessions[2] = session;
             return sessions;
         }
 
         //dummy function, has to be replaced by database function
-        private ExposureSession getLatestSessionFromDatabase()
+        private ExposureSession latestSession()
         {
-            string file = "Z://git//Health-Informatics-Social-Phobia//Code//NijnCoach//NijnCoach//06-05-2013_1501.txt";
-            return ReadExposureData.ReadFile(file);
+            return exposureSessions.Last();
+        }
+
+        private ExposureSession selectedSession(){
+            return (ExposureSession)PreviousSessionSelectBox.SelectedItem;
         }
 
         private void initializeChartSeries(Chart chart)
@@ -83,15 +98,14 @@ namespace NijnCoach.View.Questionnaire
             chart.Series.Add(sudserie);
         }
 
-        private void ProgressOverviewChart_Load(object sender, EventArgs e)
+        private void ProgressOverviewChart_Load()
         {
             this.overviewChart.Series.Clear();
 
             initializeChartSeries(this.overviewChart);
 
             // Fill the series with all the mean scores from the exposure sessions
-            var sessions = getAllSessionsFromDatabase();
-            foreach (ExposureSession s in sessions)
+            foreach (ExposureSession s in exposureSessions)
             {
                 var t = s.meanScore();
                 this.overviewChart.Series["HR"].Points.AddXY(s.getDate(), t.getHR());
@@ -105,30 +119,34 @@ namespace NijnCoach.View.Questionnaire
             this.overviewChart.Invalidate();
         }
 
-        private void LastExposureSessionChart_Load(object sender, EventArgs e)
+        private void PreviousSessionChart_Load()
         {
-            this.lastSessionChart.Series.Clear();
+            Debug.Assert(selectedSession() != null);
 
-            initializeChartSeries(this.lastSessionChart);
+            this.previousSessionChart.Series.Clear();
+
+            initializeChartSeries(this.previousSessionChart);
 
             // Fill all the series with the data from the previous session
-            var session = getLatestSessionFromDatabase();
             int sud = 0;
-            ExpTimestamp data = session.nextTimeStamp();
+            ExpTimestamp data = previousSession.nextTimeStamp();
             do
             {
-                this.lastSessionChart.Series["GSR"].Points.AddXY(data.getTime(), data.getGSR());
-                this.lastSessionChart.Series["HR"].Points.AddXY(data.getTime(), data.getHR());
+                this.previousSessionChart.Series["GSR"].Points.AddXY(data.getTime(), data.getGSR());
+                this.previousSessionChart.Series["HR"].Points.AddXY(data.getTime(), data.getHR());
                 if (data.getSUD() >= 0)
                     sud = data.getSUD();
-                this.lastSessionChart.Series["SUD"].Points.AddXY(data.getTime(), sud);
-                data = session.nextTimeStamp();
+                this.previousSessionChart.Series["SUD"].Points.AddXY(data.getTime(), sud);
+                data = previousSession.nextTimeStamp();
             } while (data != null);
 
             // rescale to SUD scale so the other two don't show
-            rescaleChart(this.lastSessionChart, "SUD");
+            rescaleChart(this.previousSessionChart, "SUD");
 
-            this.lastSessionChart.Invalidate();
+            // set the title of the chart to the date of the session
+            this.previousSessionTitle.Text = previousSession.Date;
+
+            this.previousSessionChart.Invalidate();
         }
 
         private void rescaleChart(Chart chart, string serie)
@@ -151,48 +169,48 @@ namespace NijnCoach.View.Questionnaire
             }
         }
 
-        private void gsrRadiobuttonLastSession_CheckedChanged(Object sender, EventArgs e)
+        private void gsrRadiobuttonPreviousSession_CheckedChanged(Object sender, EventArgs e)
         {
-            if (gsrRadiobuttonLastSession.Checked)
+            if (gsrRadiobuttonPreviousSession.Checked)
             {
-                this.lastSessionChart.Series["GSR"].Enabled = true;
-                this.lastSessionChart.Series["SUD"].Enabled = false;
-                this.lastSessionChart.Series["HR"].Enabled = false;
-                rescaleChart(this.lastSessionChart, "GSR");
+                this.previousSessionChart.Series["GSR"].Enabled = true;
+                this.previousSessionChart.Series["SUD"].Enabled = false;
+                this.previousSessionChart.Series["HR"].Enabled = false;
+                rescaleChart(this.previousSessionChart, "GSR");
             } 
             else
             {
-                this.lastSessionChart.Series["GSR"].Enabled = false;
+                this.previousSessionChart.Series["GSR"].Enabled = false;
             }
         }
 
-        private void sudRadiobuttonLastSession_CheckedChanged(Object sender, EventArgs e)
+        private void sudRadiobuttonPreviousSession_CheckedChanged(Object sender, EventArgs e)
         {
-            if (sudRadiobuttonLastSession.Checked)
+            if (sudRadiobuttonPreviousSession.Checked)
             {
-                this.lastSessionChart.Series["GSR"].Enabled = false;
-                this.lastSessionChart.Series["SUD"].Enabled = true;
-                this.lastSessionChart.Series["HR"].Enabled = false;
-                rescaleChart(this.lastSessionChart, "SUD");
+                this.previousSessionChart.Series["GSR"].Enabled = false;
+                this.previousSessionChart.Series["SUD"].Enabled = true;
+                this.previousSessionChart.Series["HR"].Enabled = false;
+                rescaleChart(this.previousSessionChart, "SUD");
             }
             else
             {
-                this.lastSessionChart.Series["SUD"].Enabled = false;
+                this.previousSessionChart.Series["SUD"].Enabled = false;
             }
         }
 
-        private void hrRadiobuttonLastSession_CheckedChanged(Object sender, EventArgs e)
+        private void hrRadiobuttonPreviousSession_CheckedChanged(Object sender, EventArgs e)
         {
-            if (hrRadiobuttonLastSession.Checked)
+            if (hrRadiobuttonPreviousSession.Checked)
             {
-                this.lastSessionChart.Series["GSR"].Enabled = false;
-                this.lastSessionChart.Series["SUD"].Enabled = false;
-                this.lastSessionChart.Series["HR"].Enabled = true;
-                rescaleChart(this.lastSessionChart, "HR");
+                this.previousSessionChart.Series["GSR"].Enabled = false;
+                this.previousSessionChart.Series["SUD"].Enabled = false;
+                this.previousSessionChart.Series["HR"].Enabled = true;
+                rescaleChart(this.previousSessionChart, "HR");
             }
             else
             {
-                this.lastSessionChart.Series["HR"].Enabled = false;
+                this.previousSessionChart.Series["HR"].Enabled = false;
             }
         }
 
