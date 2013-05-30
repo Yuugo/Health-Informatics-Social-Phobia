@@ -254,6 +254,7 @@ namespace NijnCoach.View.Questionnaire
             this.PreviousSessionSelectBox.Name = "PreviousSessionSelectBox";
             this.PreviousSessionSelectBox.Size = new System.Drawing.Size(125, 21);
             this.PreviousSessionSelectBox.TabIndex = 7;
+            this.PreviousSessionSelectBox.SelectedIndexChanged += new System.EventHandler(PreviousSessionSelectBox_SelectedIndexChanged);
             // 
             // ExposureChartsForm
             // 

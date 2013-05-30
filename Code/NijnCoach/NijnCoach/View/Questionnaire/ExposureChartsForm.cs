@@ -18,7 +18,6 @@ namespace NijnCoach.View.Questionnaire
     public partial class ExposureChartsForm : Form
     {
         private ExposureSession[] exposureSessions;
-        private ExposureSession previousSession;
 
         public ExposureChartsForm()
         {
@@ -29,7 +28,6 @@ namespace NijnCoach.View.Questionnaire
         private void ExposureSessions_Load(object sender, EventArgs e)
         {
             this.exposureSessions = getAllSessionsFromDatabase();
-            this.previousSession = latestSession();
             this.PreviousSessionSelectBox.DataSource = this.exposureSessions;
             this.PreviousSessionSelectBox.DisplayMember = "Date";
             this.PreviousSessionSelectBox.SelectedIndex = this.exposureSessions.Length-1;
@@ -37,7 +35,8 @@ namespace NijnCoach.View.Questionnaire
             this.ProgressOverviewChart_Load();
         }
 
-        //dummy function, has to be replaced by database function
+        //dummy function, has to call a database function to retrieve the sessions, 
+        //maybe sort them and save them in an object.
         private ExposureSession[] getAllSessionsFromDatabase()
         {
             ExposureSession[] sessions = new ExposureSession[3];
@@ -51,12 +50,6 @@ namespace NijnCoach.View.Questionnaire
             session = ReadExposureData.ReadFile(file);
             sessions[2] = session;
             return sessions;
-        }
-
-        //dummy function, has to be replaced by database function
-        private ExposureSession latestSession()
-        {
-            return exposureSessions.Last();
         }
 
         private ExposureSession selectedSession(){
@@ -127,6 +120,7 @@ namespace NijnCoach.View.Questionnaire
 
             initializeChartSeries(this.previousSessionChart);
 
+            ExposureSession previousSession = selectedSession();
             // Fill all the series with the data from the previous session
             int sud = 0;
             ExpTimestamp data = previousSession.nextTimeStamp();
@@ -257,6 +251,13 @@ namespace NijnCoach.View.Questionnaire
             {
                 this.overviewChart.Series["HR"].Enabled = false;
             }
+        }
+
+        private void PreviousSessionSelectBox_SelectedIndexChanged(Object sender, EventArgs e)
+        {
+
+            sudRadiobuttonPreviousSession.Checked = true;
+            PreviousSessionChart_Load();
         }
     }
 }
