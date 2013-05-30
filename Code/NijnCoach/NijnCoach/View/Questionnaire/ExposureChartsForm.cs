@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using NijnCoach.Exposure_data;
+using NijnCoach.XMLclasses;
 using System.Diagnostics;
 using System.Threading;
 using System.Globalization;
@@ -41,13 +42,19 @@ namespace NijnCoach.View.Questionnaire
         {
             ExposureSession[] sessions = new ExposureSession[3];
             string file = "Z://git//Health-Informatics-Social-Phobia//Code//NijnCoach//NijnCoach//04-05-2013_1500.txt";
+            Comment comment = new Comment { value = "Good job this session! Keep up the awesome work.", emotion = "happy" };
             ExposureSession session = ReadExposureData.ReadFile(file);
+            session.comment = comment;
             sessions[0] = session;
             file = "Z://git//Health-Informatics-Social-Phobia//Code//NijnCoach//NijnCoach//05-05-2013_1500.txt";
+            comment = new Comment { value = "Little better, but try to sweat less next time.", emotion = "" };
             session = ReadExposureData.ReadFile(file);
+            session.comment = comment;
             sessions[1] = session;
             file = "Z://git//Health-Informatics-Social-Phobia//Code//NijnCoach//NijnCoach//06-05-2013_1501.txt";
+            comment = new Comment { value = "Now you're just being a little pussy. I don't feel it's of any use to continue your therapy.", emotion = "angry" };
             session = ReadExposureData.ReadFile(file);
+            session.comment = comment;
             sessions[2] = session;
             return sessions;
         }
@@ -253,11 +260,23 @@ namespace NijnCoach.View.Questionnaire
             }
         }
 
+        private void CommentPanel_Load()
+        {
+            commentPanel.SuspendLayout();
+            Comment comment = selectedSession().comment;
+            if (comment != null)
+            {
+                commentPanelIntern.entry = comment;
+            }
+            commentPanel.ResumeLayout();
+        }
+
         private void PreviousSessionSelectBox_SelectedIndexChanged(Object sender, EventArgs e)
         {
 
             sudRadiobuttonPreviousSession.Checked = true;
             PreviousSessionChart_Load();
+            CommentPanel_Load();
         }
     }
 }

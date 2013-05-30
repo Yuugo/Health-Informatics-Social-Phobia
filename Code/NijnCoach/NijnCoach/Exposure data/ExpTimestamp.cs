@@ -9,14 +9,13 @@ namespace NijnCoach.Exposure_data
 {
     class ExpTimestamp
     {
-        DateTime time;
-        int hr;
-        int gsr;
-        int sud;
+        private DateTime time;
+        private int hr;
+        private int gsr;
+        private int sud;
 
-        static Regex regexNoSUD = new Regex(@"^.*(?<hour>[0-9]{2}):(?<min>[0-9]{2}):(?<sec>[0-9]{2}).*(?<hr>[0-9]{2}).*(?<gsr>[0-9]{3}).*$");
-        static Regex regexSUD = new Regex(@"^.*[0-9]{2}:[0-9]{2}:[0-9]{2}.*[0-9]{2}.*[0-9]{3}.*(?<sud>[0-9]).*$");
-
+        private static Regex regexNoSUD = new Regex(@"^.*(?<hour>[0-9]{2}):(?<min>[0-9]{2}):(?<sec>[0-9]{2}).*(?<hr>[0-9]{2}).*(?<gsr>[0-9]{3}).*$");
+        private static Regex regexSUD = new Regex(@"^.*[0-9]{2}:[0-9]{2}:[0-9]{2}.*[0-9]{2}.*[0-9]{3}.*(?<sud>[0-9]).*$");
 
         public ExpTimestamp(DateTime time, int hr, int gsr)
             : this(time, hr, gsr, -1) { }

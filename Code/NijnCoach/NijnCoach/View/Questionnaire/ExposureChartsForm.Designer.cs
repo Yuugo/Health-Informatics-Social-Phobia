@@ -246,6 +246,8 @@ namespace NijnCoach.View.Questionnaire
             this.commentPanel.Name = "commentPanel";
             this.commentPanel.Size = new System.Drawing.Size(693, 159);
             this.commentPanel.TabIndex = 6;
+            this.commentPanelIntern = new CommentPanel(commentPanel.Width, commentPanel.Height);
+            this.commentPanel.Controls.Add(commentPanelIntern);
             // 
             // PreviousSessionSelectBox
             // 
@@ -292,6 +294,7 @@ namespace NijnCoach.View.Questionnaire
         private Chart overviewChart;
         private System.Windows.Forms.Panel avatarPanel;
         private System.Windows.Forms.Panel commentPanel;
+        private IQuestionPanel commentPanelIntern;
         private System.Windows.Forms.GroupBox groupBoxRadiobuttonsPreviousSession;
         private System.Windows.Forms.RadioButton gsrRadiobuttonPreviousSession;
         private System.Windows.Forms.RadioButton hrRadiobuttonPreviousSession;

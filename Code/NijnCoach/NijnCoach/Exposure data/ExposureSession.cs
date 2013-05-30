@@ -3,19 +3,28 @@ using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using NijnCoach.XMLclasses;
 
 namespace NijnCoach.Exposure_data
 {
     class ExposureSession
     {
-        DateTime date;
-        List<ExpTimestamp> data;
-        int index = 0;
+        private DateTime date;
+        private List<ExpTimestamp> data;
+        public Comment comment { get; set; }
+        private int index = 0;
 
         public ExposureSession(DateTime date)
         {
             this.date = date;
-            data = new List<ExpTimestamp>();
+            this.data = new List<ExpTimestamp>();
+        }
+
+        public ExposureSession(DateTime date, Comment c)
+        {
+            this.date = date;
+            this.comment = c;
+            this.data = new List<ExpTimestamp>();
         }
 
         public DateTime getDate()
