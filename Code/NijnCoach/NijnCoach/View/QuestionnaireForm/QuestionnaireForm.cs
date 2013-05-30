@@ -199,9 +199,8 @@ namespace NijnCoach.View.Questionnaire
         /// <returns></returns>
         public string GetTempFilePathWithExtension(string extension)
         {
-            var path = Path.GetTempPath();
-            var name = System.IO.Path.GetTempFileName();
-            var fileName = Path.ChangeExtension(path + name, extension);
+            var path = System.IO.Path.GetTempFileName();
+            var fileName = Path.ChangeExtension(path, extension);
             return Path.Combine(path, fileName);
         }
 
