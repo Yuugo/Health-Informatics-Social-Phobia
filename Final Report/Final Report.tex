@@ -2,7 +2,6 @@
 \usepackage[a4paper]{geometry}
 \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
 \usepackage[pdftex]{graphicx}
-<<<<<<< HEAD
 \usepackage{wrapfig}
 \usepackage[backref,hidelinks = true]{hyperref}
 % Package for glossaries
@@ -11,16 +10,6 @@
 
 \makeglossaries
 \loadglsentries{Glossary.tex}
-=======
-%\usepackage{wrapfig}
-%\usepackage[backref,hidelinks = true]{hyperref}
-% Package for glossaries
-%\newcommand*{\glossaryname}{Glossary}
-%\usepackage{glossaries}
-
-%\makeglossaries
-%\loadglsentries{Glossary.tex}
->>>>>>> 2083651793a07e87504de34c8b9b2370e0f3057c
 
 \begin{document}
 
@@ -32,25 +21,24 @@
 % Make the table of contents
 \tableofcontents
 
-<<<<<<< HEAD
 % Include the different chapters
-\section{Introduction}
+\chapter{Introduction}
 \label{sec:intro}
 \input{"Introduction.tex"}
 %\newpage
-\section{Problems and Solutions}
+\chapter{Problems and solutions highlights}
 \label{sec:problems}
-\input{"Problems.tex"}
+\input{"Problems & Solutions.tex"}
 %\newpage
-\section{Reflection on Teamwork}
+\chapter{Reflection on Teamwork}
 \label{sec:reflection}
 \input{"Reflection.tex"}
 %\newpage
-\section{Subsystem decomposition}
-\label{sec:subsystem}
+\chapter{Individual reflections}
+\label{sec:indv}
 \input{"Individual reflection.tex"}
 %\newpage
-\section{Lightweight SCRUM Plans}
+\chapter{Lightweight SCRUM Plans}
 \label{sec:scrum}
 \input{"Scrum plans.tex"}
 \newpage
@@ -58,20 +46,5 @@
 \addcontentsline{toc}{chapter}{Glossary}%
 \printglossaries
 \appendix
-\input{"A1 GUI.tex"}
-\input{"A2 persona.tex"}
-=======
-%\input{Glossary.tex}
-% Include the different chapters
-\input{"Introduction.tex"}
-\newpage
-\input{"Problems & Solutions.tex"}
-\newpage
 
-
-%\addcontentsline{toc}{chapter}{Glossary}%
-%\printglossaries
-\appendix
-
->>>>>>> 2083651793a07e87504de34c8b9b2370e0f3057c
 \end{document}
