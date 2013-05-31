@@ -21,7 +21,7 @@ Code\NijnCoach\NijnCoach.suo
 *.suo
 *.exe
 *.exp
-*.dll
+#*.dll
 *.ilk
 *.lib
 *.ncb
