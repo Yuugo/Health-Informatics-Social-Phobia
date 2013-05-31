@@ -59,9 +59,9 @@ namespace NijnCoach.View.Overview
             this.groupBoxRadiobuttonsOverview.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.overviewChart)).BeginInit();
             this.SuspendLayout();
-            // 
-            // buttonHome
-            // 
+
+            ExposureSessions_Load();
+
             System.Windows.Forms.Control[] controls = {buttonHome, previousSessionChart, chartTabs, previousSessionTab, groupBoxRadiobuttonsPreviousSession, gsrRadiobuttonPreviousSession,
                 hrRadiobuttonPreviousSession, sudRadiobuttonPreviousSession, overviewTab, groupBoxRadiobuttonsOverview, gsrRadiobuttonOverview, hrRadiobuttonOverview, sudRadiobuttonOverview,
                 overviewChart, commentPanel, PreviousSessionSelectBox};
