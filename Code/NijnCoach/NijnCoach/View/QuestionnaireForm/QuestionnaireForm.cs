@@ -21,6 +21,7 @@ namespace NijnCoach.View.Questionnaire
         private int stream = 0;
         private Boolean _loadAvatar = true;
         private String tempPath;
+        private String oldPath;
         public QuestionnaireForm(Boolean _loadAvatar = true) : base(_loadAvatar)
         {
             this._loadAvatar = _loadAvatar;
@@ -175,9 +176,10 @@ namespace NijnCoach.View.Questionnaire
         {            
             var entry = questionnaire.entries[currentQuestion];
             String content = DBConnect.getSpeechFile(entry.Audio());
-            deleteTempFile();
+            oldPath = tempPath;
             tempPath = createTempAudioFile(content);
-            bassPlay(tempPath);            
+            bassPlay(tempPath);
+            deleteTempFile();
         }
 
         public void bassPlay(string mp3path)
@@ -220,9 +222,9 @@ namespace NijnCoach.View.Questionnaire
         /// </summary>
         public void deleteTempFile()
         {
-            if (tempPath != null)
+            if (oldPath != null)
             {
-                FileInfo fileDel = new FileInfo(tempPath);
+                FileInfo fileDel = new FileInfo(oldPath);
                 if (fileDel.Exists)
                     fileDel.Delete();
             }
