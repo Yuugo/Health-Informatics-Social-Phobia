@@ -97,6 +97,7 @@ namespace NijnCoach.View.Questionnaire
             this.chartTabs.SelectedIndex = 0;
             this.chartTabs.Size = new System.Drawing.Size(693, 428);
             this.chartTabs.TabIndex = 4;
+            this.chartTabs.SelectedIndexChanged += new System.EventHandler(chartTabs_SelectedIndexChanged);
             // 
             // previousSessionTab
             // 

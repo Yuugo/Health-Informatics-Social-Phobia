@@ -28,10 +28,14 @@ namespace NijnCoach.View.Questionnaire
 
         private void ExposureSessions_Load(object sender, EventArgs e)
         {
-            this.exposureSessions = getAllSessionsFromDatabase();
+            // Retrieve all the session data from the database
+            this.exposureSessions = getAllSessionsFromDatabase(); 
+            // Make the sessions selectable in the selection box
             this.PreviousSessionSelectBox.DataSource = this.exposureSessions;
             this.PreviousSessionSelectBox.DisplayMember = "Date";
+            // Set the initial selected session to be the last one
             this.PreviousSessionSelectBox.SelectedIndex = this.exposureSessions.Count() - 1;
+            // Load the charts
             this.PreviousSessionChart_Load();
             this.ProgressOverviewChart_Load();
         }
@@ -157,21 +161,23 @@ namespace NijnCoach.View.Questionnaire
 
         private void rescaleChart(Chart chart, string serie)
         {
-            if ((serie == "GSR" || serie == "SUD" || serie == "HR") && chart != null)
+            Debug.Assert((serie == "GSR" || serie == "SUD" || serie == "HR") && chart != null, "Unvalid chart or serie to rescale");
+
+            if (serie == "SUD") // Resize chart different for SUD, because it looks better when the max is 10
+            {
+                chart.ChartAreas[0].AxisY.Maximum = 10;
+            }
+            else
             {
                 var maxValue = double.MinValue;
-                var margin = 1.2;
+                var margin = 1.3;
 
-                foreach (var pt in chart.Series[serie].Points) 
+                foreach (var pt in chart.Series[serie].Points)
                 {
                     if (maxValue < pt.YValues[0]) maxValue = pt.YValues[0];
                 }
 
                 chart.ChartAreas[0].AxisY.Maximum = maxValue * margin;
-            }
-            else
-            {
-                Console.WriteLine("Unvalid chart or serie to rescale");
             }
         }
 
@@ -283,10 +289,22 @@ namespace NijnCoach.View.Questionnaire
 
         private void PreviousSessionSelectBox_SelectedIndexChanged(Object sender, EventArgs e)
         {
-
             sudRadiobuttonPreviousSession.Checked = true;
             PreviousSessionChart_Load();
             CommentPanel_Load();
+        }
+
+        // Function to hide the session selection box when looking at the overview chart
+        private void chartTabs_SelectedIndexChanged(Object sender, EventArgs e)
+        {
+            if (this.chartTabs.SelectedTab == previousSessionTab)
+            {
+                this.PreviousSessionSelectBox.Enabled = true;
+            }
+            else
+            {
+                this.PreviousSessionSelectBox.Enabled = false;
+            }
         }
     }
 }
