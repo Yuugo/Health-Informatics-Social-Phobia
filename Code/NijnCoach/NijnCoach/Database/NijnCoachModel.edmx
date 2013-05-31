@@ -9,6 +9,7 @@
           <EntitySet Name="Patients" EntityType="NijnCoachModel1.Store.Patients" store:Type="Tables" Schema="NijnCoach" />
           <EntitySet Name="ProgressEval" EntityType="NijnCoachModel1.Store.ProgressEval" store:Type="Tables" Schema="NijnCoach" />
           <EntitySet Name="Questionnairre" EntityType="NijnCoachModel1.Store.Questionnairre" store:Type="Tables" Schema="NijnCoach" />
+          <EntitySet Name="Sickpeople" EntityType="NijnCoachModel1.Store.Sickpeople" store:Type="Tables" Schema="NijnCoach" />
           <EntitySet Name="SpeechFiles" EntityType="NijnCoachModel1.Store.SpeechFiles" store:Type="Tables" Schema="NijnCoach" />
           <EntitySet Name="Users" EntityType="NijnCoachModel1.Store.Users" store:Type="Tables" Schema="NijnCoach" />
         </EntityContainer>
@@ -35,6 +36,7 @@
           <Property Name="Name" Type="varchar" Nullable="false" MaxLength="100" />
           <Property Name="Content" Type="longtext" Nullable="false" />
           <Property Name="PatientNo" Type="int" Nullable="false" />
+          <Property Name="Commentary" Type="longtext" />
         </EntityType>
         <EntityType Name="Questionnairre">
           <Key>
@@ -47,13 +49,30 @@
           <Property Name="Type" Type="longtext" Nullable="false" />
           <Property Name="FilledIn" Type="bool" Nullable="false" />
         </EntityType>
+        <EntityType Name="Sickpeople">
+          <Key>
+            <PropertyRef Name="PatientNo" />
+          </Key>
+          <Property Name="Fname" Type="longtext" Nullable="false" />
+          <Property Name="Lname" Type="longtext" Nullable="false" />
+          <Property Name="PatientNo" Type="int" Nullable="false" />
+          <Property Name="Age" Type="int" Nullable="false" />
+          <Property Name="Email" Type="longtext" Nullable="false" />
+          <Property Name="PhoneNo" Type="int" Nullable="false" />
+          <Property Name="Street" Type="longtext" Nullable="false" />
+          <Property Name="HouseNo" Type="int" Nullable="false" />
+          <Property Name="Postal" Type="longtext" Nullable="false" />
+          <Property Name="City" Type="longtext" Nullable="false" />
+        </EntityType>
         <EntityType Name="SpeechFiles">
           <Key>
-            <PropertyRef Name="Name" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="tinyint" Nullable="false" />
+          <Property Name="Id" Type="tinyint" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="varchar" Nullable="false" MaxLength="100" />
           <Property Name="Encoding" Type="longtext" Nullable="false" />
+          <Property Name="trackNo" Type="bigint" Nullable="false" />
+          <Property Name="PartNo" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -74,6 +93,7 @@
           <EntitySet Name="SpeechFiles" EntityType="NijnCoachModel1.SpeechFile" />
           <EntitySet Name="ProgressEvals" EntityType="NijnCoachModel1.ProgressEval" />
           <EntitySet Name="Users" EntityType="NijnCoachModel1.User" />
+          <EntitySet Name="Sickpeoples" EntityType="NijnCoachModel1.Sickpeople" />
         </EntityContainer>
         <EntityType Name="Patient">
           <Key>
@@ -103,11 +123,13 @@
         </EntityType>
         <EntityType Name="SpeechFile">
           <Key>
-            <PropertyRef Name="Name" />
+            <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="SByte" Nullable="false" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
           <Property Name="Encoding" Type="String" Nullable="false" MaxLength="1073741823" Unicode="false" FixedLength="false" />
+          <Property Type="Int64" Name="trackNo" Nullable="false" />
+          <Property Type="Int32" Name="PartNo" Nullable="false" />
         </EntityType>
         <EntityType Name="ProgressEval">
           <Key>
@@ -117,6 +139,7 @@
           <Property Type="String" Name="Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="Content" Nullable="false" MaxLength="1073741823" FixedLength="false" Unicode="false" />
           <Property Type="Int32" Name="PatientNo" Nullable="false" />
+          <Property Type="String" Name="Commentary" MaxLength="1073741823" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -126,6 +149,21 @@
           <Property Type="String" Name="Password" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="Type" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Type="SByte" Name="PatientNo" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="Sickpeople">
+          <Key>
+            <PropertyRef Name="PatientNo" />
+          </Key>
+          <Property Type="String" Name="Fname" Nullable="false" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Lname" Nullable="false" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="PatientNo" Nullable="false" />
+          <Property Type="Int32" Name="Age" Nullable="false" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="PhoneNo" Nullable="false" />
+          <Property Type="String" Name="Street" Nullable="false" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="HouseNo" Nullable="false" />
+          <Property Type="String" Name="Postal" Nullable="false" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="City" Nullable="false" MaxLength="1073741823" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -164,6 +202,8 @@
           <EntitySetMapping Name="SpeechFiles">
             <EntityTypeMapping TypeName="NijnCoachModel1.SpeechFile">
               <MappingFragment StoreEntitySet="SpeechFiles">
+                <ScalarProperty Name="PartNo" ColumnName="PartNo" />
+                <ScalarProperty Name="trackNo" ColumnName="trackNo" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Encoding" ColumnName="Encoding" />
@@ -173,6 +213,7 @@
           <EntitySetMapping Name="ProgressEvals">
             <EntityTypeMapping TypeName="NijnCoachModel1.ProgressEval">
               <MappingFragment StoreEntitySet="ProgressEval">
+                <ScalarProperty Name="Commentary" ColumnName="Commentary" />
                 <ScalarProperty Name="PatientNo" ColumnName="PatientNo" />
                 <ScalarProperty Name="Content" ColumnName="Content" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -187,6 +228,22 @@
                 <ScalarProperty Name="Type" ColumnName="Type" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sickpeoples">
+            <EntityTypeMapping TypeName="NijnCoachModel1.Sickpeople">
+              <MappingFragment StoreEntitySet="Sickpeople">
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Postal" ColumnName="Postal" />
+                <ScalarProperty Name="HouseNo" ColumnName="HouseNo" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="PatientNo" ColumnName="PatientNo" />
+                <ScalarProperty Name="Lname" ColumnName="Lname" />
+                <ScalarProperty Name="Fname" ColumnName="Fname" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -216,6 +273,7 @@
         <EntityTypeShape EntityType="NijnCoachModel1.SpeechFile" Width="1.5" PointX="2.75" PointY="3.75" Height="1.4605517578124996" IsExpanded="true" />
         <EntityTypeShape EntityType="NijnCoachModel1.ProgressEval" Width="1.5" PointX="5.375" PointY="0.75" Height="1.4605517578124996" />
         <EntityTypeShape EntityType="NijnCoachModel1.User" Width="1.5" PointX="5.375" PointY="3.75" Height="1.4605517578124996" />
+        <EntityTypeShape EntityType="NijnCoachModel1.Sickpeople" Width="1.5" PointX="0.75" PointY="3.875" Height="2.6490079752604174" />
       </Diagram>
     </Diagrams>
   </Designer>

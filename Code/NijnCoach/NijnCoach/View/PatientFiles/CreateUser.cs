@@ -12,7 +12,7 @@ namespace NijnCoach.View.PatientFiles
 {
     public partial class CreateUser : Form
     {
-        Patient pat = new Patient();
+        Sickpeople pat = new Sickpeople();
 
         public CreateUser()
         {
@@ -72,7 +72,7 @@ namespace NijnCoach.View.PatientFiles
                             pat.HouseNo = Convert.ToSByte(texts[4].Text);
                             pat.Postal = texts[5].Text;
                             pat.City = texts[6].Text;
-                            pat.PhoneNo = Convert.ToInt64(texts[7].Text);
+                            pat.PhoneNo = Convert.ToInt32(texts[7].Text);
                             pat.Email = texts[8].Text;
                             pat.PatientNo = DBConnect.getUserNo(textBox1.Text);
                             DBConnect.insertPatient(pat);

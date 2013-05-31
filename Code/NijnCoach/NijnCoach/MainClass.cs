@@ -14,8 +14,8 @@ namespace NijnCoach
     {
         public static void InactiveMain(String[] args)
         {
-            XMLParser parser = new XMLParser();
-            Questionnaire q = parser.readXMLFromFile("ziejewelwillem.xml");
+            //XMLParser parser = new XMLParser();
+             Questionnaire q = DBConnect.getQuestionnaireByPatient(12);
         }
 
         /// <summary>
@@ -29,8 +29,8 @@ namespace NijnCoach
             //Application.Run(new QuestionnaireForm());
 
             //Application.Run(new NijnCoach.View.PatientFiles.PatientFiles());
-            Application.Run(new saveFileDialog());
-            //Application.Run(MainForm.mainForm);
+            //Application.Run(new saveFileDialog());
+            Application.Run(MainForm.mainForm);
         }
     }
 }

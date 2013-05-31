@@ -20,13 +20,13 @@ namespace NijnCoach.View.Questionnaire
         public QuestionnaireForm(Boolean _loadAvatar = true) : base(_loadAvatar)
         {
             //TODO: add global patientnumber.
-            int patientNo = 0; //TEMPORARY
+            int patientNo = 12; //TEMPORARY
             XMLParser parser = new XMLParser();
             #region license
             BassNet.Registration("w.kowaluk@gmail.com", "2X32382019152222");
             #endregion
             Bass.BASS_Init(-1, 44100, BASSInit.BASS_DEVICE_DEFAULT, IntPtr.Zero);
-            openFileDialog.ShowDialog();
+            //openFileDialog.ShowDialog(); 
             XMLclasses.Questionnaire questionnaire = DBConnect.getQuestionnaireByPatient(patientNo);
             init(questionnaire);
         }

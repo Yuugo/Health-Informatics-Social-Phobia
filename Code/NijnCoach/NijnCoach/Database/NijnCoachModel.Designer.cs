@@ -144,6 +144,22 @@ namespace NijnCoach.Database
             }
         }
         private ObjectSet<User> _Users;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Sickpeople> Sickpeoples
+        {
+            get
+            {
+                if ((_Sickpeoples == null))
+                {
+                    _Sickpeoples = base.CreateObjectSet<Sickpeople>("Sickpeoples");
+                }
+                return _Sickpeoples;
+            }
+        }
+        private ObjectSet<Sickpeople> _Sickpeoples;
 
         #endregion
 
@@ -187,6 +203,14 @@ namespace NijnCoach.Database
         public void AddToUsers(User user)
         {
             base.AddObject("Users", user);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Sickpeoples EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToSickpeoples(Sickpeople sickpeople)
+        {
+            base.AddObject("Sickpeoples", sickpeople);
         }
 
         #endregion
@@ -617,6 +641,30 @@ namespace NijnCoach.Database
         private global::System.Int32 _PatientNo;
         partial void OnPatientNoChanging(global::System.Int32 value);
         partial void OnPatientNoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Commentary
+        {
+            get
+            {
+                return _Commentary;
+            }
+            set
+            {
+                OnCommentaryChanging(value);
+                ReportPropertyChanging("Commentary");
+                _Commentary = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Commentary");
+                OnCommentaryChanged();
+            }
+        }
+        private global::System.String _Commentary;
+        partial void OnCommentaryChanging(global::System.String value);
+        partial void OnCommentaryChanged();
 
         #endregion
 
@@ -813,6 +861,297 @@ namespace NijnCoach.Database
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="NijnCoachModel1", Name="Sickpeople")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Sickpeople : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Sickpeople object.
+        /// </summary>
+        /// <param name="fname">Initial value of the Fname property.</param>
+        /// <param name="lname">Initial value of the Lname property.</param>
+        /// <param name="patientNo">Initial value of the PatientNo property.</param>
+        /// <param name="age">Initial value of the Age property.</param>
+        /// <param name="email">Initial value of the Email property.</param>
+        /// <param name="phoneNo">Initial value of the PhoneNo property.</param>
+        /// <param name="street">Initial value of the Street property.</param>
+        /// <param name="houseNo">Initial value of the HouseNo property.</param>
+        /// <param name="postal">Initial value of the Postal property.</param>
+        /// <param name="city">Initial value of the City property.</param>
+        public static Sickpeople CreateSickpeople(global::System.String fname, global::System.String lname, global::System.Int32 patientNo, global::System.Int32 age, global::System.String email, global::System.Int32 phoneNo, global::System.String street, global::System.Int32 houseNo, global::System.String postal, global::System.String city)
+        {
+            Sickpeople sickpeople = new Sickpeople();
+            sickpeople.Fname = fname;
+            sickpeople.Lname = lname;
+            sickpeople.PatientNo = patientNo;
+            sickpeople.Age = age;
+            sickpeople.Email = email;
+            sickpeople.PhoneNo = phoneNo;
+            sickpeople.Street = street;
+            sickpeople.HouseNo = houseNo;
+            sickpeople.Postal = postal;
+            sickpeople.City = city;
+            return sickpeople;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Fname
+        {
+            get
+            {
+                return _Fname;
+            }
+            set
+            {
+                OnFnameChanging(value);
+                ReportPropertyChanging("Fname");
+                _Fname = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Fname");
+                OnFnameChanged();
+            }
+        }
+        private global::System.String _Fname;
+        partial void OnFnameChanging(global::System.String value);
+        partial void OnFnameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Lname
+        {
+            get
+            {
+                return _Lname;
+            }
+            set
+            {
+                OnLnameChanging(value);
+                ReportPropertyChanging("Lname");
+                _Lname = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Lname");
+                OnLnameChanged();
+            }
+        }
+        private global::System.String _Lname;
+        partial void OnLnameChanging(global::System.String value);
+        partial void OnLnameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 PatientNo
+        {
+            get
+            {
+                return _PatientNo;
+            }
+            set
+            {
+                if (_PatientNo != value)
+                {
+                    OnPatientNoChanging(value);
+                    ReportPropertyChanging("PatientNo");
+                    _PatientNo = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("PatientNo");
+                    OnPatientNoChanged();
+                }
+            }
+        }
+        private global::System.Int32 _PatientNo;
+        partial void OnPatientNoChanging(global::System.Int32 value);
+        partial void OnPatientNoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Age
+        {
+            get
+            {
+                return _Age;
+            }
+            set
+            {
+                OnAgeChanging(value);
+                ReportPropertyChanging("Age");
+                _Age = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Age");
+                OnAgeChanged();
+            }
+        }
+        private global::System.Int32 _Age;
+        partial void OnAgeChanging(global::System.Int32 value);
+        partial void OnAgeChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Email
+        {
+            get
+            {
+                return _Email;
+            }
+            set
+            {
+                OnEmailChanging(value);
+                ReportPropertyChanging("Email");
+                _Email = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Email");
+                OnEmailChanged();
+            }
+        }
+        private global::System.String _Email;
+        partial void OnEmailChanging(global::System.String value);
+        partial void OnEmailChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 PhoneNo
+        {
+            get
+            {
+                return _PhoneNo;
+            }
+            set
+            {
+                OnPhoneNoChanging(value);
+                ReportPropertyChanging("PhoneNo");
+                _PhoneNo = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("PhoneNo");
+                OnPhoneNoChanged();
+            }
+        }
+        private global::System.Int32 _PhoneNo;
+        partial void OnPhoneNoChanging(global::System.Int32 value);
+        partial void OnPhoneNoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Street
+        {
+            get
+            {
+                return _Street;
+            }
+            set
+            {
+                OnStreetChanging(value);
+                ReportPropertyChanging("Street");
+                _Street = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Street");
+                OnStreetChanged();
+            }
+        }
+        private global::System.String _Street;
+        partial void OnStreetChanging(global::System.String value);
+        partial void OnStreetChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 HouseNo
+        {
+            get
+            {
+                return _HouseNo;
+            }
+            set
+            {
+                OnHouseNoChanging(value);
+                ReportPropertyChanging("HouseNo");
+                _HouseNo = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("HouseNo");
+                OnHouseNoChanged();
+            }
+        }
+        private global::System.Int32 _HouseNo;
+        partial void OnHouseNoChanging(global::System.Int32 value);
+        partial void OnHouseNoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Postal
+        {
+            get
+            {
+                return _Postal;
+            }
+            set
+            {
+                OnPostalChanging(value);
+                ReportPropertyChanging("Postal");
+                _Postal = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Postal");
+                OnPostalChanged();
+            }
+        }
+        private global::System.String _Postal;
+        partial void OnPostalChanging(global::System.String value);
+        partial void OnPostalChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String City
+        {
+            get
+            {
+                return _City;
+            }
+            set
+            {
+                OnCityChanging(value);
+                ReportPropertyChanging("City");
+                _City = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("City");
+                OnCityChanged();
+            }
+        }
+        private global::System.String _City;
+        partial void OnCityChanging(global::System.String value);
+        partial void OnCityChanged();
+
+        #endregion
+
+    
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
     [EdmEntityTypeAttribute(NamespaceName="NijnCoachModel1", Name="SpeechFile")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
@@ -826,12 +1165,16 @@ namespace NijnCoach.Database
         /// <param name="id">Initial value of the Id property.</param>
         /// <param name="name">Initial value of the Name property.</param>
         /// <param name="encoding">Initial value of the Encoding property.</param>
-        public static SpeechFile CreateSpeechFile(global::System.SByte id, global::System.String name, global::System.String encoding)
+        /// <param name="trackNo">Initial value of the trackNo property.</param>
+        /// <param name="partNo">Initial value of the PartNo property.</param>
+        public static SpeechFile CreateSpeechFile(global::System.SByte id, global::System.String name, global::System.String encoding, global::System.Int64 trackNo, global::System.Int32 partNo)
         {
             SpeechFile speechFile = new SpeechFile();
             speechFile.Id = id;
             speechFile.Name = name;
             speechFile.Encoding = encoding;
+            speechFile.trackNo = trackNo;
+            speechFile.PartNo = partNo;
             return speechFile;
         }
 
@@ -842,7 +1185,7 @@ namespace NijnCoach.Database
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.SByte Id
         {
@@ -852,11 +1195,14 @@ namespace NijnCoach.Database
             }
             set
             {
-                OnIdChanging(value);
-                ReportPropertyChanging("Id");
-                _Id = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("Id");
-                OnIdChanged();
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
             }
         }
         private global::System.SByte _Id;
@@ -866,7 +1212,7 @@ namespace NijnCoach.Database
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.String Name
         {
@@ -876,14 +1222,11 @@ namespace NijnCoach.Database
             }
             set
             {
-                if (_Name != value)
-                {
-                    OnNameChanging(value);
-                    ReportPropertyChanging("Name");
-                    _Name = StructuralObject.SetValidValue(value, false);
-                    ReportPropertyChanged("Name");
-                    OnNameChanged();
-                }
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Name");
+                OnNameChanged();
             }
         }
         private global::System.String _Name;
@@ -913,6 +1256,54 @@ namespace NijnCoach.Database
         private global::System.String _Encoding;
         partial void OnEncodingChanging(global::System.String value);
         partial void OnEncodingChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int64 trackNo
+        {
+            get
+            {
+                return _trackNo;
+            }
+            set
+            {
+                OntrackNoChanging(value);
+                ReportPropertyChanging("trackNo");
+                _trackNo = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("trackNo");
+                OntrackNoChanged();
+            }
+        }
+        private global::System.Int64 _trackNo;
+        partial void OntrackNoChanging(global::System.Int64 value);
+        partial void OntrackNoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 PartNo
+        {
+            get
+            {
+                return _PartNo;
+            }
+            set
+            {
+                OnPartNoChanging(value);
+                ReportPropertyChanging("PartNo");
+                _PartNo = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("PartNo");
+                OnPartNoChanged();
+            }
+        }
+        private global::System.Int32 _PartNo;
+        partial void OnPartNoChanging(global::System.Int32 value);
+        partial void OnPartNoChanged();
 
         #endregion
 

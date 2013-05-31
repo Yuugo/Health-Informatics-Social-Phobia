@@ -16,13 +16,13 @@ namespace NijnCoach.Database
         /// </summary>
         /// <param name="patient">A comepleted Patient object.</param>
         /// <returns>Returns true if object was added, else false.</returns>
-        public static Boolean insertPatient(Patient patient)
+        public static Boolean insertPatient(Sickpeople patient)
         {
             NijnCoachEntities theEntities = new NijnCoachEntities();
 
             try
             {
-                theEntities.Patients.AddObject(patient);
+                theEntities.Sickpeoples.AddObject(patient);
                 theEntities.SaveChanges();
                 return true;
 
@@ -30,7 +30,8 @@ namespace NijnCoach.Database
             catch (Exception e)
             {
                 //TODO: blabla
-                MessageBox.Show(e.InnerException.ToString());
+                MessageBox.Show(e.Message.ToString());
+                MessageBox.Show(e.StackTrace.ToString());
                 return false;
             }
         }
@@ -190,8 +191,11 @@ namespace NijnCoach.Database
             {
                 NijnCoachEntities theEntities = new NijnCoachEntities();
                 String result = theEntities.Questionnairres.Where(x => x.Name == name).First<Questionnairre>().Text;
+
                 XMLParser parser = new XMLParser();
-                StreamReader reader = new StreamReader(result);
+                byte[] byteArray = Encoding.ASCII.GetBytes(result);
+                MemoryStream stream = new MemoryStream(byteArray);
+                StreamReader reader = new StreamReader(stream);
                 return parser.readXML(reader);
             }
             catch (Exception e)
@@ -212,13 +216,16 @@ namespace NijnCoach.Database
             {
                 NijnCoachEntities theEntities = new NijnCoachEntities();
                 String result = theEntities.Questionnairres.Where(x => x.forPatient == patientNo && x.FilledIn == false).First<Questionnairre>().Text;
+
                 XMLParser parser = new XMLParser();
-                StreamReader reader = new StreamReader(result);
+                byte[] byteArray = Encoding.ASCII.GetBytes(result);
+                MemoryStream stream = new MemoryStream(byteArray);
+                StreamReader reader = new StreamReader(stream);
                 return parser.readXML(reader);
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.InnerException.ToString());
+                MessageBox.Show(e.Message.ToString());
                 throw new FileNotFoundException();
             }
         }
@@ -286,6 +293,22 @@ namespace NijnCoach.Database
                 throw new FileNotFoundException();
             }
 
+        }
+
+        public static String getEvaluationCommentaryByPatient(Int32 patientNo)
+        {
+            try
+            {
+                NijnCoachEntities theEntities = new NijnCoachEntities();
+                ProgressEval result = theEntities.ProgressEvals.Where(x => x.PatientNo == patientNo).First<ProgressEval>();
+                String res = result.Commentary;
+                return res;
+            }
+            catch (MySql.Data.MySqlClient.MySqlException e)
+            {
+                MessageBox.Show(e.InnerException.ToString());
+                throw new FileNotFoundException();
+            }
         }
 
         /// <summary>

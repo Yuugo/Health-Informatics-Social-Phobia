@@ -71,7 +71,7 @@ namespace NijnCoach.View.AvatarDir
             SetWindowLong(AvatarHandle, GWL_STYLE, (int)(~WS_VISIBLE & ((WS_MAXIMIZE | WS_BORDER) | WS_CHILD)));
 
             t = new System.Windows.Forms.Timer();
-            t.Interval = 9000;
+            t.Interval = 20000;
             t.Tick += new EventHandler(avatarReady);
             t.Enabled = true;
             AppDomain.CurrentDomain.ProcessExit += new EventHandler(closeECoachProcess);
