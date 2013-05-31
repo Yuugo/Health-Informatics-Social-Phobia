@@ -2,6 +2,7 @@
 \usepackage[a4paper]{geometry}
 \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
 \usepackage[pdftex]{graphicx}
+<<<<<<< HEAD
 \usepackage{wrapfig}
 \usepackage[backref,hidelinks = true]{hyperref}
 % Package for glossaries
@@ -10,6 +11,16 @@
 
 \makeglossaries
 \loadglsentries{Glossary.tex}
+=======
+%\usepackage{wrapfig}
+%\usepackage[backref,hidelinks = true]{hyperref}
+% Package for glossaries
+%\newcommand*{\glossaryname}{Glossary}
+%\usepackage{glossaries}
+
+%\makeglossaries
+%\loadglsentries{Glossary.tex}
+>>>>>>> 2083651793a07e87504de34c8b9b2370e0f3057c
 
 \begin{document}
 
@@ -21,6 +32,7 @@
 % Make the table of contents
 \tableofcontents
 
+<<<<<<< HEAD
 % Include the different chapters
 \section{Introduction}
 \label{sec:intro}
@@ -48,4 +60,18 @@
 \appendix
 \input{"A1 GUI.tex"}
 \input{"A2 persona.tex"}
+=======
+%\input{Glossary.tex}
+% Include the different chapters
+\input{"Introduction.tex"}
+\newpage
+\input{"Problems & Solutions.tex"}
+\newpage
+
+
+%\addcontentsline{toc}{chapter}{Glossary}%
+%\printglossaries
+\appendix
+
+>>>>>>> 2083651793a07e87504de34c8b9b2370e0f3057c
 \end{document}
