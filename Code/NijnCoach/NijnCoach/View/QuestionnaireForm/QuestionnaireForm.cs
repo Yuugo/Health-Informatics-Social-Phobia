@@ -126,7 +126,7 @@ namespace NijnCoach.View.Questionnaire
             
             panelQuestionIntern.entry = entry;
             panelQuestion.Controls.Add(panelQuestionIntern);
-            playFromDB();
+            //playFromDB();
             panelQuestion.ResumeLayout();
 
             setAvatarEmotion(entry);
