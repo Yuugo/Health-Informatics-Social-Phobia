@@ -187,6 +187,7 @@ namespace NijnCoach.View.Questionnaire
                 Bass.BASS_StreamFree(stream);
             }
             stream = Bass.BASS_StreamCreateFile(mp3path, 0, 0, BASSFlag.BASS_DEFAULT);
+            BASSError error = Bass.BASS_ErrorGetCode();
             long len = Bass.BASS_ChannelGetLength(stream, BASSMode.BASS_POS_BYTES);
             // the length of the audiofile
             int time = (int)Bass.BASS_ChannelBytes2Seconds(stream, len);
@@ -207,9 +208,9 @@ namespace NijnCoach.View.Questionnaire
             String path = GetTempFilePathWithExtension("mp3");
             using (FileStream fs = File.Create(path, 1024))
             {
-                Byte[] text = new UTF8Encoding(true).GetBytes(content);
+                byte[] decoded = System.Convert.FromBase64String(content);
                 // Add some information to the file.
-                fs.Write(text, 0, text.Length);
+                fs.Write(decoded, 0, decoded.Length);
             }
             return path;
         }
