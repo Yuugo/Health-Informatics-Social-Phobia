@@ -588,46 +588,18 @@
         }
 
         #endregion
-        private System.Windows.Forms.Label labelQ;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox0;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.ComboBox comboBox4;
-        private System.Windows.Forms.ComboBox comboBox5;
-        private System.Windows.Forms.ComboBox comboBox6;
-        private System.Windows.Forms.ComboBox comboBox7;
-        private System.Windows.Forms.ComboBox comboBox8;
-        private System.Windows.Forms.Label labelH;
-        private System.Windows.Forms.Button button5;
+
+        private void contruct(ref object o,object[] parameters)
+        {
+            o = o.GetType().GetConstructor(new System.Type[0]).Invoke(parameters);
+        }
+
+        private System.Windows.Forms.Button button1, button2, button3, button4,button5, button6;
+        private System.Windows.Forms.RadioButton radioButton1, radioButton2, radioButton3;
+        private System.Windows.Forms.Label labelQ, labelH, label0, label1, label2, label3, label4, label5, label6, label7, label8, label9;
+        private System.Windows.Forms.TextBox textBox0, textBox1, textBox2, textBox3, textBox4, textBox5, textBox6, textBox7, textBox8, textBox9;
+        private System.Windows.Forms.ComboBox comboBox1, comboBox2, comboBox3, comboBox4, comboBox5, comboBox6, comboBox7, comboBox8;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
-        private System.Windows.Forms.RadioButton radioButton3;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Label label0;
-        private System.Windows.Forms.Button button6;
     }
 }
