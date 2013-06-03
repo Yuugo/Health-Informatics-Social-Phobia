@@ -1,9 +1,9 @@
 \section{Introduction}
 A good software product requires not only good code, it needs to run on the right hardware and that hardware can be spread among different platforms. This needs to be managed in a way that is maintainable and efficient. The data will be stored in a relational database for easy access and management the information about users and their files.
 \paragraph{}
-This document will describe the implementations of such systems for this project. It will start with evaluating the various sub-systems and how these are dependent of each other. Then, the way those sub-systems are mapped to computers, processes and how the communication between multiple systems is handled is covered. 
+This document will describe the implementations of such systems for this project. It will start with evaluating the various sub-systems and how these are dependent of each other. Then, the way those sub-systems are mapped to computers, processes and how the communication between multiple systems is handled, is covered. 
 Following the database will be described, the design of the data and how it will be stored. The types of files used by the systems will also be specified. 
-As last item, the concurrency between processes 
+As last item, the concurrency between processes.
 \subsection{Design goals}
 The goals behind designing these systems is to get a clear idea what is required to be made to get the eventual product to function properly. It has to be clear how much time will have to be spent on making systems such as databases and sub-systems so that the creation and implementation can be spread equally among the sprints. This document offers a form of assurance where there will be fewer surprises during the development process when it comes to accepting certain data structures and systems. This way, problems where finished work ends up being a waste of time due to changing systems half way through, will not occur as often, or hopefully, not at all.
 Finally, this architectural design presents another opportunity to show our plans for the development process to the product owner to create more transparency and options for communicating about the project.
