@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using NijnCoach.XMLclasses;
 using System.Xml;
 using System.IO;
+using System.Security.Cryptography;
 
 namespace NijnCoach.Database
 {
@@ -128,7 +129,7 @@ namespace NijnCoach.Database
             NijnCoachEntities theEntities = new NijnCoachEntities();
 
 
-           AudioFile newSpeech = new AudioFile();
+            AudioFile newSpeech = new AudioFile();
             newSpeech.Name = naam;
             newSpeech.PartNo = part;
             int songNumber;
@@ -168,7 +169,7 @@ namespace NijnCoach.Database
             }
         }
 
-        #region PatientSelectors
+		#region PatientSelectors
 
         public static Patient getPatientByLastName(String name)
         {
@@ -216,6 +217,7 @@ namespace NijnCoach.Database
             }
         }
 
+		
         /// <summary>
         /// Find the oldes, not filled in, questionnaire for the given patient.
         /// </summary>
@@ -267,11 +269,6 @@ namespace NijnCoach.Database
             }
         }
 
-        /// <summary>
-        /// Get the speech audio to be used by the avatar.
-        /// </summary>
-        /// <param name="name">Name of the audio File.</param>
-        /// <returns>Returns the desired audio file as SpeechFile. Content is still encoded.</returns>
         public static SByte getUserNo(string name)
         {
 
@@ -287,6 +284,58 @@ namespace NijnCoach.Database
                 throw new FileNotFoundException();
             }
         }
+
+        public static bool getType(SByte userNo)
+        {
+
+            try
+            {
+                NijnCoachEntities theEntities = new NijnCoachEntities();
+                String result = theEntities.Users.Where(x => x.PatientNo == userNo).First<User>().Type;
+                if (result == "Therapist")
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.InnerException.ToString());
+                throw new FileNotFoundException();
+            }
+        }
+
+        /// <summary>
+        /// Get the userNo of user if pass and log in match
+        /// </summary>
+        /// <param name="name">Name of the user, password of the user</param>
+        /// <returns>Returns the number of the user</returns>
+        public static SByte getUser(string name,string password)
+        {
+            SByte result = -1;
+
+            MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
+            byte[] encode = Encoding.ASCII.GetBytes(password);
+            encode = md5.ComputeHash(encode);
+            String pass = Encoding.ASCII.GetString(encode);
+
+            try
+            {
+                NijnCoachEntities theEntities = new NijnCoachEntities();
+                IQueryable<User> users = theEntities.Users.Where(x => x.Username == name && x.Password == pass);
+                if (users.Count() != 0){
+                    result = users.First().PatientNo;
+                }
+                
+                return result;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.InnerException.ToString());
+                throw new FileNotFoundException();
+            }
+        }
+
 
 
         /// <summary>
