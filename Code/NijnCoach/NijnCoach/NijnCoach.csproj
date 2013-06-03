@@ -78,6 +78,12 @@
     <Compile Include="View\AvatarDir\AvatarPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="View\Main\LoginMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Main\LoginMenu.Designer.cs">
+      <DependentUpon>LoginMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\PatientFiles\CreateUser.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -283,6 +289,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Home\HomePanel.resx">
       <DependentUpon>HomePanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Main\LoginMenu.resx">
+      <DependentUpon>LoginMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Main\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

@@ -30,7 +30,7 @@ namespace NijnCoach
 
             //Application.Run(new NijnCoach.View.PatientFiles.PatientFiles());
             //Application.Run(new saveFileDialog());
-            Application.Run(MainForm.mainForm);
+            Application.Run(new NijnCoach.View.Main.LoginMenu());
         }
     }
 }
