@@ -307,7 +307,7 @@
         <EntityTypeShape EntityType="NijnCoachModel1.ProgressEval" Width="1.5" PointX="5.375" PointY="0.75" Height="1.4605517578124996" />
         <EntityTypeShape EntityType="NijnCoachModel1.User" Width="1.5" PointX="5.375" PointY="3.75" Height="1.4605517578124996" />
         <EntityTypeShape EntityType="NijnCoachModel1.Sickpeople" Width="1.5" PointX="0.75" PointY="3.875" Height="2.6490079752604174" />
-        <EntityTypeShape EntityType="NijnCoachModel1.AudioFile" Width="1.5" PointX="7.5" PointY="0.75" Height="1.8001106770833317" />
+        <EntityTypeShape EntityType="NijnCoachModel1.AudioFile" Width="1.5" PointX="3.375" PointY="6.75" Height="1.9802864583333317" />
       </Diagram>
     </Diagrams>
   </Designer>
