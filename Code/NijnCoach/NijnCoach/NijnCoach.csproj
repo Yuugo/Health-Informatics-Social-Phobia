@@ -69,11 +69,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="View\Questionnaire\ExposureChartsForm.cs">
-      <SubType>Form</SubType>
+    <Compile Include="View\Overview\OverviewPanel.cs">
+      <SubType>Component</SubType>
     </Compile>
-    <Compile Include="View\Questionnaire\ExposureChartsForm.Designer.cs">
-      <DependentUpon>ExposureChartsForm.cs</DependentUpon>
+    <Compile Include="View\Overview\OverviewPanel.Designer.cs">
+      <DependentUpon>OverviewPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="View\AvatarDir\AvatarPanel.cs">
       <SubType>Component</SubType>
@@ -125,12 +125,6 @@
     </Compile>
     <Compile Include="View\Main\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\Main\Overview\OverviewPanel.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="View\Main\Overview\OverviewPanel.Designer.cs">
-      <DependentUpon>OverviewPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="View\TherapistGUI\TherapistGUI.cs">
       <SubType>Form</SubType>
@@ -244,6 +238,8 @@
     <Content Include="testXML.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="View\Overview\DataGenerator.cpp" />
+    <Content Include="View\Overview\DataGenerator.exe" />
     <Content Include="writeTest.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
@@ -276,8 +272,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Questionnaire\ExposureChartsForm.resx">
-      <DependentUpon>ExposureChartsForm.cs</DependentUpon>
+    <EmbeddedResource Include="View\Overview\OverviewPanel.resx">
+      <DependentUpon>OverviewPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\AvatarDir\AvatarContainer.resx">
       <DependentUpon>AvatarContainer.cs</DependentUpon>
@@ -290,9 +286,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Main\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Main\Overview\OverviewPanel.resx">
-      <DependentUpon>OverviewPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\PatientFiles\CreateUser.resx">
       <DependentUpon>CreateUser.cs</DependentUpon>
@@ -328,6 +321,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>NijnCoachModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="ClassDiagram2.cd" />
     <None Include="NijnCoach.Database.Database.NijnCoachEntities.datasource" />
   </ItemGroup>
   <ItemGroup>

@@ -32,16 +32,8 @@
         /// </summary>
         protected virtual void InitializeComponent()
         {
-            this.panelAvatar = new System.Windows.Forms.Panel();
+            
             this.SuspendLayout();
-            // 
-            // panelAvatar
-            // 
-            this.panelAvatar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelAvatar.Location = new System.Drawing.Point(87, 12);
-            this.panelAvatar.Name = "panelAvatar";
-            this.panelAvatar.Size = new System.Drawing.Size(797, 365);
-            this.panelAvatar.TabIndex = 0;
             // 
             // AvatarContainer
             // 
@@ -51,6 +43,23 @@
 
         #endregion
         private AvatarDir.AvatarPanel panelAvatarIntern;
-        private System.Windows.Forms.Panel panelAvatar;
+        private System.Windows.Forms.Panel _panelAvatar = null;
+
+        protected virtual System.Windows.Forms.Panel panelAvatar
+        {
+            get
+            {
+                if (_panelAvatar == null)
+                {
+                    _panelAvatar = new System.Windows.Forms.Panel();
+                    _panelAvatar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+                    _panelAvatar.Location = new System.Drawing.Point(87, 12);
+                    _panelAvatar.Name = "panelAvatar";
+                    _panelAvatar.Size = new System.Drawing.Size(797, 365);
+                    _panelAvatar.TabIndex = 0;
+                }
+                return _panelAvatar;
+            }
+        }
     }
 }
