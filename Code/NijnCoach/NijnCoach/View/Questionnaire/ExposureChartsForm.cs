@@ -44,7 +44,7 @@ namespace NijnCoach.View.Questionnaire
         //maybe sort them and save them in an object.
         private List<ExposureSession> getAllSessionsFromDatabase()
         {
-            string[] files = System.IO.Directory.GetFiles("Z://git//Health-Informatics-Social-Phobia//Code//NijnCoach//NijnCoach//Sessions//", "*.txt");
+            string[] files = System.IO.Directory.GetFiles("Sessions//", "*.txt");
             
             List<ExposureSession> sessions = new List<ExposureSession>(files.Length);
 

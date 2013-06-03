@@ -11,6 +11,9 @@ namespace NijnCoach.XMLclasses
         [XmlElement("question")]
         public String question { get; set; }
 
+        [XmlElement("audio")]
+        public String audio { get; set; }
+
         //[XML] logic done inside the Option class.
         [XmlArray]
         public List<Option> options { get; set; }

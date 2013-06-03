@@ -9,3 +9,26 @@ use RPC for connecting the langagues
 vizard for compiling the python 2.6 code.
 
 12th floor, room 2.70
+
+Introduction: Hugo
+Light weight scrum Plans: Willem
+Reflection on Team-Work: Elgar
+	-Geen conflicten
+	-Onder druk kon er wel gepresteerd worden als team
+	-Vergaderingen waren kort en bondig, (misschien iets te)
+	-Door gebrek aan planning was er af en toe onwetendheid over wat te doen
+	-Goede sfeer
+Problems Solutions Highlights: Johnny, koos
+
+Product Backlog for pv&p: Willem
+
+Problems: 
+	Avatar	: blijven proberen
+		Avatar in GUI
+		Avatar praten
+		Avatar emotie
+	uploading files: als tekst coderen en opsplitsen (ewi dit ewi dat)
+	graphs (meerdere grafieken  los en achter elkaar weergeven)
+	gui testen (express) (Geen plugins voor express, geen goede tool te vinden)
+	GitHub (je weet wel)
+	Visual studio express (geen plugins, geen database)

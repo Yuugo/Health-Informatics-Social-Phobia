@@ -12,6 +12,9 @@ namespace NijnCoach.XMLclasses
         [XmlElement("value")]
         public String value { get; set; }
 
+        [XmlElement("audio")]
+        public String audio { get; set; }
+
         [XmlElement("emotion")]
         public String emotion { get; set; }
     }

@@ -1,5 +1,3 @@
-\section{Subsystem decomposition}
-\label{sec:subsystem}
 
 \paragraph{}
 In order to build the eCoach program, this task has to be divided in smaller sub problems. So the system is divided into subsystems. To increase the cohesion of the different subsystems, a strong division is needed. Another important issue is reuse, will parts of the program be reusable. To ensure the quality of the program the system also has to be easy to test. To achieve these goals, the choice has been made to design he system by use of a \gls{model-view-controller}-model (MVC). Cohesion is achieved  with the strong layer-cohesion. The model-layer will be easy to reuse, as well as parts of the control-layer. And the system will be easy to test because the application can be tested separately from the user interface. One more reason for this approach is the need of two different representations of the data for the therapist and the patient: two different \textit{views} on the same data.

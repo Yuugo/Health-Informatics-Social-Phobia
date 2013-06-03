@@ -19,7 +19,11 @@ namespace NijnCoach
             return readXML(new StreamReader(filename));
         }
 
-        //Method used to deserialize(XML to object) XML
+        /// <summary>
+        /// Method used to deserialize(XML to object) XML
+        /// </summary>
+        /// <param name="reader"></param>
+        /// <returns></returns>
         public Questionnaire readXML(StreamReader reader)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(Questionnaire));
@@ -31,7 +35,6 @@ namespace NijnCoach
         //Method used to serialize(object to XML) XML
         public String writeXML(Questionnaire q)
         {
-
 
             #region ExampleObject
             /*

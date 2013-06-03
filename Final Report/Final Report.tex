@@ -1,0 +1,52 @@
+\documentclass[english,a4paper,pdftex]{report}
+\usepackage[a4paper]{geometry}
+\geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+\usepackage[pdftex]{graphicx}
+\usepackage{wrapfig}
+\usepackage[backref,hidelinks = true]{hyperref}
+% Package for glossaries
+\newcommand*{\glossaryname}{Glossary}
+\usepackage{glossaries}
+
+%\makeglossaries
+%\loadglsentries{Glossary.tex}
+
+\begin{document}
+
+% Include the title page
+\input{"title.tex"}
+\newpage
+% Include the abstract
+\begin{abstract}
+\input{"abstract.tex"}
+\end{abstract}
+% Make the table of contents
+\tableofcontents
+
+% Include the different chapters
+\chapter{Introduction}
+%\label{sec:intro}
+\input{"Introduction.tex"}
+%\newpage
+\chapter{Problems and solutions highlights}
+%\label{sec:problems}
+\input{"Problems & Solutions.tex"}
+%\newpage
+\chapter{Reflection on Teamwork}
+%\label{sec:reflection}
+\input{"Reflection.tex"}
+%\newpage
+\chapter{Individual reflections}
+%\label{sec:indv}
+\input{"Individual reflection.tex"}
+%\newpage
+\chapter{Lightweight SCRUM Plans}
+%\label{sec:scrum}
+\input{"Scrum plans.tex"}
+\newpage
+
+%\addcontentsline{toc}{chapter}{Glossary}%
+%\printglossaries
+%\appendix
+
+\end{document}

@@ -50,13 +50,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject />
+    <StartupObject>NijnCoach.MainClass</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Avatar\AvatarControl.cs" />
     <Compile Include="Exposure data\ExposureSession.cs" />
     <Compile Include="Exposure data\ExpTimestamp.cs" />
     <Compile Include="Exposure data\ReadExposureData.cs" />
+    <Compile Include="Database\DBConnect.cs" />
+    <Compile Include="Database\NijnCoachModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NijnCoachModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="MainClass.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -68,44 +75,100 @@
     <Compile Include="View\Questionnaire\ExposureChartsForm.Designer.cs">
       <DependentUpon>ExposureChartsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\AvatarDir\AvatarPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="View\PatientFiles\CreateUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\PatientFiles\CreateUser.designer.cs">
+      <DependentUpon>CreateUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\TherapistGUI\saveFileDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\TherapistGUI\saveFileDialog.Designer.cs">
+      <DependentUpon>saveFileDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\PatientFiles\PatientFiles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\PatientFiles\PatientFiles.Designer.cs">
+      <DependentUpon>PatientFiles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\AvatarDir\AvatarContainer.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="View\AvatarDir\AvatarContainer.Designer.cs">
+      <DependentUpon>AvatarContainer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Exposure\ExposurePanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="View\Exposure\ExposurePanel.Designer.cs">
+      <DependentUpon>ExposurePanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Greet\GreetPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="View\Greet\GreetPanel.Designer.cs">
+      <DependentUpon>GreetPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Home\HomePanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="View\Home\HomePanel.Designer.cs">
+      <DependentUpon>HomePanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Main\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Main\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Main\Overview\OverviewPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="View\Main\Overview\OverviewPanel.Designer.cs">
+      <DependentUpon>OverviewPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\TherapistGUI\TherapistGUI.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\TherapistGUI\TherapistGUI.Designer.cs">
       <DependentUpon>TherapistGUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Questionnaire\OpenQuestionPanel.cs">
+    <Compile Include="view\questionnaireForm\OpenQuestionPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="View\Questionnaire\OpenQuestionPanel.Designer.cs">
+    <Compile Include="view\questionnaireForm\OpenQuestionPanel.Designer.cs">
       <DependentUpon>OpenQuestionPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Questionnaire\MCQuestionPanel.cs">
+    <Compile Include="view\questionnaireForm\MCQuestionPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="View\Questionnaire\MCQuestionPanel.Designer.cs">
+    <Compile Include="view\questionnaireForm\MCQuestionPanel.Designer.cs">
       <DependentUpon>MCQuestionPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Questionnaire\IQuestionPanel.cs">
+    <Compile Include="view\questionnaireForm\IQuestionPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="View\Questionnaire\QuestionnaireForm.cs">
-      <SubType>Form</SubType>
+    <Compile Include="view\questionnaireForm\QuestionnaireForm.cs">
+      <SubType>Component</SubType>
     </Compile>
-    <Compile Include="View\Questionnaire\QuestionnaireForm.Designer.cs">
+    <Compile Include="view\questionnaireForm\QuestionnaireForm.Designer.cs">
       <DependentUpon>QuestionnaireForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Questionnaire\TestQuestionnaireForm.cs" />
-    <Compile Include="View\Questionnaire\CommentPanel.cs">
+    <Compile Include="view\questionnaireForm\CommentPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="View\Questionnaire\CommentPanel.Designer.cs">
+    <Compile Include="view\questionnaireForm\CommentPanel.Designer.cs">
       <DependentUpon>CommentPanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Questionnaire\TherapistQuestionnaire.cs">
+    <Compile Include="view\questionnaireForm\TherapistQuestionnaire.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Questionnaire\TherapistQuestionnaire.Designer.cs">
+    <Compile Include="view\questionnaireForm\TherapistQuestionnaire.Designer.cs">
       <DependentUpon>TherapistQuestionnaire.cs</DependentUpon>
     </Compile>
     <Compile Include="XMLclasses\Comment.cs" />
@@ -118,12 +181,19 @@
     <Compile Include="XMLclasses\XMLParser.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Bass.Net, Version=2.4.10.1, Culture=neutral, PublicKeyToken=b7566c273e6ef480, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\Bass.Net.dll</HintPath>
+    </Reference>
     <Reference Include="CookComputing.XmlRpcV2, Version=2.5.0.0, Culture=neutral, PublicKeyToken=a7d6e17aa302004d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\BlackBoard Documenten\GUIController\GUIController\CookComputing.XmlRpcV2.dll</HintPath>
     </Reference>
-    <Reference Include="MySql.Data, Version=6.6.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data, Version=6.6.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>C:\Program Files (x86)\MySQL\MySQL Connector Net 6.6.5\Assemblies\v2.0\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="MySql.Data.Entity, Version=6.6.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -137,7 +207,40 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bass.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Bass.Net.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="CookComputing.XmlRpcV2.dll" />
+    <Content Include="Sessions\02-05-2013_1500.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sessions\04-04-2013_1500.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sessions\09-05-2013_1500.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sessions\11-04-2013_1500.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sessions\16-05-2013_1500.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sessions\18-04-2013_1500.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sessions\23-05-2013_1500.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sessions\25-04-2013_1500.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sessions\30-05-2013_1500.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="testXML.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -176,31 +279,63 @@
     <EmbeddedResource Include="View\Questionnaire\ExposureChartsForm.resx">
       <DependentUpon>ExposureChartsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\AvatarDir\AvatarContainer.resx">
+      <DependentUpon>AvatarContainer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Greet\GreetPanel.resx">
+      <DependentUpon>GreetPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Home\HomePanel.resx">
+      <DependentUpon>HomePanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Main\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Main\Overview\OverviewPanel.resx">
+      <DependentUpon>OverviewPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\PatientFiles\CreateUser.resx">
+      <DependentUpon>CreateUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\TherapistGUI\saveFileDialog.resx">
+      <DependentUpon>saveFileDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\PatientFiles\PatientFiles.resx">
+      <DependentUpon>PatientFiles.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\TherapistGUI\TherapistGUI.resx">
       <DependentUpon>TherapistGUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Questionnaire\OpenQuestionPanel.resx">
+    <EmbeddedResource Include="view\questionnaireForm\OpenQuestionPanel.resx">
       <DependentUpon>OpenQuestionPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Questionnaire\MCQuestionPanel.resx">
+    <EmbeddedResource Include="view\questionnaireForm\MCQuestionPanel.resx">
       <DependentUpon>MCQuestionPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Questionnaire\QuestionnaireForm.resx">
+    <EmbeddedResource Include="view\questionnaireForm\QuestionnaireForm.resx">
       <DependentUpon>QuestionnaireForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Questionnaire\CommentPanel.resx">
+    <EmbeddedResource Include="view\questionnaireForm\CommentPanel.resx">
       <DependentUpon>CommentPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Questionnaire\TherapistQuestionnaire.resx">
+    <EmbeddedResource Include="view\questionnaireForm\TherapistQuestionnaire.resx">
       <DependentUpon>TherapistQuestionnaire.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <EntityDeploy Include="Database\NijnCoachModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>NijnCoachModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
     <None Include="NijnCoach.Database.Database.NijnCoachEntities.datasource" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Database\" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
