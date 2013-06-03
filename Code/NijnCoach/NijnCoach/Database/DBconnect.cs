@@ -123,21 +123,30 @@ namespace NijnCoach.Database
         /// </summary>
         /// <param name="audioFile">The desired audio file</param>
         /// <returns>Returns true if object was added, else false.</returns>
-        public static Boolean InsertSpeechFile(string audioFile)
+        public static Boolean InsertSpeechFile(string audioAsString, string naam, int part)
         {
             NijnCoachEntities theEntities = new NijnCoachEntities();
-            //zet audio bestand om in string
-            byte[] audio = File.ReadAllBytes(@audioFile);
-            string audioAsString = System.Convert.ToBase64String(audio);
-            string[] name = null;
-            //split de bestandnaam in stukken zodat alleen de naam van het bestand overblijft             
-            name = audioFile.Split('\\');
-            string naam = name.Last();
+
             SpeechFile newSpeech = new SpeechFile();
             newSpeech.Name = naam;
-            newSpeech.Encoding = audioAsString;
+            newSpeech.PartNo = part;
+            long songNumber;
+
+            //Oh god
             try
             {
+                var dat = theEntities.SpeechFiles.Where(x => x.Name.Equals(naam));
+                if (theEntities.SpeechFiles.Count() == 0)
+                    songNumber = 1;
+                else if (dat.Count() != 0)
+                    songNumber = (int)dat.First<SpeechFile>().trackNo;
+                else
+                {
+                    songNumber = theEntities.SpeechFiles.OrderByDescending(u => u.trackNo).First().trackNo + 1;
+                }
+
+                newSpeech.trackNo = songNumber;
+                newSpeech.Encoding = audioAsString;
                 theEntities.SpeechFiles.AddObject(newSpeech);
                 theEntities.SaveChanges();
                 return true;
@@ -145,14 +154,15 @@ namespace NijnCoach.Database
             catch (Exception e)
             {
                 //kijkt of de exception duplicate is en dus nog wel geaccepteerd kan worden
-                string exc = e.InnerException.ToString();
+                Console.WriteLine(e.Message.ToString());
                 string[] except = null;
                 //split de exception in stukken             
-                except = exc.Split(' ');
+                except = e.Message.Split(' ');
                 if (except[2].Equals("Duplicate"))
                 {
                     return true;
                 }
+                MessageBox.Show(e.InnerException.ToString());
                 return false;
             }
         }
@@ -235,13 +245,18 @@ namespace NijnCoach.Database
         /// </summary>
         /// <param name="name">Name of the audio File.</param>
         /// <returns>Returns the desired audio file as SpeechFile. Content is still encoded.</returns>
-        public static SpeechFile getSpeechFile(string name)
+        public static String getSpeechFile(string name)
         {
 
             try
             {
                 NijnCoachEntities theEntities = new NijnCoachEntities();
-                SpeechFile result = theEntities.SpeechFiles.Where(x => x.Name == name).First<SpeechFile>();
+                List<SpeechFile> partList = theEntities.SpeechFiles.Where(x => x.Name == name).ToList<SpeechFile>();
+                String result = "";
+                foreach (SpeechFile trackPart in partList)
+                {
+                    result += trackPart.Encoding;
+                }
                 return result;
             }
             catch (Exception e)
