@@ -20,6 +20,7 @@ namespace NijnCoach.View.Questionnaire
         private int currentQuestion = 0;
         private int stream = 0;
         private Boolean _loadAvatar = true;
+        private String tempPath;
         public QuestionnaireForm(Boolean _loadAvatar = true) : base(_loadAvatar)
         {
             this._loadAvatar = _loadAvatar;
@@ -123,6 +124,7 @@ namespace NijnCoach.View.Questionnaire
             }            
             panelQuestionIntern.entry = entry;
             panelQuestion.Controls.Add(panelQuestionIntern);
+            playFromDB();
             panelQuestion.ResumeLayout();
         }
 
@@ -131,12 +133,13 @@ namespace NijnCoach.View.Questionnaire
             AvatarControl.happy();
         }
 
-        void playFromDB(String name)
+        void playFromDB()
         {
             var entry = questionnaire.entries[currentQuestion];
-            String content = DBConnect.getSpeechFile(entry.audio);
-            String path = createTempAudioFile(content);
-            bassPlay(path);
+            String content = DBConnect.getSpeechFile(entry.Audio());
+            deleteTempFile();
+            tempPath = createTempAudioFile(content);
+            bassPlay(tempPath);
         }
 
         public void bassPlay(string mp3name)
@@ -145,7 +148,7 @@ namespace NijnCoach.View.Questionnaire
             {
                 Bass.BASS_StreamFree(stream);
             }
-            stream = Bass.BASS_StreamCreateFile("C:/ecoach/audio/" + mp3name, 0, 0, BASSFlag.BASS_DEFAULT);
+            stream = Bass.BASS_StreamCreateFile(mp3name, 0, 0, BASSFlag.BASS_DEFAULT);
             long len = Bass.BASS_ChannelGetLength(stream, BASSMode.BASS_POS_BYTES);
             // the length of the audiofile
             int time = (int)Bass.BASS_ChannelBytes2Seconds(stream, len);
@@ -166,6 +169,13 @@ namespace NijnCoach.View.Questionnaire
                 fs.Write(text, 0, text.Length);
             }
             return path;
+        }
+
+        public void deleteTempFile()
+        {
+            FileInfo fileDel = new FileInfo(tempPath);
+            if(fileDel.Exists)
+                fileDel.Delete();
         }
 
         public string GetTempFilePathWithExtension(string extension)
