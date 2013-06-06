@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using NijnCoach;
 using NijnCoach.Database;
+using NijnCoach.View.TherapistGUI;
 
 
 namespace NijnCoach.View.Main
@@ -21,7 +22,7 @@ namespace NijnCoach.View.Main
 
         private void button1_Click(object sender, EventArgs e)
         {
-           
+
             if (textBox1.Text != "" && textBox2.Text != "")
             {
                 SByte userNo = DBConnect.getUser(textBox1.Text, textBox2.Text);
@@ -29,13 +30,13 @@ namespace NijnCoach.View.Main
                 {
                     if (DBConnect.getType(userNo))
                     {
-                        MessageBox.Show("trapist");
-                        MainClass.userNo = userNo;
+                        reset();
+                        this.Hide();
+                        TherapistMain.main.Show();
                     }
                     else
                     {
                         MessageBox.Show("patient");
-                        MainClass.userNo = userNo;
                     }
 
                 }
@@ -44,8 +45,12 @@ namespace NijnCoach.View.Main
                     MessageBox.Show("Wrong username or password");
                 }
             }
+        }
 
-            
+        private void reset()
+        {
+            textBox1.Text = "";
+            textBox2.Text = "";
         }
     }
 }
