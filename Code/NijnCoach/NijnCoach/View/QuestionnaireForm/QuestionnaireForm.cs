@@ -143,7 +143,7 @@ namespace NijnCoach.View.Questionnaire
             deleteTempFile();
             tempPath = createTempAudioFile(content);
             bassPlay(tempPath);
-            }
+            
         }
 
         public void bassPlay(string mp3path)
@@ -152,7 +152,7 @@ namespace NijnCoach.View.Questionnaire
             {
                 Bass.BASS_StreamFree(stream);
             }
-            stream = Bass.BASS_StreamCreateFile(mp3name, 0, 0, BASSFlag.BASS_DEFAULT);
+            stream = Bass.BASS_StreamCreateFile(mp3path, 0, 0, BASSFlag.BASS_DEFAULT);
             long len = Bass.BASS_ChannelGetLength(stream, BASSMode.BASS_POS_BYTES);
             // the length of the audiofile
             int time = (int)Bass.BASS_ChannelBytes2Seconds(stream, len);
