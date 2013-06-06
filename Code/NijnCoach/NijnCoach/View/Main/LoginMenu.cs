@@ -38,6 +38,7 @@ namespace NijnCoach.View.Main
                     {
                         reset();
                         this.Hide();
+                        NijnCoach.MainClass.userNo = userNo;
                         MainForm.mainForm.Show();
                     }
 
