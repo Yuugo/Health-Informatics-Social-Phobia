@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
-using NijnCoach.Exposure_data;
 using NijnCoach.XMLclasses;
 using System.Diagnostics;
 using System.Threading;

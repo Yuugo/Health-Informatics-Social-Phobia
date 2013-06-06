@@ -57,7 +57,6 @@ namespace NijnCoach.View.Greet
         }
 
         #endregion
-        private System.Windows.Forms.Button buttonContinue;
-        private System.Windows.Forms.Button buttonHome;
+        private System.Windows.Forms.Button buttonContinue, buttonHome;
     }
 }
