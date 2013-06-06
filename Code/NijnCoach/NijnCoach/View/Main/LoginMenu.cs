@@ -36,7 +36,9 @@ namespace NijnCoach.View.Main
                     }
                     else
                     {
-                        MessageBox.Show("patient");
+                        reset();
+                        this.Hide();
+                        MainForm.mainForm.Show();
                     }
 
                 }

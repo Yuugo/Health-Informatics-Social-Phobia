@@ -54,7 +54,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Avatar\AvatarControl.cs" />
-	<Compile Include="Exposure data\ExposureSession.cs" />
+    <Compile Include="Exposure data\ExposureSession.cs" />
     <Compile Include="Exposure data\ExpTimestamp.cs" />
     <Compile Include="Exposure data\ReadExposureData.cs" />
     <Compile Include="Database\DBConnect.cs" />
@@ -72,13 +72,33 @@
     <Compile Include="View\AvatarDir\AvatarPanel.cs">
       <SubType>Component</SubType>
     </Compile>
-	<Compile Include="View\Main\LoginMenu.cs">
+    <Compile Include="View\Main\LoginMenu.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\Main\LoginMenu.Designer.cs">
       <DependentUpon>LoginMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="View\GUIHelper.cs" />
+    <Compile Include="View\PatientFiles\CreateUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\PatientFiles\CreateUser.designer.cs">
+      <DependentUpon>CreateUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\PatientFiles\UserCreate.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="View\PatientFiles\UserCreate.Designer.cs">
+      <DependentUpon>UserCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\TherapistGUI\HomePanel.cs" />
+    <Compile Include="View\TherapistGUI\HomePanel.Designer.cs">
+      <DependentUpon>HomePanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\TherapistGUI\Qmaker.cs" />
+    <Compile Include="View\TherapistGUI\Qmaker.Designer.cs">
+      <DependentUpon>Qmaker.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\TherapistGUI\saveFileDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,7 +147,7 @@
     <Compile Include="View\Overview\OverviewPanel.Designer.cs">
       <DependentUpon>OverviewPanel.cs</DependentUpon>
     </Compile>
-	<Compile Include="View\TherapistGUI\TherapistMain.cs">
+    <Compile Include="View\TherapistGUI\TherapistMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\TherapistGUI\TherapistMain.Designer.cs">
@@ -203,6 +223,8 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bass.dll" />
+    <Content Include="Bass.Net.dll" />
     <Content Include="CookComputing.XmlRpcV2.dll" />
     <Content Include="testXML.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -251,11 +273,17 @@
     <EmbeddedResource Include="View\Main\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-	<EmbeddedResource Include="View\Main\LoginMenu.resx">
+    <EmbeddedResource Include="View\Main\LoginMenu.resx">
       <DependentUpon>LoginMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Overview\OverviewPanel.resx">
       <DependentUpon>OverviewPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\PatientFiles\CreateUser.resx">
+      <DependentUpon>CreateUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\TherapistGUI\Qmaker.resx">
+      <DependentUpon>Qmaker.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\TherapistGUI\saveFileDialog.resx">
       <DependentUpon>saveFileDialog.cs</DependentUpon>
