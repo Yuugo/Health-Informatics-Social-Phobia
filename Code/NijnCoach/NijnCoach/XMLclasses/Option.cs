@@ -17,5 +17,7 @@ namespace NijnCoach.XMLclasses
 
         [XmlElement("answer")]
         public String answer { get; set; }
+
+
     }
 }

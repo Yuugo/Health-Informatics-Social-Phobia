@@ -134,6 +134,7 @@ namespace NijnCoach.View.Questionnaire
 
         private void setAvatarEmotion(IEntry entry)
         {
+            Console.WriteLine(" Emotion = " + entry.Emotion());
             switch (entry.Emotion())
             {
                 case "Sad":
