@@ -323,6 +323,9 @@
     <EmbeddedResource Include="View\PatientFiles\CreateUser.resx">
       <DependentUpon>CreateUser.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\TherapistGUI\Qmaker.resx">
+      <DependentUpon>Qmaker.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\TherapistGUI\saveFileDialog.resx">
       <DependentUpon>saveFileDialog.cs</DependentUpon>
     </EmbeddedResource>
