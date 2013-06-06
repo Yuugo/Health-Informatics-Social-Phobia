@@ -15,6 +15,7 @@ using NijnCoach.View.AvatarDir;
 using NijnCoach.View.Main;
 using NijnCoach.View.Questionnaire;
 using NijnCoach.View.Home;
+using NijnCoach.Exposure_data;
 
 
 namespace NijnCoach.View.Overview
