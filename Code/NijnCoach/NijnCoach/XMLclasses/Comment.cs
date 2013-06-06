@@ -22,5 +22,10 @@ namespace NijnCoach.XMLclasses
         {
             return audio;
         }
+
+        public String Emotion()
+        {
+            return emotion;
+        }
     }
 }

@@ -108,6 +108,7 @@ namespace NijnCoach.View.Questionnaire
         public void updatePanelQuestion(IEntry entry)
         {
             Debug.Assert(entry != null);
+            
             panelQuestion.SuspendLayout();
             panelQuestion.Controls.Clear();
             if (entry is Comment)
@@ -121,16 +122,50 @@ namespace NijnCoach.View.Questionnaire
             else if (entry is OpenQuestion)
             {
                 panelQuestionIntern = new OpenQuestionPanel(panelQuestion.Width, panelQuestion.Height);
-            }            
+            }
+            
             panelQuestionIntern.entry = entry;
             panelQuestion.Controls.Add(panelQuestionIntern);
             playFromDB();
             panelQuestion.ResumeLayout();
+
+            setAvatarEmotion(entry);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void setAvatarEmotion(IEntry entry)
         {
-            AvatarControl.happy();
+            switch (entry.Emotion())
+            {
+                case "Sad":
+                    AvatarControl.sad();
+                    break;
+                case "Happy":
+                    AvatarControl.happy();
+                    break;
+                case "Angry":
+                    AvatarControl.angry();
+                    break;
+                case "Disgust":
+                    AvatarControl.disgust();
+                    break;
+                case "Fear":
+                    AvatarControl.fear();
+                    break;
+                case "Run":
+                    AvatarControl.run();
+                    break;
+                case "Sit":
+                    AvatarControl.sit();
+                    break;
+                case "Stand":
+                    AvatarControl.stand();
+                    break;
+                case "Surprise":
+                    AvatarControl.surprise();
+                    break;
+                default:
+                    break;
+            }
         }
 
         /// <summary>
