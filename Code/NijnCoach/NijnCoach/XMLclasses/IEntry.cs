@@ -9,5 +9,6 @@ namespace NijnCoach
 {
     public interface IEntry
     {
+        String Audio();
     }
 }

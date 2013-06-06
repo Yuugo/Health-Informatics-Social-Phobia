@@ -27,17 +27,25 @@ namespace NijnCoach.View.PatientFiles
                 byte[] encode = Encoding.ASCII.GetBytes(textBox2.Text);
                 encode = md5.ComputeHash(encode);
                 String pass = Encoding.ASCII.GetString(encode);
-                if (radioButton2.Checked == true)
+                if (!textBox2.Text.Equals(confirmPassBox.Text))
                 {
-                    DBConnect.InsertUser("Therapist", textBox1.Text, pass);
-                    MessageBox.Show("User has been created");
-                    reset();
+                    MessageBox.Show("Passwords do not match");
+                    textBox2.Clear();
+                    confirmPassBox.Clear();
                 }
                 else
                 {
-
-                    PatientFiles dialog = new PatientFiles();
-                    insertPatientFiles(dialog, pass);
+                    if (radioButton2.Checked == true)
+                    {
+                        DBConnect.InsertUser("Therapist", textBox1.Text, pass);
+                        MessageBox.Show("User has been created");
+                        reset();
+                    }
+                    else
+                    {
+                        PatientFiles dialog = new PatientFiles();
+                        insertPatientFiles(dialog, pass);
+                    }
                 }
 
             }
@@ -61,8 +69,8 @@ namespace NijnCoach.View.PatientFiles
 
                 try
                 {
-                    Convert.ToSByte(texts[2].Text);
-                    Convert.ToSByte(texts[4].Text);
+                    Convert.ToInt32(texts[2].Text);
+                    Convert.ToInt32(texts[4].Text);
                     Convert.ToInt64(texts[7].Text);
                 }
                 catch (Exception)
@@ -75,9 +83,9 @@ namespace NijnCoach.View.PatientFiles
                     DBConnect.InsertUser("Patient", textBox1.Text, pass);
                     pat.Fname = texts[0].Text;
                     pat.Lname = texts[1].Text;
-                    pat.Age = Convert.ToSByte(texts[2].Text);
+                    pat.Age = Convert.ToInt32(texts[2].Text);
                     pat.Street = texts[3].Text;
-                    pat.HouseNo = Convert.ToSByte(texts[4].Text);
+                    pat.HouseNo = Convert.ToInt32(texts[4].Text);
                     pat.Postal = texts[5].Text;
                     pat.City = texts[6].Text;
                     pat.PhoneNo = Convert.ToInt32(texts[7].Text);
@@ -92,13 +100,10 @@ namespace NijnCoach.View.PatientFiles
                     MessageBox.Show("Empty field(s)");
                     insertPatientFiles(dialog, pass);
                 }
-                else
+                else if (numbers == false)
                 {
-                    if (numbers == false)
-                    {
-                        MessageBox.Show("Not all number fields are filled in correctly");
-                        insertPatientFiles(dialog, pass);
-                    }
+                    MessageBox.Show("Not all number fields are filled in correctly");
+                    insertPatientFiles(dialog, pass);
                 }
             }
 
@@ -107,8 +112,9 @@ namespace NijnCoach.View.PatientFiles
         public void reset()
         {
             radioButton1.Checked = true;
-            textBox1.Text = "";
-            textBox2.Text = "";
+            textBox1.Clear();
+            textBox2.Clear();
+            confirmPassBox.Clear();
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)

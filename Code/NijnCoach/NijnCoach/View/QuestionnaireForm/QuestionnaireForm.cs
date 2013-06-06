@@ -9,6 +9,8 @@ using Un4seen.Bass;
 using Un4seen.Bass.AddOn.Fx;
 using NijnCoach.View.Overview;
 using NijnCoach.Database;
+using System.IO;
+using System.Text;
 
 namespace NijnCoach.View.Questionnaire
 {
@@ -18,11 +20,12 @@ namespace NijnCoach.View.Questionnaire
         private int currentQuestion = 0;
         private int stream = 0;
         private Boolean _loadAvatar = true;
+        private String tempPath;
         public QuestionnaireForm(Boolean _loadAvatar = true) : base(_loadAvatar)
         {
             this._loadAvatar = _loadAvatar;
             //TODO: add global patientnumber.
-            int patientNo = 12; //TEMPORARY
+            int patientNo = MainClass.userNo;
             XMLParser parser = new XMLParser();
             #region license
             BassNet.Registration("w.kowaluk@gmail.com", "2X32382019152222");
@@ -72,6 +75,7 @@ namespace NijnCoach.View.Questionnaire
                 {
                     buttonNext.Text = "Finish";
                 }
+                playFromDB();
                 buttonPrevious.Enabled = true;
                 progressBar.Value = currentQuestion;
             }
@@ -88,6 +92,7 @@ namespace NijnCoach.View.Questionnaire
             }
             buttonNext.Text = "Next";
             buttonNext.Enabled = true;
+            playFromDB();
             progressBar.Value = currentQuestion;
         }
 
@@ -118,9 +123,10 @@ namespace NijnCoach.View.Questionnaire
             else if (entry is OpenQuestion)
             {
                 panelQuestionIntern = new OpenQuestionPanel(panelQuestion.Width, panelQuestion.Height);
-            }
+            }            
             panelQuestionIntern.entry = entry;
             panelQuestion.Controls.Add(panelQuestionIntern);
+            playFromDB();
             panelQuestion.ResumeLayout();
         }
 
@@ -129,24 +135,59 @@ namespace NijnCoach.View.Questionnaire
             AvatarControl.happy();
         }
 
-        //
-        public void play(string mp3name)
+        void playFromDB()
+        {
+            
+            var entry = questionnaire.entries[currentQuestion];
+            String content = DBConnect.getSpeechFile(entry.Audio());
+            deleteTempFile();
+            tempPath = createTempAudioFile(content);
+            bassPlay(tempPath);
+            }
+        }
+
+        public void bassPlay(string mp3path)
         {
             if (stream != 0)
             {
                 Bass.BASS_StreamFree(stream);
             }
-            stream = Bass.BASS_StreamCreateFile("C:/ecoach/audio/" + mp3name, 0, 0, BASSFlag.BASS_DEFAULT);
+            stream = Bass.BASS_StreamCreateFile(mp3name, 0, 0, BASSFlag.BASS_DEFAULT);
             long len = Bass.BASS_ChannelGetLength(stream, BASSMode.BASS_POS_BYTES);
             // the length of the audiofile
             int time = (int)Bass.BASS_ChannelBytes2Seconds(stream, len);
-            AvatarControl.speak(mp3name, time);
+            AvatarControl.speak(mp3path, time);
             if (stream != 0)
             {
                 Bass.BASS_ChannelPlay(stream, false);
             }
         }
 
+        public String createTempAudioFile(String content)
+        {
+            String path = GetTempFilePathWithExtension("mp3");
+            using (FileStream fs = File.Create(path, 1024))
+            {
+                Byte[] text = new UTF8Encoding(true).GetBytes(content);
+                // Add some information to the file.
+                fs.Write(text, 0, text.Length);
+            }
+            return path;
+        }
+
+        public void deleteTempFile()
+        {
+            FileInfo fileDel = new FileInfo(tempPath);
+            if(fileDel.Exists)
+                fileDel.Delete();
+        }
+
+        public string GetTempFilePathWithExtension(string extension)
+        {
+            var path = Path.GetTempPath();
+            var fileName = Path.ChangeExtension(path, extension);
+            return Path.Combine(path, fileName);
+        }
 
         protected override void avatarLoaded() { }
     }
