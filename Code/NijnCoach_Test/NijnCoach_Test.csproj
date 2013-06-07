@@ -63,7 +63,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\ExposureSessionTest.cs" />
-    <Compile Include="Model\ExpTimeStamp.cs" />
     <Compile Include="Model\ExpTimeStampTest.cs" />
     <Compile Include="View\Avatar\MultipleAvatarTest.cs" />
     <Compile Include="View\TherapistGUI\TherapistGUITestMCViaOpenAndComment.cs" />
