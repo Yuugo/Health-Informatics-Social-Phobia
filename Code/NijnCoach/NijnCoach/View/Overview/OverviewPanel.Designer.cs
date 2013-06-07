@@ -70,18 +70,18 @@ namespace NijnCoach.View.Overview
 											   new System.Drawing.Point(4, 22), new System.Drawing.Point(450, 6), new System.Drawing.Point(6, 41), new System.Drawing.Point(6, 64),
 											   new System.Drawing.Point(6, 18), new System.Drawing.Point(-4, 0), new System.Drawing.Point(12, 380), new System.Drawing.Point(292, 17) };
             String[] names = { "buttonHome", "previousSessionChart", "chartTabs", "previousSessionTab", "groupBoxRadiobuttonsPreviousSession", "gsrRadiobuttonPreviousSession",
-								"hrRadiobuttonPreviousSession", "sudRadiobuttonPreviousSession", "overviewTab", "groupBoxRadiobuttonsOverview", "gsrRadiobuttonOverview",
-								"overviewChart", "commentPanel", "PreviousSessionSelectBox"};
+								"hrRadiobuttonPreviousSession", "sudRadiobuttonPreviousSession", "overviewTab", "groupBoxRadiobuttonsOverview", "gsrRadiobuttonOverview", 
+								"sudRadiobuttonOverview", "hrRadiobuttonOverview", "overviewChart", "commentPanel", "PreviousSessionSelectBox"};
             System.Drawing.Size[] sizes = { new System.Drawing.Size(75, 23), new System.Drawing.Size(550, 300), new System.Drawing.Size(560, 330), new System.Drawing.Size(560, 330),
 											new System.Drawing.Size(97, 84), new System.Drawing.Size(48, 17), new System.Drawing.Size(69, 17), new System.Drawing.Size(48, 17),
 											new System.Drawing.Size(560, 330), new System.Drawing.Size(97, 84), new System.Drawing.Size(48, 17), new System.Drawing.Size(69, 17), 
 											new System.Drawing.Size(48, 17), new System.Drawing.Size(550, 300), new System.Drawing.Size(960, 100), new System.Drawing.Size(125, 21)};
-			int[] tabIndeces = {4, 3, 4, 0, 7, 5, 6, 4, 1, 8, 5, 0, 6};
+			int[] tabIndeces = {4, 3, 4, 0, 7, 5, 6, 4, 1, 8, 5, 6, 4, 0, 6, 1};
 			String[] texts = {"Home",  "Previous Session", null, "Previous Session", "Show", "GSR", "Heartrate", "SUD", "Overview Progress", "Show", "GSR", "Heartrate", "SUD", "Overview", 
 						null, null};
-			System.EventHandler[] eventHandlers = {this.homeEventHandler, null, chartTabs_SelectedIndexChanged, null, null, this.gsrRadiobuttonPreviousSession_CheckedChanged, this.hrRadiobuttonPreviousSession_CheckedChanged,
-								this.sudRadiobuttonPreviousSession_CheckedChanged, null, this.gsrRadiobuttonOverview_CheckedChanged, this.gsrRadiobuttonOverview_CheckedChanged, 
-								this.hrRadiobuttonOverview_CheckedChanged, null, null, PreviousSessionSelectBox_SelectedIndexChanged};
+			System.EventHandler[] eventHandlers = {this.homeEventHandler, null, chartTabs_SelectedIndexChanged, null, null, this.gsrRadiobuttonPreviousSession_CheckedChanged,this.hrRadiobuttonOverview_CheckedChanged,
+                                this.sudRadiobuttonPreviousSession_CheckedChanged, null, null, this.gsrRadiobuttonOverview_CheckedChanged,
+                                this.hrRadiobuttonOverview_CheckedChanged, this.sudRadiobuttonOverview_CheckedChanged, null, null, PreviousSessionSelectBox_SelectedIndexChanged};
 			for(int i=0; i<controls.Length;i++)
 			{
 				GUIHelper.setElement(ref controls[i], locations[i], names[i], sizes[i], tabIndeces[i], texts[i]);
