@@ -53,10 +53,9 @@ namespace NijnCoach.View.Questionnaire
             if (rb != null && rb.Checked)
             {
                 _entry.theAnswer = (String)rb.Tag;
-                Console.WriteLine("rb.tag = " + rb.Tag);
                 foreach (Option o in _entry.options)
                 {
-                    if (o.tag.Equals(rb.Tag)) AvatarControl.setAvatarEmotionViaString(o.emotion);
+                    if (o.tag.Equals(rb.Tag)) AvatarControl.setAvatarEmotionViaString(o.emotion, 10);
                 }
             }
         }

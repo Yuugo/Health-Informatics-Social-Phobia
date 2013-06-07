@@ -123,13 +123,13 @@ namespace NijnCoach.View.Questionnaire
             {
                 panelQuestionIntern = new OpenQuestionPanel(panelQuestion.Width, panelQuestion.Height);
             }
-            AvatarControl.setAvatarEmotionViaEntry(entry);
+            
             panelQuestionIntern.entry = entry;
             panelQuestion.Controls.Add(panelQuestionIntern);
             playFromDB();
             panelQuestion.ResumeLayout();
 
-            
+            AvatarControl.setAvatarEmotionViaEntry(entry, 10);
         }
 
         /// <summary>

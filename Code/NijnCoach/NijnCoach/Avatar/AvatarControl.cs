@@ -133,38 +133,51 @@ namespace NijnCoach.Avatar
 
         public static void setAvatarEmotionViaString(String emotion)
         {
-            switch (emotion)
+            setAvatarEmotionViaString(emotion, 1);
+        }
+
+        public static void setAvatarEmotionViaString(String emotion, int length)
+        {
+            for (int i = 0; i < length; i++)
             {
-                case "Sad":
-                    sad();
-                    break;
-                case "Happy":
-                    happy();
-                    break;
-                case "Angry":
-                    angry();
-                    break;
-                case "Disgust":
-                    disgust();
-                    break;
-                case "Fear":
-                    fear();
-                    break;
-                case "Run":
-                    run();
-                    break;
-                case "Sit":
-                    sit();
-                    break;
-                case "Stand":
-                    stand();
-                    break;
-                case "Surprise":
-                    surprise();
-                    break;
-                default:
-                    break;
+                switch (emotion)
+                {
+                    case "Sad":
+                        sad();
+                        break;
+                    case "Happy":
+                        happy();
+                        break;
+                    case "Angry":
+                        angry();
+                        break;
+                    case "Disgust":
+                        disgust();
+                        break;
+                    case "Fear":
+                        fear();
+                        break;
+                    case "Run":
+                        run();
+                        break;
+                    case "Sit":
+                        sit();
+                        break;
+                    case "Stand":
+                        stand();
+                        break;
+                    case "Surprise":
+                        surprise();
+                        break;
+                    default:
+                        break;
+                }
             }
+        }
+
+        public static void setAvatarEmotionViaEntry(IEntry entry, int length)
+        {
+            setAvatarEmotionViaString(entry.Emotion(), length);
         }
 
         public static void setAvatarEmotionViaEntry(IEntry entry)
