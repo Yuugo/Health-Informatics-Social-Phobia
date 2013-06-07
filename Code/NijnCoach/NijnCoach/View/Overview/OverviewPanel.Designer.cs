@@ -34,9 +34,6 @@ namespace NijnCoach.View.Overview
         protected override void InitializeComponent()
         {
             base.InitializeComponent();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea previousSessionChartArea = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea overviewChartArea = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Title overviewTitle = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.buttonHome = new System.Windows.Forms.Button();
             this.previousSessionChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.previousSessionTitle = new System.Windows.Forms.DataVisualization.Charting.Title();
@@ -82,17 +79,17 @@ namespace NijnCoach.View.Overview
 			int[] tabIndeces = {4, 3, 4, 0, 7, 5, 6, 4, 1, 8, 5, 0, 6};
 			String[] texts = {"Home",  "Previous Session", null, "Previous Session", "Show", "GSR", "Heartrate", "SUD", "Overview Progress", "Show", "GSR", "Heartrate", "SUD", "Overview", 
 						null, null};
-			System.EventHandlers[] eventHandlers = {this.homeEventHandler, null, chartTabs_SelectedIndexChanged, null, null, this.gsrRadiobuttonPreviousSession_CheckedChanged, this.hrRadiobuttonPreviousSession_CheckedChanged,
+			System.EventHandler[] eventHandlers = {this.homeEventHandler, null, chartTabs_SelectedIndexChanged, null, null, this.gsrRadiobuttonPreviousSession_CheckedChanged, this.hrRadiobuttonPreviousSession_CheckedChanged,
 								this.sudRadiobuttonPreviousSession_CheckedChanged, null, this.gsrRadiobuttonOverview_CheckedChanged, this.gsrRadiobuttonOverview_CheckedChanged, 
 								this.hrRadiobuttonOverview_CheckedChanged, null, null, PreviousSessionSelectBox_SelectedIndexChanged};
 			for(int i=0; i<controls.Length;i++)
 			{
-				GUIHelper.setElement(ref controls[i], locations[i], names[i], sizes[i], tabIndeces[i], buttonText[i]);
+				GUIHelper.setElement(ref controls[i], locations[i], names[i], sizes[i], tabIndeces[i], texts[i]);
 				if(eventHandlers[i] != null)
 				{
 					if(controls[i] is System.Windows.Forms.RadioButton)
 					{
-						controls[i].CheckedChanged += new System.EventHandler(eventHandlers[i]);
+						(controls[i] as System.Windows.Forms.RadioButton).CheckedChanged += new System.EventHandler(eventHandlers[i]);
 					}
 					if(controls[i] is System.Windows.Forms.Button)
 					{
@@ -101,70 +98,26 @@ namespace NijnCoach.View.Overview
 				}
 				if(controls[i] is System.Windows.Forms.RadioButton)
 				{
-					controls[i].gsrRadiobuttonPreviousSession.AutoSize = true;
-					controls[i].gsrRadiobuttonPreviousSession.UseVisualStyleBackColor = true;
+					controls[i].AutoSize = true;
+					(controls[i] as System.Windows.Forms.RadioButton).UseVisualStyleBackColor = true;
 				}
 			}
             
             initPreviousSessionChart();
             initChartTabs();
             initPreviousSessionTab();
-            // 
-            // groupBoxRadiobuttonsPreviousSession
-            // 
-            this.groupBoxRadiobuttonsPreviousSession.Controls.Add(this.gsrRadiobuttonPreviousSession);
-            this.groupBoxRadiobuttonsPreviousSession.Controls.Add(this.hrRadiobuttonPreviousSession);
-            this.groupBoxRadiobuttonsPreviousSession.Controls.Add(this.sudRadiobuttonPreviousSession);
-            this.groupBoxRadiobuttonsPreviousSession.TabStop = false;
-            // 
-            // sudRadiobuttonPreviousSession
-            // 
-            this.sudRadiobuttonPreviousSession.Checked = true;
-            this.sudRadiobuttonPreviousSession.TabStop = true;
-            // 
-            // overviewTab
-            // 
-            this.overviewTab.BackColor = System.Drawing.Color.White;
-            this.overviewTab.Controls.Add(this.groupBoxRadiobuttonsOverview);
-            this.overviewTab.Controls.Add(this.overviewChart);
-            this.overviewTab.Padding = new System.Windows.Forms.Padding(3);
-            // 
-            // groupBoxRadiobuttonsOverview
-            // 
-            this.groupBoxRadiobuttonsOverview.Controls.Add(this.gsrRadiobuttonOverview);
-            this.groupBoxRadiobuttonsOverview.Controls.Add(this.hrRadiobuttonOverview);
-            this.groupBoxRadiobuttonsOverview.Controls.Add(this.sudRadiobuttonOverview);
-            this.groupBoxRadiobuttonsOverview.TabStop = false;
-            // 
-            // sudRadiobuttonOverview
-            // 
-            this.sudRadiobuttonOverview.AutoSize = true;
-            this.sudRadiobuttonOverview.TabStop = true;
-            // 
-            // overviewChart
-            // 
-            overviewChartArea.AxisX.MajorGrid.Enabled = false;
-            overviewChartArea.AxisY.MajorGrid.Enabled = false;
-            overviewChartArea.Name = "overviewChartArea";
-            this.overviewChart.ChartAreas.Add(overviewChartArea);
-            overviewTitle.Name = "overviewTitle";
-            overviewTitle.Text = "Overview Progress";
-            this.overviewChart.Titles.Add(overviewTitle);
-            // 
-            // commentPanel
-            // 
-            this.commentPanel.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.commentPanelIntern = new CommentPanel(commentPanel.Width, commentPanel.Height);
-            this.commentPanel.Controls.Add(commentPanelIntern);
-            // 
-            // PreviousSessionSelectBox
-            // 
-            this.PreviousSessionSelectBox.FormattingEnabled = true;
-            this.PreviousSessionSelectBox.SelectedIndexChanged += new System.EventHandler(PreviousSessionSelectBox_SelectedIndexChanged);
+            initGroupBoxRadiobuttonsPreviousSession();
+            initSudRadiobuttonPreviousSession();
+            initOverviewTab();
+            initGroupBoxRadiobuttonsOverview();
+            initSudRadiobuttonOverview();
+            initOverviewChart();
+            initCommentPanel();
+            initPreviousSessionSelectBox();
             // 
             // ExposureChartsForm
             // 
-			this.Controls.AddRange(new Control[] {this.PreviousSessionSelectBox, this.commentPanel, this._avatarPanel, this.chartTabs, this.buttonHome});
+			this.Controls.AddRange(new System.Windows.Forms.Control[] {this.PreviousSessionSelectBox, this.commentPanel, this._avatarPanel, this.chartTabs, this.buttonHome});
             this.Name = "ExposureChartsForm";
             this.Text = "ExposureChartsForm";
             ((System.ComponentModel.ISupportInitialize)(this.previousSessionChart)).EndInit();
@@ -181,9 +134,10 @@ namespace NijnCoach.View.Overview
         }
 
         #endregion
-
-		private initPreviousSessionChart()
+        #region
+        private void initPreviousSessionChart()
 		{
+            System.Windows.Forms.DataVisualization.Charting.ChartArea previousSessionChartArea = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
 			previousSessionChartArea.AxisX.Interval = 3D;
             previousSessionChartArea.AxisX.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Minutes;
             previousSessionChartArea.AxisX.LabelStyle.Format = "mm:ss";
@@ -196,7 +150,7 @@ namespace NijnCoach.View.Overview
             this.previousSessionChart.Titles.Add(previousSessionTitle);
 		}
 		
-		private initChartTabs()
+		private void initChartTabs()
 		{
 			this.chartTabs.Controls.Add(this.previousSessionTab);
             this.chartTabs.Controls.Add(this.overviewTab);
@@ -204,14 +158,77 @@ namespace NijnCoach.View.Overview
             this.chartTabs.SelectedIndexChanged += new System.EventHandler(chartTabs_SelectedIndexChanged);
 		}
 		
-		private initPreviousSessionTab()
+		private void initPreviousSessionTab()
 		{
 			this.previousSessionTab.BackColor = System.Drawing.Color.White;
             this.previousSessionTab.Controls.Add(this.groupBoxRadiobuttonsPreviousSession);
             this.previousSessionTab.Controls.Add(this.previousSessionChart);
             this.previousSessionTab.Padding = new System.Windows.Forms.Padding(3);
 		}
-		
+
+        private void initGroupBoxRadiobuttonsPreviousSession()
+        {
+            this.groupBoxRadiobuttonsPreviousSession.Controls.Add(this.gsrRadiobuttonPreviousSession);
+            this.groupBoxRadiobuttonsPreviousSession.Controls.Add(this.hrRadiobuttonPreviousSession);
+            this.groupBoxRadiobuttonsPreviousSession.Controls.Add(this.sudRadiobuttonPreviousSession);
+            this.groupBoxRadiobuttonsPreviousSession.TabStop = false;
+        }
+
+        private void initSudRadiobuttonPreviousSession()
+        {
+            this.sudRadiobuttonPreviousSession.Checked = true;
+            this.sudRadiobuttonPreviousSession.TabStop = true;
+        }
+
+        private void initOverviewTab()
+        {
+            this.overviewTab.BackColor = System.Drawing.Color.White;
+            this.overviewTab.Controls.Add(this.groupBoxRadiobuttonsOverview);
+            this.overviewTab.Controls.Add(this.overviewChart);
+            this.overviewTab.Padding = new System.Windows.Forms.Padding(3);
+        }
+
+        private void initGroupBoxRadiobuttonsOverview()
+        {
+            this.groupBoxRadiobuttonsOverview.Controls.Add(this.gsrRadiobuttonOverview);
+            this.groupBoxRadiobuttonsOverview.Controls.Add(this.hrRadiobuttonOverview);
+            this.groupBoxRadiobuttonsOverview.Controls.Add(this.sudRadiobuttonOverview);
+            this.groupBoxRadiobuttonsOverview.TabStop = false;
+        }
+
+        private void initSudRadiobuttonOverview()
+        {
+            this.sudRadiobuttonOverview.AutoSize = true;
+            this.sudRadiobuttonOverview.TabStop = true;
+        }
+
+        private void initOverviewChart()
+        {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea overviewChartArea = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Title overviewTitle = new System.Windows.Forms.DataVisualization.Charting.Title();
+            overviewChartArea.AxisX.MajorGrid.Enabled = false;
+            overviewChartArea.AxisY.MajorGrid.Enabled = false;
+            overviewChartArea.Name = "overviewChartArea";
+            this.overviewChart.ChartAreas.Add(overviewChartArea);
+            overviewTitle.Name = "overviewTitle";
+            overviewTitle.Text = "Overview Progress";
+            this.overviewChart.Titles.Add(overviewTitle);
+        }
+
+        private void initCommentPanel()
+        {
+            this.commentPanel.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.commentPanelIntern = new CommentPanel(commentPanel.Width, commentPanel.Height);
+            this.commentPanel.Controls.Add(commentPanelIntern);
+
+        }
+
+        private void initPreviousSessionSelectBox()
+        {
+            this.PreviousSessionSelectBox.FormattingEnabled = true;
+            this.PreviousSessionSelectBox.SelectedIndexChanged += new System.EventHandler(PreviousSessionSelectBox_SelectedIndexChanged);
+        }
+        #endregion
         private System.Windows.Forms.DataVisualization.Charting.Chart previousSessionChart;
         private System.Windows.Forms.DataVisualization.Charting.Title previousSessionTitle;
         private System.Windows.Forms.TabControl chartTabs;

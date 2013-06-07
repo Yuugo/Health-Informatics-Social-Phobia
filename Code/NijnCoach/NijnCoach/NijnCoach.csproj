@@ -91,11 +91,15 @@
     <Compile Include="View\PatientFiles\UserCreate.Designer.cs">
       <DependentUpon>UserCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\TherapistGUI\HomePanel.cs" />
+    <Compile Include="View\TherapistGUI\HomePanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="View\TherapistGUI\HomePanel.Designer.cs">
       <DependentUpon>HomePanel.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\TherapistGUI\Qmaker.cs" />
+    <Compile Include="View\TherapistGUI\Qmaker.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="View\TherapistGUI\Qmaker.Designer.cs">
       <DependentUpon>Qmaker.cs</DependentUpon>
     </Compile>

@@ -20,6 +20,7 @@ namespace NijnCoach.View
 				control.Name = name;
 			}
             if(size != null)
+            {
 				control.Size = size;
 			}
 			control.TabIndex = tabIndex;
