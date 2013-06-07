@@ -55,7 +55,7 @@ namespace NijnCoach.View.Questionnaire
                 _entry.theAnswer = (String)rb.Tag;
                 foreach (Option o in _entry.options)
                 {
-                    if (o.tag.Equals(rb.Tag)) AvatarControl.setAvatarEmotionViaString(o.emotion, 10);
+                    if (o.tag.Equals(rb.Tag)) AvatarControl.setAvatarEmotionViaString(o.emotion, 10, 0.5);
                 }
             }
         }

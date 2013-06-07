@@ -129,7 +129,7 @@ namespace NijnCoach.View.Questionnaire
             playFromDB();
             panelQuestion.ResumeLayout();
 
-            AvatarControl.setAvatarEmotionViaEntry(entry, 10);
+            AvatarControl.setAvatarEmotionViaEntry(entry, 10, 0.5);
         }
 
         /// <summary>
