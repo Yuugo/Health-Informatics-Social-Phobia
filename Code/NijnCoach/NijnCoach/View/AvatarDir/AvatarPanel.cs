@@ -64,6 +64,7 @@ namespace NijnCoach.View.AvatarDir
             {
                 MessageBox.Show("An error occured while trying to start the avatar\nDoes the file C:\\ecoach\\ecoach-bart.exe exists?", "Error loading the avatar");
                 NijnCoach.View.Main.MainForm._loadAvatar = false;
+                _fullyLoaded = true;
                 return;
             }
             Task.WaitForInputIdle();
