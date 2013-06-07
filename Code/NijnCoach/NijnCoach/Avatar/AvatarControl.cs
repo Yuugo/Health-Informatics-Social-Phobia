@@ -10,6 +10,7 @@ using System.IO;
 using System.Web;
 using System.Net;
 using CookComputing.XmlRpc;
+using System.Threading;
 
 namespace NijnCoach.Avatar
 {
@@ -70,6 +71,7 @@ namespace NijnCoach.Avatar
 
     class AvatarControl
     {
+        private static Thread emotionThread;
 
         public static void surprise()
         {
@@ -137,6 +139,13 @@ namespace NijnCoach.Avatar
         }
 
         public static void setAvatarEmotionViaString(String emotion, int length)
+        {
+            if (emotionThread != null) emotionThread.Abort();
+            emotionThread = new Thread(() => setAvatarEmotionViaStringWithThread(emotion, length));
+            emotionThread.Start();
+        }
+
+        private static void setAvatarEmotionViaStringWithThread(String emotion, int length)
         {
             for (int i = 0; i < length; i++)
             {
