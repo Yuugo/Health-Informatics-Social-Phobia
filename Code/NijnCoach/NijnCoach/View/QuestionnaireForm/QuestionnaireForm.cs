@@ -123,56 +123,13 @@ namespace NijnCoach.View.Questionnaire
             {
                 panelQuestionIntern = new OpenQuestionPanel(panelQuestion.Width, panelQuestion.Height);
             }
-            Console.WriteLine("emotion = " + entry.Emotion());
+            AvatarControl.setAvatarEmotionViaEntry(entry);
             panelQuestionIntern.entry = entry;
             panelQuestion.Controls.Add(panelQuestionIntern);
             playFromDB();
             panelQuestion.ResumeLayout();
 
             
-        }
-
-        private void setAvatarEmotion(IEntry entry)
-        {
-            Console.WriteLine("begin -- happy");
-            AvatarControl.happy();
-
-            switch (entry.Emotion())
-            {
-                case "Sad":
-                    AvatarControl.happy();
-                    break;
-                case "Happy":
-                    AvatarControl.happy();
-                    break;
-                case "Angry":
-                    AvatarControl.angry();
-                    break;
-                case "Disgust":
-                    AvatarControl.disgust();
-                    break;
-                case "Fear":
-                    AvatarControl.fear();
-                    break;
-                case "Run":
-                    AvatarControl.run();
-                    break;
-                case "Sit":
-                    AvatarControl.sit();
-                    break;
-                case "Stand":
-                    AvatarControl.stand();
-                    break;
-                case "Surprise":
-                    AvatarControl.surprise();
-                    break;
-                default:
-                    Console.WriteLine("default -- happy");
-                    AvatarControl.happy();
-                    break;
-                    
-
-            }
         }
 
         /// <summary>

@@ -142,7 +142,7 @@ namespace NijnCoach.View.TherapistGUI
                 {
                     if (radioButton1.Checked == true)
                     {
-                        q.entries.Add(new OpenQuestion { question = textBox0.Text, audio = textBox9.Text, theAnswer = "" });
+                        q.entries.Add(new OpenQuestion { question = textBox0.Text, audio = textBox9.Text, theAnswer = "", emotion = comboBox1.Text });
                     }
                     if (radioButton2.Checked == true)
                     {

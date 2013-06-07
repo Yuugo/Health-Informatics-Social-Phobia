@@ -130,5 +130,46 @@ namespace NijnCoach.Avatar
             IStateName proxy = (IStateName)XmlRpcProxyGen.Create(typeof(IStateName));
             proxy.myspeakx(mp3name, duration);
         }
+
+        public static void setAvatarEmotionViaString(String emotion)
+        {
+            switch (emotion)
+            {
+                case "Sad":
+                    sad();
+                    break;
+                case "Happy":
+                    happy();
+                    break;
+                case "Angry":
+                    angry();
+                    break;
+                case "Disgust":
+                    disgust();
+                    break;
+                case "Fear":
+                    fear();
+                    break;
+                case "Run":
+                    run();
+                    break;
+                case "Sit":
+                    sit();
+                    break;
+                case "Stand":
+                    stand();
+                    break;
+                case "Surprise":
+                    surprise();
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        public static void setAvatarEmotionViaEntry(IEntry entry)
+        {
+            setAvatarEmotionViaString(entry.Emotion()); 
+        }
     }
 }
