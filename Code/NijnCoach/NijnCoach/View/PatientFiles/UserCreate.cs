@@ -120,11 +120,12 @@ namespace NijnCoach.View.PatientFiles
             radioButton1.Checked = true;
             textBox1.Text = "";
             textBox2.Text = "";
+            confirmPassBox.Text = "";
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            TherapistMain.main.replacePanel(new NijnCoach.View.Home.HomePanel());
+            TherapistMain.main.replacePanel(new NijnCoach.View.TherapistGUI.HomePanel());
         }
     }
 }

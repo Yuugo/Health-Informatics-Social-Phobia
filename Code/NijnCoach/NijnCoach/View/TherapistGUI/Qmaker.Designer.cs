@@ -342,9 +342,9 @@
             "Sad",
             "Angry",
             "Run",
-            "Sit",
-            "Stand",
-            "Surprise"});
+			"Sit",
+			"Stand",
+			"Surpise"});
             this.comboBox1.Location = new System.Drawing.Point(350, 319);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox1.Name = "comboBox1";
@@ -360,9 +360,9 @@
             "Sad",
             "Angry",
             "Run",
-            "Sit",
-            "Stand",
-            "Surprise"});
+			"Sit",
+			"Stand",
+			"Surpise"});
             this.comboBox2.Location = new System.Drawing.Point(350, 343);
             this.comboBox2.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox2.Name = "comboBox2";
@@ -379,9 +379,9 @@
             "Sad",
             "Angry",
             "Run",
-            "Sit",
-            "Stand",
-            "Surprise"});
+			"Sit",
+			"Stand",
+			"Surpise"});
             this.comboBox3.Location = new System.Drawing.Point(350, 368);
             this.comboBox3.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox3.Name = "comboBox3";
@@ -398,9 +398,9 @@
             "Sad",
             "Angry",
             "Run",
-            "Sit",
-            "Stand",
-            "Surprise"});
+			"Sit",
+			"Stand",
+			"Surpise"});
             this.comboBox4.Location = new System.Drawing.Point(350, 391);
             this.comboBox4.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox4.Name = "comboBox4";
@@ -417,9 +417,9 @@
             "Sad",
             "Angry",
             "Run",
-            "Sit",
-            "Stand",
-            "Surprise"});
+			"Sit",
+			"Stand",
+			"Surpise"});
             this.comboBox5.Location = new System.Drawing.Point(350, 414);
             this.comboBox5.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox5.Name = "comboBox5";
@@ -436,9 +436,9 @@
             "Sad",
             "Angry",
             "Run",
-            "Sit",
-            "Stand",
-            "Surprise"});
+			"Sit",
+			"Stand",
+			"Surpise"});
             this.comboBox6.Location = new System.Drawing.Point(350, 437);
             this.comboBox6.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox6.Name = "comboBox6";
@@ -455,9 +455,9 @@
             "Sad",
             "Angry",
             "Run",
-            "Sit",
-            "Stand",
-            "Surprise"});
+			"Sit",
+			"Stand",
+			"Surpise"});
             this.comboBox7.Location = new System.Drawing.Point(350, 458);
             this.comboBox7.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox7.Name = "comboBox7";
@@ -474,9 +474,9 @@
             "Sad",
             "Angry",
             "Run",
-            "Sit",
-            "Stand",
-            "Surprise"});
+			"Sit",
+			"Stand",
+			"Surpise"});
             this.comboBox8.Location = new System.Drawing.Point(350, 482);
             this.comboBox8.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox8.Name = "comboBox8";

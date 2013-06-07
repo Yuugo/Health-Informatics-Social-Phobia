@@ -171,24 +171,24 @@ namespace NijnCoach.Database
 
 		#region PatientSelectors
 
-        public static Patient getPatientByLastName(String name)
+        public static Sickpeople getPatientByLastName(String name)
         {
             NijnCoachEntities theEntities = new NijnCoachEntities();
-            Patient result = theEntities.Patients.Where(x => x.Lname == name).First<Patient>();
+            Sickpeople result = theEntities.Sickpeoples.Where(x => x.Lname == name).First<Sickpeople>();
             return result;
         }
 
-        public static Patient getPatientByFirstName(String name)
+        public static Sickpeople getPatientByFirstName(String name)
         {
             NijnCoachEntities theEntities = new NijnCoachEntities();
-            Patient result = theEntities.Patients.Where(x => x.Fname == name).First<Patient>();
+            Sickpeople result = theEntities.Sickpeoples.Where(x => x.Fname == name).First<Sickpeople>();
             return result;
         }
 
-        public static Patient getPatientByNumber(int number)
+        public static Sickpeople getPatientByNumber(int number)
         {
             NijnCoachEntities theEntities = new NijnCoachEntities();
-            Patient result = theEntities.Patients.Where(x => x.PatientNo == number).First<Patient>();
+            Sickpeople result = theEntities.Sickpeoples.Where(x => x.PatientNo == number).First<Sickpeople>();
             return result;
         }
         #endregion
@@ -391,6 +391,22 @@ namespace NijnCoach.Database
             catch (Exception e)
             {
                 MessageBox.Show(e.InnerException.ToString());
+            }
+        }
+
+        public static List<Sickpeople> getPatients()
+        {
+            NijnCoachEntities theEntities = new NijnCoachEntities();
+            
+            try
+            {
+                List<Sickpeople> patients= theEntities.Sickpeoples.Where(x => x.PatientNo == x.PatientNo).ToList<Sickpeople>();
+                return patients;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.InnerException.ToString());
+                return null;
             }
         }
     }

@@ -79,12 +79,6 @@
       <DependentUpon>LoginMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="View\GUIHelper.cs" />
-    <Compile Include="View\PatientFiles\CreateUser.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\PatientFiles\CreateUser.designer.cs">
-      <DependentUpon>CreateUser.cs</DependentUpon>
-    </Compile>
     <Compile Include="View\PatientFiles\UserCreate.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -96,6 +90,12 @@
     </Compile>
     <Compile Include="View\TherapistGUI\HomePanel.Designer.cs">
       <DependentUpon>HomePanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\TherapistGUI\PatientOverview.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="View\TherapistGUI\PatientOverview.Designer.cs">
+      <DependentUpon>PatientOverview.cs</DependentUpon>
     </Compile>
     <Compile Include="View\TherapistGUI\Qmaker.cs">
       <SubType>Component</SubType>
@@ -276,9 +276,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Overview\OverviewPanel.resx">
       <DependentUpon>OverviewPanel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\PatientFiles\CreateUser.resx">
-      <DependentUpon>CreateUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\TherapistGUI\Qmaker.resx">
       <DependentUpon>Qmaker.cs</DependentUpon>
