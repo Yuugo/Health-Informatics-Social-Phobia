@@ -5,9 +5,9 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Diagnostics;
 
-namespace NijnCoach.Exposure_data
+namespace NijnCoach.Model
 {
-    class ExpTimestamp
+    public class ExpTimestamp
     {
         private DateTime time;
         private int hr;
@@ -61,8 +61,7 @@ namespace NijnCoach.Exposure_data
 
             if (!match.Success)
             {
-                Console.WriteLine("Unable to read file");//fail
-                return null;
+                throw new System.ArgumentException("File is not in proper format", "stamp");
             }
 
             int hour = Convert.ToInt32(match.Groups["hour"].Value) - dt.Hour;

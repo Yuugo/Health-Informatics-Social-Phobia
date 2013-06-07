@@ -6,9 +6,9 @@ using System.Text;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
 
-namespace NijnCoach.Exposure_data
+namespace NijnCoach.Model
 {
-    class ReadExposureData
+    public class ReadExposureData
     {
         static Regex regex = new Regex(@"^.*(?<day>[0-9]{2})-(?<month>[0-9]{2})-(?<year>[0-9]{4})_(?<hour>[0-9]{2})(?<min>[0-9]{2})\.txt$");
 

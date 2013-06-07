@@ -5,14 +5,21 @@ using System.Linq;
 using System.Text;
 using NijnCoach.XMLclasses;
 
-namespace NijnCoach.Exposure_data
+namespace NijnCoach.Model
 {
-    class ExposureSession
+    public class ExposureSession
     {
         private DateTime date;
         private List<ExpTimestamp> data;
         public Comment comment { get; set; }
         private int index = 0;
+        public string Date
+        {
+            get
+            {
+                return date.ToShortDateString();
+            }
+        }
 
         public ExposureSession(DateTime date)
         {
@@ -32,12 +39,9 @@ namespace NijnCoach.Exposure_data
             return date;
         }
 
-        public string Date
+        public void addTimeStamp(ExpTimestamp st)
         {
-            get
-            {
-                return date.ToShortDateString();
-            }
+            this.data.Add(st);
         }
 
         public ExpTimestamp nextTimeStamp()
