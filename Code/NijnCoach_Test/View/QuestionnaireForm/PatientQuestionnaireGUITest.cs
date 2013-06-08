@@ -11,6 +11,7 @@ using NijnCoach.View.Questionnaire;
 using NijnCoach.XMLclasses;
 using NijnCoach;
 using System.Collections.Generic;
+using NijnCoach.View.Main;
 
 namespace NijnCoach_Test.View.QuestionnaireForm
 {
@@ -21,7 +22,7 @@ namespace NijnCoach_Test.View.QuestionnaireForm
         private XMLParser parser = null;
         private object[] _parameters = null;
         private String _assembly = "NijnCoach.exe";
-        private String _form = "NijnCoach.View.Questionnaire.QuestionnaireForm";
+        private String _form = "NijnCoach.View.Main.MainForm";
 
         public override object[] getParameters()
         {
@@ -43,8 +44,14 @@ namespace NijnCoach_Test.View.QuestionnaireForm
         {
             parser = new XMLParser();
             Questionnaire theForm = parser.readXMLFromFile(xmlFile);
-            _parameters = new object[2] {theForm, false};
+            _parameters = new object[1] {false};
             base.setUp();
+            MainForm.mainForm.replacePanel(new NijnCoach.View.Questionnaire.QuestionnaireForm(false));
+        }
+
+        protected override Form run()
+        {
+            return MainForm.mainForm;
         }
 
         [Test]
