@@ -1,22 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using NijnCoach.Database;
 using System.Security.Cryptography;
+using NijnCoach.View.TherapistGUI;
+using NijnCoach.View.Home;
+
 namespace NijnCoach.View.PatientFiles
 {
-    public partial class CreateUser : Form
+    public partial class UserCreate : Panel
     {
         Sickpeople pat = new Sickpeople();
 
-        public CreateUser()
+        public UserCreate()
         {
             InitializeComponent();
+            //TherapistMain.main.replacePanel(new HomePanel());
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -100,10 +103,13 @@ namespace NijnCoach.View.PatientFiles
                     MessageBox.Show("Empty field(s)");
                     insertPatientFiles(dialog, pass);
                 }
-                else if (numbers == false)
+                else
                 {
-                    MessageBox.Show("Not all number fields are filled in correctly");
-                    insertPatientFiles(dialog, pass);
+                    if (numbers == false)
+                    {
+                        MessageBox.Show("Not all number fields are filled in correctly");
+                        insertPatientFiles(dialog, pass);
+                    }
                 }
             }
 
@@ -112,24 +118,17 @@ namespace NijnCoach.View.PatientFiles
         public void reset()
         {
             radioButton1.Checked = true;
-            textBox1.Clear();
-            textBox2.Clear();
-            confirmPassBox.Clear();
-        }
-
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
-        {
-
+            textBox1.Text = "";
+            textBox2.Text = "";
+            confirmPassBox.Text = "";
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            TherapistMain.main.replacePanel(new NijnCoach.View.TherapistGUI.HomePanel());
         }
     }
 }
+
+
+

@@ -6,33 +6,31 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using NijnCoach.View.Greet;
+using NijnCoach.View.Home;
 
-namespace NijnCoach.View.Main
+namespace NijnCoach.View.TherapistGUI
 {
-    public partial class MainForm : Form
+    public partial class TherapistMain : Form
     {
 
-       private static MainForm _mainForm;
-       //For Testing and debug purposes
-       public static Boolean _loadAvatar = true;
+        private static TherapistMain _main;
 
-       private MainForm(Boolean _loadAvatar = true)
-       {
-           InitializeComponent();
-           replacePanel(new GreetPanel(_loadAvatar));
-       }
+        private TherapistMain()
+        {
+            InitializeComponent();
+            replacePanel(new HomePanel());
+        }
 
-       public static MainForm mainForm
-       {
-          get 
-          {
-              if (_mainForm == null)
-             {
-                 _mainForm = new MainForm(_loadAvatar);
-             }
-              return _mainForm;
-          }
+        public static TherapistMain main
+        {
+            get
+            {
+                if (_main == null)
+                {
+                    _main = new TherapistMain();
+                }
+                return _main;
+            }
         }
 
         public void replacePanel(Panel panel)
@@ -51,5 +49,6 @@ namespace NijnCoach.View.Main
                 outerPanel.Controls.Add(innerPanel);
             }
         }
+
     }
 }

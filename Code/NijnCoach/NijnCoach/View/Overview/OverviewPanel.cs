@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
-using NijnCoach.Exposure_data;
 using NijnCoach.XMLclasses;
 using System.Diagnostics;
 using System.Threading;
@@ -16,6 +15,7 @@ using NijnCoach.View.AvatarDir;
 using NijnCoach.View.Main;
 using NijnCoach.View.Questionnaire;
 using NijnCoach.View.Home;
+using NijnCoach.Exposure_data;
 
 
 namespace NijnCoach.View.Overview

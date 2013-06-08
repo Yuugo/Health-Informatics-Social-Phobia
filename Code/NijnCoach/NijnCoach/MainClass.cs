@@ -11,8 +11,10 @@ using NijnCoach.View.PatientFiles;
 
 namespace NijnCoach
 {
-    class MainClass
+    public static class MainClass
     {
+        public static int userNo { get; set; }
+
         public static void InactiveMain(String[] args)
         {
             //XMLParser parser = new XMLParser();
@@ -20,7 +22,7 @@ namespace NijnCoach
         }
 
         /// <summary>
-        /// The main entry point for the application.
+        /// The main entry point for the application.s
         /// </summary>
         [STAThread]
         static void Main()
@@ -28,11 +30,14 @@ namespace NijnCoach
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new QuestionnaireForm());
-
+            //Application.Run(new TherapistGUI());
             //Application.Run(new NijnCoach.View.PatientFiles.PatientFiles());
             //Application.Run(new saveFileDialog());
-            //Application.Run(new NijnCoach.View.Main.LoginMenu());
-            Application.Run(NijnCoach.View.Main.MainForm.mainForm);
+            //Application.Run(new PatientFiles());
+            
+            Application.Run(new LoginMenu());
+            //userNo = 4;
+            //Application.Run(MainForm.mainForm);
 
         }
     }

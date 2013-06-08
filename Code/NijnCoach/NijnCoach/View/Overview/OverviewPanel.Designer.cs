@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Threading;
 using NijnCoach.View.Questionnaire;
+using System;
 namespace NijnCoach.View.Overview
 {
     partial class OverviewPanel
@@ -64,6 +65,29 @@ namespace NijnCoach.View.Overview
             // 
             // buttonHome
             // 
+            System.Windows.Forms.Control[] controls = {buttonHome, previousSessionChart, chartTabs, previousSessionTab, groupBoxRadiobuttonsPreviousSession, gsrRadiobuttonPreviousSession,
+                hrRadiobuttonPreviousSession, sudRadiobuttonPreviousSession, overviewTab, groupBoxRadiobuttonsOverview, gsrRadiobuttonOverview, hrRadiobuttonOverview, sudRadiobuttonOverview,
+                overviewChart, commentPanel, PreviousSessionSelectBox};
+            System.Drawing.Point[] locations = {new System.Drawing.Point(6, 12),
+                                               new System.Drawing.Point(0, 0),
+                                               new System.Drawing.Point(12, 45),
+                                               new System.Drawing.Point(4, 22),
+                                               new System.Drawing.Point(450, 6),
+                                               new System.Drawing.Point(6, 41),
+                                               new System.Drawing.Point(6, 64),
+                                               new System.Drawing.Point(6, 18),
+                                               new System.Drawing.Point(4, 22),
+                                               new System.Drawing.Point(450, 6),
+                                               new System.Drawing.Point(6, 41),
+                                               new System.Drawing.Point(6, 64),
+                                               new System.Drawing.Point(6, 18),
+                                               new System.Drawing.Point(-4, 0),
+                                               new System.Drawing.Point(12, 380),
+                                               new System.Drawing.Point(292, 17) };
+            String[] names = { "buttonHome" };
+            System.Drawing.Size[] sizes = { new System.Drawing.Size(75, 23) };
+
+
             this.buttonHome.Location = new System.Drawing.Point(6, 12);
             this.buttonHome.Name = "buttonHome";
             this.buttonHome.Size = new System.Drawing.Size(75, 23);
