@@ -51,6 +51,7 @@ namespace NijnCoach.View.Overview
             // Retrieve all the session data from the database
             this.exposureSessions = getAllSessionsFromDatabase(); 
             // Make the sessions selectable in the selection box
+            this.PreviousSessionSelectBox.BindingContext = new BindingContext();
             this.PreviousSessionSelectBox.DataSource = this.exposureSessions;
             this.PreviousSessionSelectBox.DisplayMember = "Date";
             // Set the initial selected session to be the last one
