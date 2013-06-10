@@ -15,7 +15,7 @@ namespace NijnCoach.Model
         private int sud;
 
         private static Regex regexNoSUD = new Regex(@"^(?<hour>[0-9]{2}):(?<min>[0-9]{2}):(?<sec>[0-9]{2})\s+(?<hr>[0-9]+)\s+(?<gsr>[0-9]+).*$");
-        private static Regex regexSUD = new Regex(@"^[0-9]{2}:[0-9]{2}:[0-9]{2}\s+[0-9]+\s+[0-9]+\s+(?<sud>[0-9])\s*$");
+        private static Regex regexSUD = new Regex(@"^[0-9]{2}:[0-9]{2}:[0-9]{2}\s+[0-9]+\s+[0-9]+\s+(?<sud>[0-9]+)\s*$");
 
         public ExpTimestamp(DateTime time, int hr, int gsr)
             : this(time, hr, gsr, -1) { }

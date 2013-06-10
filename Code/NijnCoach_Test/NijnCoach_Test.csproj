@@ -64,6 +64,7 @@
   <ItemGroup>
     <Compile Include="Model\ExposureSessionTest.cs" />
     <Compile Include="Model\ExpTimeStampTest.cs" />
+    <Compile Include="Model\ReadExposureDataTest.cs" />
     <Compile Include="View\Avatar\MultipleAvatarTest.cs" />
     <Compile Include="View\TherapistGUI\TherapistGUITestMCViaOpenAndComment.cs" />
     <Compile Include="View\TherapistGUI\TherapistGUITestCommentViaOpenAndMC.cs" />
@@ -76,9 +77,7 @@
     <Compile Include="Model\XMLParserTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="app.config" />
     <None Include="NUnit\nunit-console-runner.dll" />
     <None Include="NUnit\nunit.framework.dll" />
     <None Include="NUnit\nunit.mocks.dll" />

@@ -10,9 +10,9 @@ namespace NijnCoach.Model
 {
     public class ReadExposureData
     {
-        static Regex regex = new Regex(@"^(?<day>[0-9]{2})-(?<month>[0-9]{2})-(?<year>[0-9]{4})_(?<hour>[0-9]{2})(?<min>[0-9]{2})\.txt$");
+        static Regex regex = new Regex(@"^(?<day>[0-9]{2})-(?<month>[0-9]{2})-(?<year>[0-9]{4})_(?<hour>[0-9]{2})(?<min>[0-9]{2})$");
 
-        public static ExposureSession ReadFile(string filename)
+        public static ExposureSession CreateExposureSession(string filename, string data)
         {
             DateTime dt = ExtractDateFromFilename(filename);
             
@@ -37,19 +37,16 @@ namespace NijnCoach.Model
         public static DateTime ExtractDateFromFilename(string filename)
         {
             Match match = regex.Match(filename);
-            if (match.Success)
+            if (!match.Success)
             {
-                int year =  Convert.ToInt32( match.Groups["year"].Value );
-                int month = Convert.ToInt32(match.Groups["month"].Value);
-                int day = Convert.ToInt32(match.Groups["day"].Value);
-                int hour = Convert.ToInt32(match.Groups["hour"].Value);
-                int min = Convert.ToInt32(match.Groups["min"].Value);
-                return new DateTime(year, month, day, hour, min, 00);
+                throw new ArgumentException("Wrong filename format");
             }
-            else
-            {
-                return new DateTime();
-            }
+            int year =  Convert.ToInt32( match.Groups["year"].Value);
+            int month = Convert.ToInt32(match.Groups["month"].Value);
+            int day = Convert.ToInt32(match.Groups["day"].Value);
+            int hour = Convert.ToInt32(match.Groups["hour"].Value);
+            int min = Convert.ToInt32(match.Groups["min"].Value);
+            return new DateTime(year, month, day, hour, min, 00);
         }
     }
 }

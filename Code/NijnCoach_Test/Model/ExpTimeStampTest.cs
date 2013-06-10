@@ -33,6 +33,17 @@ namespace NijnCoach_Test.Model
         }
 
         [Test]
+        public void validStampSUD10ReadTest()
+        {
+            string stamp = "15:00:01  90  900 10";
+            DateTime d = new DateTime(2013, 01, 01, 15, 00, 00);
+
+            ExpTimestamp testOb = ExpTimestamp.ReadExpTimestamp(stamp, d);
+
+            isRightTimeStamp(testOb, 10, 900, 90, new DateTime(2013, 01, 01, 00, 00, 01));
+        }
+
+        [Test]
         public void validStampOddTimeReadTest()
         {
             string stamp = "16:01:00  90  900";
