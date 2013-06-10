@@ -175,7 +175,7 @@ namespace NijnCoach.View.AvatarDir
                 if (task.Contains(NameECoach) || task.Contains(winviz))
                 {
                     try { Task.Kill(); }
-                    catch (Exception e) { }
+                    catch (Exception) { }
                 }
             }
         }

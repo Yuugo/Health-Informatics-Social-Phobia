@@ -112,7 +112,7 @@ namespace NijnCoach.Database
                 theEntities.SaveChanges();
                 return true;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 //MessageBox.Show(e.InnerException.ToString());
                 return false;
