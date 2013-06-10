@@ -72,40 +72,35 @@ namespace NijnCoach.Avatar
     class AvatarControl
     {
         private static Thread emotionThread;
+        private static IStateName proxy = (IStateName)XmlRpcProxyGen.Create(typeof(IStateName));
 
         public static void surprise(double intensity)
         {
-            IStateName proxy = (IStateName)XmlRpcProxyGen.Create(typeof(IStateName));
             proxy.surprisex(intensity);
         }
 
         public static void happy(double intensity)
         {
-            IStateName proxy = (IStateName)XmlRpcProxyGen.Create(typeof(IStateName));
             proxy.happyx(intensity);
         }
 
         public static void sad(double intensity)
         {
-            IStateName proxy = (IStateName)XmlRpcProxyGen.Create(typeof(IStateName));
             proxy.sadx(intensity);
         }
 
         public static void angry(double intensity)
         {
-            IStateName proxy = (IStateName)XmlRpcProxyGen.Create(typeof(IStateName));
             proxy.angryx(intensity);
         }
 
         public static void disgust(double intensity)
         {
-            IStateName proxy = (IStateName)XmlRpcProxyGen.Create(typeof(IStateName));
             proxy.disgustx(intensity);
         }
 
         public static void fear(double intensity)
         {
-            IStateName proxy = (IStateName)XmlRpcProxyGen.Create(typeof(IStateName));
             proxy.fearx(intensity);
         }
 
@@ -142,25 +137,22 @@ namespace NijnCoach.Avatar
 
         public static void sit()
         {
-            IStateName proxy = (IStateName)XmlRpcProxyGen.Create(typeof(IStateName));
             proxy.myanimation1();
         }
 
         public static void run()
         {
-            IStateName proxy = (IStateName)XmlRpcProxyGen.Create(typeof(IStateName));
+
             proxy.myanimation0();
         }
 
         public static void stand()
         {
-            IStateName proxy = (IStateName)XmlRpcProxyGen.Create(typeof(IStateName));
             proxy.myanimation2();
         }
 
         public static void speak(string mp3name, int duration)
         {
-            IStateName proxy = (IStateName)XmlRpcProxyGen.Create(typeof(IStateName));
             proxy.myspeakx(mp3name, duration);
         }
 
