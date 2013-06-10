@@ -12,6 +12,7 @@ using NijnCoach.XMLclasses;
 using NijnCoach;
 using System.Collections.Generic;
 using NijnCoach.View.TherapistGUI;
+using NijnCoach.View.Main;
 
 
 namespace NijnCoach_Test.View.TherapistGUI
@@ -41,40 +42,46 @@ namespace NijnCoach_Test.View.TherapistGUI
         [SetUp]
         public override void setUp()
         {
-            //Application.Run(new TherapistGUI());
             base.setUp();
+            RaiseEvent("innerPanel.button1", "Click", new EventArgs());
+        }
+
+        protected override Form run()
+        {
+            MainClass.userNo = 2;
+            return TherapistMain.main;
         }
 
         public virtual void clickOnOpenQuestion()
         {
-            RaiseEvent("radioButton1", "Click", new EventArgs());
+            RaiseEvent("innerPanel.radioButton1", "Click", new EventArgs());
         }
 
         public virtual void clickOnMCradioButton()
         {
-            RaiseEvent("radioButton2", "Click", new EventArgs());
+            RaiseEvent("innerPanel.radioButton2", "Click", new EventArgs());
         }
 
         public virtual void clickOnCommentradioButton()
         {
-            RaiseEvent("radioButton3", "Click", new EventArgs());
+            RaiseEvent("innerPanel.radioButton3", "Click", new EventArgs());
         }
 
         public virtual void clickOnAddButton()
         {
-            RaiseEvent("button2", "Click", new EventArgs());
+            RaiseEvent("innerPanel.button2", "Click", new EventArgs());
         }
 
         public void clickOnRemoveButton()
         {
-            RaiseEvent("button3", "Click", new EventArgs());
+            RaiseEvent("innerPanel.button3", "Click", new EventArgs());
         }
 
         public void checkForVisibleQuestionLabelsToNumber(int j)
         {
             for (int i = 1; i <= j; i++)
             {
-                Assert.IsTrue((bool)GetProperty("label" + i + ".Visible"));
+                Assert.IsTrue((bool)GetProperty("innerPanel.label" + i + ".Visible"));
             }     
         }
 
@@ -82,7 +89,7 @@ namespace NijnCoach_Test.View.TherapistGUI
         {
             for (int i = j; i <= 8; i++)
             {
-                Assert.IsFalse((bool)GetProperty("label" + i + ".Visible"));
+                Assert.IsFalse((bool)GetProperty("innerPanel.label" + i + ".Visible"));
             }
         }
 
@@ -90,7 +97,7 @@ namespace NijnCoach_Test.View.TherapistGUI
         {
             for (int i = 1; i <= j; i++)
             {
-                Assert.IsTrue((bool)GetProperty("textBox" + i + ".Visible"));
+                Assert.IsTrue((bool)GetProperty("innerPanel.textBox" + i + ".Visible"));
             }
         }
 
@@ -98,7 +105,7 @@ namespace NijnCoach_Test.View.TherapistGUI
         {
             for (int i = j; i <= 8; i++)
             {
-                Assert.IsFalse((bool)GetProperty("textBox" + i + ".Visible"));
+                Assert.IsFalse((bool)GetProperty("innerPanel.textBox" + i + ".Visible"));
             }
         }
 
@@ -106,7 +113,7 @@ namespace NijnCoach_Test.View.TherapistGUI
         {
             for (int i = 1; i <= j; i++)
             {
-                Assert.IsTrue((bool)GetProperty("comboBox" + i + ".Visible"));
+                Assert.IsTrue((bool)GetProperty("innerPanel.comboBox" + i + ".Visible"));
             }
         }
 
@@ -114,7 +121,7 @@ namespace NijnCoach_Test.View.TherapistGUI
         {
             for (int i = j; i <= 8; i++)
             {
-                Assert.IsFalse((bool)GetProperty("comboBox" + i + ".Visible"));
+                Assert.IsFalse((bool)GetProperty("innerPanel.comboBox" + i + ".Visible"));
             }
         }
 
@@ -122,16 +129,16 @@ namespace NijnCoach_Test.View.TherapistGUI
         [Test]
         public void testForVisibleAudioFrag()
         {
-            Assert.IsTrue((bool)GetProperty("button4.Visible"));
+            Assert.IsTrue((bool)GetProperty("innerPanel.button4.Visible"));
         }
 
         [Test]
         public void testForClearAudioButton()
         {
-            Object o = GetField("textBox9");
+            Object o = GetField("innerPanel.textBox9");
             ((TextBox)o).Text = "EEN RANDOM FILE";
-            RaiseEvent("button6", "Click", new EventArgs());
-            Assert.IsEmpty((String)GetProperty("textBox9.Text"));
+            RaiseEvent("innerPanel.button6", "Click", new EventArgs());
+            Assert.IsEmpty((String)GetProperty("innerPanel.textBox9.Text"));
         }
 
         #endregion
@@ -145,43 +152,43 @@ namespace NijnCoach_Test.View.TherapistGUI
         public void testForCorrectRadioButtonCheckedinOpen()
         {
             clickOnOpenQuestion();
-            Assert.IsTrue((bool) GetProperty("radioButton1.Checked"));
+            Assert.IsTrue((bool) GetProperty("innerPanel.radioButton1.Checked"));
         }
 
         [Test]
         public void testForLabelQisQuestioninOpen()
         {
             clickOnOpenQuestion();
-            Assert.AreEqual("Question", GetProperty("labelQ.Text"));
+            Assert.AreEqual("Question", GetProperty("innerPanel.labelQ.Text"));
         }
 
         [Test]
         public void testForEmptyQuestionBoxinOpen()
         {
             clickOnOpenQuestion();
-            Assert.IsEmpty((String) GetProperty("textBox0.Text"));
+            Assert.IsEmpty((String)GetProperty("innerPanel.textBox0.Text"));
         }
 
         [Test]
         public void testForInvisibleAnswerEmotionLabelinOpen()
         {
             clickOnOpenQuestion();
-            Assert.IsFalse((bool) GetProperty("label0.Visible"));
-            Assert.IsTrue((bool)GetProperty("label9.Visible"));
+            Assert.IsFalse((bool)GetProperty("innerPanel.label0.Visible"));
+            Assert.IsTrue((bool)GetProperty("innerPanel.label9.Visible"));
         }
 
         [Test]
         public void testForInvisibleAddButtoninOpen()
         {
             clickOnOpenQuestion();
-            Assert.IsFalse((bool) GetProperty("button2.Visible"));
+            Assert.IsFalse((bool) GetProperty("innerPanel.button2.Visible"));
         }
 
         [Test]
         public void testForInvisibleRemoveButtoninOpen()
         {
             clickOnOpenQuestion();
-            Assert.IsFalse((bool) GetProperty("button3.Visible"));
+            Assert.IsFalse((bool)GetProperty("innerPanel.button3.Visible"));
         }
 
         [Test]
@@ -220,14 +227,14 @@ namespace NijnCoach_Test.View.TherapistGUI
         public void testForCheckedMCradioButtonInMC()
         {
             clickOnMCradioButton();
-            Assert.IsTrue( (bool) GetProperty("radioButton2.Checked"));
+            Assert.IsTrue((bool)GetProperty("innerPanel.radioButton2.Checked"));
         }
 
         [Test]
         public void testForLabelQisQuestionInMC()
         {
             clickOnMCradioButton();
-            Assert.AreEqual("Question", GetProperty("labelQ.Text"));
+            Assert.AreEqual("Question", GetProperty("innerPanel.labelQ.Text"));
         }
 
         [Test]
@@ -279,14 +286,14 @@ namespace NijnCoach_Test.View.TherapistGUI
         public void testForVisibleAddButtonInMC()
         {
             clickOnMCradioButton();
-            Assert.IsTrue((bool)GetProperty("button2.Visible"));
+            Assert.IsTrue((bool)GetProperty("innerPanel.button2.Visible"));
         }
 
         [Test]
         public void testForVisibleRemoveButtonInMC()
         {
             clickOnMCradioButton();
-            Assert.IsTrue((bool)GetProperty("button3.Visible"));
+            Assert.IsTrue((bool)GetProperty("innerPanel.button3.Visible"));
         }
 
         [Test]
@@ -338,8 +345,8 @@ namespace NijnCoach_Test.View.TherapistGUI
         public void testForVisibleEmotionAnswerLabelInMC()
         {
             clickOnMCradioButton();
-            Assert.IsTrue((bool)GetProperty("label0.Visible"));
-            Assert.IsTrue((bool)GetProperty("label9.Visible"));
+            Assert.IsTrue((bool)GetProperty("innerPanel.label0.Visible"));
+            Assert.IsTrue((bool)GetProperty("innerPanel.label9.Visible"));
         }
 
 
@@ -352,43 +359,43 @@ namespace NijnCoach_Test.View.TherapistGUI
         public void testForCorrectRadioButtonCheckedinComment()
         {
             clickOnCommentradioButton();
-            Assert.IsTrue((bool)GetProperty("radioButton3.Checked"));
+            Assert.IsTrue((bool)GetProperty("innerPanel.radioButton3.Checked"));
         }
 
         [Test]
         public void testForLabelQisCommentinComment()
         {
             clickOnCommentradioButton();
-            Assert.AreEqual("Comment", GetProperty("labelQ.Text"));
+            Assert.AreEqual("Comment", GetProperty("innerPanel.labelQ.Text"));
         }
 
         [Test]
         public void testForEmptyQuestionBoxinComment()
         {
             clickOnCommentradioButton();
-            Assert.IsEmpty((String)GetProperty("textBox0.Text"));
+            Assert.IsEmpty((String)GetProperty("innerPanel.textBox0.Text"));
         }
 
         [Test]
         public void testForInvisibleAnswerEmotionLabelinComment()
         {
             clickOnCommentradioButton();
-            Assert.IsFalse((bool)GetProperty("label0.Visible"));
-            Assert.IsTrue((bool)GetProperty("label9.Visible"));
+            Assert.IsFalse((bool)GetProperty("innerPanel.label0.Visible"));
+            Assert.IsTrue((bool)GetProperty("innerPanel.label9.Visible"));
         }
 
         [Test]
         public void testForInvisibleAddButtoninComment()
         {
             clickOnCommentradioButton();
-            Assert.IsFalse((bool)GetProperty("button2.Visible"));
+            Assert.IsFalse((bool)GetProperty("innerPanel.button2.Visible"));
         }
 
         [Test]
         public void testForInvisibleRemoveButtoninComment()
         {
             clickOnCommentradioButton();
-            Assert.IsFalse((bool)GetProperty("button3.Visible"));
+            Assert.IsFalse((bool)GetProperty("innerPanel.button3.Visible"));
         }
 
         [Test]
@@ -423,23 +430,15 @@ namespace NijnCoach_Test.View.TherapistGUI
 
         #region Finish and Next Tests
 
-        [Ignore] //ignored because this now opens a new dialog for saving, this isnt tested in a gui test
-        [Test]
-        public void testForFinishQuestionWithoutQuestions()
-        {
-            RaiseEvent("button5", "Click", new EventArgs());
-            Assert.IsTrue(true);
-        }
-
         [Test]
         public void testForNextButton()
         {
             clickOnOpenQuestion();
-            Object o = GetField("textBox0");
+            Object o = GetField("innerPanel.textBox0");
             ((TextBox)o).Text = "Hallo";
-            RaiseEvent("button1", "Click", new EventArgs());
+            RaiseEvent("innerPanel.button1", "Click", new EventArgs());
 
-            Assert.IsEmpty((String)GetProperty("textBox0.Text"));
+            Assert.IsEmpty((String)GetProperty("innerPanel.textBox0.Text"));
         }
 
         #endregion

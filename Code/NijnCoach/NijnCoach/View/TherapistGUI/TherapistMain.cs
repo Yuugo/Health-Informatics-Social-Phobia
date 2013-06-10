@@ -25,7 +25,7 @@ namespace NijnCoach.View.TherapistGUI
         {
             get
             {
-                if (_main == null)
+                if (_main == null || _main.IsDisposed)
                 {
                     _main = new TherapistMain();
                 }
