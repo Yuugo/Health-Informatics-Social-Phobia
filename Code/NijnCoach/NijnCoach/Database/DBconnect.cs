@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using NijnCoach.XMLclasses;
 using System.Xml;
 using System.IO;
+using System.Security.Cryptography;
 
 namespace NijnCoach.Database
 {
@@ -123,41 +124,52 @@ namespace NijnCoach.Database
         /// </summary>
         /// <param name="audioFile">The desired audio file</param>
         /// <returns>Returns true if object was added, else false.</returns>
-        public static Boolean InsertSpeechFile(string audioFile)
+        public static Boolean InsertSpeechFile(string audioAsString, string naam, int part)
         {
             NijnCoachEntities theEntities = new NijnCoachEntities();
-            //zet audio bestand om in string
-            byte[] audio = File.ReadAllBytes(@audioFile);
-            string audioAsString = System.Convert.ToBase64String(audio);
-            string[] name = null;
-            //split de bestandnaam in stukken zodat alleen de naam van het bestand overblijft             
-            name = audioFile.Split('\\');
-            string naam = name.Last();
-            SpeechFile newSpeech = new SpeechFile();
+
+
+            AudioFile newSpeech = new AudioFile();
             newSpeech.Name = naam;
-            newSpeech.Encoding = audioAsString;
+            newSpeech.PartNo = part;
+            int songNumber;
+
+            //Oh god
             try
             {
-                theEntities.SpeechFiles.AddObject(newSpeech);
+                var dat = theEntities.AudioFiles.Where(x => x.Name.Equals(naam));
+                if (theEntities.AudioFiles.Count() == 0)
+                    songNumber = 1;
+                else if (dat.Count() != 0)
+                    songNumber = dat.First<AudioFile>().TrackNo;
+                else
+                {
+                    songNumber = theEntities.AudioFiles.OrderByDescending(u => u.TrackNo).First().TrackNo + 1;
+                }
+
+                newSpeech.TrackNo = songNumber;
+                newSpeech.Encoding = audioAsString;
+                theEntities.AudioFiles.AddObject(newSpeech);
                 theEntities.SaveChanges();
                 return true;
             }
             catch (Exception e)
             {
                 //kijkt of de exception duplicate is en dus nog wel geaccepteerd kan worden
-                string exc = e.InnerException.ToString();
+                Console.WriteLine(e.Message.ToString());
                 string[] except = null;
                 //split de exception in stukken             
-                except = exc.Split(' ');
+                except = e.Message.Split(' ');
                 if (except[2].Equals("Duplicate"))
                 {
                     return true;
                 }
+                MessageBox.Show(e.Message.ToString());
                 return false;
             }
         }
 
-        #region PatientSelectors
+		#region PatientSelectors
 
         public static Patient getPatientByLastName(String name)
         {
@@ -205,6 +217,7 @@ namespace NijnCoach.Database
             }
         }
 
+		
         /// <summary>
         /// Find the oldes, not filled in, questionnaire for the given patient.
         /// </summary>
@@ -235,13 +248,18 @@ namespace NijnCoach.Database
         /// </summary>
         /// <param name="name">Name of the audio File.</param>
         /// <returns>Returns the desired audio file as SpeechFile. Content is still encoded.</returns>
-        public static SpeechFile getSpeechFile(string name)
+        public static String getSpeechFile(string name)
         {
 
             try
             {
                 NijnCoachEntities theEntities = new NijnCoachEntities();
-                SpeechFile result = theEntities.SpeechFiles.Where(x => x.Name == name).First<SpeechFile>();
+                List<AudioFile> partList = theEntities.AudioFiles.Where(x => x.Name == name).ToList<AudioFile>();
+                String result = "";
+                foreach (AudioFile trackPart in partList)
+                {
+                    result += trackPart.Encoding;
+                }
                 return result;
             }
             catch (Exception e)
@@ -251,11 +269,6 @@ namespace NijnCoach.Database
             }
         }
 
-        /// <summary>
-        /// Get the speech audio to be used by the avatar.
-        /// </summary>
-        /// <param name="name">Name of the audio File.</param>
-        /// <returns>Returns the desired audio file as SpeechFile. Content is still encoded.</returns>
         public static SByte getUserNo(string name)
         {
 
@@ -271,6 +284,58 @@ namespace NijnCoach.Database
                 throw new FileNotFoundException();
             }
         }
+
+        public static bool getType(SByte userNo)
+        {
+
+            try
+            {
+                NijnCoachEntities theEntities = new NijnCoachEntities();
+                String result = theEntities.Users.Where(x => x.PatientNo == userNo).First<User>().Type;
+                if (result == "Therapist")
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.InnerException.ToString());
+                throw new FileNotFoundException();
+            }
+        }
+
+        /// <summary>
+        /// Get the userNo of user if pass and log in match
+        /// </summary>
+        /// <param name="name">Name of the user, password of the user</param>
+        /// <returns>Returns the number of the user</returns>
+        public static SByte getUser(string name,string password)
+        {
+            SByte result = -1;
+
+            MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
+            byte[] encode = Encoding.ASCII.GetBytes(password);
+            encode = md5.ComputeHash(encode);
+            String pass = Encoding.ASCII.GetString(encode);
+
+            try
+            {
+                NijnCoachEntities theEntities = new NijnCoachEntities();
+                IQueryable<User> users = theEntities.Users.Where(x => x.Username == name && x.Password == pass);
+                if (users.Count() != 0){
+                    result = users.First().PatientNo;
+                }
+                
+                return result;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.InnerException.ToString());
+                throw new FileNotFoundException();
+            }
+        }
+
 
 
         /// <summary>

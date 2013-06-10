@@ -212,13 +212,41 @@ namespace NijnCoach.View.TherapistGUI
             {
                 string audioPath = openFileDialog1.FileName.ToString();
                 //uploadt het bestand of geeft een aan dat er een probleem is met het file als het bestand niet upgeloadt kon worden
-                if (!DBConnect.InsertSpeechFile(audioPath))
+                //bassPlay(audioFile);
+                byte[] audio = File.ReadAllBytes(@audioPath);
+                string audioAsString = System.Convert.ToBase64String(audio);
+                List<string> audioSplit = Split(audioAsString, 1000000);
+                string[] name = null;
+
+                //split de bestandnaam in stukken zodat alleen de naam van het bestand overblijft             
+                name = audioPath.Split('\\');
+                string naam = name.Last();
+                for (int i = 0; i < audioSplit.Count; i++)
                 {
-                    MessageBox.Show("Problem with file");
-                    return false;
-                };
+
+                    if (!DBConnect.InsertSpeechFile(audioSplit[i], naam, i))
+                    {
+                        MessageBox.Show("Problem with file");
+                        return false;
+                    };
+                }
             }
             return true;
+        }
+
+        //split audio in parts van ongeveer 1mb
+        static List<string> Split(string str, int size)
+        {
+            List<string> spl = new List<string>();
+
+            for (int i = 0; i < str.Length; i += size)
+            {
+                if ((i + size) < str.Length)
+                    spl.Add(str.Substring(i, size));
+                else
+                    spl.Add(str.Substring(i));
+            }
+            return spl;
         }
 
         //maakt de textbox voor audio bestanden leeg

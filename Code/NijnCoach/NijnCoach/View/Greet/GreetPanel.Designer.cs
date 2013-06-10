@@ -1,4 +1,5 @@
-﻿namespace NijnCoach.View.Greet
+﻿using System.Windows.Forms;
+namespace NijnCoach.View.Greet
 {
     partial class GreetPanel
     {
@@ -36,36 +37,26 @@
             // 
             // buttonContinue
             // 
-            this.buttonContinue.Location = new System.Drawing.Point(370, 400);
-            this.buttonContinue.Name = "buttonContinue";
-            this.buttonContinue.Size = new System.Drawing.Size(185, 30);
-            this.buttonContinue.TabIndex = 0;
-            this.buttonContinue.Text = "Continue to questionnaire -->";
+            GUIHelper.setElement(ref this.buttonContinue, new System.Drawing.Point(370, 400), "buttonContinue", new System.Drawing.Size(185, 30),
+                0, "Continue to questionnaire -->", false);
             this.buttonContinue.UseVisualStyleBackColor = true;
-            this.buttonContinue.Enabled = false;
             this.buttonContinue.Click += new System.EventHandler(continueEventHandler);
             // 
             // buttonHome
             // 
-            this.buttonHome.Location = new System.Drawing.Point(6, 12);
-            this.buttonHome.Name = "buttonHome";
-            this.buttonHome.Size = new System.Drawing.Size(75, 23);
-            this.buttonHome.TabIndex = 4;
-            this.buttonHome.Text = "Home";
+            GUIHelper.setElement(ref this.buttonHome, new System.Drawing.Point(6, 12), "buttonHome", new System.Drawing.Size(75, 23),
+                4, "Home", false);
             this.buttonHome.UseVisualStyleBackColor = true;
-            this.buttonHome.Enabled = false;
             this.buttonHome.Click += new System.EventHandler(this.homeEventHandler);
             // 
             // AvatarContainer
             // 
-            this.Controls.Add(this.buttonContinue);
-            this.Controls.Add(this.buttonHome);
+            this.Controls.AddRange(new Control[] { this.buttonContinue, this.buttonHome });
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.Button buttonContinue;
-        private System.Windows.Forms.Button buttonHome;
+        private System.Windows.Forms.Button buttonContinue, buttonHome;
     }
 }

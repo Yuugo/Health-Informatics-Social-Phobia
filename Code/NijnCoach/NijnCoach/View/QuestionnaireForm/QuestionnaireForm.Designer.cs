@@ -39,7 +39,6 @@ namespace NijnCoach.View.Questionnaire
             this.buttonNext = new System.Windows.Forms.Button();
             this.buttonHome = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
-            this.smile = new System.Windows.Forms.Button();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.SuspendLayout();
             // 
@@ -100,16 +99,6 @@ namespace NijnCoach.View.Questionnaire
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.saveEventHandler);
             // 
-            // smile
-            // 
-            this.smile.Location = new System.Drawing.Point(895, 90);
-            this.smile.Name = "smile";
-            this.smile.Size = new System.Drawing.Size(75, 23);
-            this.smile.TabIndex = 6;
-            this.smile.Text = "Smile";
-            this.smile.UseVisualStyleBackColor = true;
-            this.smile.Click += new System.EventHandler(this.button1_Click);
-            // 
             // openFileDialog
             // 
             this.openFileDialog.FileName = "";
@@ -118,7 +107,6 @@ namespace NijnCoach.View.Questionnaire
             // QuestionnaireForm
             
             this.ClientSize = new System.Drawing.Size(982, 487);
-            this.Controls.Add(this.smile);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.buttonHome);
             this.Controls.Add(this.panelQuestion);
@@ -139,7 +127,6 @@ namespace NijnCoach.View.Questionnaire
         private System.Windows.Forms.ProgressBar progressBar;
         private System.Windows.Forms.Button buttonHome;
         private System.Windows.Forms.Button buttonSave;
-        private System.Windows.Forms.Button smile;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
     }
 }

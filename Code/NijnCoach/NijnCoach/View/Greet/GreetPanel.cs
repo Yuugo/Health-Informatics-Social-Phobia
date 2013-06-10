@@ -16,8 +16,10 @@ namespace NijnCoach.View.Greet
 {
     public partial class GreetPanel : AvatarContainer
     {
+        private Boolean _loadAvatar = true;
         public GreetPanel(Boolean _loadAvatar = true) : base(_loadAvatar)
         {
+			this._loadAvatar = _loadAvatar;
         }
 
         protected override void avatarLoaded()
@@ -32,12 +34,12 @@ namespace NijnCoach.View.Greet
             //TODO: Fetch questionnaire from database
             //XMLParser parser = new XMLParser();
             //MainForm.mainForm.replacePanel(new QuestionnaireForm(parser.readXMLFromFile("writeTest.xml")));
-            MainForm.mainForm.replacePanel(new QuestionnaireForm());
+            MainForm.mainForm.replacePanel(new QuestionnaireForm(_loadAvatar));
         }
 
         private void homeEventHandler(object sender, EventArgs e)
         {
-            MainForm.mainForm.replacePanel(new HomePanel());
+            MainForm.mainForm.replacePanel(new HomePanel(_loadAvatar));
         }
     }
 }

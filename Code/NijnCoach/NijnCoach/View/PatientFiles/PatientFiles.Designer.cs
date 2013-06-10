@@ -214,7 +214,7 @@
             this.textBox3.Location = new System.Drawing.Point(190, 154);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(58, 22);
-            this.textBox3.TabIndex = 20;
+            this.textBox3.TabIndex = 11;
             // 
             // PatientFiles
             // 

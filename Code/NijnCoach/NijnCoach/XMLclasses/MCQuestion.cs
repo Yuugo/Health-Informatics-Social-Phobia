@@ -14,11 +14,24 @@ namespace NijnCoach.XMLclasses
         [XmlElement("audio")]
         public String audio { get; set; }
 
+        [XmlElement("emotion")]
+        public String emotion { get; set; }
+
         //[XML] logic done inside the Option class.
         [XmlArray]
         public List<Option> options { get; set; }
 
         [XmlElement("theAnswer")]
         public String theAnswer { get; set; }
+
+        public String Audio()
+        {
+            return audio;
+        }
+
+        public String Emotion()
+        {
+            return emotion;
+        }
     }
 }

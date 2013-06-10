@@ -160,6 +160,22 @@ namespace NijnCoach.Database
             }
         }
         private ObjectSet<Sickpeople> _Sickpeoples;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<AudioFile> AudioFiles
+        {
+            get
+            {
+                if ((_AudioFiles == null))
+                {
+                    _AudioFiles = base.CreateObjectSet<AudioFile>("AudioFiles");
+                }
+                return _AudioFiles;
+            }
+        }
+        private ObjectSet<AudioFile> _AudioFiles;
 
         #endregion
 
@@ -212,6 +228,14 @@ namespace NijnCoach.Database
         {
             base.AddObject("Sickpeoples", sickpeople);
         }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the AudioFiles EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToAudioFiles(AudioFile audioFile)
+        {
+            base.AddObject("AudioFiles", audioFile);
+        }
 
         #endregion
 
@@ -220,6 +244,167 @@ namespace NijnCoach.Database
     #endregion
 
     #region Entities
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="NijnCoachModel1", Name="AudioFile")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class AudioFile : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new AudioFile object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="name">Initial value of the Name property.</param>
+        /// <param name="encoding">Initial value of the Encoding property.</param>
+        /// <param name="partNo">Initial value of the PartNo property.</param>
+        /// <param name="trackNo">Initial value of the TrackNo property.</param>
+        public static AudioFile CreateAudioFile(global::System.Int32 id, global::System.String name, global::System.String encoding, global::System.Int32 partNo, global::System.Int32 trackNo)
+        {
+            AudioFile audioFile = new AudioFile();
+            audioFile.Id = id;
+            audioFile.Name = name;
+            audioFile.Encoding = encoding;
+            audioFile.PartNo = partNo;
+            audioFile.TrackNo = trackNo;
+            return audioFile;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Name");
+                OnNameChanged();
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Encoding
+        {
+            get
+            {
+                return _Encoding;
+            }
+            set
+            {
+                OnEncodingChanging(value);
+                ReportPropertyChanging("Encoding");
+                _Encoding = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Encoding");
+                OnEncodingChanged();
+            }
+        }
+        private global::System.String _Encoding;
+        partial void OnEncodingChanging(global::System.String value);
+        partial void OnEncodingChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 PartNo
+        {
+            get
+            {
+                return _PartNo;
+            }
+            set
+            {
+                OnPartNoChanging(value);
+                ReportPropertyChanging("PartNo");
+                _PartNo = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("PartNo");
+                OnPartNoChanged();
+            }
+        }
+        private global::System.Int32 _PartNo;
+        partial void OnPartNoChanging(global::System.Int32 value);
+        partial void OnPartNoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 TrackNo
+        {
+            get
+            {
+                return _TrackNo;
+            }
+            set
+            {
+                OnTrackNoChanging(value);
+                ReportPropertyChanging("TrackNo");
+                _TrackNo = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("TrackNo");
+                OnTrackNoChanged();
+            }
+        }
+        private global::System.Int32 _TrackNo;
+        partial void OnTrackNoChanging(global::System.Int32 value);
+        partial void OnTrackNoChanged();
+
+        #endregion
+
+    
+    }
     
     /// <summary>
     /// No Metadata Documentation available.

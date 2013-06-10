@@ -15,27 +15,29 @@ namespace NijnCoach.View.Home
 {
     public partial class HomePanel : Panel
     {
-        public HomePanel()
+        private Boolean _loadAvatar = true;
+        public HomePanel(Boolean _loadAvatar = true)
         {
+            this._loadAvatar = _loadAvatar;
             InitializeComponent();
         }
 
         private void questionnaireEventHandler(object sender, EventArgs e)
         {
             //Fetch correct questionnaire from database
-            MainForm.mainForm.replacePanel(new QuestionnaireForm());
+            MainForm.mainForm.replacePanel(new QuestionnaireForm(_loadAvatar));
         }
 
         private void overviewEventHandler(object sender, EventArgs e)
         {
-            MainForm.mainForm.replacePanel(new OverviewPanel());
+            MainForm.mainForm.replacePanel(new OverviewPanel(_loadAvatar));
         }
 
         private void exposureEventHandler(object sender, EventArgs e)
         {
             //StartExposure();
             //Fetch correct questionnaire from database
-            MainForm.mainForm.replacePanel(new ExposurePanel());
+            MainForm.mainForm.replacePanel(new ExposurePanel(_loadAvatar));
         }
 
         private void exitEventHandler(object sender, EventArgs e)

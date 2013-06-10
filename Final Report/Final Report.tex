@@ -8,8 +8,8 @@
 \newcommand*{\glossaryname}{Glossary}
 \usepackage{glossaries}
 
-\makeglossaries
-\loadglsentries{Glossary.tex}
+%\makeglossaries
+%\loadglsentries{Glossary.tex}
 
 \begin{document}
 
@@ -17,34 +17,36 @@
 \input{"title.tex"}
 \newpage
 % Include the abstract
+\begin{abstract}
 \input{"abstract.tex"}
+\end{abstract}
 % Make the table of contents
 \tableofcontents
 
 % Include the different chapters
 \chapter{Introduction}
-\label{sec:intro}
+%\label{sec:intro}
 \input{"Introduction.tex"}
 %\newpage
 \chapter{Problems and solutions highlights}
-\label{sec:problems}
+%\label{sec:problems}
 \input{"Problems & Solutions.tex"}
 %\newpage
 \chapter{Reflection on Teamwork}
-\label{sec:reflection}
+%\label{sec:reflection}
 \input{"Reflection.tex"}
 %\newpage
 \chapter{Individual reflections}
-\label{sec:indv}
+%\label{sec:indv}
 \input{"Individual reflection.tex"}
 %\newpage
 \chapter{Lightweight SCRUM Plans}
-\label{sec:scrum}
+%\label{sec:scrum}
 \input{"Scrum plans.tex"}
 \newpage
 
-\addcontentsline{toc}{chapter}{Glossary}%
-\printglossaries
-\appendix
+%\addcontentsline{toc}{chapter}{Glossary}%
+%\printglossaries
+%\appendix
 
 \end{document}

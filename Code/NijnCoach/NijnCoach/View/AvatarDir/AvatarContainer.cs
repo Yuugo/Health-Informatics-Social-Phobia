@@ -19,13 +19,19 @@ namespace NijnCoach.View.AvatarDir
         public AvatarContainer(Boolean _loadAvatar = true)
         {
             InitializeComponent();
+            t = new System.Windows.Forms.Timer();
             if (_loadAvatar)
             {
                 loadAvatar();
+                t.Interval = 500;
+                t.Tick += new EventHandler(waitForAvatar);
+               
             }
-            t = new System.Windows.Forms.Timer();
-            t.Interval = 500;
-            t.Tick += new EventHandler(waitForAvatar);
+            else
+            {
+                t.Interval = 1;
+                t.Tick += new EventHandler(waitForNothing);
+            }
             t.Enabled = true;
         }
 
@@ -45,6 +51,12 @@ namespace NijnCoach.View.AvatarDir
                 t.Enabled = false;
                 avatarLoaded();
             }            
+        }
+
+        private void waitForNothing(object sender, EventArgs e)
+        {
+            t.Enabled = false;
+            avatarLoaded();
         }
 
         protected abstract void avatarLoaded();

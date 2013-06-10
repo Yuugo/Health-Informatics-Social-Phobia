@@ -14,11 +14,13 @@ namespace NijnCoach.View.Main
     {
 
        private static MainForm _mainForm;
+       //For Testing and debug purposes
+       public static Boolean _loadAvatar = true;
 
-       private MainForm()
+       private MainForm(Boolean _loadAvatar = true)
        {
            InitializeComponent();
-           replacePanel(new GreetPanel());
+           replacePanel(new GreetPanel(_loadAvatar));
        }
 
        public static MainForm mainForm
@@ -27,7 +29,7 @@ namespace NijnCoach.View.Main
           {
               if (_mainForm == null)
              {
-                 _mainForm = new MainForm();
+                 _mainForm = new MainForm(_loadAvatar);
              }
               return _mainForm;
           }
