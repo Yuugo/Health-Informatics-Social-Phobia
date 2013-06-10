@@ -103,6 +103,12 @@
     <Compile Include="View\TherapistGUI\Qmaker.Designer.cs">
       <DependentUpon>Qmaker.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\TherapistGUI\qResult.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="View\TherapistGUI\qResult.Designer.cs">
+      <DependentUpon>qResult.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\TherapistGUI\saveFileDialog.cs">
       <SubType>Form</SubType>
     </Compile>

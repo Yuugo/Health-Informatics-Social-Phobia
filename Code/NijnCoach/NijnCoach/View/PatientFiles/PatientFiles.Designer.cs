@@ -51,11 +51,11 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
 
-            System.Windows.Forms.Label[] labels = { label1,label2,label3,label4,label4,label5,label6,label7,label8,label9,labelH};
-            System.Windows.Forms.TextBox[] textBoxes = { textBox1, textBox2, textBox3, textBox4, textBox4, textBox5, textBox6, textBox7, textBox8, textBox9 };
+            System.Windows.Forms.Label[] labels = { label1, label2, label3, label4, label5, label6, label7, label8, label9, labelH };
+            System.Windows.Forms.TextBox[] textBoxes = { textBox1, textBox2, textBox3, textBox4, textBox5, textBox6, textBox7, textBox8, textBox9 };
 
             string[] labelText = { "First name", "Last name", "Age", "Street", "House number", "Postal code", "City", "Telephone number", "Email address" };
-            int[] textSizes = { 222,222,58,222,58,100,222,145,222};
+            int[] textSizes = { 222, 222, 58, 222, 58, 100, 222, 145, 222 };
 
             for (int i = 0; i < 9; i++)
             {
@@ -63,7 +63,7 @@
                 GUIHelper.setElement(ref textBoxes[i], new System.Drawing.Point(190, 96 + 29 * i), "textBox" + (i + 1).ToString(), new System.Drawing.Size(textSizes[i], 22), i + 9, "");
                 labels[i].AutoSize = true;
             }
-      
+
             // 
             // labelH
             // 
@@ -102,7 +102,7 @@
 
         #endregion
 
-        public System.Windows.Forms.Label label1,label2,label3,label4,label5,label6,label7,label8,label9,labelH;
+        public System.Windows.Forms.Label label1, label2, label3, label4, label5, label6, label7, label8, label9, labelH;
         public System.Windows.Forms.TextBox textBox1, textBox2, textBox3, textBox4, textBox5, textBox6, textBox7, textBox8, textBox9;
         public System.Windows.Forms.Button button1;
     }

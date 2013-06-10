@@ -30,6 +30,7 @@ namespace NijnCoach.View.TherapistGUI
         private void InitializeComponent()
         {
             this.button7 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.labelH = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
@@ -56,20 +57,30 @@ namespace NijnCoach.View.TherapistGUI
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
 
-            System.Windows.Forms.Label[] labels = { label0,label1,label2, label3, label4, label5, label6, label7, label8, label9, label11, labelH };
-            System.Windows.Forms.TextBox[] texts = { textBox0,textBox1, textBox2, textBox3, textBox4, textBox5, textBox6, textBox7, textBox8, textBox9 };
+            System.Windows.Forms.Label[] labels = { label0, label1, label2, label3, label4, label5, label6, label7, label8, label9, label11, labelH };
+            System.Windows.Forms.TextBox[] texts = { textBox0, textBox1, textBox2, textBox3, textBox4, textBox5, textBox6, textBox7, textBox8, textBox9 };
 
-            string[] labelText = { "Patient number","Fisrt name","Last name","Age","Street","House number","Postal code","City","Email address","Telephone number"};
-            int[] tsize = { 58, 160,160,58,160,58,100,160,160,160 };
+            string[] labelText = { "Patient number", "Fisrt name", "Last name", "Age", "Street", "House number", "Postal code", "City", "Email address", "Telephone number" };
+            int[] tsize = { 58, 160, 160, 58, 160, 58, 100, 160, 160, 160 };
 
             for (int i = 0; i < 10; i++)
             {
-                GUIHelper.setElement(ref labels[i], new System.Drawing.Point(371, 150 + 29 * i), "label" + i.ToString(), new System.Drawing.Size(75, 20), i +100, labelText[i]);
+                GUIHelper.setElement(ref labels[i], new System.Drawing.Point(371, 150 + 29 * i), "label" + i.ToString(), new System.Drawing.Size(75, 20), i + 100, labelText[i]);
                 GUIHelper.setElement(ref texts[i], new System.Drawing.Point(513, 150 + 29 * i), "textBox" + i.ToString(), new System.Drawing.Size(tsize[i], 22), i, "");
                 labels[i].AutoSize = true;
                 texts[i].ReadOnly = true;
             }
-
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(513, 450);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(160, 40);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "Questionnaire result";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Enabled = false;
+            this.button1.Click += new System.EventHandler(button1_Click);
             // 
             // button7
             // 
@@ -80,7 +91,7 @@ namespace NijnCoach.View.TherapistGUI
             this.button7.TabIndex = 16;
             this.button7.Text = "Home";
             this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click +=new System.EventHandler(button7_Click);
+            this.button7.Click += new System.EventHandler(button7_Click);
             // 
             // labelH
             // 
@@ -112,7 +123,7 @@ namespace NijnCoach.View.TherapistGUI
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(346, 321);
             this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.CellClick +=new DataGridViewCellEventHandler(dataGridView1_CellClick);
+            this.dataGridView1.CellClick += new DataGridViewCellEventHandler(dataGridView1_CellClick);
             this.dataGridView1.TabIndex = 42;
 
             // UserControl1
@@ -120,6 +131,7 @@ namespace NijnCoach.View.TherapistGUI
             this.Controls.AddRange(texts);
             this.Controls.AddRange(labels);
             this.Controls.Add(this.button7);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
@@ -128,10 +140,10 @@ namespace NijnCoach.View.TherapistGUI
 
         #endregion
 
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Label label0,label1, label2, label3, label4, label5, label6, label7, label8, label9, label11, labelH;
+        private System.Windows.Forms.Button button7, button1;
+        private System.Windows.Forms.Label label0, label1, label2, label3, label4, label5, label6, label7, label8, label9, label11, labelH;
         private DataGridView dataGridView1;
-        public TextBox textBox0,textBox1, textBox2, textBox3, textBox4, textBox5, textBox6, textBox7, textBox8, textBox9;
-        
+        public TextBox textBox0, textBox1, textBox2, textBox3, textBox4, textBox5, textBox6, textBox7, textBox8, textBox9;
+
     }
 }
