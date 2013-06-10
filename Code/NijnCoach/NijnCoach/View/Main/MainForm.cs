@@ -27,7 +27,7 @@ namespace NijnCoach.View.Main
        {
           get 
           {
-              if (_mainForm == null)
+              if (_mainForm == null || _mainForm.IsDisposed)
              {
                  _mainForm = new MainForm(_loadAvatar);
              }
