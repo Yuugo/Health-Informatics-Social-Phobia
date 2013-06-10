@@ -221,8 +221,12 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bass.dll" />
-    <Content Include="Bass.Net.dll" />
+    <Content Include="bass.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Bass.Net.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="CookComputing.XmlRpcV2.dll" />
     <Content Include="testXML.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
