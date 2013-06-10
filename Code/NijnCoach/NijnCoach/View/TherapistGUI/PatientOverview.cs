@@ -60,7 +60,7 @@ namespace NijnCoach.View.TherapistGUI
                 textBox7.Text = patient.City;
                 textBox8.Text = patient.PhoneNo.ToString();
                 textBox9.Text = patient.Email;
-                textBox10.Text = patient.PatientNo.ToString();
+                textBox0.Text = patient.PatientNo.ToString();
             }
         }
         
