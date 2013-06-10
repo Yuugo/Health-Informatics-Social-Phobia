@@ -10,7 +10,7 @@ namespace NijnCoach.Model
 {
     public class ReadExposureData
     {
-        static Regex regex = new Regex(@"^.*(?<day>[0-9]{2})-(?<month>[0-9]{2})-(?<year>[0-9]{4})_(?<hour>[0-9]{2})(?<min>[0-9]{2})\.txt$");
+        static Regex regex = new Regex(@"^(?<day>[0-9]{2})-(?<month>[0-9]{2})-(?<year>[0-9]{4})_(?<hour>[0-9]{2})(?<min>[0-9]{2})\.txt$");
 
         public static ExposureSession ReadFile(string filename)
         {
@@ -22,9 +22,9 @@ namespace NijnCoach.Model
                 reader.ReadLine();
                 return ExposureSession.ReadExposureSession(reader, dt);
             }
-            catch
+            catch(Exception e)
             {
-                Console.WriteLine("Error reading file: " + filename);
+                Console.WriteLine(e.Message);
                 return null;
             }
             finally

@@ -20,22 +20,82 @@ namespace NijnCoach_Test.Model
         {
         }
 
-        private void initEmptySession()
+        private ExposureSession initEmptySession()
         {
-            session = new ExposureSession(new DateTime(2013, 1, 1));
-
+            return new ExposureSession(new DateTime(2013, 1, 1));
         }
 
-        private void initProperSession()
+        private ExposureSession initProperSession()
         {
             DateTime date = new DateTime(2013, 1, 1, 14, 30, 00);
             session = new ExposureSession(date);
 
-            var stamp1 = new ExpTimestamp(date, 90, 900, 9);
-            var stamp2 = new ExpTimestamp(date, 90, 900, 9);
-            var stamp3 = new ExpTimestamp(date, 90, 900, 9);
+            ExpTimestamp stamp1 = new ExpTimestamp(date, 90, 900, 1);
+            ExpTimestamp stamp2 = new ExpTimestamp(date, 90, 900, 2);
+            ExpTimestamp stamp3 = new ExpTimestamp(date, 90, 900, 3);
 
             session.addTimeStamp(stamp1);
+            session.addTimeStamp(stamp2);
+            session.addTimeStamp(stamp3);
+            
+            return session;
         }
+
+        private ExposureSession initSessionWithNull()
+        {
+            DateTime date = new DateTime(2013, 1, 1, 14, 30, 00);
+            session = new ExposureSession(date);
+
+            ExpTimestamp stamp1 = new ExpTimestamp(date, 90, 900, 1);
+            ExpTimestamp stamp2 = new ExpTimestamp(date, 90, 900, 2);
+            ExpTimestamp stamp3 = new ExpTimestamp(date, 90, 900, 3);
+
+            session.addTimeStamp(stamp1);
+            session.addTimeStamp(stamp2);
+            session.addTimeStamp(null);
+            session.addTimeStamp(stamp3);
+
+            return session;
+        }
+
+        [Test]
+        public void nextTimeStampProperTest()
+        {
+            ExposureSession ses = initProperSession();
+
+            ExpTimestamp t = ses.nextTimeStamp();
+            Assert.AreEqual(1, t.getSUD(), "Wrong ExpTimeStamp: ");
+            t = ses.nextTimeStamp();
+            Assert.AreEqual(2, t.getSUD(), "Wrong ExpTimeStamp: "); 
+            t = ses.nextTimeStamp();
+            Assert.AreEqual(3, t.getSUD(), "Wrong ExpTimeStamp: ");
+            t = ses.nextTimeStamp();
+            Assert.AreEqual(null, t, "Wrong ExpTimeStamp: ");
+        }
+
+        [Test]
+        public void nextTimeStampWithNullTest()
+        {
+            ExposureSession ses = initSessionWithNull();
+
+            ExpTimestamp t = ses.nextTimeStamp();
+            Assert.AreEqual(1, t.getSUD(), "Wrong ExpTimeStamp: ");
+            t = ses.nextTimeStamp();
+            Assert.AreEqual(2, t.getSUD(), "Wrong ExpTimeStamp: ");
+            t = ses.nextTimeStamp();
+            Assert.AreEqual(3, t.getSUD(), "Wrong ExpTimeStamp: ");
+            t = ses.nextTimeStamp();
+            Assert.AreEqual(null, t, "Wrong ExpTimeStamp: ");
+        }
+
+        [Test]
+        public void nextTimeStampEmptyTest()
+        {
+            ExposureSession ses = initEmptySession();
+
+            ExpTimestamp t = ses.nextTimeStamp();
+            Assert.AreEqual(null, t, "Wrong ExpTimeStamp: ");
+        }
+
     }
 }

@@ -41,7 +41,10 @@ namespace NijnCoach.Model
 
         public void addTimeStamp(ExpTimestamp st)
         {
-            this.data.Add(st);
+            if (st != null)
+            {
+                this.data.Add(st);
+            }
         }
 
         public ExpTimestamp nextTimeStamp()
