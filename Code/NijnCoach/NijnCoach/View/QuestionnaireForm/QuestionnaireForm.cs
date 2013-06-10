@@ -193,7 +193,10 @@ namespace NijnCoach.View.Questionnaire
             long len = Bass.BASS_ChannelGetLength(stream, BASSMode.BASS_POS_BYTES);
             // the length of the audiofile
             int time = (int)Bass.BASS_ChannelBytes2Seconds(stream, len);
-            AvatarControl.speak(mp3path, time);
+            if (_loadAvatar)
+            {
+                AvatarControl.speak(mp3path, time);
+            }
             if (stream != 0)
             {
                 Bass.BASS_ChannelPlay(stream, false);
