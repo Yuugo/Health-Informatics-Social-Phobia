@@ -162,6 +162,7 @@ namespace NijnCoach_Test.View
             {
                 _testForm.Close();
             }
+
         }
 
     }
