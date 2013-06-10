@@ -171,6 +171,13 @@ namespace NijnCoach.Database
 
 		#region PatientSelectors
 
+        public static string getName(int userNo)
+        {
+            NijnCoachEntities theEntities = new NijnCoachEntities();
+            Sickpeople pat = theEntities.Sickpeoples.Where(x => x.PatientNo == userNo).First<Sickpeople>();
+            return pat.Fname + " " + pat.Lname;
+        }
+
         public static Sickpeople getPatientByLastName(String name)
         {
             NijnCoachEntities theEntities = new NijnCoachEntities();
@@ -212,8 +219,7 @@ namespace NijnCoach.Database
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.InnerException.ToString());
-                throw new FileNotFoundException();
+                return null;
             }
         }
 
@@ -238,8 +244,7 @@ namespace NijnCoach.Database
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message.ToString());
-                throw new FileNotFoundException();
+                return null;
             }
         }
 
