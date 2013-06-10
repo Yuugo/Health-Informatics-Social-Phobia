@@ -79,12 +79,6 @@
       <DependentUpon>LoginMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="View\GUIHelper.cs" />
-    <Compile Include="View\PatientFiles\CreateUser.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\PatientFiles\CreateUser.designer.cs">
-      <DependentUpon>CreateUser.cs</DependentUpon>
-    </Compile>
     <Compile Include="View\PatientFiles\UserCreate.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -96,6 +90,12 @@
     </Compile>
     <Compile Include="View\TherapistGUI\HomePanel.Designer.cs">
       <DependentUpon>HomePanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\TherapistGUI\PatientOverview.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="View\TherapistGUI\PatientOverview.Designer.cs">
+      <DependentUpon>PatientOverview.cs</DependentUpon>
     </Compile>
     <Compile Include="View\TherapistGUI\Qmaker.cs">
       <SubType>Component</SubType>
@@ -156,12 +156,6 @@
     </Compile>
     <Compile Include="View\TherapistGUI\TherapistMain.Designer.cs">
       <DependentUpon>TherapistMain.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\TherapistGUI\TherapistGUI.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\TherapistGUI\TherapistGUI.Designer.cs">
-      <DependentUpon>TherapistGUI.cs</DependentUpon>
     </Compile>
     <Compile Include="view\questionnaireForm\OpenQuestionPanel.cs">
       <SubType>Component</SubType>
@@ -227,8 +221,12 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bass.dll" />
-    <Content Include="Bass.Net.dll" />
+    <Content Include="bass.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Bass.Net.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="CookComputing.XmlRpcV2.dll" />
     <Content Include="testXML.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -283,9 +281,6 @@
     <EmbeddedResource Include="View\Overview\OverviewPanel.resx">
       <DependentUpon>OverviewPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\PatientFiles\CreateUser.resx">
-      <DependentUpon>CreateUser.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="View\TherapistGUI\Qmaker.resx">
       <DependentUpon>Qmaker.cs</DependentUpon>
     </EmbeddedResource>
@@ -294,9 +289,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\PatientFiles\PatientFiles.resx">
       <DependentUpon>PatientFiles.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\TherapistGUI\TherapistGUI.resx">
-      <DependentUpon>TherapistGUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="view\questionnaireForm\OpenQuestionPanel.resx">
       <DependentUpon>OpenQuestionPanel.cs</DependentUpon>
@@ -315,7 +307,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
     <EntityDeploy Include="Database\NijnCoachModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>NijnCoachModel.Designer.cs</LastGenOutput>

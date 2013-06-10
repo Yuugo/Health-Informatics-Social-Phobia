@@ -11,6 +11,7 @@ using NijnCoach.View.Questionnaire;
 using NijnCoach.XMLclasses;
 using NijnCoach;
 using System.Collections.Generic;
+using NijnCoach.View.Main;
 
 namespace NijnCoach_Test.View.QuestionnaireForm
 {
@@ -21,7 +22,7 @@ namespace NijnCoach_Test.View.QuestionnaireForm
         private XMLParser parser = null;
         private object[] _parameters = null;
         private String _assembly = "NijnCoach.exe";
-        private String _form = "NijnCoach.View.Questionnaire.QuestionnaireForm";
+        private String _form = "NijnCoach.View.Main.MainForm";
 
         public override object[] getParameters()
         {
@@ -43,23 +44,32 @@ namespace NijnCoach_Test.View.QuestionnaireForm
         {
             parser = new XMLParser();
             Questionnaire theForm = parser.readXMLFromFile(xmlFile);
-            _parameters = new object[2] {theForm, false};
+            _parameters = new object[1] {false};
             base.setUp();
+            SetProperty("innerPanel.buttonContinue.Enabled", true);
+            RaiseEvent("innerPanel.buttonContinue", "Click", new EventArgs());
+        }
+
+        protected override Form run()
+        {
+            MainForm._loadAvatar = false;
+            MainClass.userNo = 9;
+            return MainForm.mainForm;
         }
 
         [Test]
         public void commentTest()
         {
-            object commentText = GetProperty("panelQuestionIntern.labelComment.Text");
+            object commentText = GetProperty("innerPanel.panelQuestionIntern.labelComment.Text");
             Assert.AreEqual("blabla", commentText);
         }
 
         [Test]
         public void openQuestionTextTest()
         {
-            RaiseEvent("buttonNext", "Click", new EventArgs());
-            object openQuestionText = GetProperty("panelQuestionIntern.labelQuestion.Text");
-            object openQuestionAnswer = GetProperty("panelQuestionIntern.textBoxAnswer.Text");
+            RaiseEvent("innerPanel.buttonNext", "Click", new EventArgs());
+            object openQuestionText = GetProperty("innerPanel.panelQuestionIntern.labelQuestion.Text");
+            object openQuestionAnswer = GetProperty("innerPanel.panelQuestionIntern.textBoxAnswer.Text");
             Assert.AreEqual("What was the most difficult situation? Please tell me how it went.", openQuestionText);
             Assert.AreEqual("", openQuestionAnswer);
         }
@@ -67,18 +77,18 @@ namespace NijnCoach_Test.View.QuestionnaireForm
         [Test]
         public void mcQuestionTextTest()
         {
-            RaiseEvent("buttonNext", "Click", new EventArgs());
-            RaiseEvent("buttonNext", "Click", new EventArgs());
-            object mcQuestionText = GetProperty("panelQuestionIntern.labelQuestion.Text");
+            RaiseEvent("innerPanel.buttonNext", "Click", new EventArgs());
+            RaiseEvent("innerPanel.buttonNext", "Click", new EventArgs());
+            object mcQuestionText = GetProperty("innerPanel.panelQuestionIntern.labelQuestion.Text");
             Assert.AreEqual("How many social encounters did you have last week?", mcQuestionText);
         }
 
         [Test]
         public void mcQuestionOptionsTest()
         {
-            RaiseEvent("buttonNext", "Click", new EventArgs());
-            RaiseEvent("buttonNext", "Click", new EventArgs());
-            System.Windows.Forms.Control.ControlCollection options = (System.Windows.Forms.Control.ControlCollection)GetProperty("panelQuestionIntern.Controls");
+            RaiseEvent("innerPanel.buttonNext", "Click", new EventArgs());
+            RaiseEvent("innerPanel.buttonNext", "Click", new EventArgs());
+            System.Windows.Forms.Control.ControlCollection options = (System.Windows.Forms.Control.ControlCollection)GetProperty("innerPanel.panelQuestionIntern.Controls");
             Control[] radios = (Control[]) options.Find("Radioa", false);
             String text = radios[0].Text;
             Assert.AreEqual("1-3", text);

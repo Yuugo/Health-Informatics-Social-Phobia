@@ -29,7 +29,7 @@ namespace NijnCoach.View.TherapistGUI
 
         private void button3_Click(object sender, EventArgs e)
         {
-            TherapistMain.main.replacePanel(new HomePanel());
+            TherapistMain.main.replacePanel(new PatientOverview());
         }
 
         private void button4_Click(object sender, EventArgs e)

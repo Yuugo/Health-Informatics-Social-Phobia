@@ -32,7 +32,7 @@ namespace NijnCoach.View.Overview
 
         protected override void avatarLoaded()
         {
-            ExposureSessions_Load();
+            
         }
 
         private void continueEventHandler(object sender, EventArgs e)
@@ -301,7 +301,7 @@ namespace NijnCoach.View.Overview
             }
             else
             {
-                Comment empty = new Comment { value = "", emotion = "" };
+                Comment empty = new Comment { value = String.Empty, emotion = String.Empty };
                 commentPanelIntern.entry = empty;
             }
             commentPanel.ResumeLayout();
@@ -317,14 +317,7 @@ namespace NijnCoach.View.Overview
         // Function to hide the session selection box when looking at the overview chart
         private void chartTabs_SelectedIndexChanged(Object sender, EventArgs e)
         {
-            if (this.chartTabs.SelectedTab == previousSessionTab)
-            {
-                this.PreviousSessionSelectBox.Enabled = true;
-            }
-            else
-            {
-                this.PreviousSessionSelectBox.Enabled = false;
-            }
+            this.PreviousSessionSelectBox.Enabled = this.chartTabs.SelectedTab == previousSessionTab;
         }
     }
 }

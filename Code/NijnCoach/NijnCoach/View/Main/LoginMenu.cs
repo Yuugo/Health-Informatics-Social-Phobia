@@ -23,7 +23,7 @@ namespace NijnCoach.View.Main
         private void button1_Click(object sender, EventArgs e)
         {
 
-            if (textBox1.Text != "" && textBox2.Text != "")
+            if (!(textBox1.Text == String.Empty || textBox2.Text == String.Empty))
             {
                 SByte userNo = DBConnect.getUser(textBox1.Text, textBox2.Text);
                 if (userNo >= 0)
@@ -52,8 +52,8 @@ namespace NijnCoach.View.Main
 
         private void reset()
         {
-            textBox1.Text = "";
-            textBox2.Text = "";
+            textBox1.Text = String.Empty;
+            textBox2.Text = String.Empty;
         }
     }
 }

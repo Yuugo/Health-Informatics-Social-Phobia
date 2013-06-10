@@ -21,6 +21,7 @@ namespace NijnCoach.View.Questionnaire
         private int stream = 0;
         private Boolean _loadAvatar = true;
         private String tempPath;
+        private String oldPath;
         public QuestionnaireForm(Boolean _loadAvatar = true) : base(_loadAvatar)
         {
             this._loadAvatar = _loadAvatar;
@@ -123,50 +124,12 @@ namespace NijnCoach.View.Questionnaire
             {
                 panelQuestionIntern = new OpenQuestionPanel(panelQuestion.Width, panelQuestion.Height);
             }
-            
+
+            AvatarControl.setAvatarEmotionViaEntry(entry);
             panelQuestionIntern.entry = entry;
             panelQuestion.Controls.Add(panelQuestionIntern);
             //playFromDB();
             panelQuestion.ResumeLayout();
-
-            setAvatarEmotion(entry);
-        }
-
-        private void setAvatarEmotion(IEntry entry)
-        {
-            Console.WriteLine(" Emotion = " + entry.Emotion());
-            switch (entry.Emotion())
-            {
-                case "Sad":
-                    AvatarControl.sad();
-                    break;
-                case "Happy":
-                    AvatarControl.happy();
-                    break;
-                case "Angry":
-                    AvatarControl.angry();
-                    break;
-                case "Disgust":
-                    AvatarControl.disgust();
-                    break;
-                case "Fear":
-                    AvatarControl.fear();
-                    break;
-                case "Run":
-                    AvatarControl.run();
-                    break;
-                case "Sit":
-                    AvatarControl.sit();
-                    break;
-                case "Stand":
-                    AvatarControl.stand();
-                    break;
-                case "Surprise":
-                    AvatarControl.surprise();
-                    break;
-                default:
-                    break;
-            }
         }
 
         /// <summary>
@@ -176,12 +139,10 @@ namespace NijnCoach.View.Questionnaire
         {            
             var entry = questionnaire.entries[currentQuestion];
             String content = DBConnect.getSpeechFile(entry.Audio());
-            if (content != "")
-            {
-                deleteTempFile();
-                tempPath = createTempAudioFile(content);
-                bassPlay(tempPath);
-            }
+            oldPath = tempPath;
+            tempPath = createTempAudioFile(content);
+            bassPlay(tempPath);
+            deleteTempFile();
         }
 
         public void bassPlay(string mp3path)
@@ -191,10 +152,14 @@ namespace NijnCoach.View.Questionnaire
                 Bass.BASS_StreamFree(stream);
             }
             stream = Bass.BASS_StreamCreateFile(mp3path, 0, 0, BASSFlag.BASS_DEFAULT);
+            BASSError error = Bass.BASS_ErrorGetCode();
             long len = Bass.BASS_ChannelGetLength(stream, BASSMode.BASS_POS_BYTES);
             // the length of the audiofile
             int time = (int)Bass.BASS_ChannelBytes2Seconds(stream, len);
-            AvatarControl.speak(mp3path, time);
+            if (_loadAvatar)
+            {
+                AvatarControl.speak(mp3path, time);
+            }
             if (stream != 0)
             {
                 Bass.BASS_ChannelPlay(stream, false);
@@ -211,9 +176,9 @@ namespace NijnCoach.View.Questionnaire
             String path = GetTempFilePathWithExtension("mp3");
             using (FileStream fs = File.Create(path, 1024))
             {
-                Byte[] text = new UTF8Encoding(true).GetBytes(content);
+                byte[] decoded = System.Convert.FromBase64String(content);
                 // Add some information to the file.
-                fs.Write(text, 0, text.Length);
+                fs.Write(decoded, 0, decoded.Length);
             }
             return path;
         }
@@ -223,9 +188,9 @@ namespace NijnCoach.View.Questionnaire
         /// </summary>
         public void deleteTempFile()
         {
-            if (tempPath != null)
+            if (oldPath != null)
             {
-                FileInfo fileDel = new FileInfo(tempPath);
+                FileInfo fileDel = new FileInfo(oldPath);
                 if (fileDel.Exists)
                     fileDel.Delete();
             }

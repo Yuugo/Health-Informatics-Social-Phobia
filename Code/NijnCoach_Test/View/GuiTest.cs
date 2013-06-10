@@ -141,13 +141,18 @@ namespace NijnCoach_Test.View
         public virtual void setUp()
         {
             testAssembly = Assembly.LoadFrom(getAssembly());
-            Type t = testAssembly.GetType(getForm());
-            Type[] pTypes = Type.GetTypeArray(getParameters());
-            ConstructorInfo ctor = t.GetConstructor(pTypes);
-            _testForm = ctor.Invoke(getParameters()) as Form;
+            _testForm = run();
             ThreadPool.QueueUserWorkItem(new WaitCallback(RunApp), _testForm);
             while (!_testForm.IsHandleCreated)
                 ;
+        }
+
+        protected virtual Form run()
+        {
+            Type t = testAssembly.GetType(getForm());
+            Type[] pTypes = Type.GetTypeArray(getParameters());
+            ConstructorInfo ctor = t.GetConstructor(pTypes);
+            return ctor.Invoke(getParameters()) as Form;
         }
 
         [TearDown]
@@ -157,6 +162,7 @@ namespace NijnCoach_Test.View
             {
                 _testForm.Close();
             }
+
         }
 
     }

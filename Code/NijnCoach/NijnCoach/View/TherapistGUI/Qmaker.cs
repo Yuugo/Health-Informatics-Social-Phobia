@@ -135,14 +135,14 @@ namespace NijnCoach.View.TherapistGUI
         private void addQuestion()
         {
             //doe niets als vraag leeg is
-            if (textBox0.Text != "")
+            if (textBox0.Text != String.Empty)
             {
                 //checkt of er geen probleem is met het audiofile
                 if (addAudio())
                 {
                     if (radioButton1.Checked == true)
                     {
-                        q.entries.Add(new OpenQuestion { question = textBox0.Text, audio = textBox9.Text, theAnswer = "" });
+                        q.entries.Add(new OpenQuestion { question = textBox0.Text, audio = textBox9.Text, theAnswer = "", emotion = comboBox1.Text });
                     }
                     if (radioButton2.Checked == true)
                     {
@@ -168,8 +168,8 @@ namespace NijnCoach.View.TherapistGUI
         //reset de velden bij een nieuwe vraag
         private void reset()
         {
-            for (int i = 0; i < 10; i++) { texts[i].Text = ""; }
-            for (int i = 0; i < 8; i++) { combos[i].Text = ""; }
+            for (int i = 0; i < 10; i++) { texts[i].Text = String.Empty; }
+            for (int i = 0; i < 8; i++) { combos[i].Text = String.Empty; }
         }
 
         //laadt audiobestand in
@@ -182,24 +182,12 @@ namespace NijnCoach.View.TherapistGUI
             name = audioPath.Split('\\');
             textBox9.Text = name.Last();
             //upload openFileDialog1.Text to server
-
-
-            /*
-            byte[] audio = File.ReadAllBytes(@audioFile);
-            string audioAsString = System.Convert.ToBase64String(audio);
-            byte[] binaryData = Convert.FromBase64String(audioAsString);
-            File.WriteAllBytes("C:/ecoach/audio/4.wav", binaryData);
-            */
-
-            //bassPlay(audioFile);
-
-
         }
 
         //uploadt audiobestand als er geen probleem mee is
         public bool addAudio()
         {
-            if (textBox9.Text != "")
+            if (textBox9.Text != String.Empty)
             {
                 string audioPath = openFileDialog1.FileName.ToString();
                 //uploadt het bestand of geeft een aan dat er een probleem is met het file als het bestand niet upgeloadt kon worden
@@ -243,7 +231,7 @@ namespace NijnCoach.View.TherapistGUI
         //maakt de textbox voor audio bestanden leeg
         private void button6_Click(object sender, EventArgs e)
         {
-            textBox9.Text = "";
+            textBox9.Text = String.Empty;
         }
 
         private void button7_Click(object sender, EventArgs e)

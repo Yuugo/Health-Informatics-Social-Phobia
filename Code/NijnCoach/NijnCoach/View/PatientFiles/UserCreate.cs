@@ -24,7 +24,7 @@ namespace NijnCoach.View.PatientFiles
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text != "" && textBox2.Text != "")
+            if (!(textBox1.Text == String.Empty || textBox2.Text == String.Empty))
             {
                 MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider();
                 byte[] encode = Encoding.ASCII.GetBytes(textBox2.Text);
@@ -38,7 +38,7 @@ namespace NijnCoach.View.PatientFiles
                 }
                 else
                 {
-                    if (radioButton2.Checked == true)
+                    if (radioButton2.Checked)
                     {
                         DBConnect.InsertUser("Therapist", textBox1.Text, pass);
                         MessageBox.Show("User has been created");
@@ -64,7 +64,7 @@ namespace NijnCoach.View.PatientFiles
                 bool numbers = true;
                 for (int i = 0; i < 9; i++)
                 {
-                    if (texts[i].Text == "")
+                    if (texts[i].Text == String.Empty)
                     {
                         check = false;
                     };
@@ -81,7 +81,7 @@ namespace NijnCoach.View.PatientFiles
                     numbers = false;
                 }
 
-                if (check == true && numbers == true)
+                if (check && numbers)
                 {
                     DBConnect.InsertUser("Patient", textBox1.Text, pass);
                     pat.Fname = texts[0].Text;
@@ -98,14 +98,14 @@ namespace NijnCoach.View.PatientFiles
                     MessageBox.Show("Patient has been saved");
                     reset();
                 }
-                if (check == false)
+                if (!check)
                 {
                     MessageBox.Show("Empty field(s)");
                     insertPatientFiles(dialog, pass);
                 }
                 else
                 {
-                    if (numbers == false)
+                    if (!numbers)
                     {
                         MessageBox.Show("Not all number fields are filled in correctly");
                         insertPatientFiles(dialog, pass);
@@ -118,8 +118,9 @@ namespace NijnCoach.View.PatientFiles
         public void reset()
         {
             radioButton1.Checked = true;
-            textBox1.Text = "";
-            textBox2.Text = "";
+            textBox1.Text = String.Empty;
+            textBox2.Text = String.Empty;
+            confirmPassBox.Text = String.Empty;
         }
 
         private void button2_Click(object sender, EventArgs e)

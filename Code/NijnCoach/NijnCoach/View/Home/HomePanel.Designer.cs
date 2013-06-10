@@ -43,7 +43,7 @@
                 System.Windows.Forms.Button b = buttons[i];
                 GUIHelper.setElement(ref b, new System.Drawing.Point(left, y + i * 50), "button" + (i + 1), new System.Drawing.Size(300, 40), i, buttonText[i]);
                 b.UseVisualStyleBackColor = true;
-                b.Click += eventHandlers[i];
+                b.Click += new System.EventHandler(eventHandlers[i]);
             }
             this.Controls.AddRange(buttons);
             this.ResumeLayout(false);

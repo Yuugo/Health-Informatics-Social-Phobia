@@ -56,7 +56,17 @@ namespace NijnCoach.View.AvatarDir
         private void initECoachProcess()
         {
             killProcess();
-            Task = Process.Start(eCoachPath);
+            try
+            {
+                Task = Process.Start(eCoachPath);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("An error occured while trying to start the avatar\nDoes the file C:\\ecoach\\ecoach-bart.exe exists?", "Error loading the avatar");
+                NijnCoach.View.Main.MainForm._loadAvatar = false;
+                _fullyLoaded = true;
+                return;
+            }
             Task.WaitForInputIdle();
             IntPtr Handle = IntPtr.Zero;
             for (int i = 0; Handle == IntPtr.Zero && i < 10; i++) { Handle = Task.MainWindowHandle; Thread.Sleep(100); }
@@ -165,7 +175,7 @@ namespace NijnCoach.View.AvatarDir
                 if (task.Contains(NameECoach) || task.Contains(winviz))
                 {
                     try { Task.Kill(); }
-                    catch (Exception e) { }
+                    catch (Exception) { }
                 }
             }
         }
