@@ -60,7 +60,7 @@ namespace NijnCoach.View.Overview
             ((System.ComponentModel.ISupportInitialize)(this.overviewChart)).BeginInit();
             this.SuspendLayout();
 
-            ExposureSessions_Load();
+            
 
             System.Windows.Forms.Control[] controls = {buttonHome, previousSessionChart, chartTabs, previousSessionTab, groupBoxRadiobuttonsPreviousSession, gsrRadiobuttonPreviousSession,
                 hrRadiobuttonPreviousSession, sudRadiobuttonPreviousSession, overviewTab, groupBoxRadiobuttonsOverview, gsrRadiobuttonOverview, hrRadiobuttonOverview, sudRadiobuttonOverview,
@@ -79,30 +79,19 @@ namespace NijnCoach.View.Overview
 			int[] tabIndeces = {4, 3, 4, 0, 7, 5, 6, 4, 1, 8, 5, 6, 4, 0, 6, 1};
 			String[] texts = {"Home",  "Previous Session", null, "Previous Session", "Show", "GSR", "Heartrate", "SUD", "Overview Progress", "Show", "GSR", "Heartrate", "SUD", "Overview", 
 						null, null};
-			System.EventHandler[] eventHandlers = {this.homeEventHandler, null, chartTabs_SelectedIndexChanged, null, null, this.gsrRadiobuttonPreviousSession_CheckedChanged,this.hrRadiobuttonOverview_CheckedChanged,
+			System.EventHandler[] eventHandlers = {this.homeEventHandler, null, chartTabs_SelectedIndexChanged, null, null, this.gsrRadiobuttonPreviousSession_CheckedChanged,this.hrRadiobuttonPreviousSession_CheckedChanged,
                                 this.sudRadiobuttonPreviousSession_CheckedChanged, null, null, this.gsrRadiobuttonOverview_CheckedChanged,
                                 this.hrRadiobuttonOverview_CheckedChanged, this.sudRadiobuttonOverview_CheckedChanged, null, null, PreviousSessionSelectBox_SelectedIndexChanged};
 			for(int i=0; i<controls.Length;i++)
 			{
 				GUIHelper.setElement(ref controls[i], locations[i], names[i], sizes[i], tabIndeces[i], texts[i]);
-				if(eventHandlers[i] != null)
-				{
-					if(controls[i] is System.Windows.Forms.RadioButton)
-					{
-						(controls[i] as System.Windows.Forms.RadioButton).CheckedChanged += new System.EventHandler(eventHandlers[i]);
-					}
-					if(controls[i] is System.Windows.Forms.Button)
-					{
-						controls[i].Click += new System.EventHandler(eventHandlers[i]);
-					}
-				}
 				if(controls[i] is System.Windows.Forms.RadioButton)
 				{
 					controls[i].AutoSize = true;
 					(controls[i] as System.Windows.Forms.RadioButton).UseVisualStyleBackColor = true;
 				}
 			}
-            
+           
             initPreviousSessionChart();
             initChartTabs();
             initPreviousSessionTab();
@@ -114,6 +103,22 @@ namespace NijnCoach.View.Overview
             initOverviewChart();
             initCommentPanel();
             initPreviousSessionSelectBox();
+            ExposureSessions_Load();
+            for (int i = 0; i < controls.Length; i++)
+            {
+                if (eventHandlers[i] != null)
+                {
+                    if (controls[i] is System.Windows.Forms.RadioButton)
+                    {
+                        (controls[i] as System.Windows.Forms.RadioButton).CheckedChanged += new System.EventHandler(eventHandlers[i]);
+                    }
+                    if (controls[i] is System.Windows.Forms.Button)
+                    {
+                        controls[i].Click += new System.EventHandler(eventHandlers[i]);
+                    }
+                }
+            }
+
             // 
             // ExposureChartsForm
             // 
@@ -130,7 +135,6 @@ namespace NijnCoach.View.Overview
             this.groupBoxRadiobuttonsOverview.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.overviewChart)).EndInit();
             this.ResumeLayout(false);
-
         }
 
         #endregion
@@ -199,6 +203,7 @@ namespace NijnCoach.View.Overview
         private void initSudRadiobuttonOverview()
         {
             this.sudRadiobuttonOverview.AutoSize = true;
+            this.sudRadiobuttonOverview.Checked = true;
             this.sudRadiobuttonOverview.TabStop = true;
         }
 
