@@ -35,7 +35,7 @@ namespace NijnCoach
             //Application.Run(new saveFileDialog());
             //Application.Run(new PatientFiles());
             
-            userNo = 4;
+            userNo = 9;
             Application.Run(MainForm.mainForm);
             //Application.Run(new NijnCoach.View.Main.LoginMenu());
 
