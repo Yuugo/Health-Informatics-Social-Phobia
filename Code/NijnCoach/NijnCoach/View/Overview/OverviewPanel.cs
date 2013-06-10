@@ -15,7 +15,8 @@ using NijnCoach.View.AvatarDir;
 using NijnCoach.View.Main;
 using NijnCoach.View.Questionnaire;
 using NijnCoach.View.Home;
-using NijnCoach.Exposure_data;
+using NijnCoach.Model;
+using NijnCoach.Database;
 
 
 namespace NijnCoach.View.Overview
@@ -65,26 +66,19 @@ namespace NijnCoach.View.Overview
         //maybe sort them and save them in an object.
         private List<ExposureSession> getAllSessionsFromDatabase()
         {
-            string[] files = System.IO.Directory.GetFiles("Sessions//", "*.txt");
-            
-            List<ExposureSession> sessions = new List<ExposureSession>(files.Length);
+            List<ProgressEval> dbsess = DBConnect.getProgressEvaluationByPatient(MainClass.userNo);
 
-            foreach (string file in files)
+            List<ExposureSession> sessions = new List<ExposureSession>(dbsess.Count());
+
+            foreach (ProgressEval dbs in dbsess)
             {
-                ExposureSession session = ReadExposureData.ReadFile(file);
-                sessions.Add(session);
+                var ses = ReadExposureData.CreateExposureSession(dbs.Name, dbs.Content);
+                Comment com = new Comment { value = dbs.Commentary, emotion = ""/*dbs.Emotion*/ };
+                ses.comment = com;
+                sessions.Add(ses);
             }
 
             sessions.Sort((a, b) => a.CompareTo(b));
-
-            Comment comment = new Comment { value = "Good job this session! Keep up the awesome work.", emotion = "happy" };
-            sessions[sessions.Count - 1].comment = comment;
-
-            comment = new Comment { value = "Little better, but try to sweat less next time.", emotion = "" };
-            sessions[sessions.Count - 2].comment = comment;
-
-            comment = new Comment { value = "Now you're just being a little pussy. I don't feel it's of any use to continue your therapy.", emotion = "angry" };
-            sessions[sessions.Count - 3].comment = comment;
 
             return sessions;
         }

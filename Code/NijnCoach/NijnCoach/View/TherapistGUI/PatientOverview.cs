@@ -47,7 +47,7 @@ namespace NijnCoach.View.TherapistGUI
         {
             int cell = dataGridView1.CurrentCell.RowIndex;
             if(cell < dataGridView1.Rows.Count -1){
-
+                button1.Enabled = true;
                 string no = dataGridView1.Rows[cell].Cells[0].Value.ToString();
                 int patientNo = System.Convert.ToInt32(no);
                 Sickpeople patient = DBConnect.getPatientByNumber(patientNo);
@@ -63,6 +63,17 @@ namespace NijnCoach.View.TherapistGUI
                 textBox0.Text = patient.PatientNo.ToString();
             }
         }
-        
+        private void button1_Click(object sender, EventArgs e)
+        {
+            NijnCoach.MainClass.userNo = System.Convert.ToInt32(textBox0.Text);
+            if (DBConnect.getQuestionnaireByPatient(MainClass.userNo) != null)
+            {
+                TherapistMain.main.replacePanel(new NijnCoach.View.TherapistGUI.qResult());
+            }
+            else
+            {
+                MessageBox.Show("No questionnaire found");
+            }
+        }
     }
 }

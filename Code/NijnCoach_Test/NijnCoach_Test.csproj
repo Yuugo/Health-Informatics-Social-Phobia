@@ -41,6 +41,9 @@
     </StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Moq">
+      <HintPath>Moq\Moq.dll</HintPath>
+    </Reference>
     <Reference Include="nunit-console-runner">
       <HintPath>C:\Program Files (x86)\NUnit 2.6.2\bin\lib\nunit-console-runner.dll</HintPath>
     </Reference>
@@ -59,6 +62,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\ExposureSessionTest.cs" />
+    <Compile Include="Model\ExpTimeStampTest.cs" />
+    <Compile Include="Model\ReadExposureDataTest.cs" />
     <Compile Include="View\Avatar\MultipleAvatarTest.cs" />
     <Compile Include="View\TherapistGUI\TherapistGUITestMCViaOpenAndComment.cs" />
     <Compile Include="View\TherapistGUI\TherapistGUITestCommentViaOpenAndMC.cs" />
@@ -71,9 +77,7 @@
     <Compile Include="Model\XMLParserTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="app.config" />
     <None Include="NUnit\nunit-console-runner.dll" />
     <None Include="NUnit\nunit.framework.dll" />
     <None Include="NUnit\nunit.mocks.dll" />
@@ -95,6 +99,8 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Moq\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

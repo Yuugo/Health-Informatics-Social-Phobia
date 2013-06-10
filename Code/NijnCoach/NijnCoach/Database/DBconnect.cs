@@ -171,6 +171,13 @@ namespace NijnCoach.Database
 
 		#region PatientSelectors
 
+        public static string getName(int userNo)
+        {
+            NijnCoachEntities theEntities = new NijnCoachEntities();
+            Sickpeople pat = theEntities.Sickpeoples.Where(x => x.PatientNo == userNo).First<Sickpeople>();
+            return pat.Fname + " " + pat.Lname;
+        }
+
         public static Sickpeople getPatientByLastName(String name)
         {
             NijnCoachEntities theEntities = new NijnCoachEntities();
@@ -212,8 +219,7 @@ namespace NijnCoach.Database
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.InnerException.ToString());
-                throw new FileNotFoundException();
+                return null;
             }
         }
 
@@ -238,8 +244,7 @@ namespace NijnCoach.Database
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message.ToString());
-                throw new FileNotFoundException();
+                return null;
             }
         }
 
@@ -339,18 +344,17 @@ namespace NijnCoach.Database
 
 
         /// <summary>
-        /// Get a progress evaluation as String.
+        /// Get all the progress evaluations in a List.
         /// </summary>
         /// <param name="name">the name of the evaluation.</param>
-        /// <returns>Returns the desired evaluation as a string.</returns>
-        public static String getProgressEvaluationByPatient(Int32 patientNo)
+        /// <returns>Returns the evaluations in a List.</returns>
+        public static List<ProgressEval> getProgressEvaluationByPatient(Int32 patientNo)
         {
             try
             {
                 NijnCoachEntities theEntities = new NijnCoachEntities();
-                ProgressEval result = theEntities.ProgressEvals.Where(x => x.PatientNo == patientNo).First<ProgressEval>();
-                String contents = result.Content;
-                return contents;
+                List<ProgressEval> result = theEntities.ProgressEvals.Where(x => x.PatientNo == patientNo).ToList();
+                return result;
             }
             catch (MySql.Data.MySqlClient.MySqlException e)
             {
