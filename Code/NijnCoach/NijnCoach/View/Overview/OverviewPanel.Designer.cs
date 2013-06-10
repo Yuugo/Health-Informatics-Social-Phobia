@@ -34,9 +34,6 @@ namespace NijnCoach.View.Overview
         protected override void InitializeComponent()
         {
             base.InitializeComponent();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea previousSessionChartArea = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea overviewChartArea = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Title overviewTitle = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.buttonHome = new System.Windows.Forms.Button();
             this.previousSessionChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.previousSessionTitle = new System.Windows.Forms.DataVisualization.Charting.Title();
@@ -62,228 +59,65 @@ namespace NijnCoach.View.Overview
             this.groupBoxRadiobuttonsOverview.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.overviewChart)).BeginInit();
             this.SuspendLayout();
-            // 
-            // buttonHome
-            // 
+
+            ExposureSessions_Load();
+
             System.Windows.Forms.Control[] controls = {buttonHome, previousSessionChart, chartTabs, previousSessionTab, groupBoxRadiobuttonsPreviousSession, gsrRadiobuttonPreviousSession,
                 hrRadiobuttonPreviousSession, sudRadiobuttonPreviousSession, overviewTab, groupBoxRadiobuttonsOverview, gsrRadiobuttonOverview, hrRadiobuttonOverview, sudRadiobuttonOverview,
                 overviewChart, commentPanel, PreviousSessionSelectBox};
-            System.Drawing.Point[] locations = {new System.Drawing.Point(6, 12),
-                                               new System.Drawing.Point(0, 0),
-                                               new System.Drawing.Point(12, 45),
-                                               new System.Drawing.Point(4, 22),
-                                               new System.Drawing.Point(450, 6),
-                                               new System.Drawing.Point(6, 41),
-                                               new System.Drawing.Point(6, 64),
-                                               new System.Drawing.Point(6, 18),
-                                               new System.Drawing.Point(4, 22),
-                                               new System.Drawing.Point(450, 6),
-                                               new System.Drawing.Point(6, 41),
-                                               new System.Drawing.Point(6, 64),
-                                               new System.Drawing.Point(6, 18),
-                                               new System.Drawing.Point(-4, 0),
-                                               new System.Drawing.Point(12, 380),
-                                               new System.Drawing.Point(292, 17) };
-            String[] names = { "buttonHome" };
-            System.Drawing.Size[] sizes = { new System.Drawing.Size(75, 23) };
-
-
-            this.buttonHome.Location = new System.Drawing.Point(6, 12);
-            this.buttonHome.Name = "buttonHome";
-            this.buttonHome.Size = new System.Drawing.Size(75, 23);
-            this.buttonHome.TabIndex = 4;
-            this.buttonHome.Text = "Home";
-            this.buttonHome.Click += new System.EventHandler(this.homeEventHandler);
-            // 
-            // previousSessionChart
-            // 
-            previousSessionChartArea.AxisX.Interval = 3D;
-            previousSessionChartArea.AxisX.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Minutes;
-            previousSessionChartArea.AxisX.LabelStyle.Format = "mm:ss";
-            previousSessionChartArea.AxisX.MajorGrid.Enabled = false;
-            previousSessionChartArea.AxisY.MajorGrid.Enabled = false;
-            previousSessionChartArea.Name = "previousSessionChartArea";
-            this.previousSessionChart.ChartAreas.Add(previousSessionChartArea);
-            this.previousSessionChart.Location = new System.Drawing.Point(0, 0);
-            this.previousSessionChart.Name = "previousSessionChart";
-            this.previousSessionChart.Size = new System.Drawing.Size(550, 300);
-            this.previousSessionChart.TabIndex = 3;
-            this.previousSessionChart.Text = "Previous Session";
-            this.previousSessionTitle.Name = "previousSessionTitle";
-            this.previousSessionTitle.Text = "Previous Session";
-            this.previousSessionChart.Titles.Add(previousSessionTitle);
-            // 
-            // chartTabs
-            // 
-            this.chartTabs.Controls.Add(this.previousSessionTab);
-            this.chartTabs.Controls.Add(this.overviewTab);
-            this.chartTabs.Location = new System.Drawing.Point(12, 45);
-            this.chartTabs.Name = "chartTabs";
-            this.chartTabs.SelectedIndex = 0;
-            this.chartTabs.Size = new System.Drawing.Size(560, 330);
-            this.chartTabs.TabIndex = 4;
-            this.chartTabs.SelectedIndexChanged += new System.EventHandler(chartTabs_SelectedIndexChanged);
-            // 
-            // previousSessionTab
-            // 
-            this.previousSessionTab.BackColor = System.Drawing.Color.White;
-            this.previousSessionTab.Controls.Add(this.groupBoxRadiobuttonsPreviousSession);
-            this.previousSessionTab.Controls.Add(this.previousSessionChart);
-            this.previousSessionTab.Location = new System.Drawing.Point(4, 22);
-            this.previousSessionTab.Name = "previousSessionTab";
-            this.previousSessionTab.Padding = new System.Windows.Forms.Padding(3);
-            this.previousSessionTab.Size = new System.Drawing.Size(560, 330);
-            this.previousSessionTab.TabIndex = 0;
-            this.previousSessionTab.Text = "Previous Session";
-            // 
-            // groupBoxRadiobuttonsPreviousSession
-            // 
-            this.groupBoxRadiobuttonsPreviousSession.Controls.Add(this.gsrRadiobuttonPreviousSession);
-            this.groupBoxRadiobuttonsPreviousSession.Controls.Add(this.hrRadiobuttonPreviousSession);
-            this.groupBoxRadiobuttonsPreviousSession.Controls.Add(this.sudRadiobuttonPreviousSession);
-            this.groupBoxRadiobuttonsPreviousSession.Location = new System.Drawing.Point(450, 6);
-            this.groupBoxRadiobuttonsPreviousSession.Name = "groupBoxRadiobuttonsPreviousSession";
-            this.groupBoxRadiobuttonsPreviousSession.Size = new System.Drawing.Size(97, 84);
-            this.groupBoxRadiobuttonsPreviousSession.TabIndex = 7;
-            this.groupBoxRadiobuttonsPreviousSession.TabStop = false;
-            this.groupBoxRadiobuttonsPreviousSession.Text = "Show";
-            // 
-            // gsrRadiobuttonPreviousSession
-            // 
-            this.gsrRadiobuttonPreviousSession.AutoSize = true;
-            this.gsrRadiobuttonPreviousSession.Location = new System.Drawing.Point(6, 41);
-            this.gsrRadiobuttonPreviousSession.Name = "gsrRadiobuttonPreviousSession";
-            this.gsrRadiobuttonPreviousSession.Size = new System.Drawing.Size(48, 17);
-            this.gsrRadiobuttonPreviousSession.TabIndex = 5;
-            this.gsrRadiobuttonPreviousSession.Text = "GSR";
-            this.gsrRadiobuttonPreviousSession.UseVisualStyleBackColor = true;
-            this.gsrRadiobuttonPreviousSession.CheckedChanged += new System.EventHandler(this.gsrRadiobuttonPreviousSession_CheckedChanged);
-            // 
-            // hrRadiobuttonPreviousSession
-            // 
-            this.hrRadiobuttonPreviousSession.AutoSize = true;
-            this.hrRadiobuttonPreviousSession.Location = new System.Drawing.Point(6, 64);
-            this.hrRadiobuttonPreviousSession.Name = "hrRadiobuttonPreviousSession";
-            this.hrRadiobuttonPreviousSession.Size = new System.Drawing.Size(69, 17);
-            this.hrRadiobuttonPreviousSession.TabIndex = 6;
-            this.hrRadiobuttonPreviousSession.Text = "Heartrate";
-            this.hrRadiobuttonPreviousSession.UseVisualStyleBackColor = true;
-            this.hrRadiobuttonPreviousSession.CheckedChanged += new System.EventHandler(this.hrRadiobuttonPreviousSession_CheckedChanged);
-            // 
-            // sudRadiobuttonPreviousSession
-            // 
-            this.sudRadiobuttonPreviousSession.AutoSize = true;
-            this.sudRadiobuttonPreviousSession.Checked = true;
-            this.sudRadiobuttonPreviousSession.Location = new System.Drawing.Point(6, 18);
-            this.sudRadiobuttonPreviousSession.Name = "sudRadiobuttonPreviousSession";
-            this.sudRadiobuttonPreviousSession.Size = new System.Drawing.Size(48, 17);
-            this.sudRadiobuttonPreviousSession.TabIndex = 4;
-            this.sudRadiobuttonPreviousSession.TabStop = true;
-            this.sudRadiobuttonPreviousSession.Text = "SUD";
-            this.sudRadiobuttonPreviousSession.UseVisualStyleBackColor = true;
-            this.sudRadiobuttonPreviousSession.CheckedChanged += new System.EventHandler(this.sudRadiobuttonPreviousSession_CheckedChanged);
-            // 
-            // overviewTab
-            // 
-            this.overviewTab.BackColor = System.Drawing.Color.White;
-            this.overviewTab.Controls.Add(this.groupBoxRadiobuttonsOverview);
-            this.overviewTab.Controls.Add(this.overviewChart);
-            this.overviewTab.Location = new System.Drawing.Point(4, 22);
-            this.overviewTab.Name = "overviewTab";
-            this.overviewTab.Padding = new System.Windows.Forms.Padding(3);
-            this.overviewTab.Size = new System.Drawing.Size(560, 330);
-            this.overviewTab.TabIndex = 1;
-            this.overviewTab.Text = "Overview Progress";
-            // 
-            // groupBoxRadiobuttonsOverview
-            // 
-            this.groupBoxRadiobuttonsOverview.Controls.Add(this.gsrRadiobuttonOverview);
-            this.groupBoxRadiobuttonsOverview.Controls.Add(this.hrRadiobuttonOverview);
-            this.groupBoxRadiobuttonsOverview.Controls.Add(this.sudRadiobuttonOverview);
-            this.groupBoxRadiobuttonsOverview.Location = new System.Drawing.Point(450, 6);
-            this.groupBoxRadiobuttonsOverview.Name = "groupBoxRadiobuttonsOverview";
-            this.groupBoxRadiobuttonsOverview.Size = new System.Drawing.Size(97, 84);
-            this.groupBoxRadiobuttonsOverview.TabIndex = 8;
-            this.groupBoxRadiobuttonsOverview.TabStop = false;
-            this.groupBoxRadiobuttonsOverview.Text = "Show";
-            // 
-            // gsrRadiobuttonOverview
-            // 
-            this.gsrRadiobuttonOverview.AutoSize = true;
-            this.gsrRadiobuttonOverview.Location = new System.Drawing.Point(6, 41);
-            this.gsrRadiobuttonOverview.Name = "gsrRadiobuttonOverview";
-            this.gsrRadiobuttonOverview.Size = new System.Drawing.Size(48, 17);
-            this.gsrRadiobuttonOverview.TabIndex = 5;
-            this.gsrRadiobuttonOverview.Text = "GSR";
-            this.gsrRadiobuttonOverview.UseVisualStyleBackColor = true;
-            this.gsrRadiobuttonOverview.CheckedChanged += new System.EventHandler(this.gsrRadiobuttonOverview_CheckedChanged);
-            // 
-            // hrRadiobuttonOverview
-            // 
-            this.hrRadiobuttonOverview.AutoSize = true;
-            this.hrRadiobuttonOverview.Location = new System.Drawing.Point(6, 64);
-            this.hrRadiobuttonOverview.Name = "hrRadiobuttonOverview";
-            this.hrRadiobuttonOverview.Size = new System.Drawing.Size(69, 17);
-            this.hrRadiobuttonOverview.TabIndex = 6;
-            this.hrRadiobuttonOverview.Text = "Heartrate";
-            this.hrRadiobuttonOverview.UseVisualStyleBackColor = true;
-            this.hrRadiobuttonOverview.CheckedChanged += new System.EventHandler(this.hrRadiobuttonOverview_CheckedChanged);
-            // 
-            // sudRadiobuttonOverview
-            // 
-            this.sudRadiobuttonOverview.AutoSize = true;
-            this.sudRadiobuttonOverview.Checked = true;
-            this.sudRadiobuttonOverview.Location = new System.Drawing.Point(6, 18);
-            this.sudRadiobuttonOverview.Name = "sudRadiobuttonOverview";
-            this.sudRadiobuttonOverview.Size = new System.Drawing.Size(48, 17);
-            this.sudRadiobuttonOverview.TabIndex = 4;
-            this.sudRadiobuttonOverview.TabStop = true;
-            this.sudRadiobuttonOverview.Text = "SUD";
-            this.sudRadiobuttonOverview.UseVisualStyleBackColor = true;
-            this.sudRadiobuttonOverview.CheckedChanged += new System.EventHandler(this.sudRadiobuttonOverview_CheckedChanged);
-            // 
-            // overviewChart
-            // 
-            overviewChartArea.AxisX.MajorGrid.Enabled = false;
-            overviewChartArea.AxisY.MajorGrid.Enabled = false;
-            overviewChartArea.Name = "overviewChartArea";
-            this.overviewChart.ChartAreas.Add(overviewChartArea);
-            this.overviewChart.Location = new System.Drawing.Point(-4, 0);
-            this.overviewChart.Name = "overviewChart";
-            this.overviewChart.Size = new System.Drawing.Size(550, 300);
-            this.overviewChart.TabIndex = 0;
-            this.overviewChart.Text = "Overview";
-            overviewTitle.Name = "overviewTitle";
-            overviewTitle.Text = "Overview Progress";
-            this.overviewChart.Titles.Add(overviewTitle);
-            // 
-            // commentPanel
-            // 
-            this.commentPanel.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.commentPanel.Location = new System.Drawing.Point(12, 380);
-            this.commentPanel.Name = "commentPanel";
-            this.commentPanel.Size = new System.Drawing.Size(960, 100);
-            this.commentPanel.TabIndex = 6;
-            this.commentPanelIntern = new CommentPanel(commentPanel.Width, commentPanel.Height);
-            this.commentPanel.Controls.Add(commentPanelIntern);
-            // 
-            // PreviousSessionSelectBox
-            // 
-            this.PreviousSessionSelectBox.FormattingEnabled = true;
-            this.PreviousSessionSelectBox.Location = new System.Drawing.Point(292, 17);
-            this.PreviousSessionSelectBox.Name = "PreviousSessionSelectBox";
-            this.PreviousSessionSelectBox.Size = new System.Drawing.Size(125, 21);
-            this.PreviousSessionSelectBox.TabIndex = 7;
-            this.PreviousSessionSelectBox.SelectedIndexChanged += new System.EventHandler(PreviousSessionSelectBox_SelectedIndexChanged);
+            System.Drawing.Point[] locations = {new System.Drawing.Point(6, 12), new System.Drawing.Point(0, 0), new System.Drawing.Point(12, 45), new System.Drawing.Point(4, 22), 
+                                               new System.Drawing.Point(450, 6), new System.Drawing.Point(6, 41), new System.Drawing.Point(6, 64), new System.Drawing.Point(6, 18), 
+											   new System.Drawing.Point(4, 22), new System.Drawing.Point(450, 6), new System.Drawing.Point(6, 41), new System.Drawing.Point(6, 64),
+											   new System.Drawing.Point(6, 18), new System.Drawing.Point(-4, 0), new System.Drawing.Point(12, 380), new System.Drawing.Point(292, 17) };
+            String[] names = { "buttonHome", "previousSessionChart", "chartTabs", "previousSessionTab", "groupBoxRadiobuttonsPreviousSession", "gsrRadiobuttonPreviousSession",
+								"hrRadiobuttonPreviousSession", "sudRadiobuttonPreviousSession", "overviewTab", "groupBoxRadiobuttonsOverview", "gsrRadiobuttonOverview", 
+								"sudRadiobuttonOverview", "hrRadiobuttonOverview", "overviewChart", "commentPanel", "PreviousSessionSelectBox"};
+            System.Drawing.Size[] sizes = { new System.Drawing.Size(75, 23), new System.Drawing.Size(550, 300), new System.Drawing.Size(560, 330), new System.Drawing.Size(560, 330),
+											new System.Drawing.Size(97, 84), new System.Drawing.Size(48, 17), new System.Drawing.Size(69, 17), new System.Drawing.Size(48, 17),
+											new System.Drawing.Size(560, 330), new System.Drawing.Size(97, 84), new System.Drawing.Size(48, 17), new System.Drawing.Size(69, 17), 
+											new System.Drawing.Size(48, 17), new System.Drawing.Size(550, 300), new System.Drawing.Size(960, 100), new System.Drawing.Size(125, 21)};
+			int[] tabIndeces = {4, 3, 4, 0, 7, 5, 6, 4, 1, 8, 5, 6, 4, 0, 6, 1};
+			String[] texts = {"Home",  "Previous Session", null, "Previous Session", "Show", "GSR", "Heartrate", "SUD", "Overview Progress", "Show", "GSR", "Heartrate", "SUD", "Overview", 
+						null, null};
+			System.EventHandler[] eventHandlers = {this.homeEventHandler, null, chartTabs_SelectedIndexChanged, null, null, this.gsrRadiobuttonPreviousSession_CheckedChanged,this.hrRadiobuttonOverview_CheckedChanged,
+                                this.sudRadiobuttonPreviousSession_CheckedChanged, null, null, this.gsrRadiobuttonOverview_CheckedChanged,
+                                this.hrRadiobuttonOverview_CheckedChanged, this.sudRadiobuttonOverview_CheckedChanged, null, null, PreviousSessionSelectBox_SelectedIndexChanged};
+			for(int i=0; i<controls.Length;i++)
+			{
+				GUIHelper.setElement(ref controls[i], locations[i], names[i], sizes[i], tabIndeces[i], texts[i]);
+				if(eventHandlers[i] != null)
+				{
+					if(controls[i] is System.Windows.Forms.RadioButton)
+					{
+						(controls[i] as System.Windows.Forms.RadioButton).CheckedChanged += new System.EventHandler(eventHandlers[i]);
+					}
+					if(controls[i] is System.Windows.Forms.Button)
+					{
+						controls[i].Click += new System.EventHandler(eventHandlers[i]);
+					}
+				}
+				if(controls[i] is System.Windows.Forms.RadioButton)
+				{
+					controls[i].AutoSize = true;
+					(controls[i] as System.Windows.Forms.RadioButton).UseVisualStyleBackColor = true;
+				}
+			}
+            
+            initPreviousSessionChart();
+            initChartTabs();
+            initPreviousSessionTab();
+            initGroupBoxRadiobuttonsPreviousSession();
+            initSudRadiobuttonPreviousSession();
+            initOverviewTab();
+            initGroupBoxRadiobuttonsOverview();
+            initSudRadiobuttonOverview();
+            initOverviewChart();
+            initCommentPanel();
+            initPreviousSessionSelectBox();
             // 
             // ExposureChartsForm
             // 
-            //this.ClientSize = new System.Drawing.Size(1290, 670);
-            this.Controls.Add(this.PreviousSessionSelectBox);
-            this.Controls.Add(this.commentPanel);
-            this.Controls.Add(this._avatarPanel);
-            this.Controls.Add(this.chartTabs);
-            this.Controls.Add(this.buttonHome);
+			this.Controls.AddRange(new System.Windows.Forms.Control[] {this.PreviousSessionSelectBox, this.commentPanel, this._avatarPanel, this.chartTabs, this.buttonHome});
             this.Name = "ExposureChartsForm";
             this.Text = "ExposureChartsForm";
             ((System.ComponentModel.ISupportInitialize)(this.previousSessionChart)).EndInit();
@@ -300,7 +134,101 @@ namespace NijnCoach.View.Overview
         }
 
         #endregion
+        #region
+        private void initPreviousSessionChart()
+		{
+            System.Windows.Forms.DataVisualization.Charting.ChartArea previousSessionChartArea = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+			previousSessionChartArea.AxisX.Interval = 3D;
+            previousSessionChartArea.AxisX.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Minutes;
+            previousSessionChartArea.AxisX.LabelStyle.Format = "mm:ss";
+            previousSessionChartArea.AxisX.MajorGrid.Enabled = false;
+            previousSessionChartArea.AxisY.MajorGrid.Enabled = false;
+            previousSessionChartArea.Name = "previousSessionChartArea";
+            this.previousSessionChart.ChartAreas.Add(previousSessionChartArea);
+            this.previousSessionTitle.Name = "previousSessionTitle";
+            this.previousSessionTitle.Text = "Previous Session";
+            this.previousSessionChart.Titles.Add(previousSessionTitle);
+		}
+		
+		private void initChartTabs()
+		{
+			this.chartTabs.Controls.Add(this.previousSessionTab);
+            this.chartTabs.Controls.Add(this.overviewTab);
+            this.chartTabs.SelectedIndex = 0;
+            this.chartTabs.SelectedIndexChanged += new System.EventHandler(chartTabs_SelectedIndexChanged);
+		}
+		
+		private void initPreviousSessionTab()
+		{
+			this.previousSessionTab.BackColor = System.Drawing.Color.White;
+            this.previousSessionTab.Controls.Add(this.groupBoxRadiobuttonsPreviousSession);
+            this.previousSessionTab.Controls.Add(this.previousSessionChart);
+            this.previousSessionTab.Padding = new System.Windows.Forms.Padding(3);
+		}
 
+        private void initGroupBoxRadiobuttonsPreviousSession()
+        {
+            this.groupBoxRadiobuttonsPreviousSession.Controls.Add(this.gsrRadiobuttonPreviousSession);
+            this.groupBoxRadiobuttonsPreviousSession.Controls.Add(this.hrRadiobuttonPreviousSession);
+            this.groupBoxRadiobuttonsPreviousSession.Controls.Add(this.sudRadiobuttonPreviousSession);
+            this.groupBoxRadiobuttonsPreviousSession.TabStop = false;
+        }
+
+        private void initSudRadiobuttonPreviousSession()
+        {
+            this.sudRadiobuttonPreviousSession.Checked = true;
+            this.sudRadiobuttonPreviousSession.TabStop = true;
+        }
+
+        private void initOverviewTab()
+        {
+            this.overviewTab.BackColor = System.Drawing.Color.White;
+            this.overviewTab.Controls.Add(this.groupBoxRadiobuttonsOverview);
+            this.overviewTab.Controls.Add(this.overviewChart);
+            this.overviewTab.Padding = new System.Windows.Forms.Padding(3);
+        }
+
+        private void initGroupBoxRadiobuttonsOverview()
+        {
+            this.groupBoxRadiobuttonsOverview.Controls.Add(this.gsrRadiobuttonOverview);
+            this.groupBoxRadiobuttonsOverview.Controls.Add(this.hrRadiobuttonOverview);
+            this.groupBoxRadiobuttonsOverview.Controls.Add(this.sudRadiobuttonOverview);
+            this.groupBoxRadiobuttonsOverview.TabStop = false;
+        }
+
+        private void initSudRadiobuttonOverview()
+        {
+            this.sudRadiobuttonOverview.AutoSize = true;
+            this.sudRadiobuttonOverview.TabStop = true;
+        }
+
+        private void initOverviewChart()
+        {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea overviewChartArea = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Title overviewTitle = new System.Windows.Forms.DataVisualization.Charting.Title();
+            overviewChartArea.AxisX.MajorGrid.Enabled = false;
+            overviewChartArea.AxisY.MajorGrid.Enabled = false;
+            overviewChartArea.Name = "overviewChartArea";
+            this.overviewChart.ChartAreas.Add(overviewChartArea);
+            overviewTitle.Name = "overviewTitle";
+            overviewTitle.Text = "Overview Progress";
+            this.overviewChart.Titles.Add(overviewTitle);
+        }
+
+        private void initCommentPanel()
+        {
+            this.commentPanel.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.commentPanelIntern = new CommentPanel(commentPanel.Width, commentPanel.Height);
+            this.commentPanel.Controls.Add(commentPanelIntern);
+
+        }
+
+        private void initPreviousSessionSelectBox()
+        {
+            this.PreviousSessionSelectBox.FormattingEnabled = true;
+            this.PreviousSessionSelectBox.SelectedIndexChanged += new System.EventHandler(PreviousSessionSelectBox_SelectedIndexChanged);
+        }
+        #endregion
         private System.Windows.Forms.DataVisualization.Charting.Chart previousSessionChart;
         private System.Windows.Forms.DataVisualization.Charting.Title previousSessionTitle;
         private System.Windows.Forms.TabControl chartTabs;
@@ -329,10 +257,8 @@ namespace NijnCoach.View.Overview
                 {
                     _avatarPanel = new System.Windows.Forms.Panel();
                     this._avatarPanel.BackColor = System.Drawing.SystemColors.ActiveCaption;
-                    this._avatarPanel.Location = new System.Drawing.Point(575, 12);
-                    this._avatarPanel.Name = "avatarPanel";
-                    this._avatarPanel.Size = new System.Drawing.Size(400, 360);
-                    this._avatarPanel.TabIndex = 5;
+					GUIHelper.setElement(ref this._avatarPanel, new System.Drawing.Point(575, 12), "avatarPanel",
+									new System.Drawing.Size(400, 360), 5, null);
                 }
                 return this._avatarPanel;
             }

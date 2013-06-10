@@ -11,11 +11,23 @@ namespace NijnCoach.View
                 int tabIndex, String text, Boolean enabled = true) 
             where T : System.Windows.Forms.Control
         {
-            control.Location = location;
-            control.Name = name;
-            control.Size = size;
-            control.TabIndex = tabIndex;
-            control.Text = text;
+			if(location != null)
+			{
+				control.Location = location;
+			}
+			if(name != null)
+			{
+				control.Name = name;
+			}
+            if(size != null)
+            {
+				control.Size = size;
+			}
+			control.TabIndex = tabIndex;
+            if(text != null)
+			{
+				control.Text = text;
+			}
             control.Enabled = enabled;
         }
     }

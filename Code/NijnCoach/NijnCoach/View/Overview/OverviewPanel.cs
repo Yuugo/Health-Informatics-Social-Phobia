@@ -32,7 +32,7 @@ namespace NijnCoach.View.Overview
 
         protected override void avatarLoaded()
         {
-            ExposureSessions_Load();
+            
         }
 
         private void continueEventHandler(object sender, EventArgs e)
