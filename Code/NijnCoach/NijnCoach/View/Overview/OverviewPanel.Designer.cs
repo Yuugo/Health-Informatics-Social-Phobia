@@ -79,7 +79,7 @@ namespace NijnCoach.View.Overview
 			int[] tabIndeces = {4, 3, 4, 0, 7, 5, 6, 4, 1, 8, 5, 6, 4, 0, 6, 1};
 			String[] texts = {"Home",  "Previous Session", null, "Previous Session", "Show", "GSR", "Heartrate", "SUD", "Overview Progress", "Show", "GSR", "Heartrate", "SUD", "Overview", 
 						null, null};
-			System.EventHandler[] eventHandlers = {this.homeEventHandler, null, chartTabs_SelectedIndexChanged, null, null, this.gsrRadiobuttonPreviousSession_CheckedChanged,this.hrRadiobuttonOverview_CheckedChanged,
+			System.EventHandler[] eventHandlers = {this.homeEventHandler, null, chartTabs_SelectedIndexChanged, null, null, this.gsrRadiobuttonPreviousSession_CheckedChanged,this.hrRadiobuttonPreviousSession_CheckedChanged,
                                 this.sudRadiobuttonPreviousSession_CheckedChanged, null, null, this.gsrRadiobuttonOverview_CheckedChanged,
                                 this.hrRadiobuttonOverview_CheckedChanged, this.sudRadiobuttonOverview_CheckedChanged, null, null, PreviousSessionSelectBox_SelectedIndexChanged};
 			for(int i=0; i<controls.Length;i++)
