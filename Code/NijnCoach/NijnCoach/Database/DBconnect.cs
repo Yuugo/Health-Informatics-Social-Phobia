@@ -238,7 +238,7 @@ namespace NijnCoach.Database
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message.ToString());
+                //MessageBox.Show(e.Message.ToString());
                 throw new FileNotFoundException();
             }
         }

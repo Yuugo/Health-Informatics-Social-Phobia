@@ -85,6 +85,7 @@
     <Compile Include="View\PatientFiles\UserCreate.Designer.cs">
       <DependentUpon>UserCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\questionnaireForm\NoQuestionnaireAvailableException.cs" />
     <Compile Include="View\TherapistGUI\HomePanel.cs">
       <SubType>Component</SubType>
     </Compile>

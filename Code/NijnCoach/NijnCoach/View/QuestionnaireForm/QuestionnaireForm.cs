@@ -11,6 +11,8 @@ using NijnCoach.View.Overview;
 using NijnCoach.Database;
 using System.IO;
 using System.Text;
+using System.Windows.Forms;
+using NijnCoach.View.questionnaireForm;
 
 namespace NijnCoach.View.Questionnaire
 {
@@ -30,8 +32,17 @@ namespace NijnCoach.View.Questionnaire
             BassNet.Registration("w.kowaluk@gmail.com", "2X32382019152222");
             #endregion
             Bass.BASS_Init(-1, 44100, BASSInit.BASS_DEVICE_DEFAULT, IntPtr.Zero);
-            XMLclasses.Questionnaire questionnaire = DBConnect.getQuestionnaireByPatient(MainClass.userNo);
-            init(questionnaire);
+            try
+            {
+                XMLclasses.Questionnaire questionnaire = DBConnect.getQuestionnaireByPatient(MainClass.userNo);
+                init(questionnaire);
+            }
+            catch (FileNotFoundException)
+            {
+                MessageBox.Show("No questionnaires available for you.\nYou will be taken to the homepanel");
+                throw new NoQuestionnaireAvailableException();
+            }
+            
             
         }
 

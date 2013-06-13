@@ -11,6 +11,7 @@ using NijnCoach.View.Main;
 using NijnCoach.View.Questionnaire;
 using NijnCoach.View.AvatarDir;
 using NijnCoach.View.Home;
+using NijnCoach.View.questionnaireForm;
 
 namespace NijnCoach.View.Greet
 {
@@ -34,7 +35,14 @@ namespace NijnCoach.View.Greet
             //TODO: Fetch questionnaire from database
             //XMLParser parser = new XMLParser();
             //MainForm.mainForm.replacePanel(new QuestionnaireForm(parser.readXMLFromFile("writeTest.xml")));
-            MainForm.mainForm.replacePanel(new QuestionnaireForm(_loadAvatar));
+            try
+            {
+                MainForm.mainForm.replacePanel(new QuestionnaireForm(_loadAvatar));
+            }
+            catch (NoQuestionnaireAvailableException)
+            {
+                homeEventHandler(null, null);
+            }
         }
 
         private void homeEventHandler(object sender, EventArgs e)
