@@ -72,6 +72,7 @@
     <Compile Include="View\AvatarDir\AvatarPanel.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="View\Greet\NoQuestionnaireAvailableException.cs" />
     <Compile Include="View\Main\LoginMenu.cs">
       <SubType>Form</SubType>
     </Compile>

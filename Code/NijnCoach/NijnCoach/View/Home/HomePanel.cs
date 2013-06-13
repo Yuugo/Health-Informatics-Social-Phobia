@@ -10,6 +10,7 @@ using NijnCoach.View.Questionnaire;
 using NijnCoach.View.Main;
 using NijnCoach.View.Overview;
 using NijnCoach.View.Exposure;
+using NijnCoach.View.questionnaireForm;
 
 namespace NijnCoach.View.Home
 {
@@ -25,7 +26,14 @@ namespace NijnCoach.View.Home
         private void questionnaireEventHandler(object sender, EventArgs e)
         {
             //Fetch correct questionnaire from database
-            MainForm.mainForm.replacePanel(new QuestionnaireForm(_loadAvatar));
+            try
+            {
+                MainForm.mainForm.replacePanel(new QuestionnaireForm(_loadAvatar));
+            }
+            catch (NoQuestionnaireAvailableException)
+            {
+                MainForm.mainForm.replacePanel(new HomePanel(_loadAvatar));
+            }
         }
 
         private void overviewEventHandler(object sender, EventArgs e)
