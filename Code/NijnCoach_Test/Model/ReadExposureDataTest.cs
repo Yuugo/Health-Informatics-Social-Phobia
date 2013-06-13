@@ -6,7 +6,7 @@ using NUnit.Framework;
 using NijnCoach.Model;
 using System.IO;
 using NijnCoach;
-using Moq;
+//using Moq;
 
 namespace NijnCoach_Test.Model
 {

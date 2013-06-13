@@ -65,6 +65,7 @@ namespace NijnCoach.View.Questionnaire
                 //TODO: Mark questionnaire as finished
                 //TODO: fetch data for overview from database
                 MainForm.mainForm.replacePanel(new OverviewPanel(_loadAvatar));
+                stopBass();
             }
             else
             {
@@ -74,7 +75,6 @@ namespace NijnCoach.View.Questionnaire
                 {
                     buttonNext.Text = "Finish";
                 }
-                playFromDB();
                 buttonPrevious.Enabled = true;
                 progressBar.Value = currentQuestion;
             }
@@ -91,17 +91,18 @@ namespace NijnCoach.View.Questionnaire
             }
             buttonNext.Text = "Next";
             buttonNext.Enabled = true;
-            playFromDB();
             progressBar.Value = currentQuestion;
         }
 
         private void homeEventHandler(object sender, EventArgs e)
         {
+            stopBass();
             MainForm.mainForm.replacePanel(new HomePanel(_loadAvatar));
         }
 
         private void saveEventHandler(object sender, EventArgs e)
         {
+            stopBass();
             XMLParser reader = new XMLParser();
             reader.writeXMLToFile(questionnaire, "answers.xml"); //TODO: no static file name
         }
@@ -128,7 +129,7 @@ namespace NijnCoach.View.Questionnaire
             AvatarControl.setAvatarEmotionViaEntry(entry);
             panelQuestionIntern.entry = entry;
             panelQuestion.Controls.Add(panelQuestionIntern);
-            //playFromDB();
+            playFromDB();
             panelQuestion.ResumeLayout();
         }
 
@@ -138,11 +139,14 @@ namespace NijnCoach.View.Questionnaire
         void playFromDB()
         {            
             var entry = questionnaire.entries[currentQuestion];
-            String content = DBConnect.getSpeechFile(entry.Audio());
-            oldPath = tempPath;
-            tempPath = createTempAudioFile(content);
-            bassPlay(tempPath);
-            deleteTempFile();
+            if (entry.Audio() != "")
+            {
+                String content = DBConnect.getSpeechFile(entry.Audio());
+                oldPath = tempPath;
+                tempPath = createTempAudioFile(content);
+                bassPlay(tempPath);
+                deleteTempFile();
+            }
         }
 
         public void bassPlay(string mp3path)
@@ -173,7 +177,7 @@ namespace NijnCoach.View.Questionnaire
         /// <returns></returns>
         public String createTempAudioFile(String content)
         {
-            String path = GetTempFilePathWithExtension("mp3");
+            String path = GetTempFilePathWithExtension("wav");
             using (FileStream fs = File.Create(path, 1024))
             {
                 byte[] decoded = System.Convert.FromBase64String(content);
@@ -206,6 +210,12 @@ namespace NijnCoach.View.Questionnaire
             var path = System.IO.Path.GetTempFileName();
             var fileName = Path.ChangeExtension(path, extension);
             return Path.Combine(path, fileName);
+        }
+
+        public void stopBass()
+        {
+            if (stream != 0)
+                Bass.BASS_StreamFree(stream);
         }
 
         protected override void avatarLoaded() { }

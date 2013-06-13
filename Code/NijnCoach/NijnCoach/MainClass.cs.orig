@@ -30,14 +30,20 @@ namespace NijnCoach
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new QuestionnaireForm());
-            //Application.Run(TherapistMain.main);
+            //Application.Run(new TherapistGUI());
             //Application.Run(new NijnCoach.View.PatientFiles.PatientFiles());
             //Application.Run(new saveFileDialog());
             //Application.Run(new PatientFiles());
             
-            userNo = -3;
+<<<<<<< HEAD
+            userNo = -34;
             Application.Run(MainForm.mainForm);
             //Application.Run(new NijnCoach.View.Main.LoginMenu());
+=======
+            //userNo = 9;
+            //Application.Run(MainForm.mainForm);
+            Application.Run(new NijnCoach.View.Main.LoginMenu());
+>>>>>>> d534cde8c865c57476eee2a886b4e82ff2ce875e
 
         }
     }
