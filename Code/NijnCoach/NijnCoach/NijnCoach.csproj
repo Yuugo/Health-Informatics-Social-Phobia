@@ -92,6 +92,9 @@
     <Compile Include="View\TherapistGUI\HomePanel.Designer.cs">
       <DependentUpon>HomePanel.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\TherapistGUI\OverviewPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="View\TherapistGUI\PatientOverview.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -361,8 +364,6 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="View\AvatarDirfv\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -42,7 +42,7 @@ namespace NijnCoach.View.Overview
             MainForm.mainForm.replacePanel(new QuestionnaireForm(_loadAvatar));
         }
 
-        private void homeEventHandler(object sender, EventArgs e)
+        protected virtual void homeEventHandler(object sender, EventArgs e)
         {
             MainForm.mainForm.replacePanel(new HomePanel(_loadAvatar));
         }
@@ -50,7 +50,12 @@ namespace NijnCoach.View.Overview
         private void ExposureSessions_Load()
         {
             // Retrieve all the session data from the database
-            this.exposureSessions = getAllSessionsFromDatabase(); 
+            this.exposureSessions = getAllSessionsFromDatabase();
+            if (this.exposureSessions.Count == 0)
+            {
+                MessageBox.Show("No exposure data available");
+                throw new ArgumentException("No exposure data available");
+            }
             // Make the sessions selectable in the selection box
             this.PreviousSessionSelectBox.BindingContext = new BindingContext();
             this.PreviousSessionSelectBox.DataSource = this.exposureSessions;

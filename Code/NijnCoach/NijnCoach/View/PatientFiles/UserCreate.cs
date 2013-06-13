@@ -125,7 +125,7 @@ namespace NijnCoach.View.PatientFiles
 
         private void button2_Click(object sender, EventArgs e)
         {
-            TherapistMain.main.replacePanel(new NijnCoach.View.Home.HomePanel());
+            TherapistMain.main.replacePanel(new NijnCoach.View.TherapistGUI.HomePanel());
         }
     }
 }

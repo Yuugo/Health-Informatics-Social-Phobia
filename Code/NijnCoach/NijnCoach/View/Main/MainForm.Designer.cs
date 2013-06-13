@@ -43,6 +43,7 @@
             this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "NijnCoach";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(formClosed);
             //this.TopMost = true;
             this.ResumeLayout(false);
             // 
@@ -57,5 +58,10 @@
         #endregion
 
         private System.Windows.Forms.Panel outerPanel, innerPanel;
+
+        private void formClosed(object sender, System.EventArgs e)
+        {
+            System.Windows.Forms.Application.Exit();
+        }
     }
 }

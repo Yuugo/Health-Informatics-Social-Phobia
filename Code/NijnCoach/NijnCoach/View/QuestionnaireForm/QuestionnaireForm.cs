@@ -79,7 +79,14 @@ namespace NijnCoach.View.Questionnaire
                 saveEventHandler(sender, e);
                 //TODO: Mark questionnaire as finished
                 //TODO: fetch data for overview from database
-                MainForm.mainForm.replacePanel(new OverviewPanel(_loadAvatar));
+                try
+                {
+                    MainForm.mainForm.replacePanel(new OverviewPanel(_loadAvatar));
+                }
+                catch (ArgumentException)
+                {
+                    MainForm.mainForm.replacePanel(new HomePanel(_loadAvatar));
+                }
             }
             else
             {

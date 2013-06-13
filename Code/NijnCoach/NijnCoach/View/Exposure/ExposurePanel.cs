@@ -36,7 +36,14 @@ namespace NijnCoach.View.Exposure
             t.Enabled = false;
             //Load the overview of this exposure session
             //Load the correct data from the database
-            MainForm.mainForm.replacePanel(new OverviewPanel(_loadAvatar));
+            try
+            {
+                MainForm.mainForm.replacePanel(new OverviewPanel(_loadAvatar));
+            }
+            catch (ArgumentException)
+            {
+                MainForm.mainForm.replacePanel(new NijnCoach.View.Home.HomePanel(_loadAvatar));
+            }
         }
 
     }
