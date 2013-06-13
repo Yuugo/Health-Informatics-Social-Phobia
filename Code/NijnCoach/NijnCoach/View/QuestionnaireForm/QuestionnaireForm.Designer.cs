@@ -44,11 +44,10 @@ namespace NijnCoach.View.Questionnaire
             // 
             // progressBar
             // 
-            this.progressBar.Location = new System.Drawing.Point(682, 3);
+            this.progressBar.Location = new System.Drawing.Point(775, 20);
             this.progressBar.Name = "progressBar";
             this.progressBar.Size = new System.Drawing.Size(100, 23);
             this.progressBar.TabIndex = 4;
-            this.progressBar.BringToFront();
             // 
             // panelQuestion
             // 
@@ -112,6 +111,8 @@ namespace NijnCoach.View.Questionnaire
             this.Controls.Add(this.panelQuestion);
             this.Controls.Add(this.buttonNext);
             this.Controls.Add(this.buttonPrevious);
+            this.Controls.Add(this.progressBar);
+            this.progressBar.BringToFront();
             this.Name = "QuestionnaireForm";
             this.Text = "Questionnaire";
             this.ResumeLayout(false);

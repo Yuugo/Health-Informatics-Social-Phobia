@@ -11,6 +11,12 @@ namespace NijnCoach.View.TherapistGUI
         {
 
         }
+
+        protected override void InitializeComponent()
+        {
+            base.InitializeComponent();
+            //TODO: Resize some of the components
+        }
         
         protected override void homeEventHandler(object sender, EventArgs e)
         {
