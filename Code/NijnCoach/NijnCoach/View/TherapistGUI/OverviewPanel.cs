@@ -4,11 +4,14 @@ using System.Linq;
 using System.Text;
 using NijnCoach.XMLclasses;
 using NijnCoach.View.Questionnaire;
+using System.Windows.Forms;
 
 namespace NijnCoach.View.TherapistGUI
 {
     class OverviewPanel : NijnCoach.View.Overview.OverviewPanel
     {
+        private Panel emptyAvatarPanel = new Panel();
+
         public OverviewPanel() : base(false)
         {
 
@@ -24,6 +27,14 @@ namespace NijnCoach.View.TherapistGUI
             OpenQuestion oq = new OpenQuestion();
             oq.question = "What comment do you want to give to this patient?";
             (commentPanel as OpenQuestionPanel).entry = oq;
+        }
+
+        protected override System.Windows.Forms.Panel panelAvatar
+        {
+            get
+            {
+                return emptyAvatarPanel;
+            }
         }
         
         protected override void homeEventHandler(object sender, EventArgs e)
