@@ -78,7 +78,12 @@ namespace NijnCoach.View.Overview
             foreach (ProgressEval dbs in dbsess)
             {
                 var ses = ReadExposureData.CreateExposureSession(dbs.Name, dbs.Content);
-                Comment com = new Comment { value = dbs.Commentary, emotion = ""/*dbs.Emotion*/ };
+                string emo;
+                if (_loadAvatar)
+                    emo = dbs.Emotion;
+                else
+                    emo = "";
+                Comment com = new Comment { value = dbs.Commentary, emotion = emo };
                 ses.comment = com;
                 sessions.Add(ses);
             }
