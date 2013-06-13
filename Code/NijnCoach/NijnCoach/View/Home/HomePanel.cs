@@ -17,7 +17,7 @@ namespace NijnCoach.View.Home
 {
     public partial class HomePanel : Panel
     {
-        private Boolean _loadAvatar = true;
+        private Boolean _loadAvatar = false;
         public HomePanel(Boolean _loadAvatar = true)
         {
             this._loadAvatar = _loadAvatar;
@@ -33,7 +33,7 @@ namespace NijnCoach.View.Home
             }
             catch (NoQuestionnaireAvailableException)
             {
-                MainForm.mainForm.replacePanel(new HomePanel(_loadAvatar));
+                MessageBox.Show("No Questionnaires are available for you.");
             }
         }
 

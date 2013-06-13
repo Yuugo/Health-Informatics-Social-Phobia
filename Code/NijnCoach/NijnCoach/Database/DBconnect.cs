@@ -7,6 +7,7 @@ using NijnCoach.XMLclasses;
 using System.Xml;
 using System.IO;
 using System.Security.Cryptography;
+using NijnCoach.View.Greet;
 
 namespace NijnCoach.Database
 {
@@ -217,9 +218,9 @@ namespace NijnCoach.Database
                 StreamReader reader = new StreamReader(stream);
                 return parser.readXML(reader);
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                return null;
+                throw new NoQuestionnaireAvailableException();
             }
         }
 
@@ -242,9 +243,9 @@ namespace NijnCoach.Database
                 StreamReader reader = new StreamReader(stream);
                 return parser.readXML(reader);
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                return null;
+                throw new NoQuestionnaireAvailableException();
             }
         }
 

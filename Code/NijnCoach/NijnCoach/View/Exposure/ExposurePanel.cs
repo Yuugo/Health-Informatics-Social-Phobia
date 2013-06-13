@@ -13,7 +13,7 @@ namespace NijnCoach.View.Exposure
 {
     public partial class ExposurePanel : Panel
     {
-        private Boolean _loadAvatar = true;
+        private Boolean _loadAvatar = false;
         System.Windows.Forms.Timer t;
         public ExposurePanel(Boolean _loadAvatar = true)
         {

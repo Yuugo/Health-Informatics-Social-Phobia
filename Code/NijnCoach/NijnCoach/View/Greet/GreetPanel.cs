@@ -17,7 +17,7 @@ namespace NijnCoach.View.Greet
 {
     public partial class GreetPanel : AvatarContainer
     {
-        private Boolean _loadAvatar = true;
+        private Boolean _loadAvatar = false;
         public GreetPanel(Boolean _loadAvatar = true)
             : base(_loadAvatar)
         {
@@ -42,6 +42,7 @@ namespace NijnCoach.View.Greet
             }
             catch (NoQuestionnaireAvailableException)
             {
+                MessageBox.Show("There's no questionnaire available for you.\nYou will be taken to the homepanel");
                 homeEventHandler(null, null);
             }
         }
