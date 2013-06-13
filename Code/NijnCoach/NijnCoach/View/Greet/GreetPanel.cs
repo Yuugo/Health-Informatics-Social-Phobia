@@ -11,7 +11,7 @@ using NijnCoach.View.Main;
 using NijnCoach.View.Questionnaire;
 using NijnCoach.View.AvatarDir;
 using NijnCoach.View.Home;
-using NijnCoach.View.questionnaireForm;
+//using NijnCoach.View.questionnaireForm;
 
 namespace NijnCoach.View.Greet
 {

@@ -8,15 +8,15 @@
 //------------------------------------------------------------------------------
 
 using System;
-using System.ComponentModel;
-using System.Data.EntityClient;
 using System.Data.Objects;
 using System.Data.Objects.DataClasses;
-using System.Linq;
-using System.Runtime.Serialization;
+using System.Data.EntityClient;
+using System.ComponentModel;
 using System.Xml.Serialization;
+using System.Runtime.Serialization;
 
 [assembly: EdmSchemaAttribute()]
+
 namespace NijnCoach.Database
 {
     #region Contexts
@@ -162,7 +162,6 @@ namespace NijnCoach.Database
         private ObjectSet<AudioFile> _AudioFiles;
 
         #endregion
-
         #region AddTo Methods
     
         /// <summary>
@@ -214,11 +213,11 @@ namespace NijnCoach.Database
         }
 
         #endregion
-
     }
+    
 
     #endregion
-
+    
     #region Entities
     
     /// <summary>
@@ -251,7 +250,6 @@ namespace NijnCoach.Database
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -378,7 +376,6 @@ namespace NijnCoach.Database
         partial void OnTrackNoChanged();
 
         #endregion
-
     
     }
     
@@ -412,7 +409,6 @@ namespace NijnCoach.Database
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -563,7 +559,6 @@ namespace NijnCoach.Database
         partial void OnEmotionChanged();
 
         #endregion
-
     
     }
     
@@ -599,7 +594,6 @@ namespace NijnCoach.Database
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -750,7 +744,6 @@ namespace NijnCoach.Database
         partial void OnFilledInChanged();
 
         #endregion
-
     
     }
     
@@ -777,7 +770,7 @@ namespace NijnCoach.Database
         /// <param name="houseNo">Initial value of the HouseNo property.</param>
         /// <param name="postal">Initial value of the Postal property.</param>
         /// <param name="city">Initial value of the City property.</param>
-        public static Sickpeople CreateSickpeople(global::System.String fname, global::System.String lname, global::System.Int32 patientNo, global::System.Int32 age, global::System.String email, global::System.Int32 phoneNo, global::System.String street, global::System.Int32 houseNo, global::System.String postal, global::System.String city)
+        public static Sickpeople CreateSickpeople(global::System.String fname, global::System.String lname, global::System.Int32 patientNo, global::System.Int32 age, global::System.String email, global::System.String phoneNo, global::System.String street, global::System.Int32 houseNo, global::System.String postal, global::System.String city)
         {
             Sickpeople sickpeople = new Sickpeople();
             sickpeople.Fname = fname;
@@ -794,7 +787,6 @@ namespace NijnCoach.Database
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -925,7 +917,7 @@ namespace NijnCoach.Database
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 PhoneNo
+        public global::System.String PhoneNo
         {
             get
             {
@@ -935,13 +927,13 @@ namespace NijnCoach.Database
             {
                 OnPhoneNoChanging(value);
                 ReportPropertyChanging("PhoneNo");
-                _PhoneNo = StructuralObject.SetValidValue(value);
+                _PhoneNo = StructuralObject.SetValidValue(value, false);
                 ReportPropertyChanged("PhoneNo");
                 OnPhoneNoChanged();
             }
         }
-        private global::System.Int32 _PhoneNo;
-        partial void OnPhoneNoChanging(global::System.Int32 value);
+        private global::System.String _PhoneNo;
+        partial void OnPhoneNoChanging(global::System.String value);
         partial void OnPhoneNoChanged();
     
         /// <summary>
@@ -1041,7 +1033,6 @@ namespace NijnCoach.Database
         partial void OnCityChanged();
 
         #endregion
-
     
     }
     
@@ -1075,7 +1066,6 @@ namespace NijnCoach.Database
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -1202,7 +1192,6 @@ namespace NijnCoach.Database
         partial void OnPartNoChanged();
 
         #endregion
-
     
     }
     
@@ -1234,7 +1223,6 @@ namespace NijnCoach.Database
         }
 
         #endregion
-
         #region Primitive Properties
     
         /// <summary>
@@ -1337,11 +1325,9 @@ namespace NijnCoach.Database
         partial void OnPatientNoChanged();
 
         #endregion
-
     
     }
 
     #endregion
-
     
 }
