@@ -297,6 +297,10 @@ namespace NijnCoach.View.Overview
             if (comment != null)
             {
                 commentPanelIntern.entry = comment;
+                if (_loadAvatar)
+                {
+                    Avatar.AvatarControl.setAvatarEmotionViaString(comment.emotion, 6, 0.8);
+                }
             }
             else
             {

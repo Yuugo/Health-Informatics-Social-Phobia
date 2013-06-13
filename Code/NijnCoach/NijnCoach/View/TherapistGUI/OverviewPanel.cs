@@ -35,6 +35,7 @@ namespace NijnCoach.View.TherapistGUI
             this.commentPanel.BackColor = System.Drawing.SystemColors.ControlLight;
             oq = new OpenQuestion();
             oq.question = "What comment do you want to give to this patient?";
+            oq.theAnswer = selectedSession().comment.theAnswer;
             (commentPanel as OpenQuestionPanel).entry = oq;
 
             GUIHelper.setElement(ref buttonSend, new System.Drawing.Point(450, 585), "buttonSend", new System.Drawing.Size(75, 23), 5, "Send");
