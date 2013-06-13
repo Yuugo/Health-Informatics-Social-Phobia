@@ -11,9 +11,9 @@ using NijnCoach.View.Overview;
 using NijnCoach.Database;
 using System.IO;
 using System.Text;
+using System.Windows;
 using System.Windows.Forms;
 using NijnCoach.View.Greet;
-using NijnCoach.View;
 
 namespace NijnCoach.View.Questionnaire
 {
@@ -22,6 +22,7 @@ namespace NijnCoach.View.Questionnaire
         private XMLclasses.Questionnaire questionnaire;
         private int currentQuestion = 0;
         private int stream = 0;
+        private XMLParser xpars = new XMLParser();
         private Boolean _loadAvatar = true;
         private String tempPath;
         private String oldPath;
@@ -41,8 +42,9 @@ namespace NijnCoach.View.Questionnaire
             }
             catch (FileNotFoundException)
             {
-                MessageBox.Show("No questionnaires available for you.\nYou will be taken to the homepanel");
+                System.Windows.MessageBox.Show("No questionnaires available for you.\nYou will be taken to the homepanel");
                 throw new NoQuestionnaireAvailableException();
+                //MainForm.mainForm.replacePanel(new HomePanel(_loadAvatar));
             }
 
 
@@ -56,19 +58,25 @@ namespace NijnCoach.View.Questionnaire
 
         private void init(XMLclasses.Questionnaire questionnaire)
         {
-            Debug.Assert(questionnaire.entries.Count > 0, "The number of entries in the questionnaire should at least be 1");
+            if (questionnaire.entries.Count > 0)
+            {
+                System.Windows.MessageBox.Show("No questionnaires available for you.\nYou will be taken to the homepanel");
+                throw new NoQuestionnaireAvailableException();
+            }
             this.questionnaire = questionnaire;
             initControls();
         }
 
         private void initControls()
         {
+            currentQuestion = DBConnect.getQuestion(MainClass.userNo);
+            if (currentQuestion > 0) buttonPrevious.Enabled = true;
             updatePanelQuestion(questionnaire.entries[currentQuestion]);
             progressBar.Minimum = 0;
             progressBar.Maximum = questionnaire.entries.Count;
             if (questionnaire.entries.Count < 2)
             {
-                buttonNext.Enabled = false;
+                buttonNext.Text = "Finish";
             }
         }
 
@@ -79,24 +87,20 @@ namespace NijnCoach.View.Questionnaire
                 saveEventHandler(sender, e);
                 //TODO: Mark questionnaire as finished
                 //TODO: fetch data for overview from database
-                try
-                {
-                    MainForm.mainForm.replacePanel(new OverviewPanel(_loadAvatar));
-                }
-                catch (ArgumentException)
-                {
-                    MainForm.mainForm.replacePanel(new HomePanel(_loadAvatar));
-                }
+                DBConnect.updateQuestionnaire(MainClass.userNo,xpars.writeXML(questionnaire), -1);
+                MainForm.mainForm.replacePanel(new OverviewPanel(_loadAvatar));
             }
             else
-            {
+            {                
                 currentQuestion++;
+                DBConnect.updateQuestionnaire(MainClass.userNo, xpars.writeXML(questionnaire), currentQuestion);
                 updatePanelQuestion(questionnaire.entries[currentQuestion]);
                 if (currentQuestion == questionnaire.entries.Count - 1)
                 {
                     buttonNext.Text = "Finish";
                 }
                 playFromDB();
+
                 buttonPrevious.Enabled = true;
                 progressBar.Value = currentQuestion;
             }
@@ -106,6 +110,7 @@ namespace NijnCoach.View.Questionnaire
         {
             Debug.Assert(currentQuestion - 1 >= 0, "Array out of bounds: IEntry does not exist");
             currentQuestion--;
+            DBConnect.updateQuestionnaire(MainClass.userNo, xpars.writeXML(questionnaire), currentQuestion);
             updatePanelQuestion(questionnaire.entries[currentQuestion]);
             if (currentQuestion == 0)
             {
@@ -140,14 +145,14 @@ namespace NijnCoach.View.Questionnaire
             }
             else if (entry is MCQuestion)
             {
-                panelQuestionIntern = new MCQuestionPanel(panelQuestion.Width, panelQuestion.Height, _loadAvatar);
+                panelQuestionIntern = new MCQuestionPanel(panelQuestion.Width, panelQuestion.Height);
             }
             else if (entry is OpenQuestion)
             {
                 panelQuestionIntern = new OpenQuestionPanel(panelQuestion.Width, panelQuestion.Height);
             }
 
-            if (_loadAvatar) AvatarControl.setAvatarEmotionViaEntry(entry);
+            AvatarControl.setAvatarEmotionViaEntry(entry);
             panelQuestionIntern.entry = entry;
             panelQuestion.Controls.Add(panelQuestionIntern);
             playFromDB();

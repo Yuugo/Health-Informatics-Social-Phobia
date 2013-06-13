@@ -33,5 +33,9 @@ namespace NijnCoach.XMLclasses
         {
             return emotion;
         }
+        public String Answer()
+        {
+            return theAnswer;
+        }
     }
 }

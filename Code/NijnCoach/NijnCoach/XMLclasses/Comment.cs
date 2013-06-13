@@ -18,9 +18,17 @@ namespace NijnCoach.XMLclasses
         [XmlElement("emotion")]
         public String emotion { get; set; }
 
+        [XmlElement("answer")]
+        public String theAnswer { get; set; }
+
         public String Audio()
         {
             return audio;
+        }
+
+        public String Answer()
+        {
+            return "";
         }
 
         public String Emotion()

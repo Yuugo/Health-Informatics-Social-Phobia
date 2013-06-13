@@ -7,7 +7,6 @@ using NijnCoach.XMLclasses;
 using System.Xml;
 using System.IO;
 using System.Security.Cryptography;
-using NijnCoach.View.Greet;
 
 namespace NijnCoach.Database
 {
@@ -54,7 +53,7 @@ namespace NijnCoach.Database
             questionForm.Name = name;
             questionForm.Text = text;
             questionForm.Type = "Questionnaire";
-            questionForm.FilledIn = false;
+            questionForm.FilledIn = 0;
             questionForm.forPatient = (SByte)patientNo;
             try
             {
@@ -210,17 +209,16 @@ namespace NijnCoach.Database
             try
             {
                 NijnCoachEntities theEntities = new NijnCoachEntities();
-                String result = theEntities.Questionnairres.Where(x => x.Name == name).First<Questionnairre>().Text;
-
+                String result= theEntities.Questionnairres.Where(x => x.Name == name && x.FilledIn != -1).First<Questionnairre>().Text;
                 XMLParser parser = new XMLParser();
                 byte[] byteArray = Encoding.ASCII.GetBytes(result);
                 MemoryStream stream = new MemoryStream(byteArray);
                 StreamReader reader = new StreamReader(stream);
                 return parser.readXML(reader);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                throw new NoQuestionnaireAvailableException();
+                return null;
             }
         }
 
@@ -235,17 +233,36 @@ namespace NijnCoach.Database
             try
             {
                 NijnCoachEntities theEntities = new NijnCoachEntities();
-                String result = theEntities.Questionnairres.Where(x => x.forPatient == patientNo && x.FilledIn == false).First<Questionnairre>().Text;
-
+                String result = theEntities.Questionnairres.Where(x => x.forPatient == patientNo && x.FilledIn >= 0).First<Questionnairre>().Text;
                 XMLParser parser = new XMLParser();
                 byte[] byteArray = Encoding.ASCII.GetBytes(result);
                 MemoryStream stream = new MemoryStream(byteArray);
                 StreamReader reader = new StreamReader(stream);
                 return parser.readXML(reader);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                throw new NoQuestionnaireAvailableException();
+                throw new FileNotFoundException();
+            }
+        }
+
+        /// <summary>
+        /// Get the question the patient stopped at.
+        /// </summary>
+        /// <param name="patientNo">The patientnumber for this patient.</param>
+        /// <returns></returns>
+        public static int getQuestion(Int32 patientNo)
+        {
+            try
+            {
+                NijnCoachEntities theEntities = new NijnCoachEntities();
+                Questionnairre q = theEntities.Questionnairres.Where(x => x.forPatient == patientNo && x.FilledIn >= 0).First<Questionnairre>();
+
+                return q.FilledIn;
+            }
+            catch (Exception e)
+            {
+                throw new FileNotFoundException();
             }
         }
 
@@ -398,6 +415,31 @@ namespace NijnCoach.Database
                 MessageBox.Show(e.InnerException.ToString());
             }
         }
+
+
+
+        /// <summary>
+        /// Stub method.
+        /// </summary>
+        public static void updateQuestionnaire(int patientNo, String q,int questions)
+        {
+            NijnCoachEntities theEntities = new NijnCoachEntities();
+
+            try
+            {
+                Questionnairre newQ = theEntities.Questionnairres.Where(x => x.forPatient == patientNo && x.FilledIn >= 0).First<Questionnairre>();
+                newQ.Text = q;
+                newQ.FilledIn = questions;
+                theEntities.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.InnerException.ToString());
+            }
+        }
+
+
+
 
         public static List<Sickpeople> getPatients()
         {

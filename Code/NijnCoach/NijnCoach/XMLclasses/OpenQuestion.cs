@@ -18,7 +18,7 @@ namespace NijnCoach.XMLclasses
         [XmlElement("emotion")]
         public String emotion { get; set; }
 
-        //[XML] logic done inside the Answer class.
+        [XmlElement("answer")]
         public String theAnswer { get; set; }
 
         public String Audio()
@@ -29,6 +29,11 @@ namespace NijnCoach.XMLclasses
         public String Emotion()
         {
             return emotion;
+        }
+
+        public String Answer()
+        {
+            return theAnswer;
         }
     }
 }
