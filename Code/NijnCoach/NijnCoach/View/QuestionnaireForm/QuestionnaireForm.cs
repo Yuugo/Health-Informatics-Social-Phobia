@@ -140,14 +140,14 @@ namespace NijnCoach.View.Questionnaire
             }
             else if (entry is MCQuestion)
             {
-                panelQuestionIntern = new MCQuestionPanel(panelQuestion.Width, panelQuestion.Height);
+                panelQuestionIntern = new MCQuestionPanel(panelQuestion.Width, panelQuestion.Height, _loadAvatar);
             }
             else if (entry is OpenQuestion)
             {
                 panelQuestionIntern = new OpenQuestionPanel(panelQuestion.Width, panelQuestion.Height);
             }
 
-            AvatarControl.setAvatarEmotionViaEntry(entry);
+            if (_loadAvatar) AvatarControl.setAvatarEmotionViaEntry(entry);
             panelQuestionIntern.entry = entry;
             panelQuestion.Controls.Add(panelQuestionIntern);
             playFromDB();
