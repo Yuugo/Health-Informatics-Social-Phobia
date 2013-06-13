@@ -30,7 +30,14 @@ namespace NijnCoach.View.Home
 
         private void overviewEventHandler(object sender, EventArgs e)
         {
-            MainForm.mainForm.replacePanel(new OverviewPanel(_loadAvatar));
+            try
+            {
+                MainForm.mainForm.replacePanel(new OverviewPanel(_loadAvatar));
+            }
+            catch (ArgumentException)
+            {
+                MainForm.mainForm.replacePanel(new HomePanel(_loadAvatar));
+            }
         }
 
         private void exposureEventHandler(object sender, EventArgs e)

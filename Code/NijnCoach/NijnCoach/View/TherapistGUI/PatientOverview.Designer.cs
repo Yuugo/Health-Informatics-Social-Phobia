@@ -31,6 +31,7 @@ namespace NijnCoach.View.TherapistGUI
         {
             this.button7 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.labelH = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
@@ -82,6 +83,17 @@ namespace NijnCoach.View.TherapistGUI
             this.button1.Enabled = false;
             this.button1.Click += new System.EventHandler(button1_Click);
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(513, 500);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(160, 40);
+            this.button2.TabIndex = 10;
+            this.button2.Text = "Exposure data";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Enabled = false;
+            this.button2.Click += new System.EventHandler(button2_Click);
+            // 
             // button7
             // 
             this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -132,6 +144,7 @@ namespace NijnCoach.View.TherapistGUI
             this.Controls.AddRange(labels);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.dataGridView1);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
@@ -140,7 +153,7 @@ namespace NijnCoach.View.TherapistGUI
 
         #endregion
 
-        private System.Windows.Forms.Button button7, button1;
+        private System.Windows.Forms.Button button7, button1, button2;
         private System.Windows.Forms.Label label0, label1, label2, label3, label4, label5, label6, label7, label8, label9, label11, labelH;
         private DataGridView dataGridView1;
         public TextBox textBox0, textBox1, textBox2, textBox3, textBox4, textBox5, textBox6, textBox7, textBox8, textBox9;
