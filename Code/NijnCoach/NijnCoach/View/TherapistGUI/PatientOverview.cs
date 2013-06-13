@@ -79,7 +79,11 @@ namespace NijnCoach.View.TherapistGUI
         private void button2_Click(object sender, EventArgs e)
         {
             NijnCoach.MainClass.userNo = System.Convert.ToInt32(textBox0.Text);
-            TherapistMain.main.replacePanel(new NijnCoach.View.Overview.OverviewPanel(false));
+            try
+            {
+                TherapistMain.main.replacePanel(new NijnCoach.View.TherapistGUI.OverviewPanel());
+            }
+            catch (ArgumentException){}
         }
     }
 }

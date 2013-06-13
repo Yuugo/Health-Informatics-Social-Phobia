@@ -42,7 +42,7 @@ namespace NijnCoach.View.Overview
             MainForm.mainForm.replacePanel(new QuestionnaireForm(_loadAvatar));
         }
 
-        private void homeEventHandler(object sender, EventArgs e)
+        protected virtual void homeEventHandler(object sender, EventArgs e)
         {
             MainForm.mainForm.replacePanel(new HomePanel(_loadAvatar));
         }
