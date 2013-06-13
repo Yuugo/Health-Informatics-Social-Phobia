@@ -13,26 +13,26 @@ namespace NijnCoach.View.Main
     public partial class MainForm : Form
     {
 
-       private static MainForm _mainForm;
-       //For Testing and debug purposes
-       public static Boolean _loadAvatar = false;
+        private static MainForm _mainForm;
+        //For Testing and debug purposes
+        public static Boolean _loadAvatar = true;
 
-       private MainForm(Boolean _loadAvatar = true)
-       {
-           InitializeComponent();
-           replacePanel(new GreetPanel(_loadAvatar));
-       }
+        private MainForm(Boolean _loadAvatar = true)
+        {
+            InitializeComponent();
+            replacePanel(new GreetPanel(_loadAvatar));
+        }
 
-       public static MainForm mainForm
-       {
-          get 
-          {
-              if (_mainForm == null || _mainForm.IsDisposed)
-             {
-                 _mainForm = new MainForm(_loadAvatar);
-             }
-              return _mainForm;
-          }
+        public static MainForm mainForm
+        {
+            get
+            {
+                if (_mainForm == null || _mainForm.IsDisposed)
+                {
+                    _mainForm = new MainForm(_loadAvatar);
+                }
+                return _mainForm;
+            }
         }
 
         public void replacePanel(Panel panel)
