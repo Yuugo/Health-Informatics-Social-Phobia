@@ -36,12 +36,6 @@ namespace NijnCoach.View.Overview
             
         }
 
-        private void continueEventHandler(object sender, EventArgs e)
-        {
-            //TODO: Fetch briefing questionnaire from database
-            MainForm.mainForm.replacePanel(new QuestionnaireForm(_loadAvatar));
-        }
-
         protected virtual void homeEventHandler(object sender, EventArgs e)
         {
             MainForm.mainForm.replacePanel(new HomePanel(_loadAvatar));
@@ -88,7 +82,7 @@ namespace NijnCoach.View.Overview
             return sessions;
         }
 
-        private ExposureSession selectedSession(){
+        protected ExposureSession selectedSession(){
             return (ExposureSession)PreviousSessionSelectBox.SelectedItem;
         }
 
@@ -315,7 +309,7 @@ namespace NijnCoach.View.Overview
         }
 
         // Function to hide the session selection box when looking at the overview chart
-        private void chartTabs_SelectedIndexChanged(Object sender, EventArgs e)
+        protected virtual void chartTabs_SelectedIndexChanged(Object sender, EventArgs e)
         {
             this.PreviousSessionSelectBox.Enabled = this.chartTabs.SelectedTab == previousSessionTab;
         }

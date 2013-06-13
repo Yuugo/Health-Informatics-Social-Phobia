@@ -384,13 +384,14 @@ namespace NijnCoach.Database
         /// <summary>
         /// Stub method.
         /// </summary>
-        public static void updateEval(Int32 patientNo, String newContent)
+        public static void setEvaluationCommentaryByPatientAndName(Int32 patientNo, String name, String newContent, String emotion)
         {
             NijnCoachEntities theEntities = new NijnCoachEntities();
             try
             {
-                ProgressEval eval = theEntities.ProgressEvals.Where(x => x.PatientNo == patientNo).First<ProgressEval>();
-                eval.Content = newContent;
+                ProgressEval eval = theEntities.ProgressEvals.Where(x => x.PatientNo == patientNo && x.Name == name).First<ProgressEval>();
+                eval.Commentary = newContent;
+                eval.Emotion = emotion;
                 theEntities.SaveChanges();
             }
             catch (Exception e)
