@@ -40,6 +40,10 @@ namespace NijnCoach.View.Questionnaire
             try
             {
                 XMLclasses.Questionnaire questionnaire = DBConnect.getQuestionnaireByPatient(MainClass.userNo);
+                foreach (IEntry entry in questionnaire.entries)
+                {
+                    audioData.Add(entry.Audio(), "");
+                }
                 init(questionnaire);
             }
             catch (FileNotFoundException)
@@ -56,10 +60,7 @@ namespace NijnCoach.View.Questionnaire
             : base(_loadAvatar)
         {
             init(questionnaire);
-            foreach (IEntry entry in questionnaire.entries)
-            {
-                audioData.Add(entry.Audio(), "");
-            }
+            
         }
 
         private void init(XMLclasses.Questionnaire questionnaire)
@@ -69,7 +70,7 @@ namespace NijnCoach.View.Questionnaire
                 System.Windows.MessageBox.Show("No questionnaires available for you.\nYou will be taken to the homepanel");
                 throw new NoQuestionnaireAvailableException();
             }
-            this.questionnaire = questionnaire;
+            this.questionnaire = questionnaire;            
             initControls();
         }
 
