@@ -158,7 +158,7 @@ namespace NijnCoach.View.Questionnaire
                 panelQuestionIntern = new OpenQuestionPanel(panelQuestion.Width, panelQuestion.Height);
             }
 
-            AvatarControl.setAvatarEmotionViaEntry(entry);
+            if (_loadAvatar) AvatarControl.setAvatarEmotionViaEntry(entry);
             panelQuestionIntern.entry = entry;
             panelQuestion.Controls.Add(panelQuestionIntern);
             playFromDB();
