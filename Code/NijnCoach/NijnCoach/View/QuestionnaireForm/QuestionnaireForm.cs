@@ -106,7 +106,7 @@ namespace NijnCoach.View.Questionnaire
                 {
                     buttonNext.Text = "Finish";
                 }
-                playFromDB();
+                playFromHD();
 
                 buttonPrevious.Enabled = true;
                 progressBar.Value = currentQuestion;
@@ -125,7 +125,7 @@ namespace NijnCoach.View.Questionnaire
             }
             buttonNext.Text = "Next";
             buttonNext.Enabled = true;
-            playFromDB();
+            playFromHD();
             progressBar.Value = currentQuestion;
         }
 
@@ -162,8 +162,35 @@ namespace NijnCoach.View.Questionnaire
             if (_loadAvatar) AvatarControl.setAvatarEmotionViaEntry(entry);
             panelQuestionIntern.entry = entry;
             panelQuestion.Controls.Add(panelQuestionIntern);
-            playFromDB();
+            playFromHD();
             panelQuestion.ResumeLayout();
+        }
+
+        //Fuck you MySQL
+        void playFromHD()
+        {
+            var entry = questionnaire.entries[currentQuestion];
+            int length = bassGetLength();
+            AvatarControl.speak(entry.Audio(), length);
+            
+        }
+
+        void DisableButtonsOnTimer(int length)
+        {
+            this.buttonNext.Enabled = false;
+            this.buttonPrevious.Enabled = false;
+            this.buttonHome.Enabled = false;
+            Timer timer = new Timer();
+            timer.Interval = length;
+            //timer.Tick += new EventHandler(enableButtons());
+
+        }
+
+        void enableButtons()
+        {
+            this.buttonNext.Enabled = true;
+            this.buttonPrevious.Enabled = true;
+            this.buttonHome.Enabled = true;
         }
 
         /// <summary>
