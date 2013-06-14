@@ -15,8 +15,8 @@ namespace NijnCoach.Model
         public static ExposureSession CreateExposureSession(string filename, string data)
         {
             DateTime dt = ExtractDateFromFilename(filename);
-            
-            StreamReader reader = new StreamReader(filename);
+
+            StreamReader reader = stringToStreamReader(data);
             try
             {
                 reader.ReadLine();
@@ -32,6 +32,16 @@ namespace NijnCoach.Model
                 reader.Close();
             }
             
+        }
+
+        /*
+         * Convert a string to a stream
+         */
+        protected static StreamReader stringToStreamReader(String s)
+        {
+            byte[] byteArray = Encoding.ASCII.GetBytes(s);
+            MemoryStream stream = new MemoryStream(byteArray);
+            return new StreamReader(stream);
         }
 
         public static DateTime ExtractDateFromFilename(string filename)

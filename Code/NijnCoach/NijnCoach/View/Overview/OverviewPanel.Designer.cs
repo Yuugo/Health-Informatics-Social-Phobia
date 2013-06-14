@@ -241,7 +241,7 @@ namespace NijnCoach.View.Overview
         private System.Windows.Forms.TabPage overviewTab;
         private Chart overviewChart;
         private System.Windows.Forms.Panel _avatarPanel;
-        private System.Windows.Forms.Panel commentPanel;
+        protected System.Windows.Forms.Panel commentPanel;
         private IQuestionPanel commentPanelIntern;
         private System.Windows.Forms.GroupBox groupBoxRadiobuttonsPreviousSession;
         private System.Windows.Forms.RadioButton gsrRadiobuttonPreviousSession;

@@ -13,7 +13,7 @@ namespace NijnCoach.View.Exposure
 {
     public partial class ExposurePanel : Panel
     {
-        private Boolean _loadAvatar = true;
+        private Boolean _loadAvatar = false;
         System.Windows.Forms.Timer t;
         public ExposurePanel(Boolean _loadAvatar = true)
         {
@@ -36,7 +36,14 @@ namespace NijnCoach.View.Exposure
             t.Enabled = false;
             //Load the overview of this exposure session
             //Load the correct data from the database
-            MainForm.mainForm.replacePanel(new OverviewPanel(_loadAvatar));
+            try
+            {
+                MainForm.mainForm.replacePanel(new OverviewPanel(_loadAvatar));
+            }
+            catch (ArgumentException)
+            {
+                MainForm.mainForm.replacePanel(new NijnCoach.View.Home.HomePanel(_loadAvatar));
+            }
         }
 
     }

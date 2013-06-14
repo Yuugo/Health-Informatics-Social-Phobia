@@ -36,13 +36,7 @@ namespace NijnCoach.View.Overview
             
         }
 
-        private void continueEventHandler(object sender, EventArgs e)
-        {
-            //TODO: Fetch briefing questionnaire from database
-            MainForm.mainForm.replacePanel(new QuestionnaireForm(_loadAvatar));
-        }
-
-        private void homeEventHandler(object sender, EventArgs e)
+        protected virtual void homeEventHandler(object sender, EventArgs e)
         {
             MainForm.mainForm.replacePanel(new HomePanel(_loadAvatar));
         }
@@ -50,7 +44,12 @@ namespace NijnCoach.View.Overview
         private void ExposureSessions_Load()
         {
             // Retrieve all the session data from the database
-            this.exposureSessions = getAllSessionsFromDatabase(); 
+            this.exposureSessions = getAllSessionsFromDatabase();
+            if (this.exposureSessions.Count == 0)
+            {
+                MessageBox.Show("No exposure data available");
+                throw new ArgumentException("No exposure data available");
+            }
             // Make the sessions selectable in the selection box
             this.PreviousSessionSelectBox.BindingContext = new BindingContext();
             this.PreviousSessionSelectBox.DataSource = this.exposureSessions;
@@ -73,7 +72,12 @@ namespace NijnCoach.View.Overview
             foreach (ProgressEval dbs in dbsess)
             {
                 var ses = ReadExposureData.CreateExposureSession(dbs.Name, dbs.Content);
-                Comment com = new Comment { value = dbs.Commentary, emotion = ""/*dbs.Emotion*/ };
+                string emo;
+                if (_loadAvatar)
+                    emo = dbs.Emotion;
+                else
+                    emo = "";
+                Comment com = new Comment { value = dbs.Commentary, emotion = emo };
                 ses.comment = com;
                 sessions.Add(ses);
             }
@@ -83,7 +87,7 @@ namespace NijnCoach.View.Overview
             return sessions;
         }
 
-        private ExposureSession selectedSession(){
+        protected ExposureSession selectedSession(){
             return (ExposureSession)PreviousSessionSelectBox.SelectedItem;
         }
 
@@ -293,6 +297,10 @@ namespace NijnCoach.View.Overview
             if (comment != null)
             {
                 commentPanelIntern.entry = comment;
+                if (_loadAvatar)
+                {
+                    Avatar.AvatarControl.setAvatarEmotionViaString(comment.emotion, 6, 0.8);
+                }
             }
             else
             {
@@ -310,7 +318,7 @@ namespace NijnCoach.View.Overview
         }
 
         // Function to hide the session selection box when looking at the overview chart
-        private void chartTabs_SelectedIndexChanged(Object sender, EventArgs e)
+        protected virtual void chartTabs_SelectedIndexChanged(Object sender, EventArgs e)
         {
             this.PreviousSessionSelectBox.Enabled = this.chartTabs.SelectedTab == previousSessionTab;
         }

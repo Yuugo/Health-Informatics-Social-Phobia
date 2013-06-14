@@ -68,34 +68,18 @@ namespace NijnCoach.Database
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<Questionnairre> Questionnairres
+        public ObjectSet<AudioFile> AudioFiles
         {
             get
             {
-                if ((_Questionnairres == null))
+                if ((_AudioFiles == null))
                 {
-                    _Questionnairres = base.CreateObjectSet<Questionnairre>("Questionnairres");
+                    _AudioFiles = base.CreateObjectSet<AudioFile>("AudioFiles");
                 }
-                return _Questionnairres;
+                return _AudioFiles;
             }
         }
-        private ObjectSet<Questionnairre> _Questionnairres;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        public ObjectSet<SpeechFile> SpeechFiles
-        {
-            get
-            {
-                if ((_SpeechFiles == null))
-                {
-                    _SpeechFiles = base.CreateObjectSet<SpeechFile>("SpeechFiles");
-                }
-                return _SpeechFiles;
-            }
-        }
-        private ObjectSet<SpeechFile> _SpeechFiles;
+        private ObjectSet<AudioFile> _AudioFiles;
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -116,18 +100,18 @@ namespace NijnCoach.Database
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<User> Users
+        public ObjectSet<Questionnairre> Questionnairres
         {
             get
             {
-                if ((_Users == null))
+                if ((_Questionnairres == null))
                 {
-                    _Users = base.CreateObjectSet<User>("Users");
+                    _Questionnairres = base.CreateObjectSet<Questionnairre>("Questionnairres");
                 }
-                return _Users;
+                return _Questionnairres;
             }
         }
-        private ObjectSet<User> _Users;
+        private ObjectSet<Questionnairre> _Questionnairres;
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -148,37 +132,45 @@ namespace NijnCoach.Database
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<AudioFile> AudioFiles
+        public ObjectSet<SpeechFile> SpeechFiles
         {
             get
             {
-                if ((_AudioFiles == null))
+                if ((_SpeechFiles == null))
                 {
-                    _AudioFiles = base.CreateObjectSet<AudioFile>("AudioFiles");
+                    _SpeechFiles = base.CreateObjectSet<SpeechFile>("SpeechFiles");
                 }
-                return _AudioFiles;
+                return _SpeechFiles;
             }
         }
-        private ObjectSet<AudioFile> _AudioFiles;
+        private ObjectSet<SpeechFile> _SpeechFiles;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<User> Users
+        {
+            get
+            {
+                if ((_Users == null))
+                {
+                    _Users = base.CreateObjectSet<User>("Users");
+                }
+                return _Users;
+            }
+        }
+        private ObjectSet<User> _Users;
 
         #endregion
 
         #region AddTo Methods
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the Questionnairres EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// Deprecated Method for adding a new object to the AudioFiles EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddToQuestionnairres(Questionnairre questionnairre)
+        public void AddToAudioFiles(AudioFile audioFile)
         {
-            base.AddObject("Questionnairres", questionnairre);
-        }
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the SpeechFiles EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToSpeechFiles(SpeechFile speechFile)
-        {
-            base.AddObject("SpeechFiles", speechFile);
+            base.AddObject("AudioFiles", audioFile);
         }
     
         /// <summary>
@@ -190,11 +182,11 @@ namespace NijnCoach.Database
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the Users EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// Deprecated Method for adding a new object to the Questionnairres EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddToUsers(User user)
+        public void AddToQuestionnairres(Questionnairre questionnairre)
         {
-            base.AddObject("Users", user);
+            base.AddObject("Questionnairres", questionnairre);
         }
     
         /// <summary>
@@ -206,11 +198,19 @@ namespace NijnCoach.Database
         }
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the AudioFiles EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// Deprecated Method for adding a new object to the SpeechFiles EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddToAudioFiles(AudioFile audioFile)
+        public void AddToSpeechFiles(SpeechFile speechFile)
         {
-            base.AddObject("AudioFiles", audioFile);
+            base.AddObject("SpeechFiles", speechFile);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Users EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToUsers(User user)
+        {
+            base.AddObject("Users", user);
         }
 
         #endregion
@@ -224,7 +224,7 @@ namespace NijnCoach.Database
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="NijnCoachModel1", Name="AudioFile")]
+    [EdmEntityTypeAttribute(NamespaceName="NijnCoachModel", Name="AudioFile")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class AudioFile : EntityObject
@@ -385,7 +385,7 @@ namespace NijnCoach.Database
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="NijnCoachModel1", Name="ProgressEval")]
+    [EdmEntityTypeAttribute(NamespaceName="NijnCoachModel", Name="ProgressEval")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class ProgressEval : EntityObject
@@ -400,7 +400,7 @@ namespace NijnCoach.Database
         /// <param name="content">Initial value of the Content property.</param>
         /// <param name="patientNo">Initial value of the PatientNo property.</param>
         /// <param name="emotion">Initial value of the Emotion property.</param>
-        public static ProgressEval CreateProgressEval(global::System.String id, global::System.String name, global::System.String content, global::System.Int32 patientNo, global::System.String emotion)
+        public static ProgressEval CreateProgressEval(global::System.Int32 id, global::System.String name, global::System.String content, global::System.Int32 patientNo, global::System.String emotion)
         {
             ProgressEval progressEval = new ProgressEval();
             progressEval.Id = id;
@@ -418,9 +418,9 @@ namespace NijnCoach.Database
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String Id
+        public global::System.Int32 Id
         {
             get
             {
@@ -428,21 +428,24 @@ namespace NijnCoach.Database
             }
             set
             {
-                OnIdChanging(value);
-                ReportPropertyChanging("Id");
-                _Id = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("Id");
-                OnIdChanged();
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
             }
         }
-        private global::System.String _Id;
-        partial void OnIdChanging(global::System.String value);
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
         partial void OnIdChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.String Name
         {
@@ -452,14 +455,11 @@ namespace NijnCoach.Database
             }
             set
             {
-                if (_Name != value)
-                {
-                    OnNameChanging(value);
-                    ReportPropertyChanging("Name");
-                    _Name = StructuralObject.SetValidValue(value, false);
-                    ReportPropertyChanged("Name");
-                    OnNameChanged();
-                }
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Name");
+                OnNameChanged();
             }
         }
         private global::System.String _Name;
@@ -570,7 +570,7 @@ namespace NijnCoach.Database
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="NijnCoachModel1", Name="Questionnairre")]
+    [EdmEntityTypeAttribute(NamespaceName="NijnCoachModel", Name="Questionnairre")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class Questionnairre : EntityObject
@@ -586,7 +586,7 @@ namespace NijnCoach.Database
         /// <param name="forPatient">Initial value of the forPatient property.</param>
         /// <param name="type">Initial value of the Type property.</param>
         /// <param name="filledIn">Initial value of the FilledIn property.</param>
-        public static Questionnairre CreateQuestionnairre(global::System.SByte id, global::System.String name, global::System.String text, global::System.SByte forPatient, global::System.String type, global::System.Boolean filledIn)
+        public static Questionnairre CreateQuestionnairre(global::System.SByte id, global::System.String name, global::System.String text, global::System.SByte forPatient, global::System.String type, global::System.Int32 filledIn)
         {
             Questionnairre questionnairre = new Questionnairre();
             questionnairre.Id = id;
@@ -730,7 +730,7 @@ namespace NijnCoach.Database
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Boolean FilledIn
+        public global::System.Int32 FilledIn
         {
             get
             {
@@ -745,8 +745,8 @@ namespace NijnCoach.Database
                 OnFilledInChanged();
             }
         }
-        private global::System.Boolean _FilledIn;
-        partial void OnFilledInChanging(global::System.Boolean value);
+        private global::System.Int32 _FilledIn;
+        partial void OnFilledInChanging(global::System.Int32 value);
         partial void OnFilledInChanged();
 
         #endregion
@@ -757,7 +757,7 @@ namespace NijnCoach.Database
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="NijnCoachModel1", Name="Sickpeople")]
+    [EdmEntityTypeAttribute(NamespaceName="NijnCoachModel", Name="Sickpeople")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class Sickpeople : EntityObject
@@ -1048,7 +1048,7 @@ namespace NijnCoach.Database
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="NijnCoachModel1", Name="SpeechFile")]
+    [EdmEntityTypeAttribute(NamespaceName="NijnCoachModel", Name="SpeechFile")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class SpeechFile : EntityObject
@@ -1209,7 +1209,7 @@ namespace NijnCoach.Database
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="NijnCoachModel1", Name="User")]
+    [EdmEntityTypeAttribute(NamespaceName="NijnCoachModel", Name="User")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class User : EntityObject

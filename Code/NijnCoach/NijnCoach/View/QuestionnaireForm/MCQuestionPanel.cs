@@ -16,12 +16,21 @@ namespace NijnCoach.View.Questionnaire
     {
         private MCQuestion _entry;
         private Boolean _partlyDisabled = false;
+        private Boolean _loadAvatar;
         private List<System.Windows.Forms.RadioButton> options = new List<System.Windows.Forms.RadioButton>();
 
         public MCQuestionPanel(int w, int h) : base(w, h)
         {
             InitializeComponent();
         }
+
+        public MCQuestionPanel(int w, int h, Boolean loadAvatar)
+            : base(w, h)
+        {
+            InitializeComponent();
+            _loadAvatar = loadAvatar;
+        }
+
         public override IEntry entry
         {
             get { return _entry; }
@@ -53,9 +62,12 @@ namespace NijnCoach.View.Questionnaire
             if (rb != null && rb.Checked)
             {
                 _entry.theAnswer = (String)rb.Tag;
-                foreach (Option o in _entry.options)
+                if (_loadAvatar)
                 {
-                    if (o.tag.Equals(rb.Tag)) AvatarControl.setAvatarEmotionViaString(o.emotion, 10, 0.5);
+                    foreach (Option o in _entry.options)
+                    {
+                        if (o.tag.Equals(rb.Tag)) AvatarControl.setAvatarEmotionViaString(o.emotion, 10, 0.5);
+                    }
                 }
             }
         }

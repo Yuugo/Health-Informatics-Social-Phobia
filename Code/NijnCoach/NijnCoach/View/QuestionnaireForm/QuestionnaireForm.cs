@@ -11,7 +11,11 @@ using NijnCoach.View.Overview;
 using NijnCoach.Database;
 using System.IO;
 using System.Text;
+using NijnCoach.View.Greet;
 using System.Collections.Generic;
+using System.Windows;
+using System.Windows.Forms;
+using NijnCoach.View.Greet;
 
 namespace NijnCoach.View.Questionnaire
 {
@@ -20,10 +24,12 @@ namespace NijnCoach.View.Questionnaire
         private XMLclasses.Questionnaire questionnaire;
         private int currentQuestion = 0;
         private int stream = 0;
+        private XMLParser xpars = new XMLParser();
         private Boolean _loadAvatar = true;
         private String tempPath;
         private String oldPath;
-        public QuestionnaireForm(Boolean _loadAvatar = true) : base(_loadAvatar)
+        public QuestionnaireForm(Boolean _loadAvatar = true)
+            : base(_loadAvatar)
         {
             this._loadAvatar = _loadAvatar;
             XMLParser parser = new XMLParser();
@@ -31,23 +37,33 @@ namespace NijnCoach.View.Questionnaire
             BassNet.Registration("w.kowaluk@gmail.com", "2X32382019152222");
             #endregion
             Bass.BASS_Init(-1, 44100, BASSInit.BASS_DEVICE_DEFAULT, IntPtr.Zero);
-            XMLclasses.Questionnaire questionnaire = DBConnect.getQuestionnaireByPatient(MainClass.userNo);
-            init(questionnaire);            
+            try
+            {
+                XMLclasses.Questionnaire questionnaire = DBConnect.getQuestionnaireByPatient(MainClass.userNo);
+                init(questionnaire);
+            }
+            catch (FileNotFoundException)
+            {
+                System.Windows.MessageBox.Show("No questionnaires available for you.\nYou will be taken to the homepanel");
+                throw new NoQuestionnaireAvailableException();
+                //MainForm.mainForm.replacePanel(new HomePanel(_loadAvatar));
+            }
         }
         Dictionary<String, String> audioData = new Dictionary<string, string>();
 
 
-        public QuestionnaireForm(XMLclasses.Questionnaire questionnaire, Boolean _loadAvatar = true) : base(_loadAvatar)
+        public QuestionnaireForm(XMLclasses.Questionnaire questionnaire, Boolean _loadAvatar = true)
+            : base(_loadAvatar)
         {
             init(questionnaire);
         }
 
         private void init(XMLclasses.Questionnaire questionnaire)
         {
-            Debug.Assert(questionnaire.entries.Count > 0, "The number of entries in the questionnaire should at least be 1");
-            foreach (IEntry entry in questionnaire.entries)
+            if (questionnaire.entries.Count > 0)
             {
-                audioData.Add(entry.Audio(), "");
+                System.Windows.MessageBox.Show("No questionnaires available for you.\nYou will be taken to the homepanel");
+                throw new NoQuestionnaireAvailableException();
             }
             this.questionnaire = questionnaire;
             initControls();
@@ -55,32 +71,38 @@ namespace NijnCoach.View.Questionnaire
 
         private void initControls()
         {
+            currentQuestion = DBConnect.getQuestion(MainClass.userNo);
+            if (currentQuestion > 0) buttonPrevious.Enabled = true;
             updatePanelQuestion(questionnaire.entries[currentQuestion]);
             progressBar.Minimum = 0;
             progressBar.Maximum = questionnaire.entries.Count;
             if (questionnaire.entries.Count < 2)
             {
-                buttonNext.Enabled = false;
+                buttonNext.Text = "Finish";
             }
         }
 
-        private void nextEventHandler(object sender,EventArgs e){
+        private void nextEventHandler(object sender, EventArgs e)
+        {
             if (currentQuestion + 1 == questionnaire.entries.Count)
             {
                 saveEventHandler(sender, e);
                 //TODO: Mark questionnaire as finished
                 //TODO: fetch data for overview from database
+                DBConnect.updateQuestionnaire(MainClass.userNo,xpars.writeXML(questionnaire), -1);
                 MainForm.mainForm.replacePanel(new OverviewPanel(_loadAvatar));
-                stopBass();
             }
             else
-            {
+            {                
                 currentQuestion++;
+                DBConnect.updateQuestionnaire(MainClass.userNo, xpars.writeXML(questionnaire), currentQuestion);
                 updatePanelQuestion(questionnaire.entries[currentQuestion]);
                 if (currentQuestion == questionnaire.entries.Count - 1)
                 {
                     buttonNext.Text = "Finish";
                 }
+                playFromDB();
+
                 buttonPrevious.Enabled = true;
                 progressBar.Value = currentQuestion;
             }
@@ -90,6 +112,7 @@ namespace NijnCoach.View.Questionnaire
         {
             Debug.Assert(currentQuestion - 1 >= 0, "Array out of bounds: IEntry does not exist");
             currentQuestion--;
+            DBConnect.updateQuestionnaire(MainClass.userNo, xpars.writeXML(questionnaire), currentQuestion);
             updatePanelQuestion(questionnaire.entries[currentQuestion]);
             if (currentQuestion == 0)
             {
@@ -97,18 +120,17 @@ namespace NijnCoach.View.Questionnaire
             }
             buttonNext.Text = "Next";
             buttonNext.Enabled = true;
+            playFromDB();
             progressBar.Value = currentQuestion;
         }
 
         private void homeEventHandler(object sender, EventArgs e)
         {
-            stopBass();
             MainForm.mainForm.replacePanel(new HomePanel(_loadAvatar));
         }
 
         private void saveEventHandler(object sender, EventArgs e)
         {
-            stopBass();
             XMLParser reader = new XMLParser();
             reader.writeXMLToFile(questionnaire, "answers.xml"); //TODO: no static file name
         }
@@ -116,12 +138,12 @@ namespace NijnCoach.View.Questionnaire
         public void updatePanelQuestion(IEntry entry)
         {
             Debug.Assert(entry != null);
-            
+
             panelQuestion.SuspendLayout();
             panelQuestion.Controls.Clear();
             if (entry is Comment)
             {
-                panelQuestionIntern = new CommentPanel(panelQuestion.Width,panelQuestion.Height);      
+                panelQuestionIntern = new CommentPanel(panelQuestion.Width, panelQuestion.Height);
             }
             else if (entry is MCQuestion)
             {
@@ -144,7 +166,6 @@ namespace NijnCoach.View.Questionnaire
         /// </summary>
         void playFromDB()
         {
-            
             var entry = questionnaire.entries[currentQuestion];
             if(audioData[entry.Audio()] == "")
                 audioData[entry.Audio()] = DBConnect.getSpeechFile(entry.Audio());
@@ -228,12 +249,6 @@ namespace NijnCoach.View.Questionnaire
             var fileName = System.IO.Path.GetRandomFileName();
             var path = "C://ecoach//audio//tempAudio.wav";
             return Path.ChangeExtension(path, extension);
-        }
-
-        public void stopBass()
-        {
-            if (stream != 0)
-                Bass.BASS_StreamFree(stream);
         }
 
         protected override void avatarLoaded() { }

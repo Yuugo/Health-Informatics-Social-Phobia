@@ -11,15 +11,17 @@ using NijnCoach.View.Main;
 using NijnCoach.View.Questionnaire;
 using NijnCoach.View.AvatarDir;
 using NijnCoach.View.Home;
+//using NijnCoach.View.questionnaireForm;
 
 namespace NijnCoach.View.Greet
 {
     public partial class GreetPanel : AvatarContainer
     {
-        private Boolean _loadAvatar = true;
-        public GreetPanel(Boolean _loadAvatar = true) : base(_loadAvatar)
+        private Boolean _loadAvatar = false;
+        public GreetPanel(Boolean _loadAvatar = true)
+            : base(_loadAvatar)
         {
-			this._loadAvatar = _loadAvatar;
+            this._loadAvatar = _loadAvatar;
         }
 
         protected override void avatarLoaded()
@@ -34,7 +36,15 @@ namespace NijnCoach.View.Greet
             //TODO: Fetch questionnaire from database
             //XMLParser parser = new XMLParser();
             //MainForm.mainForm.replacePanel(new QuestionnaireForm(parser.readXMLFromFile("writeTest.xml")));
-            MainForm.mainForm.replacePanel(new QuestionnaireForm(_loadAvatar));
+            try
+            {
+                MainForm.mainForm.replacePanel(new QuestionnaireForm(_loadAvatar));
+            }
+            catch (NoQuestionnaireAvailableException)
+            {
+                MessageBox.Show("There's no questionnaire available for you.\nYou will be taken to the homepanel");
+                homeEventHandler(null, null);
+            }
         }
 
         private void homeEventHandler(object sender, EventArgs e)

@@ -10,12 +10,14 @@ using NijnCoach.View.Questionnaire;
 using NijnCoach.View.Main;
 using NijnCoach.View.Overview;
 using NijnCoach.View.Exposure;
+using NijnCoach.View.Greet;
+//using NijnCoach.View.questionnaireForm;
 
 namespace NijnCoach.View.Home
 {
     public partial class HomePanel : Panel
     {
-        private Boolean _loadAvatar = true;
+        private Boolean _loadAvatar = false;
         public HomePanel(Boolean _loadAvatar = true)
         {
             this._loadAvatar = _loadAvatar;
@@ -25,12 +27,23 @@ namespace NijnCoach.View.Home
         private void questionnaireEventHandler(object sender, EventArgs e)
         {
             //Fetch correct questionnaire from database
-            MainForm.mainForm.replacePanel(new QuestionnaireForm(_loadAvatar));
+            try
+            {
+                MainForm.mainForm.replacePanel(new QuestionnaireForm(_loadAvatar));
+            }
+            catch (NoQuestionnaireAvailableException)
+            {
+                MessageBox.Show("No Questionnaires are available for you.");
+            }
         }
 
         private void overviewEventHandler(object sender, EventArgs e)
         {
-            MainForm.mainForm.replacePanel(new OverviewPanel(_loadAvatar));
+            try
+            {
+                MainForm.mainForm.replacePanel(new OverviewPanel(_loadAvatar));
+            }
+            catch (ArgumentException){ }
         }
 
         private void exposureEventHandler(object sender, EventArgs e)
