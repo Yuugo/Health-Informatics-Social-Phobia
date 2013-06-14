@@ -11,6 +11,8 @@ using NijnCoach.View.Overview;
 using NijnCoach.Database;
 using System.IO;
 using System.Text;
+using NijnCoach.View.Greet;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Forms;
 using NijnCoach.View.Greet;
@@ -38,6 +40,10 @@ namespace NijnCoach.View.Questionnaire
             try
             {
                 XMLclasses.Questionnaire questionnaire = DBConnect.getQuestionnaireByPatient(MainClass.userNo);
+                foreach (IEntry entry in questionnaire.entries)
+                {
+                    audioData.Add(entry.Audio(), "");
+                }
                 init(questionnaire);
             }
             catch (FileNotFoundException)
@@ -46,24 +52,25 @@ namespace NijnCoach.View.Questionnaire
                 throw new NoQuestionnaireAvailableException();
                 //MainForm.mainForm.replacePanel(new HomePanel(_loadAvatar));
             }
-
-
         }
+        Dictionary<String, String> audioData = new Dictionary<string, string>();
+
 
         public QuestionnaireForm(XMLclasses.Questionnaire questionnaire, Boolean _loadAvatar = true)
             : base(_loadAvatar)
         {
             init(questionnaire);
+            
         }
 
         private void init(XMLclasses.Questionnaire questionnaire)
         {
-            if (questionnaire.entries.Count > 0)
+            if (questionnaire.entries.Count < 1)
             {
                 System.Windows.MessageBox.Show("No questionnaires available for you.\nYou will be taken to the homepanel");
                 throw new NoQuestionnaireAvailableException();
             }
-            this.questionnaire = questionnaire;
+            this.questionnaire = questionnaire;            
             initControls();
         }
 
@@ -152,7 +159,7 @@ namespace NijnCoach.View.Questionnaire
                 panelQuestionIntern = new OpenQuestionPanel(panelQuestion.Width, panelQuestion.Height);
             }
 
-            AvatarControl.setAvatarEmotionViaEntry(entry);
+            if (_loadAvatar) AvatarControl.setAvatarEmotionViaEntry(entry);
             panelQuestionIntern.entry = entry;
             panelQuestion.Controls.Add(panelQuestionIntern);
             playFromDB();
@@ -165,11 +172,24 @@ namespace NijnCoach.View.Questionnaire
         void playFromDB()
         {
             var entry = questionnaire.entries[currentQuestion];
-            String content = DBConnect.getSpeechFile(entry.Audio());
-            oldPath = tempPath;
-            tempPath = createTempAudioFile(content);
-            bassPlay(tempPath);
-            deleteTempFile();
+            if(audioData[entry.Audio()] == "")
+                audioData[entry.Audio()] = DBConnect.getSpeechFile(entry.Audio());
+            if (entry.Audio() != "")
+            {
+                String content = DBConnect.getSpeechFile(entry.Audio());
+                oldPath = tempPath;
+                createTempAudioFile(content);
+                AvatarControl.speak("C://ecoach//audio//" + questionnaire.entries[currentQuestion].Audio() + ".wav", bassGetLength());
+                //bassPlay(tempPath);
+            }
+        }
+
+        public int bassGetLength()
+        {
+            stream = Bass.BASS_StreamCreateFile("C://ecoach//audio//" + questionnaire.entries[currentQuestion].Audio() + ".wav", 0, 0, BASSFlag.BASS_DEFAULT);
+            long len = Bass.BASS_ChannelGetLength(stream, BASSMode.BASS_POS_BYTES);
+            int time = (int)Bass.BASS_ChannelBytes2Seconds(stream, len);
+            return time;
         }
 
         public void bassPlay(string mp3path)
@@ -182,14 +202,14 @@ namespace NijnCoach.View.Questionnaire
             BASSError error = Bass.BASS_ErrorGetCode();
             long len = Bass.BASS_ChannelGetLength(stream, BASSMode.BASS_POS_BYTES);
             // the length of the audiofile
-            int time = (int)Bass.BASS_ChannelBytes2Seconds(stream, len);
+            int time = (int)Bass.BASS_ChannelBytes2Seconds(stream, len) * 1000;
             if (_loadAvatar)
             {
-                AvatarControl.speak(mp3path, time);
+                AvatarControl.speak("1.wav", 30);
             }
             if (stream != 0)
             {
-                Bass.BASS_ChannelPlay(stream, false);
+                //Bass.BASS_ChannelPlay(stream, false);
             }
         }
 
@@ -198,16 +218,17 @@ namespace NijnCoach.View.Questionnaire
         /// </summary>
         /// <param name="content"></param>
         /// <returns></returns>
-        public String createTempAudioFile(String content)
+        public void createTempAudioFile(String content)
         {
-            String path = GetTempFilePathWithExtension("mp3");
-            using (FileStream fs = File.Create(path, 1024))
+            //String path = GetTempFilePathWithExtension("wav");
+            using (FileStream fs = new FileStream("C://ecoach//audio//" + questionnaire.entries[currentQuestion].Audio() + ".wav", FileMode.OpenOrCreate))
             {
                 byte[] decoded = System.Convert.FromBase64String(content);
                 // Add some information to the file.
                 fs.Write(decoded, 0, decoded.Length);
+                fs.Close();
             }
-            return path;
+            //return path;
         }
 
         /// <summary>
@@ -230,9 +251,9 @@ namespace NijnCoach.View.Questionnaire
         /// <returns></returns>
         public string GetTempFilePathWithExtension(string extension)
         {
-            var path = System.IO.Path.GetTempFileName();
-            var fileName = Path.ChangeExtension(path, extension);
-            return Path.Combine(path, fileName);
+            var fileName = System.IO.Path.GetRandomFileName();
+            var path = "C://ecoach//audio//tempAudio.wav";
+            return Path.ChangeExtension(path, extension);
         }
 
         protected override void avatarLoaded() { }

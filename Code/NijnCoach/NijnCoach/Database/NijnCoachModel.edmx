@@ -4,14 +4,14 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="NijnCoachModel1.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
-        <EntityContainer Name="NijnCoachModel1StoreContainer">
-          <EntitySet Name="AudioFile" EntityType="NijnCoachModel1.Store.AudioFile" store:Type="Tables" Schema="NijnCoach" />
-          <EntitySet Name="ProgressEval" EntityType="NijnCoachModel1.Store.ProgressEval" store:Type="Tables" Schema="NijnCoach" />
-          <EntitySet Name="Questionnairre" EntityType="NijnCoachModel1.Store.Questionnairre" store:Type="Tables" Schema="NijnCoach" />
-          <EntitySet Name="Sickpeople" EntityType="NijnCoachModel1.Store.Sickpeople" store:Type="Tables" Schema="NijnCoach" />
-          <EntitySet Name="SpeechFiles" EntityType="NijnCoachModel1.Store.SpeechFiles" store:Type="Tables" Schema="NijnCoach" />
-          <EntitySet Name="Users" EntityType="NijnCoachModel1.Store.Users" store:Type="Tables" Schema="NijnCoach" />
+      <Schema Namespace="NijnCoachModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="NijnCoachModelStoreContainer">
+          <EntitySet Name="AudioFile" EntityType="NijnCoachModel.Store.AudioFile" store:Type="Tables" Schema="NijnCoach" />
+          <EntitySet Name="ProgressEval" EntityType="NijnCoachModel.Store.ProgressEval" store:Type="Tables" Schema="NijnCoach" />
+          <EntitySet Name="Questionnairre" EntityType="NijnCoachModel.Store.Questionnairre" store:Type="Tables" Schema="NijnCoach" />
+          <EntitySet Name="Sickpeople" EntityType="NijnCoachModel.Store.Sickpeople" store:Type="Tables" Schema="NijnCoach" />
+          <EntitySet Name="SpeechFiles" EntityType="NijnCoachModel.Store.SpeechFiles" store:Type="Tables" Schema="NijnCoach" />
+          <EntitySet Name="Users" EntityType="NijnCoachModel.Store.Users" store:Type="Tables" Schema="NijnCoach" />
         </EntityContainer>
         <EntityType Name="AudioFile">
           <Key>
@@ -25,9 +25,9 @@
         </EntityType>
         <EntityType Name="ProgressEval">
           <Key>
-            <PropertyRef Name="Name" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="varchar" Nullable="false" MaxLength="100" />
           <Property Name="Content" Type="longtext" Nullable="false" />
           <Property Name="PatientNo" Type="int" Nullable="false" />
@@ -43,7 +43,7 @@
           <Property Name="Text" Type="mediumtext" Nullable="false" />
           <Property Name="forPatient" Type="tinyint" Nullable="false" />
           <Property Name="Type" Type="longtext" Nullable="false" />
-          <Property Name="FilledIn" Type="bool" Nullable="false" />
+          <Property Name="FilledIn" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Sickpeople">
           <Key>
@@ -83,156 +83,156 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="NijnCoachModel1" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+      <Schema Namespace="NijnCoachModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
         <EntityContainer Name="NijnCoachEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Questionnairres" EntityType="NijnCoachModel1.Questionnairre" />
-          <EntitySet Name="SpeechFiles" EntityType="NijnCoachModel1.SpeechFile" />
-          <EntitySet Name="ProgressEvals" EntityType="NijnCoachModel1.ProgressEval" />
-          <EntitySet Name="Users" EntityType="NijnCoachModel1.User" />
-          <EntitySet Name="Sickpeoples" EntityType="NijnCoachModel1.Sickpeople" />
-          <EntitySet Name="AudioFiles" EntityType="NijnCoachModel1.AudioFile" />
+          <EntitySet Name="AudioFiles" EntityType="NijnCoachModel.AudioFile" />
+          <EntitySet Name="ProgressEvals" EntityType="NijnCoachModel.ProgressEval" />
+          <EntitySet Name="Questionnairres" EntityType="NijnCoachModel.Questionnairre" />
+          <EntitySet Name="Sickpeoples" EntityType="NijnCoachModel.Sickpeople" />
+          <EntitySet Name="SpeechFiles" EntityType="NijnCoachModel.SpeechFile" />
+          <EntitySet Name="Users" EntityType="NijnCoachModel.User" />
         </EntityContainer>
+        <EntityType Name="AudioFile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Encoding" Type="String" Nullable="false" MaxLength="1073741823" Unicode="false" FixedLength="false" />
+          <Property Name="PartNo" Type="Int32" Nullable="false" />
+          <Property Name="TrackNo" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProgressEval">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Content" Type="String" Nullable="false" MaxLength="1073741823" Unicode="false" FixedLength="false" />
+          <Property Name="PatientNo" Type="Int32" Nullable="false" />
+          <Property Name="Commentary" Type="String" MaxLength="1073741823" Unicode="false" FixedLength="false" />
+          <Property Name="Emotion" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+        </EntityType>
         <EntityType Name="Questionnairre">
           <Key>
             <PropertyRef Name="Name" />
           </Key>
-          <Property Name="Id" Type="SByte" Nullable="false" />
+          <Property Name="Id" Type="SByte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
           <Property Name="Text" Type="String" Nullable="false" MaxLength="16777215" Unicode="false" FixedLength="false" />
-          <Property Type="SByte" Name="forPatient" Nullable="false" />
-          <Property Type="String" Name="Type" Nullable="false" MaxLength="1073741823" FixedLength="false" Unicode="false" />
-          <Property Type="Boolean" Name="FilledIn" Nullable="false" />
-        </EntityType>
-        <EntityType Name="SpeechFile">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="SByte" Nullable="false" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
-          <Property Name="Encoding" Type="String" Nullable="false" MaxLength="1073741823" Unicode="false" FixedLength="false" />
-          <Property Type="Int64" Name="trackNo" Nullable="false" />
-          <Property Type="Int32" Name="PartNo" Nullable="false" />
-        </EntityType>
-        <EntityType Name="ProgressEval">
-          <Key>
-            <PropertyRef Name="Name" />
-          </Key>
-          <Property Type="String" Name="Id" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="Content" Nullable="false" MaxLength="1073741823" FixedLength="false" Unicode="false" />
-          <Property Type="Int32" Name="PatientNo" Nullable="false" />
-          <Property Type="String" Name="Commentary" MaxLength="1073741823" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="Emotion" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="User">
-          <Key>
-            <PropertyRef Name="Username" />
-          </Key>
-          <Property Type="String" Name="Username" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="Password" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="Type" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Type="SByte" Name="PatientNo" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="forPatient" Type="SByte" Nullable="false" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="1073741823" Unicode="false" FixedLength="false" />
+          <Property Name="FilledIn" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Sickpeople">
           <Key>
             <PropertyRef Name="PatientNo" />
           </Key>
-          <Property Type="String" Name="Fname" Nullable="false" MaxLength="1073741823" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="Lname" Nullable="false" MaxLength="1073741823" FixedLength="false" Unicode="false" />
-          <Property Type="Int32" Name="PatientNo" Nullable="false" />
-          <Property Type="Int32" Name="Age" Nullable="false" />
-          <Property Type="String" Name="Email" Nullable="false" MaxLength="1073741823" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="PhoneNo" Nullable="false" />
-          <Property Type="String" Name="Street" Nullable="false" MaxLength="1073741823" FixedLength="false" Unicode="false" />
-          <Property Type="Int32" Name="HouseNo" Nullable="false" />
-          <Property Type="String" Name="Postal" Nullable="false" MaxLength="1073741823" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="City" Nullable="false" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="Fname" Type="String" Nullable="false" MaxLength="1073741823" Unicode="false" FixedLength="false" />
+          <Property Name="Lname" Type="String" Nullable="false" MaxLength="1073741823" Unicode="false" FixedLength="false" />
+          <Property Name="PatientNo" Type="Int32" Nullable="false" />
+          <Property Name="Age" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="1073741823" Unicode="false" FixedLength="false" />
+          <Property Name="PhoneNo" Type="String" Nullable="false" MaxLength="65535" Unicode="false" FixedLength="false" />
+          <Property Name="Street" Type="String" Nullable="false" MaxLength="1073741823" Unicode="false" FixedLength="false" />
+          <Property Name="HouseNo" Type="Int32" Nullable="false" />
+          <Property Name="Postal" Type="String" Nullable="false" MaxLength="1073741823" Unicode="false" FixedLength="false" />
+          <Property Name="City" Type="String" Nullable="false" MaxLength="1073741823" Unicode="false" FixedLength="false" />
         </EntityType>
-        <EntityType Name="AudioFile">
+        <EntityType Name="SpeechFile">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="Encoding" Nullable="false" MaxLength="1073741823" FixedLength="false" Unicode="false" />
-          <Property Type="Int32" Name="PartNo" Nullable="false" />
-          <Property Type="Int32" Name="TrackNo" Nullable="false" />
+          <Property Name="Id" Type="SByte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Encoding" Type="String" Nullable="false" MaxLength="1073741823" Unicode="false" FixedLength="false" />
+          <Property Name="trackNo" Type="Int64" Nullable="false" />
+          <Property Name="PartNo" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Username" />
+          </Key>
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="PatientNo" Type="SByte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="NijnCoachModel1StoreContainer" CdmEntityContainer="NijnCoachEntities">
-          <EntitySetMapping Name="Questionnairres">
-            <EntityTypeMapping TypeName="NijnCoachModel1.Questionnairre">
-              <MappingFragment StoreEntitySet="Questionnairre">
-                <ScalarProperty Name="FilledIn" ColumnName="FilledIn" />
-                <ScalarProperty Name="Type" ColumnName="Type" />
-                <ScalarProperty Name="forPatient" ColumnName="forPatient" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Text" ColumnName="Text" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SpeechFiles">
-            <EntityTypeMapping TypeName="NijnCoachModel1.SpeechFile">
-              <MappingFragment StoreEntitySet="SpeechFiles">
-                <ScalarProperty Name="PartNo" ColumnName="PartNo" />
-                <ScalarProperty Name="trackNo" ColumnName="trackNo" />
+        <EntityContainerMapping StorageEntityContainer="NijnCoachModelStoreContainer" CdmEntityContainer="NijnCoachEntities">
+          <EntitySetMapping Name="AudioFiles">
+            <EntityTypeMapping TypeName="NijnCoachModel.AudioFile">
+              <MappingFragment StoreEntitySet="AudioFile">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Encoding" ColumnName="Encoding" />
+                <ScalarProperty Name="PartNo" ColumnName="PartNo" />
+                <ScalarProperty Name="TrackNo" ColumnName="TrackNo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ProgressEvals">
-            <EntityTypeMapping TypeName="NijnCoachModel1.ProgressEval">
+            <EntityTypeMapping TypeName="NijnCoachModel.ProgressEval">
               <MappingFragment StoreEntitySet="ProgressEval">
-                <ScalarProperty Name="Emotion" ColumnName="Emotion" />
-                <ScalarProperty Name="Commentary" ColumnName="Commentary" />
-                <ScalarProperty Name="PatientNo" ColumnName="PatientNo" />
-                <ScalarProperty Name="Content" ColumnName="Content" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="PatientNo" ColumnName="PatientNo" />
+                <ScalarProperty Name="Commentary" ColumnName="Commentary" />
+                <ScalarProperty Name="Emotion" ColumnName="Emotion" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="NijnCoachModel1.User">
-              <MappingFragment StoreEntitySet="Users">
-                <ScalarProperty Name="PatientNo" ColumnName="PatientNo" />
+          <EntitySetMapping Name="Questionnairres">
+            <EntityTypeMapping TypeName="NijnCoachModel.Questionnairre">
+              <MappingFragment StoreEntitySet="Questionnairre">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="forPatient" ColumnName="forPatient" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="FilledIn" ColumnName="FilledIn" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Sickpeoples">
-            <EntityTypeMapping TypeName="NijnCoachModel1.Sickpeople">
+            <EntityTypeMapping TypeName="NijnCoachModel.Sickpeople">
               <MappingFragment StoreEntitySet="Sickpeople">
-                <ScalarProperty Name="City" ColumnName="City" />
-                <ScalarProperty Name="Postal" ColumnName="Postal" />
-                <ScalarProperty Name="HouseNo" ColumnName="HouseNo" />
-                <ScalarProperty Name="Street" ColumnName="Street" />
-                <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Age" ColumnName="Age" />
-                <ScalarProperty Name="PatientNo" ColumnName="PatientNo" />
-                <ScalarProperty Name="Lname" ColumnName="Lname" />
                 <ScalarProperty Name="Fname" ColumnName="Fname" />
+                <ScalarProperty Name="Lname" ColumnName="Lname" />
+                <ScalarProperty Name="PatientNo" ColumnName="PatientNo" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="HouseNo" ColumnName="HouseNo" />
+                <ScalarProperty Name="Postal" ColumnName="Postal" />
+                <ScalarProperty Name="City" ColumnName="City" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="AudioFiles">
-            <EntityTypeMapping TypeName="NijnCoachModel1.AudioFile">
-              <MappingFragment StoreEntitySet="AudioFile">
-                <ScalarProperty Name="TrackNo" ColumnName="TrackNo" />
-                <ScalarProperty Name="PartNo" ColumnName="PartNo" />
-                <ScalarProperty Name="Encoding" ColumnName="Encoding" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
+          <EntitySetMapping Name="SpeechFiles">
+            <EntityTypeMapping TypeName="NijnCoachModel.SpeechFile">
+              <MappingFragment StoreEntitySet="SpeechFiles">
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Encoding" ColumnName="Encoding" />
+                <ScalarProperty Name="trackNo" ColumnName="trackNo" />
+                <ScalarProperty Name="PartNo" ColumnName="PartNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="NijnCoachModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="PatientNo" ColumnName="PatientNo" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -257,13 +257,12 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="NijnCoachModel">
-        <EntityTypeShape EntityType="NijnCoachModel1.Patient" Width="1.5" PointX="0.75" PointY="0.75" Height="2.6490079752604165" IsExpanded="true" />
-        <EntityTypeShape EntityType="NijnCoachModel1.Questionnairre" Width="1.5" PointX="2.75" PointY="0.75" Height="1.4605517578124996" IsExpanded="true" />
-        <EntityTypeShape EntityType="NijnCoachModel1.SpeechFile" Width="1.5" PointX="2.75" PointY="3.75" Height="1.4605517578124996" IsExpanded="true" />
-        <EntityTypeShape EntityType="NijnCoachModel1.ProgressEval" Width="1.5" PointX="5.375" PointY="0.75" Height="1.4605517578124996" />
-        <EntityTypeShape EntityType="NijnCoachModel1.User" Width="1.5" PointX="5.375" PointY="3.75" Height="1.4605517578124996" />
-        <EntityTypeShape EntityType="NijnCoachModel1.Sickpeople" Width="1.5" PointX="0.75" PointY="3.875" Height="2.6490079752604174" />
-        <EntityTypeShape EntityType="NijnCoachModel1.AudioFile" Width="1.5" PointX="3.375" PointY="6.75" Height="1.9802864583333317" />
+        <EntityTypeShape EntityType="NijnCoachModel.AudioFile" Width="1.5" PointX="0.75" PointY="0.75" Height="1.8001106770833331" IsExpanded="true" />
+        <EntityTypeShape EntityType="NijnCoachModel.ProgressEval" Width="1.5" PointX="2.75" PointY="0.75" Height="1.9698901367187496" IsExpanded="true" />
+        <EntityTypeShape EntityType="NijnCoachModel.Questionnairre" Width="1.5" PointX="0.75" PointY="3.75" Height="1.9698901367187496" IsExpanded="true" />
+        <EntityTypeShape EntityType="NijnCoachModel.Sickpeople" Width="1.5" PointX="2.75" PointY="3.75" Height="2.6490079752604156" IsExpanded="true" />
+        <EntityTypeShape EntityType="NijnCoachModel.SpeechFile" Width="1.5" PointX="4.75" PointY="0.75" Height="1.8001106770833317" IsExpanded="true" />
+        <EntityTypeShape EntityType="NijnCoachModel.User" Width="1.5" PointX="4.75" PointY="3.75" Height="1.630331217447917" IsExpanded="true" />
       </Diagram>
     </Diagrams>
   </Designer>

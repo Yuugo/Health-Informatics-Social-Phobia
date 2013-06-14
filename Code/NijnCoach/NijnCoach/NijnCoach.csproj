@@ -54,15 +54,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Avatar\AvatarControl.cs" />
-    <Compile Include="Exposure data\ExposureSession.cs" />
-    <Compile Include="Exposure data\ExpTimestamp.cs" />
-    <Compile Include="Exposure data\ReadExposureData.cs" />
-    <Compile Include="Database\DBConnect.cs" />
     <Compile Include="Database\NijnCoachModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>NijnCoachModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Exposure data\ExposureSession.cs" />
+    <Compile Include="Exposure data\ExpTimestamp.cs" />
+    <Compile Include="Exposure data\ReadExposureData.cs" />
+    <Compile Include="Database\DBConnect.cs" />
     <Compile Include="MainClass.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
