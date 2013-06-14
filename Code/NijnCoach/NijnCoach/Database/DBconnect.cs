@@ -247,6 +247,52 @@ namespace NijnCoach.Database
         }
 
         /// <summary>
+        /// Find the oldes, not filled in, questionnaire for the given patient.
+        /// </summary>
+        /// <param name="patientNo">The patientnumber for this patient.</param>
+        /// <returns></returns>
+        public static Questionnaire getQuestionnaireById(SByte id)
+        {
+            try
+            {
+                NijnCoachEntities theEntities = new NijnCoachEntities();
+                String result = theEntities.Questionnairres.Where(x => x.Id == id).First<Questionnairre>().Text;
+                XMLParser parser = new XMLParser();
+                byte[] byteArray = Encoding.ASCII.GetBytes(result);
+                MemoryStream stream = new MemoryStream(byteArray);
+                StreamReader reader = new StreamReader(stream);
+                return parser.readXML(reader);
+            }
+            catch (Exception e)
+            {
+                throw new FileNotFoundException();
+            }
+        }
+
+        /// <summary>
+        /// Find the oldes, not filled in, questionnaire for the given patient.
+        /// </summary>
+        /// <param name="patientNo">The patientnumber for this patient.</param>
+        /// <returns></returns>
+        public static List<Questionnairre> getQuestionnairesByPatient(Int32 patientNo)
+        {
+            try
+            {
+                NijnCoachEntities theEntities = new NijnCoachEntities();
+                List<Questionnairre> qs = theEntities.Questionnairres.Where(x => x.forPatient == patientNo).ToList<Questionnairre>();
+                if (qs.Count == 0)
+                {
+                    return null;
+                }
+                return qs;
+            }
+            catch (Exception e)
+            {
+                throw new FileNotFoundException();
+            }
+        }
+
+        /// <summary>
         /// Get the question the patient stopped at.
         /// </summary>
         /// <param name="patientNo">The patientnumber for this patient.</param>

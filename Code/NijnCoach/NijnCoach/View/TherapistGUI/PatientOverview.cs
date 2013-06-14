@@ -67,9 +67,16 @@ namespace NijnCoach.View.TherapistGUI
         private void button1_Click(object sender, EventArgs e)
         {
             NijnCoach.MainClass.userNo = System.Convert.ToInt32(textBox0.Text);
-            if (DBConnect.getQuestionnaireByPatient(MainClass.userNo) != null)
+            if (DBConnect.getQuestionnairesByPatient(MainClass.userNo) != null)
             {
-                TherapistMain.main.replacePanel(new NijnCoach.View.TherapistGUI.qResult());
+                Questionnaires qs = new Questionnaires(MainClass.userNo);
+                if (qs.ShowDialog() == DialogResult.OK)
+                {
+                    int cell = qs.dataGridView1.CurrentCell.RowIndex;
+                    SByte id = System.Convert.ToSByte(qs.dataGridView1.Rows[cell].Cells[0].Value.ToString());
+                    XMLclasses.Questionnaire q = DBConnect.getQuestionnaireById(id);
+                    TherapistMain.main.replacePanel(new NijnCoach.View.TherapistGUI.qResult(q));
+                }
             }
             else
             {

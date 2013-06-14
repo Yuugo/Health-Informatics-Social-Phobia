@@ -40,10 +40,7 @@ namespace NijnCoach.View.Questionnaire
             try
             {
                 XMLclasses.Questionnaire questionnaire = DBConnect.getQuestionnaireByPatient(MainClass.userNo);
-                foreach (IEntry entry in questionnaire.entries)
-                {
-                    audioData.Add(entry.Audio(), "");
-                }
+                
                 init(questionnaire);
             }
             catch (FileNotFoundException)
