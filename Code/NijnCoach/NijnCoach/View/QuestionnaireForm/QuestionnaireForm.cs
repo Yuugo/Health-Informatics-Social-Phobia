@@ -56,6 +56,10 @@ namespace NijnCoach.View.Questionnaire
             : base(_loadAvatar)
         {
             init(questionnaire);
+            foreach (IEntry entry in questionnaire.entries)
+            {
+                audioData.Add(entry.Audio(), "");
+            }
         }
 
         private void init(XMLclasses.Questionnaire questionnaire)
