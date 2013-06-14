@@ -141,7 +141,7 @@
           <Property Type="Int32" Name="PatientNo" Nullable="false" />
           <Property Type="Int32" Name="Age" Nullable="false" />
           <Property Type="String" Name="Email" Nullable="false" MaxLength="1073741823" FixedLength="false" Unicode="false" />
-          <Property Type="Int32" Name="PhoneNo" Nullable="false" />
+          <Property Type="String" Name="PhoneNo" Nullable="false" />
           <Property Type="String" Name="Street" Nullable="false" MaxLength="1073741823" FixedLength="false" Unicode="false" />
           <Property Type="Int32" Name="HouseNo" Nullable="false" />
           <Property Type="String" Name="Postal" Nullable="false" MaxLength="1073741823" FixedLength="false" Unicode="false" />

@@ -777,7 +777,7 @@ namespace NijnCoach.Database
         /// <param name="houseNo">Initial value of the HouseNo property.</param>
         /// <param name="postal">Initial value of the Postal property.</param>
         /// <param name="city">Initial value of the City property.</param>
-        public static Sickpeople CreateSickpeople(global::System.String fname, global::System.String lname, global::System.Int32 patientNo, global::System.Int32 age, global::System.String email, global::System.Int32 phoneNo, global::System.String street, global::System.Int32 houseNo, global::System.String postal, global::System.String city)
+        public static Sickpeople CreateSickpeople(global::System.String fname, global::System.String lname, global::System.Int32 patientNo, global::System.Int32 age, global::System.String email, global::System.String phoneNo, global::System.String street, global::System.Int32 houseNo, global::System.String postal, global::System.String city)
         {
             Sickpeople sickpeople = new Sickpeople();
             sickpeople.Fname = fname;
@@ -925,7 +925,7 @@ namespace NijnCoach.Database
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 PhoneNo
+        public global::System.String PhoneNo
         {
             get
             {
@@ -935,13 +935,13 @@ namespace NijnCoach.Database
             {
                 OnPhoneNoChanging(value);
                 ReportPropertyChanging("PhoneNo");
-                _PhoneNo = StructuralObject.SetValidValue(value);
+                _PhoneNo = StructuralObject.SetValidValue(value, false);
                 ReportPropertyChanged("PhoneNo");
                 OnPhoneNoChanged();
             }
         }
-        private global::System.Int32 _PhoneNo;
-        partial void OnPhoneNoChanging(global::System.Int32 value);
+        private global::System.String _PhoneNo;
+        partial void OnPhoneNoChanging(global::System.String value);
         partial void OnPhoneNoChanged();
     
         /// <summary>
