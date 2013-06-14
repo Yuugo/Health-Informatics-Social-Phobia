@@ -64,7 +64,7 @@ namespace NijnCoach.View.Questionnaire
 
         private void init(XMLclasses.Questionnaire questionnaire)
         {
-            if (questionnaire.entries.Count > 0)
+            if (questionnaire.entries.Count < 1)
             {
                 System.Windows.MessageBox.Show("No questionnaires available for you.\nYou will be taken to the homepanel");
                 throw new NoQuestionnaireAvailableException();
