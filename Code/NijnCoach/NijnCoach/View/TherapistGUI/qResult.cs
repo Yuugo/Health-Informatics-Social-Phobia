@@ -23,13 +23,9 @@ namespace NijnCoach.View.TherapistGUI
         private XMLclasses.Questionnaire questionnaire;
         private int currentQuestion = 0;
 
-        public qResult()
+        public qResult(XMLclasses.Questionnaire q)
         {
-            questionnaire = DBConnect.getQuestionnaireByPatient(MainClass.userNo);
-            if (questionnaire == null)
-            {
-
-            }
+            questionnaire = q;
             InitializeComponent();
             string naam = DBConnect.getName(userNo);
             label2.Text = "Result of " + naam;

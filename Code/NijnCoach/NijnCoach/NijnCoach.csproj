@@ -113,6 +113,12 @@
     <Compile Include="View\TherapistGUI\qResult.Designer.cs">
       <DependentUpon>qResult.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\TherapistGUI\Questionnaires.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\TherapistGUI\Questionnaires.Designer.cs">
+      <DependentUpon>Questionnaires.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\TherapistGUI\saveFileDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -320,6 +326,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\TherapistGUI\Qmaker.resx">
       <DependentUpon>Qmaker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\TherapistGUI\Questionnaires.resx">
+      <DependentUpon>Questionnaires.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\TherapistGUI\saveFileDialog.resx">
       <DependentUpon>saveFileDialog.cs</DependentUpon>
