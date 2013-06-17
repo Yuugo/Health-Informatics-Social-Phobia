@@ -78,6 +78,7 @@ namespace NijnCoach.View.Questionnaire
             updatePanelQuestion(questionnaire.entries[currentQuestion]);
             progressBar.Minimum = 0;
             progressBar.Maximum = questionnaire.entries.Count;
+            progressBar.Value = currentQuestion;
             if (questionnaire.entries.Count < 2)
             {
                 buttonNext.Text = "Finish";
