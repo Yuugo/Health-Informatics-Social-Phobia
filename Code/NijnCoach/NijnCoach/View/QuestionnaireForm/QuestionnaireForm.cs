@@ -110,8 +110,10 @@ namespace NijnCoach.View.Questionnaire
                 {
                     buttonNext.Text = "Finish";
                 }
-
-                buttonPrevious.Enabled = true;
+                if (questionnaire.entries[currentQuestion].Audio() == "")
+                {
+                    buttonPrevious.Enabled = true;
+                }
                 progressBar.Value = currentQuestion;
             }
         }
@@ -127,7 +129,6 @@ namespace NijnCoach.View.Questionnaire
                 buttonPrevious.Enabled = false;
             }
             buttonNext.Text = "Next";
-            buttonNext.Enabled = true;
             progressBar.Value = currentQuestion;
         }
 
