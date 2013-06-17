@@ -34,10 +34,11 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            System.Windows.Forms.Button[] buttons = {button1, button2, button3, button4};
-            System.EventHandler[] eventHandlers = { questionnaireEventHandler, overviewEventHandler, exposureEventHandler, exitEventHandler };
-            string[] buttonText = {"Fill in Questionnaire","View progress","Start Exposure","Exit"};
+            System.Windows.Forms.Button[] buttons = {button1, button2, button3, button4,button5};
+            System.EventHandler[] eventHandlers = { questionnaireEventHandler, overviewEventHandler, exposureEventHandler, exitEventHandler ,button5_Click};
+            string[] buttonText = {"Fill in Questionnaire","View progress","Start Exposure","Exit","Log out"};
             for(int i = 0; i < buttons.Length; i++)
             {
                 System.Windows.Forms.Button b = buttons[i];
@@ -45,13 +46,19 @@
                 b.UseVisualStyleBackColor = true;
                 b.Click += new System.EventHandler(eventHandlers[i]);
             }
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(750, 38);
+            this.button5.Size = new System.Drawing.Size(100, 36);
+
             this.Controls.AddRange(buttons);
             this.ResumeLayout(false);
         }
 
         #endregion
 
-        private System.Windows.Forms.Button button1, button2, button3, button4;
+        private System.Windows.Forms.Button button1, button2, button3, button4,button5;
 
     }
 }

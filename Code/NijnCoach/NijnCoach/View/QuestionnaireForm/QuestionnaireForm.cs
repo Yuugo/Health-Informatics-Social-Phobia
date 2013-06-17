@@ -291,5 +291,9 @@ namespace NijnCoach.View.Questionnaire
         }
 
         protected override void avatarLoaded() { }
+
+        
     }
+
+
 }

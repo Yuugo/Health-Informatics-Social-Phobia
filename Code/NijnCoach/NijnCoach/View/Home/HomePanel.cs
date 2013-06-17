@@ -57,5 +57,12 @@ namespace NijnCoach.View.Home
         {
             Application.Exit();
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            MainForm.mainForm.Hide();
+            new NijnCoach.View.Main.LoginMenu().Show();
+
+        }
     }
 }
