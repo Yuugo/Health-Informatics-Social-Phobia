@@ -33,7 +33,7 @@ namespace NijnCoach.View.Home
             }
             catch (NoQuestionnaireAvailableException)
             {
-                MessageBox.Show("No Questionnaires are available for you.");
+                MessageBox.Show("No questionnaires are available for you.");
             }
         }
 

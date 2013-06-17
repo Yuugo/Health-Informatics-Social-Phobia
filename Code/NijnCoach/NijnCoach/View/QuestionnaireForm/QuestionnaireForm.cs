@@ -45,7 +45,6 @@ namespace NijnCoach.View.Questionnaire
             }
             catch (FileNotFoundException)
             {
-                System.Windows.MessageBox.Show("No questionnaires available for you.\nYou will be taken to the homepanel");
                 throw new NoQuestionnaireAvailableException();
                 //MainForm.mainForm.replacePanel(new HomePanel(_loadAvatar));
             }
