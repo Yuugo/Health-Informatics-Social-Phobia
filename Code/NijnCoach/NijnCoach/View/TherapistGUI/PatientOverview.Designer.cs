@@ -61,7 +61,7 @@ namespace NijnCoach.View.TherapistGUI
             System.Windows.Forms.Label[] labels = { label0, label1, label2, label3, label4, label5, label6, label7, label8, label9, label11, labelH };
             System.Windows.Forms.TextBox[] texts = { textBox0, textBox1, textBox2, textBox3, textBox4, textBox5, textBox6, textBox7, textBox8, textBox9 };
 
-            string[] labelText = { "Patient number", "Fisrt name", "Last name", "Age", "Street", "House number", "Postal code", "City", "Email address", "Telephone number" };
+            string[] labelText = { "Patient number", "Fisrt name", "Last name", "Age", "Street", "House number", "Postal code", "City", "Telephone number", "Email address" };
             int[] tsize = { 58, 160, 160, 58, 160, 58, 100, 160, 160, 160 };
 
             for (int i = 0; i < 10; i++)
