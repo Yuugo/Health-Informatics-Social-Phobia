@@ -526,7 +526,7 @@
             // 
             // openFileDialog1
             // 
-            this.openFileDialog1.Filter = "Audio Files(*.wav;*.mp3)|*.wav; *.mp3";
+            this.openFileDialog1.Filter = "Wav Files(*.wav)|*.wav";
             // 
             // textBox9
             // 
