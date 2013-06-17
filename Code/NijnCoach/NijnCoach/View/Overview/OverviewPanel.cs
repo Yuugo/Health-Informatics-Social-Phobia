@@ -23,7 +23,7 @@ namespace NijnCoach.View.Overview
 {
     public partial class OverviewPanel : AvatarContainer
     {
-        private Boolean _loadAvatar = true;
+        private Boolean _loadAvatar;
         private List<ExposureSession> exposureSessions;
 
         public OverviewPanel(Boolean _loadAvatar = true) : base(_loadAvatar)
