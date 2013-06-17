@@ -23,6 +23,9 @@ namespace NijnCoach.View.Exposure
              * Do the complete exposure
              * Not included in this project
              */
+            //Instead some dummy data will be generated
+            generateDummyData();
+            //End of dummy code
             t = new System.Windows.Forms.Timer();
             t.Interval = 3000;
             t.Tick += new EventHandler(exposureFinishedEventHandler);
@@ -46,5 +49,76 @@ namespace NijnCoach.View.Exposure
             }
         }
 
+        //Start of dummy code
+        private static Random rnd = new Random(DateTime.Now.Millisecond);
+
+        private void generateDummyData()
+        {
+            String sOut = "TimeStamp\tHeartRate\t\tGSR\t\tSUD\n";
+            int hour = System.DateTime.Now.Hour;
+            int beginMinute = System.DateTime.Now.Minute;
+            int beginSecond = System.DateTime.Now.Second;
+            string name = System.DateTime.Now.Day.ToString("D2") + "-" + System.DateTime.Now.Month.ToString("D2") + "-" + System.DateTime.Now.Year.ToString("D2") +
+                "_" + hour.ToString("D2") + beginMinute.ToString("D2");
+            double delta = ( (double)rnd.Next(100, 200) )/100.0;//Random
+            int i;
+            int minute = beginMinute;
+            int second = beginSecond;
+            for (i = 0; i < 1800; i++)
+            {
+                sOut += hour.ToString("D2") + ":" + minute.ToString("D2") + ":" + second.ToString("D2") + "\t";
+                sOut += hr(i, delta).ToString() + "\t";//heartrate
+                sOut += gsr(i, delta).ToString() + "\t";//GSR
+                if (minute % 3 == beginMinute % 3 && second == beginSecond)
+                {
+                    sOut += sud(i, delta).ToString() + "\t";//SUD
+                }
+                sOut += "\n";
+                second++;
+                if (second >= 60)
+                {
+                    second = 0;
+                    minute++;
+                }
+                if (minute >= 60)
+                {
+                    minute = 0;
+                    hour++;
+                }
+                if (hour >= 24)
+                {
+                    hour = 0;
+                }
+            }
+            NijnCoach.Database.DBConnect.InsertProgressEvaluation(name, MainClass.userNo, sOut);
+        }
+
+
+        private int sud(int x, double delta)
+        {
+            double a = -0.000005;
+            double b = x - 900;
+            double c = 5 * delta;
+            double r = a * b * b + c;
+            return (int)r;
+        }
+
+        private int gsr(int x, double delta)
+        {
+            double a = -0.0001;
+            double b = x - 900;
+            double c = 545 * delta;
+            double r = a * b * b + c;
+            return (int)r;
+        }
+
+        private int hr(int x, double delta)
+        {
+            double a = rnd.Next()%20 * 0.000001 - 0.00004;
+            double b = x - rnd.Next(850, 950);
+            double c = rnd.Next(70, 80) * delta;
+            double r = a * b * b + c;
+            return (int)r;
+        }
     }
 }

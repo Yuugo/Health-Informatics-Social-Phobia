@@ -113,6 +113,7 @@
             this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "LoginMenu";
             this.Text = "Form1";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(formClose);
             this.ResumeLayout(false);
             this.PerformLayout();
 

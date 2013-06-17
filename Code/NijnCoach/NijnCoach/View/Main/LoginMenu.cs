@@ -50,6 +50,11 @@ namespace NijnCoach.View.Main
             }
         }
 
+        private void formClose(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
         private void reset()
         {
             textBox1.Text = String.Empty;

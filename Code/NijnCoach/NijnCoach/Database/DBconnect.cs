@@ -74,14 +74,14 @@ namespace NijnCoach.Database
         /// <param name="name">The desired name for the evaluation.</param>
         /// <param name="filePath">The file that will be read and inserted into the database.</param>
         /// <returns>Returns true if object was added, else false.</returns>
-        public static Boolean InsertProgressEvaluation(String name, Int32 patientNo, String filePath)
+        public static Boolean InsertProgressEvaluation(String name, Int32 patientNo, String data)
         {
             NijnCoachEntities theEntities = new NijnCoachEntities();
-            StreamReader reader = new StreamReader(filePath);
-            String contents = reader.ReadToEnd();
 
             ProgressEval objectToAdd = new ProgressEval();
-            objectToAdd.Content = contents;
+            objectToAdd.Content = data;
+            objectToAdd.Emotion = "Happy";
+            objectToAdd.Commentary = "";
             objectToAdd.Name = name;
             objectToAdd.PatientNo = patientNo;
 
