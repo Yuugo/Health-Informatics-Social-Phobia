@@ -96,8 +96,8 @@ namespace NijnCoach.View.Exposure
 
         private int sud(int x, double delta)
         {
-            double a = -0.000005;
-            double b = x - 900;
+            double a = rnd.Next() % 10 * 0.0000001 - 0.000005;
+            double b = x - rnd.Next(880, 920);
             double c = 5 * delta;
             double r = a * b * b + c;
             return (int)r;
@@ -105,9 +105,9 @@ namespace NijnCoach.View.Exposure
 
         private int gsr(int x, double delta)
         {
-            double a = -0.0001;
-            double b = x - 900;
-            double c = 545 * delta;
+            double a = rnd.Next() % 5 * 0.00001 - 0.0001;
+            double b = x - rnd.Next(880, 920);
+            double c = rnd.Next(540,550) * delta;
             double r = a * b * b + c;
             return (int)r;
         }
