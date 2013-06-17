@@ -165,9 +165,12 @@ namespace NijnCoach.View.Questionnaire
         void playFromHD()
         {
             var entry = questionnaire.entries[currentQuestion];
-            int length = bassGetLength();
-            DisableButtonsOnTimer(length);
-            AvatarControl.speak(entry.Audio(), length);
+            if (entry.Audio() != "")
+            {
+                int length = bassGetLength();
+                DisableButtonsOnTimer(length);
+                AvatarControl.speak(entry.Audio(), length);
+            }
             
         }
 
