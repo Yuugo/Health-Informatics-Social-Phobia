@@ -21,12 +21,12 @@ namespace NijnCoach.View.Questionnaire
 {
     public partial class QuestionnaireForm : AvatarContainer
     {
+        private Timer timer;
         private XMLclasses.Questionnaire questionnaire;
         private int currentQuestion = 0;
         private int stream = 0;
         private XMLParser xpars = new XMLParser();
         private Boolean _loadAvatar = true;
-        private String tempPath;
         private String oldPath;
         public QuestionnaireForm(Boolean _loadAvatar = true)
             : base(_loadAvatar)
@@ -40,10 +40,7 @@ namespace NijnCoach.View.Questionnaire
             try
             {
                 XMLclasses.Questionnaire questionnaire = DBConnect.getQuestionnaireByPatient(MainClass.userNo);
-                foreach (IEntry entry in questionnaire.entries)
-                {
-                    audioData.Add(entry.Audio(), "");
-                }
+                
                 init(questionnaire);
             }
             catch (FileNotFoundException)
@@ -106,7 +103,6 @@ namespace NijnCoach.View.Questionnaire
                 {
                     buttonNext.Text = "Finish";
                 }
-                playFromHD();
 
                 buttonPrevious.Enabled = true;
                 progressBar.Value = currentQuestion;
@@ -125,7 +121,6 @@ namespace NijnCoach.View.Questionnaire
             }
             buttonNext.Text = "Next";
             buttonNext.Enabled = true;
-            playFromHD();
             progressBar.Value = currentQuestion;
         }
 
@@ -171,26 +166,34 @@ namespace NijnCoach.View.Questionnaire
         {
             var entry = questionnaire.entries[currentQuestion];
             int length = bassGetLength();
+            DisableButtonsOnTimer(length);
             AvatarControl.speak(entry.Audio(), length);
             
         }
 
         void DisableButtonsOnTimer(int length)
         {
-            this.buttonNext.Enabled = false;
-            this.buttonPrevious.Enabled = false;
-            this.buttonHome.Enabled = false;
-            Timer timer = new Timer();
-            timer.Interval = length;
-            //timer.Tick += new EventHandler(enableButtons());
-
+            if (length != -1)
+            {
+                buttonNext.Enabled = false;
+                buttonPrevious.Enabled = false;
+                buttonHome.Enabled = false;
+                timer = new Timer();
+                timer.Interval = length*1100;
+                timer.Tick += new EventHandler(enableButtons);
+                timer.Enabled = true;
+            }
         }
 
-        void enableButtons()
+        void enableButtons(object sender, EventArgs e)
         {
-            this.buttonNext.Enabled = true;
-            this.buttonPrevious.Enabled = true;
-            this.buttonHome.Enabled = true;
+            buttonNext.Enabled = true;
+            if (currentQuestion == 0)
+                buttonPrevious.Enabled = false;
+            else
+                buttonPrevious.Enabled = true;
+            buttonHome.Enabled = true;
+            timer.Enabled = false;
         }
 
         /// <summary>
@@ -204,7 +207,6 @@ namespace NijnCoach.View.Questionnaire
             if (entry.Audio() != "")
             {
                 String content = DBConnect.getSpeechFile(entry.Audio());
-                oldPath = tempPath;
                 createTempAudioFile(content);
                 AvatarControl.speak("C://ecoach//audio//" + questionnaire.entries[currentQuestion].Audio() + ".wav", bassGetLength());
                 //bassPlay(tempPath);
@@ -213,7 +215,8 @@ namespace NijnCoach.View.Questionnaire
 
         public int bassGetLength()
         {
-            stream = Bass.BASS_StreamCreateFile("C://ecoach//audio//" + questionnaire.entries[currentQuestion].Audio() + ".wav", 0, 0, BASSFlag.BASS_DEFAULT);
+            stream = Bass.BASS_StreamCreateFile("C://ecoach//audio//" + questionnaire.entries[currentQuestion].Audio(), 0, 0, BASSFlag.BASS_DEFAULT);
+            BASSError error = Bass.BASS_ErrorGetCode();
             long len = Bass.BASS_ChannelGetLength(stream, BASSMode.BASS_POS_BYTES);
             int time = (int)Bass.BASS_ChannelBytes2Seconds(stream, len);
             return time;
