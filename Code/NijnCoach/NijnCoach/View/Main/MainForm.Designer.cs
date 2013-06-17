@@ -46,6 +46,8 @@
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(formClosed);
             //this.TopMost = true;
             this.ResumeLayout(false);
+
+
             // 
             // outerPanel
             // 

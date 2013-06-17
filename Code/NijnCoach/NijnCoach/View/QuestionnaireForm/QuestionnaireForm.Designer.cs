@@ -97,6 +97,7 @@ namespace NijnCoach.View.Questionnaire
             this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.saveEventHandler);
+            
             // 
             // openFileDialog
             // 
@@ -123,11 +124,8 @@ namespace NijnCoach.View.Questionnaire
 
         private System.Windows.Forms.Panel panelQuestion;
         private IQuestionPanel panelQuestionIntern;
-        private System.Windows.Forms.Button buttonPrevious;
-        private System.Windows.Forms.Button buttonNext;
+        private System.Windows.Forms.Button buttonPrevious, buttonNext, buttonHome, buttonSave;
         private System.Windows.Forms.ProgressBar progressBar;
-        private System.Windows.Forms.Button buttonHome;
-        private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
     }
 }

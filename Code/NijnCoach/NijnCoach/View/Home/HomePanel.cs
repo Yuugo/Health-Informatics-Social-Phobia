@@ -33,7 +33,7 @@ namespace NijnCoach.View.Home
             }
             catch (NoQuestionnaireAvailableException)
             {
-                MessageBox.Show("No Questionnaires are available for you.");
+                MessageBox.Show("No questionnaires are available for you.");
             }
         }
 
@@ -56,6 +56,13 @@ namespace NijnCoach.View.Home
         private void exitEventHandler(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            MainForm.mainForm.Hide();
+            new NijnCoach.View.Main.LoginMenu().Show();
+
         }
     }
 }

@@ -45,7 +45,6 @@ namespace NijnCoach.View.Questionnaire
             }
             catch (FileNotFoundException)
             {
-                System.Windows.MessageBox.Show("No questionnaires available for you.\nYou will be taken to the homepanel");
                 throw new NoQuestionnaireAvailableException();
                 //MainForm.mainForm.replacePanel(new HomePanel(_loadAvatar));
             }
@@ -78,6 +77,7 @@ namespace NijnCoach.View.Questionnaire
             updatePanelQuestion(questionnaire.entries[currentQuestion]);
             progressBar.Minimum = 0;
             progressBar.Maximum = questionnaire.entries.Count;
+            progressBar.Value = currentQuestion;
             if (questionnaire.entries.Count < 2)
             {
                 buttonNext.Text = "Finish";
@@ -92,7 +92,14 @@ namespace NijnCoach.View.Questionnaire
                 //TODO: Mark questionnaire as finished
                 //TODO: fetch data for overview from database
                 DBConnect.updateQuestionnaire(MainClass.userNo,xpars.writeXML(questionnaire), -1);
-                MainForm.mainForm.replacePanel(new OverviewPanel(_loadAvatar));
+
+                try
+                {
+                    MainForm.mainForm.replacePanel(new OverviewPanel(_loadAvatar));
+                }
+                catch (Exception){
+                    MainForm.mainForm.replacePanel(new HomePanel(_loadAvatar));
+                }
             }
             else
             {                
@@ -165,9 +172,12 @@ namespace NijnCoach.View.Questionnaire
         void playFromHD()
         {
             var entry = questionnaire.entries[currentQuestion];
-            int length = bassGetLength();
-            DisableButtonsOnTimer(length);
-            AvatarControl.speak(entry.Audio(), length);
+            if (entry.Audio() != "")
+            {
+                int length = bassGetLength();
+                DisableButtonsOnTimer(length);
+                AvatarControl.speak(entry.Audio(), length);
+            }
             
         }
 
@@ -287,5 +297,9 @@ namespace NijnCoach.View.Questionnaire
         }
 
         protected override void avatarLoaded() { }
+
+        
     }
+
+
 }
