@@ -216,7 +216,7 @@ namespace NijnCoach.Database
                 StreamReader reader = new StreamReader(stream);
                 return parser.readXML(reader);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return null;
             }
@@ -240,7 +240,7 @@ namespace NijnCoach.Database
                 StreamReader reader = new StreamReader(stream);
                 return parser.readXML(reader);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 throw new FileNotFoundException();
             }
@@ -263,7 +263,7 @@ namespace NijnCoach.Database
                 StreamReader reader = new StreamReader(stream);
                 return parser.readXML(reader);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 throw new FileNotFoundException();
             }
@@ -286,7 +286,7 @@ namespace NijnCoach.Database
                 }
                 return qs;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 throw new FileNotFoundException();
             }
@@ -306,7 +306,7 @@ namespace NijnCoach.Database
 
                 return q.FilledIn;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 throw new FileNotFoundException();
             }

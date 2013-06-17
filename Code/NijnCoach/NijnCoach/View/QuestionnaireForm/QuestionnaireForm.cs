@@ -15,7 +15,6 @@ using NijnCoach.View.Greet;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Forms;
-using NijnCoach.View.Greet;
 
 namespace NijnCoach.View.Questionnaire
 {
