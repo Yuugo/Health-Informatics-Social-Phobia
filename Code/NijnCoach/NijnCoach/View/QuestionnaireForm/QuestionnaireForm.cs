@@ -26,7 +26,6 @@ namespace NijnCoach.View.Questionnaire
         private int stream = 0;
         private XMLParser xpars = new XMLParser();
         private Boolean _loadAvatar = true;
-        private String oldPath;
         public QuestionnaireForm(Boolean _loadAvatar = true)
             : base(_loadAvatar)
         {
@@ -271,18 +270,6 @@ namespace NijnCoach.View.Questionnaire
             //return path;
         }
 
-        /// <summary>
-        /// Delete the latest temporary audio file.
-        /// </summary>
-        public void deleteTempFile()
-        {
-            if (oldPath != null)
-            {
-                FileInfo fileDel = new FileInfo(oldPath);
-                if (fileDel.Exists)
-                    fileDel.Delete();
-            }
-        }
 
         /// <summary>
         /// Creates a random filepath with a given extension. Format: '.ext' or 'ext' are both allowed.

@@ -183,7 +183,6 @@ namespace NijnCoach.View.TherapistGUI
             textBox9.Text = name.Last();
             //upload openFileDialog1.Text to server
         }
-
         //uploadt audiobestand als er geen probleem mee is
         public bool addAudio()
         {
