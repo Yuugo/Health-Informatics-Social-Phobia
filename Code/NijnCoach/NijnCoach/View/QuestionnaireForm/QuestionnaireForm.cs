@@ -92,7 +92,14 @@ namespace NijnCoach.View.Questionnaire
                 //TODO: Mark questionnaire as finished
                 //TODO: fetch data for overview from database
                 DBConnect.updateQuestionnaire(MainClass.userNo,xpars.writeXML(questionnaire), -1);
-                MainForm.mainForm.replacePanel(new OverviewPanel(_loadAvatar));
+
+                try
+                {
+                    MainForm.mainForm.replacePanel(new OverviewPanel(_loadAvatar));
+                }
+                catch (Exception){
+                    MainForm.mainForm.replacePanel(new HomePanel(_loadAvatar));
+                }
             }
             else
             {                
